@@ -1,12 +1,17 @@
+body {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+text-align:center;
+}
+
 a:link,a:visited
 {
-outline:grey outset;
+outline:#00B900 outset;
 display:block;
 font-weight:bold;
 font-size:25px;
-font-family:Alien Encounters;
-color:black;
-background-color:grey;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+color:white;
+background-color:#00B900;
 width:190px;
 text-align:center;
 padding:40px;
@@ -15,15 +20,20 @@ text-decoration:none;
 
 a:hover,a:active
 {
-outline:#616161 inset;
-background-color:#616161;
+outline: #00A500 inset;
+background-color:#00A500;
 }
 
-body {background-color:black;}
-
-#links
+#link2
 {
-margin-top:12%;
-margin-right:20%;
+margin-top:10%;
+margin-right:25%;
 float:right;
+}
+
+#link1
+{
+margin-top:10%;
+margin-left:25%;
+float:left;
 }
