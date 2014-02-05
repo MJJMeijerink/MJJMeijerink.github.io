@@ -1,20 +1,29 @@
 a:link,a:visited
 {
-outline:red outset;
+outline:grey outset;
 display:block;
 font-weight:bold;
-color:#FFFFFF;
-background-color:red;
-width:120px;
+font-size:25px;
+font-family:Alien Encounters;
+color:black;
+background-color:grey;
+width:190px;
 text-align:center;
-padding:5px;
+padding:40px;
 text-decoration:none;
 }
 
 a:hover,a:active
 {
-outline:blue inset;
-background-color:blue;
+outline:#616161 inset;
+background-color:#616161;
 }
 
 body {background-color:black;}
+
+#links
+{
+margin-top:12%;
+margin-right:20%;
+float:right;
+}
