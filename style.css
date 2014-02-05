@@ -23,7 +23,10 @@ body {background-color:black;}
 
 #links
 {
+position:absolute;
 margin-top:12%;
 margin-right:15%;
 float:right;
 }
+
+#name {position:relative;}
