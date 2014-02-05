@@ -1,0 +1,19 @@
+a:link,a:visited
+{
+outline:red outset;
+display:block;
+font-weight:bold;
+color:#FFFFFF;
+background-color:red;
+width:120px;
+text-align:center;
+padding:5px;
+text-decoration:none;
+}
+a:hover,a:active
+{
+outline:blue inset;
+background-color:blue;
+}
+
+body {background-color:black;}
