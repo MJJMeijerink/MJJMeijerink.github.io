@@ -1,6 +1,7 @@
 body {
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 text-align:center;
+min-width: 1000px;
 }
 
 a:link,a:visited
@@ -12,7 +13,7 @@ font-size:25px;
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 color:white;
 background-color:#00B900;
-width:190px;
+min-width:190px;
 text-align:center;
 padding:40px;
 text-decoration:none;
@@ -22,6 +23,13 @@ a:hover,a:active
 {
 outline: #00A500 inset;
 background-color:#00A500;
+}
+
+#links
+{
+min-width:1000px;
+margin-top:10%;
+text-align:center;
 }
 
 #link2
