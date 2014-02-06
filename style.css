@@ -1,7 +1,7 @@
 body {
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 text-align:center;
-min-width: 1000px;
+min-width: 800px;
 }
 
 a:link,a:visited
@@ -13,8 +13,6 @@ font-size:25px;
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 color:white;
 background-color:#00B900;
-min-width:190px;
-text-align:center;
 padding:40px;
 text-decoration:none;
 }
@@ -27,21 +25,7 @@ background-color:#00A500;
 
 #links
 {
-min-width:1000px;
+min-width:800px;
 margin-top:10%;
 text-align:center;
-}
-
-#link2
-{
-margin-top:10%;
-margin-right:25%;
-float:right;
-}
-
-#link1
-{
-margin-top:10%;
-margin-left:25%;
-float:left;
 }
