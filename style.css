@@ -29,3 +29,10 @@ min-width:800px;
 margin-top:10%;
 text-align:center;
 }
+
+#footer
+{
+text-align:center;
+min-width:800px;
+margin-bottom:0;
+}
