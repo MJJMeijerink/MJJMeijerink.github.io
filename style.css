@@ -4,13 +4,8 @@ text-align:center;
 min-width: 800px;
 }
 
-a:link, a:visited
-{
-text-decoration:none;
-}
 a:hover, a:active
 {
-text-decoration:none;
 font-weight:bold;
 }
 
