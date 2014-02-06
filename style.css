@@ -4,7 +4,17 @@ text-align:center;
 min-width: 800px;
 }
 
-a:link,a:visited
+a:link, a:visited
+{
+text-decoration:none;
+}
+a:hover, a:active
+{
+text-decoration:none;
+font-weight:bold;
+}
+
+#links a:link, #links a:visited
 {
 outline:#00B900 outset;
 display:block;
@@ -17,7 +27,7 @@ padding:40px;
 text-decoration:none;
 }
 
-a:hover,a:active
+#links a:hover, #links a:active
 {
 outline: #00A500 inset;
 background-color:#00A500;
