@@ -2,11 +2,19 @@ body {
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 text-align:center;
 min-width: 800px;
+color: white;
+background-image: url("images/background.jpg")
+}
+
+a:link, a:visited
+{
+color:white;
 }
 
 a:hover, a:active
 {
 font-weight:bold;
+color:white;
 }
 
 #links a:link, #links a:visited
@@ -35,10 +43,23 @@ margin-top:10%;
 text-align:center;
 }
 
+#clicked a:link, #clicked a:visited, #clicked a:hover, #clicked a:active
+{
+outline:#00A500 inset;
+display:block;
+font-weight:bold;
+font-size:25px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+background-color:#00A500;
+padding:40px;
+text-decoration:none;
+}
+
 #footer
 {
 text-align:center;
 min-width:800px;
 margin-top:13%;
 font-size:12px;
+color:white;
 }
