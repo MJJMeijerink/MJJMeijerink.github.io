@@ -4,7 +4,7 @@ text-align:center;
 min-width: 800px;
 color: white;
 background-image: url("images/background.jpg");
-background-size:auto auto;
+background-size:cover;
 }
 
 a:link, a:visited
