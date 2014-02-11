@@ -6,25 +6,92 @@ background-image: url("images/background.jpg");
 background-size:100%;
 }
 
-#name
+#name a:link, #name a:visited
 {
+box-shadow: inset 0 -10px 50px rgba(0,0,0,0.5);
+outline: 1px solid black;
 position:absolute;
 display:block;
 left:0px;
 background-color:rgba(0,0,200,0.5);
-min-width: 30%;
+min-width: 33.333333333333333333333%;
+min-height:40px;
 top:0;
-text-align:left;
-}
-#name a:link, #name a:visited, #name a:hover, #name a:active
-{
+text-align:center;
+font-weight:bold;
+font-size:20px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+color:white;
 text-decoration:none;
+}
+#name a:hover, #name a:active
+{
+outline: 1px solid black;
+background-color:rgba(0,0,200,0.5);
+box-shadow: inset 0 10px 50px rgba(0,0,0,0.8);
+}
+
+#menu-1 a:link, #menu-1 a:visited
+{
+box-shadow: inset 0 -10px 50px rgba(0,0,0,0.5);
+outline: 1px solid black;
+position:absolute;
+display:block;
+left:033.3333333333333333%;
+background-color:rgba(0,0,200,0.5);
+min-width: 33.333333333333333333333%;
+min-height: 40px;
+top:0;
+text-align:center;
+font-weight:bold;
+font-size:20px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+color:white;
+text-decoration:none;
+}
+
+#menu-1 a:hover, #menu-1 a:active
+{
+outline: 1px solid black;
+background-color:rgba(0,0,200,0.5);
+box-shadow: inset 0 10px 50px rgba(0,0,0,0.8);
+}
+
+#menu-2 a:link, #menu-2 a:visited
+{
+box-shadow: inset 0 -10px 50px rgba(0,0,0,0.5);
+outline: 1px solid black;
+position:absolute;
+display:block;
+left:066.66666666666666666666%;
+background-color:rgba(0,0,200,0.5);
+min-width: 33.333333333333333%;
+min-height: 40px;
+top:0;
+text-align:center;
+font-weight:bold;
+font-size:20px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+color:white;
+text-decoration:none;
+}
+
+#menu-2 a:hover, #menu-2 a:active
+{
+outline: 1px solid black;
+background-color:rgba(0,0,200,0.5);
+box-shadow: inset 0 10px 50px rgba(0,0,0,0.8);
+}
+
+#text
+{
+margin-top:7px;
 }
 
 #balk 
 {
 position:absolute;
-margin-top: 53px;
+margin-top: 30px;
 display:block;
 background-color:black;
 height:5px;
@@ -41,32 +108,6 @@ a:hover, a:active
 {
 font-weight:bold;
 color:white;
-}
-
-#menu-items a:link, #menu-items a:visited
-{
-box-shadow: inset 0 -10px 50px rgba(0,0,0,0.5);
-padding:24px;
-outline: 1px solid black;
-display:block;
-font-weight:bold;
-font-size:25px;
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-color:white;
-text-decoration:none;
-}
-
-#menu-items a:hover, #menu-items a:active
-{
-outline: 1px solid black;
-background-color:rgba(0,0,200,0.5);
-box-shadow: inset 0 10px 50px rgba(0,0,0,0.8);
-}
-
-#menu-items
-{
-text-align:center;
-margin-top:25px;
 }
 
 #body
@@ -88,28 +129,8 @@ min-height:275px;
 
 #clicked a:link, #clicked a:visited, #clicked a:hover, #clicked a:active
 {
-padding:23px;
-outline: 1px solid black;
-display:block;
-font-weight:bold;
-font-size:25px;
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-color:white;
-text-decoration:none;
 background-color:rgba(0,0,200,0.5);
 box-shadow: inset 0 10px 50px rgba(0,0,0,0.8);
-}
-
-#header
-{
-z-index: -1;
-position:absolute;
-min-width:70%;
-display:block;
-top:0;
-right:0px;
-height:81px;
-background-color:rgba(0,0,200,0.5);;
 }
 
 #footer
