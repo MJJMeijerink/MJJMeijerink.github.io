@@ -10,9 +10,9 @@ background-size:cover;
 {
 position:absolute;
 display:block;
-left:0;
+left:0px;
 background-color:rgba(0,0,200,0.5);
-width: 30%;
+min-width: 30%;
 top:0;
 text-align:left;
 }
@@ -46,7 +46,7 @@ color:white;
 #menu-items a:link, #menu-items a:visited
 {
 box-shadow: inset 0 -10px 50px rgba(0,0,0,0.5);
-padding:23px;
+padding:24px;
 outline: 1px solid black;
 display:block;
 font-weight:bold;
@@ -80,10 +80,10 @@ background-color:rgba(0,0,0,0.9);
 margin-top: 90px;
 width:64%;
 margin-bottom:100px;
-min-height:350px;
+min-height:275px;
 }
 
-#facebook{margin-left:36%;}
+#facebook{margin-left:33%;}
 #links{text-align:center;}
 
 #clicked a:link, #clicked a:visited, #clicked a:hover, #clicked a:active
@@ -104,7 +104,7 @@ box-shadow: inset 0 10px 50px rgba(0,0,0,0.8);
 {
 z-index: -1;
 position:absolute;
-width:70%;
+min-width:70%;
 display:block;
 top:0;
 right:0px;
