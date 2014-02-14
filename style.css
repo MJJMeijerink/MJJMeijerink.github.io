@@ -123,12 +123,7 @@ width:64%;
 margin-bottom:100px;
 min-height:350px;
 border-radius:25px;
-}
-#body-inline
-{
-display:inline-block;
-border-radius:25px;
-border:4px solid black;
+border: 4px solid black;
 }
 
 #facebook{position:absolute; top:47%; left:42%;}
