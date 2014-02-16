@@ -142,3 +142,79 @@ width: 100%;
 font-size:12px;
 color:white;
 }
+
+.deliverable1 {
+position:relative;
+display:block;
+border-radius:15px;
+margin-left: 30px;
+width: 250px;
+height: 375px;
+background:url(images/preview1-1.png) no-repeat;
+font-size:0px;
+text-decoration:none;
+border: 1px solid black;
+}
+
+.deliverable1:hover {
+width: 800px;
+height: 375px;
+background:url(images/preview1-2.png) no-repeat;
+display:block;
+color: rgba(0,0,0,0.8);
+font-size:100px;
+text-align:center;
+z-index:1;
+}
+
+.deliverable2 {
+top:228px;
+position:absolute;
+display:block;
+border-radius:15px;
+margin-left: 305px;
+width: 250px;
+height: 375px;
+background:url(images/preview2-1.png) no-repeat;
+font-size:0px;
+text-decoration:none;
+border: 1px solid black;
+}
+
+.deliverable2:hover {
+margin-left:30px;
+width: 800px;
+height: 375px;
+background:url(images/preview2-2.png) no-repeat;
+display:block;
+color: rgba(0,0,0,0.8);
+font-size:100px;
+text-align:center;
+z-index:1;
+}
+
+.deliverable3 {
+top:228px;
+position:absolute;
+display:block;
+border-radius:15px;
+margin-left: 580px;
+width: 250px;
+height: 375px;
+background:url(images/preview1-1.png) no-repeat;
+font-size:0px;
+text-decoration:none;
+border: 1px solid black;
+}
+
+.deliverable3:hover {
+margin-left:30px;
+width: 800px;
+height: 375px;
+background:url(images/preview1-2.png) no-repeat;
+display:block;
+color: rgba(0,0,0,0.8);
+font-size:100px;
+text-align:center;
+z-index:1;
+}
