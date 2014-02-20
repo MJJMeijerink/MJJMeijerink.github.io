@@ -4,6 +4,8 @@ min-width: 800px;
 color: white;
 background-image: url("images/background.jpg");
 background-size:100%;
+background-position: fixed;
+background-attachment:fixed;
 }
 
 #name a:link, #name a:visited
@@ -144,6 +146,7 @@ color:white;
 }
 
 .deliverable1 {
+margin-left:6px;
 display:block;
 border-radius:15px;
 width: 250px;
@@ -154,14 +157,8 @@ text-decoration:none;
 border: 1px solid black;
 }
 
-.deliverable1:hover {
-color: rgba(0,0,0,0.8);
-font-size:50px;
-text-align:center;
-z-index:1;
-}
-
 .deliverable2 {
+margin-left:6px;
 display:block;
 border-radius:15px;
 width: 250px;
@@ -172,14 +169,8 @@ text-decoration:none;
 border: 1px solid black;
 }
 
-.deliverable2:hover {
-color: rgba(0,0,0,0.8);
-font-size:50px;
-text-align:center;
-z-index:1;
-}
-
 .deliverable3 {
+margin-left:6px;
 display:block;
 border-radius:15px;
 width: 250px;
@@ -190,7 +181,19 @@ text-decoration:none;
 border: 1px solid black;
 }
 
-.deliverable3:hover {
+.deliverable4 {
+margin-left:6px;
+display:block;
+border-radius:15px;
+width: 783px;
+height: 400px;
+background:url(images/thumbnailstrip.jpg) no-repeat;
+font-size:0px;
+text-decoration:none;
+border: 1px solid black;
+}
+
+.deliverable1:hover, .deliverable2:hover, .deliverable3:hover, .deliverable4:hover{
 color: rgba(0,0,0,0.8);
 font-size:40px;
 text-align:center;
