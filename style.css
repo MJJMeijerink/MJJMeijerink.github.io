@@ -100,35 +100,33 @@ color:white;
 
 #body
 {
-position:relative;
 padding:10px;
 display:block;
 background-color:rgba(0,0,0,0.74);
 margin-top: 90px;
 width:800px;
-left:50%;
 min-height:320px;
-margin-left:-400px;
 border-radius:25px;
 border: 4px solid black;
 margin-bottom:50px;
 padding-bottom:30px;
+margin-left:auto;
+margin-right:auto;
 }
 .body 
 {
-position:relative;
 padding:10px;
 display:block;
 background-color:rgba(0,0,0,0.74);
 margin-top: 90px;
 width:800px;
-left:50%;
 min-height:470px;
-margin-left:-400px;
 border-radius:25px;
 border: 4px solid black;
 margin-bottom: 50px;
 padding-bottom:30px;
+margin-left:auto;
+margin-right:auto;
 }
 
 #facebook{position:relative; width:200px; left:50%; margin-left:-120px; top:40px;}
@@ -207,4 +205,34 @@ z-index:1;
 min-width:33.3333333%;
 position:relative;
 float:left;
+}
+
+.lightbox {                            /* Lightbox van: http://schier.co/post/creating-pure-css-lightboxes-with-the-:target-selector */
+	/** Default lightbox to hidden */
+	display: none;
+
+	/** Position and style */
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.9);
+}
+
+.lightbox img {
+	/** Pad the lightbox image */
+	max-width: 90%;
+	max-height: 90%;
+	margin-top: 2.5%;
+}
+
+.lightbox:target {
+	/** Remove default browser outline */
+	outline: none;
+
+	/** Unhide lightbox **/
+	display: block;
 }
