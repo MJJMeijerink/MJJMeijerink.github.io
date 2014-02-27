@@ -193,8 +193,44 @@ text-decoration:none;
 border: 1px solid black;
 }
 
-.deliverable1:hover, .deliverable2:hover, .deliverable3:hover, .deliverable4:hover{
-color: rgba(0,0,0,0.8);
+.deliverable5 {
+margin-left:6px;
+display:block;
+border-radius:15px;
+width: 250px;
+height: 375px;
+background:url(images/preview5.jpg) no-repeat;
+font-size:0px;
+text-decoration:none;
+border: 1px solid black;
+}
+
+.deliverable6 {
+margin-left:6px;
+display:block;
+border-radius:15px;
+width: 250px;
+height: 375px;
+background:url(images/preview6.jpg) no-repeat;
+font-size:0px;
+text-decoration:none;
+border: 1px solid black;
+}
+.deliverable7 {
+margin-left:6px;
+display:block;
+border-radius:15px;
+width: 250px;
+height: 375px;
+background:url(images/preview7.jpg) no-repeat;
+font-size:0px;
+text-decoration:none;
+border: 1px solid black;
+}
+
+.deliverable1:hover, .deliverable2:hover, .deliverable3:hover, .deliverable4:hover, .deliverable5:hover, .deliverable6:hover, .deliverable7:hover{
+color:white;
+text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 font-size:40px;
 text-align:center;
 z-index:1;
