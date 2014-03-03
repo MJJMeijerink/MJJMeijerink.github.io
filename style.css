@@ -369,7 +369,7 @@ text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
 
 
 .deliverable1:hover, .deliverable2:hover, .deliverable3:hover, .deliverable4:hover, .deliverable5:hover, .deliverable6:hover, .deliverable7:hover, .deliverable8:hover, .deliverable9:hover, .deliverable10:hover{
-color:white;
+color:red;
 text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 font-size:40px;
 text-align:center;
