@@ -63,6 +63,7 @@ margin-left:-405px;
 left:50%;
 color:#FFF;
 font-size:21px;
+padding-bottom:50px;
 }
 #content h1{text-align:center;}
 #content a{text-decoration:none; color: rgba(80,50,255,1);}
@@ -91,7 +92,8 @@ text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
 }
 #content ul a:hover{font-size:40px;}
 #content p{margin-top: 100px;}
-
+#strip a:hover{font-size:40px;}
+#strip p{color: rgba(150,150,150,1);}
 .deliverable1{background:url(images/preview1-1.png);}
 .deliverable2{background:url(images/preview2-1.png);}
 .deliverable3{background:url(images/preview3-1.png);}
@@ -132,14 +134,15 @@ top:0;
 
 #footer
 {
-display:block;
-width:15%;
+z-index:-1;
 right:10px;
+height:50px;
+width:15%;
 text-align:center;
 font-size:12px;
 color:white;
-position:absolute;
-bottom:20px;
+position:fixed;
+bottom:0;
 }
 
 .lightbox {                            /* Lightbox van: http://schier.co/post/creating-pure-css-lightboxes-with-the-:target-selector */
