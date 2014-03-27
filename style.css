@@ -2,9 +2,24 @@ body {
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 min-width: 800px;
 color: white;
-background-image: url("images/background.jpg");
-background-size:cover;
+background-image: url("images/dark-canvas.gif");
+background-size:repeat;
 background-attachment:fixed;
+}
+
+li lu{
+text-decoration:none;
+text-align:center;
+float:left;
+top:0;
+height:100px;
+width:20%;
+background-color:grey;
+top:0;
+}
+#menu
+{
+
 }
 
 #name a:link, #name a:visited
@@ -26,7 +41,7 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 color:white;
 text-decoration:none;
 }
-#name a:hover, #name a:active
+#name a:active
 {
 box-shadow: inset 0 5px 20px rgba(0,0,0,0.8);
 }
@@ -51,7 +66,7 @@ color:white;
 text-decoration:none;
 }
 
-#menu-1 a:hover, #menu-1 a:visited
+#menu-1 a:active
 {
 box-shadow: inset 0 5px 20px rgba(0,0,0,0.8);
 }
@@ -76,7 +91,7 @@ color:white;
 text-decoration:none;
 }
 
-#menu-2 a:hover, #menu-2 a:active
+#menu-2 a:active
 {
 box-shadow: inset 0 5px 20px rgba(0,0,0,0.8);
 }
@@ -101,15 +116,13 @@ color:white;
 #blok{font-size:25px; text-decoration:none;}
 #body
 {
+position:absolute;
+z-index:-1;
 padding:10px;
 display:block;
 background-color:rgba(0,0,0,0.74);
-margin-top: 90px;
 width:800px;
-min-height:320px;
-border-radius:25px;
-border: 4px solid black;
-margin-bottom:50px;
+height:100%;
 padding-bottom:30px;
 margin-left:auto;
 margin-right:auto;
@@ -205,7 +218,7 @@ text-decoration:none;
 box-shadow: inset 0 5px 20px rgba(0,0,0,0.8);
 }
 
-#facebook{position:relative; width:200px; left:50%; margin-left:-120px; top:40px;}
+
 #links{text-align:center;}
 
 #clicked a:link, #clicked a:visited, #clicked a:hover, #clicked a:active
@@ -404,12 +417,6 @@ float:left;
 	max-width: 100%;
 	max-height: 95%;
 	margin-top: 12px;
-}
-
-.lightbox object {
-	/** Pad the lightbox image */
-	width: 70%;
-	height: 100%;
 }
 
 .lightbox:target {
