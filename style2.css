@@ -8,9 +8,9 @@ background-attachment:fixed;
 }
 
 #logo {
-position:relative;
-top:30px;
-left:30px;
+position:fixed;
+top:50px;
+left:40px;
 float:left;}
 
 #menu ul {
