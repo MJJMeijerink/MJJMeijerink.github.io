@@ -7,6 +7,11 @@ background-size:repeat;
 background-attachment:fixed;
 }
 
+#logo {
+position:absolute;
+top:40px;
+left:40px;}
+
 #menu ul {
 list-style-type: none;
 background-image: url('images/menu.png');
