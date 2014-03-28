@@ -129,7 +129,7 @@ text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
 z-index:-1;
 display:block;
 position:fixed;
-background-color: rgba(0,0,0,0.2);
+background-color: rgba(0,0,0,0.5);
 width:900px;
 height:100%;
 margin-left:-450px;
