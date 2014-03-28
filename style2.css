@@ -123,6 +123,7 @@ text-align:center;
 transition: font 0.1s ease;
 text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
+#uitleg{font-size:14px;}
 
 #facebook{position:relative; width:200px; left:50%; margin-left:-120px; top:40px; padding-bottom:50px;}
 
