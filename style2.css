@@ -4,11 +4,9 @@ min-width: 800px;
 color: black;
 background-image: url("images/dark-canvas.gif");
 background-size:repeat;
-background-attachment:fixed;
-}
+background-attachment:fixed;}
 
 #logo {
-z-index:-1;
 position:fixed;
 top:40px;
 left:40px;
@@ -19,8 +17,7 @@ list-style-type: none;
 background-image: url('images/menu.png');
 height: 100px;
 width:900px;
-margin: auto;
-}
+margin: auto;}
 #menu li{float:left;}
 #menu ul a {
 background-image: url(images/divider.png), url(images/divider2.png);
@@ -34,10 +31,15 @@ line-height: 80px;
 text-decoration: none;
 font-family: Georgia, "Times New Roman", Times, serif;
 font-size: 21px;
-color: rgba(150,150,150,1);
-}
-#menu ul a:hover {color: #FFF;}
-#current {color:#FFF;}
+color: rgba(150,150,150,1);}
+#menu ul a:hover{
+color: #FFF;
+text-shadow: 3px 3px 0 #000;}
+#menu ul a:active, #menu ul a:visited{
+text-shadow:none;}
+#current {
+color:#FFF;
+text-shadow:none;}
 
 #submenu ul {
 list-style-type: none;
@@ -45,8 +47,7 @@ display:block;
 background-color:black;
 height: 50px;
 width: 900px;
-margin: auto;
-}
+margin: auto;}
 #submenu li{float:left;}
 #submenu ul a {
 padding-right: 132px;
@@ -56,8 +57,7 @@ line-height: 45px;
 text-decoration: none;
 font-family: Georgia, "Times New Roman", Times, serif;
 font-size: 16px;
-color: rgba(150,150,150,1);
-}
+color: rgba(150,150,150,1);}
 #submenu ul a:hover {color: #FFF;}
 #current {color:#FFF;}
 
@@ -70,21 +70,18 @@ margin-left:-405px;
 left:50%;
 color:#FFF;
 font-size:21px;
-padding-bottom:50px;
-}
+padding-bottom:50px;}
 #content h1{text-align:center;}
 #content a{text-decoration:none; color: rgba(80,50,255,1);}
 #content a:hover{font-weight:bold;}
 #content ul{
 list-style-type:none;
 width: 900px;
-height: 375px;
-}
+height: 375px;}
 #content li{
 float:left;
 margin-right:24px;
-margin-bottom:24px;
-}
+margin-bottom:24px;}
 #content ul a{
 display:block;
 border: 2px solid black;
@@ -95,8 +92,7 @@ font-size:0px;
 text-decoration:none;
 text-align:center;
 transition: font 0.1s ease;
-text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
+text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;}
 #content ul a:hover{font-size:40px;}
 #content p{margin-top: 100px;}
 #strip a:hover{font-size:40px;}
@@ -128,8 +124,7 @@ text-decoration:none;
 border: 2px solid black;
 text-align:center;
 transition: font 0.1s ease;
-text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
+text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;}
 #uitleg{font-size:14px;}
 
 #facebook{position:relative; width:200px; left:50%; margin-left:-120px; top:40px; padding-bottom:50px;}
@@ -143,18 +138,15 @@ width:900px;
 height:100%;
 margin-left:-450px;
 left:50%;
-top:0;
-}
+top:0;}
 
-#footer
-{
+#footer{
 height:50px;
 width:100%;
 text-align:center;
 font-size:12px;
 color:white;
-bottom:0;
-}
+bottom:0;}
 
 .lightbox {                            /* Lightbox van: http://schier.co/post/creating-pure-css-lightboxes-with-the-:target-selector */
 	/** Default lightbox to hidden */
@@ -169,19 +161,16 @@ bottom:0;
 	color: white;
 	bottom: 0;
 	left: 0;
-	background: rgba(0,0,0,0.6);
-}
+	background: rgba(0,0,0,0.6);}
 .lightbox img {
 	/** Pad the lightbox image */
 	max-width: 100%;
 	max-height: 95%;
-	margin-top: 12px;
-}
+	margin-top: 12px;}
 .lightbox:target {
 	/** Unhide lightbox **/
-	display: block;
-}
+	display: block;}
+
 * {
 margin: 0;
-padding: 0;
-}
+padding: 0;}
