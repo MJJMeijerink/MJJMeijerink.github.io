@@ -4,6 +4,7 @@ min-width: 800px;
 color: black;
 background-image: url("images/dark-canvas.gif");
 background-size:repeat;
+<<<<<<< HEAD
 background-attachment:fixed;
 }
 
@@ -11,6 +12,14 @@ background-attachment:fixed;
 position:relative;
 top:30px;
 left:30px;
+=======
+background-attachment:fixed;}
+
+#logo {
+position:fixed;
+top:40px;
+left:40px;
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
 float:left;}
 
 #menu ul {
@@ -18,8 +27,12 @@ list-style-type: none;
 background-image: url('images/menu.png');
 height: 100px;
 width:900px;
+<<<<<<< HEAD
 margin: auto;
 }
+=======
+margin: auto;}
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
 #menu li{float:left;}
 #menu ul a {
 background-image: url(images/divider.png), url(images/divider2.png);
@@ -33,10 +46,22 @@ line-height: 80px;
 text-decoration: none;
 font-family: Georgia, "Times New Roman", Times, serif;
 font-size: 21px;
+<<<<<<< HEAD
 color: rgba(150,150,150,1);
 }
 #menu ul a:hover {color: #FFF;}
 #current {color:#FFF;}
+=======
+color: rgba(150,150,150,1);}
+#menu ul a:hover{
+color: #FFF;
+text-shadow: 3px 3px 0 #000;}
+#menu ul a:active, #menu ul a:visited{
+text-shadow:none;}
+#current {
+color:#FFF;
+text-shadow:none;}
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
 
 #submenu ul {
 list-style-type: none;
@@ -44,8 +69,12 @@ display:block;
 background-color:black;
 height: 50px;
 width: 900px;
+<<<<<<< HEAD
 margin: auto;
 }
+=======
+margin: auto;}
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
 #submenu li{float:left;}
 #submenu ul a {
 padding-right: 132px;
@@ -55,8 +84,12 @@ line-height: 45px;
 text-decoration: none;
 font-family: Georgia, "Times New Roman", Times, serif;
 font-size: 16px;
+<<<<<<< HEAD
 color: rgba(150,150,150,1);
 }
+=======
+color: rgba(150,150,150,1);}
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
 #submenu ul a:hover {color: #FFF;}
 #current {color:#FFF;}
 
@@ -69,14 +102,19 @@ margin-left:-405px;
 left:50%;
 color:#FFF;
 font-size:21px;
+<<<<<<< HEAD
 padding-bottom:50px;
 }
+=======
+padding-bottom:50px;}
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
 #content h1{text-align:center;}
 #content a{text-decoration:none; color: rgba(80,50,255,1);}
 #content a:hover{font-weight:bold;}
 #content ul{
 list-style-type:none;
 width: 900px;
+<<<<<<< HEAD
 height: 375px;
 }
 #content li{
@@ -84,6 +122,13 @@ float:left;
 margin-right:24px;
 margin-bottom:24px;
 }
+=======
+height: 375px;}
+#content li{
+float:left;
+margin-right:24px;
+margin-bottom:24px;}
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
 #content ul a{
 display:block;
 border: 2px solid black;
@@ -94,8 +139,12 @@ font-size:0px;
 text-decoration:none;
 text-align:center;
 transition: font 0.1s ease;
+<<<<<<< HEAD
 text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
+=======
+text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;}
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
 #content ul a:hover{font-size:40px;}
 #content p{margin-top: 100px;}
 #strip a:hover{font-size:40px;}
@@ -109,6 +158,15 @@ text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
 .deliverable8{background:url(images/preview8.jpg);}
 .deliverable9{background:url(images/preview9.jpg);}
 .deliverable10{background:url(images/preview10.jpg);}
+<<<<<<< HEAD
+=======
+.deliverable11{background:url(images/preview13.png);}
+.deliverable12{background:url(images/preview14.png);}
+.deliverable13{background:url(images/preview15.png);}
+.deliverable14{background:url(images/preview11.png);}
+.deliverable15{background:url(images/preview16.png);}
+.deliverable16{background:url(images/preview12.png);}
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
 .deliverable4 {
 display:block;
 width: 806px;
@@ -121,8 +179,12 @@ text-decoration:none;
 border: 2px solid black;
 text-align:center;
 transition: font 0.1s ease;
+<<<<<<< HEAD
 text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
+=======
+text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;}
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
 #uitleg{font-size:14px;}
 
 #facebook{position:relative; width:200px; left:50%; margin-left:-120px; top:40px; padding-bottom:50px;}
@@ -136,18 +198,28 @@ width:900px;
 height:100%;
 margin-left:-450px;
 left:50%;
+<<<<<<< HEAD
 top:0;
 }
 
 #footer
 {
+=======
+top:0;}
+
+#footer{
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
 height:50px;
 width:100%;
 text-align:center;
 font-size:12px;
 color:white;
+<<<<<<< HEAD
 bottom:0;
 }
+=======
+bottom:0;}
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
 
 .lightbox {                            /* Lightbox van: http://schier.co/post/creating-pure-css-lightboxes-with-the-:target-selector */
 	/** Default lightbox to hidden */
@@ -162,12 +234,17 @@ bottom:0;
 	color: white;
 	bottom: 0;
 	left: 0;
+<<<<<<< HEAD
 	background: rgba(0,0,0,0.6);
 }
+=======
+	background: rgba(0,0,0,0.6);}
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
 .lightbox img {
 	/** Pad the lightbox image */
 	max-width: 100%;
 	max-height: 95%;
+<<<<<<< HEAD
 	margin-top: 12px;
 }
 .lightbox:target {
@@ -178,3 +255,13 @@ bottom:0;
 margin: 0;
 padding: 0;
 }
+=======
+	margin-top: 12px;}
+.lightbox:target {
+	/** Unhide lightbox **/
+	display: block;}
+
+* {
+margin: 0;
+padding: 0;}
+>>>>>>> 92697c25b3654036f37f0f6984e34b87600843c3
