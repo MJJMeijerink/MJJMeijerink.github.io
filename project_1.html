@@ -6,7 +6,7 @@
   <body>
     <p>Hello!</p>
 	<script type="text/javascript">
-		marketShares = []
+		var marketShares = []
 		d3.csv("browser-ww-monthly-201305-201405.csv", function(data) {
 			for(i=0;i<5;i++) {
 			marketShares.push(data[i]["Market Share Perc. (May 2013 to May 2014)"]) }
