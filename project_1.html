@@ -7,18 +7,18 @@
 	<script type="text/javascript">
 		function make() {
 		if (!clicked) {
-		d3.select("body").append("ul").attr("class", "chart");
-		d3.select(".chart").selectAll("ul")
+		d3.select("body").append("div").attr("class", "chart");
+		d3.select(".chart").selectAll("div")
 			.data(marketShares)
-			.enter().append("li")
-			.style("width", "100px")
-			.style("height", function(d) { return d * 10 + "px"; })
+			.enter().append("div")
+			.style("width", function(d) { return d * 25 + "px"; })
+			.style("height", 30)
+			.style("display", "block")
 			.style("background-color", "steelblue")
 			.style("padding", "3px")
 			.style("margin", "1px")
 			.style("text-align", "top")
 			.style("font", "10px sans-serif")
-			.style("display", "block")
 			.text(function(d) { return d + "%"; });
 		clicked = true;}}
 		var clicked = false
