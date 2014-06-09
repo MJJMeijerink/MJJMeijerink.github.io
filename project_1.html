@@ -17,7 +17,7 @@
 				d3.select("body").append("div").attr("class", "chart");
 				d3.select(".chart").selectAll("div")
 					.data(marketShares)
-					.enter().append("div").attr("id", "child")
+					.enter().append("div")
 					.style("width", function(d) { return d * 25 + "px"; })
 					.style("height", "30px")
 					.style("display", "block")
