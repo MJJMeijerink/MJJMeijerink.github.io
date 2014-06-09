@@ -23,7 +23,7 @@
 					.text(function(d,i) { return websites[i] + " " + d + "%"; });
 				clicked = true;}
 			if (clicked) {
-				var remove = document.getElementByClassName("chart");
+				var remove = document.getElementsByClassName("chart");
 				remove.parentNode.removeChild(elem);
 			}
 				}
