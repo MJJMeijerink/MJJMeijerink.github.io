@@ -23,8 +23,8 @@
 					.text(function(d,i) { return websites[i] + " " + d + "%"; });
 				clicked = true;}
 			if (clicked) {
-				var elem = document.getElementByClassName("chart");
-				elem.parentNode.removeChild(elem);
+				var remove = document.getElementByClassName("chart");
+				remove.parentNode.removeChild(elem);
 			}
 				}
 		var clicked = false
