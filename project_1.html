@@ -12,8 +12,8 @@
 		dataset = data
 		});
 		for (i=0;i<5;i++) {
-		marketShares.push(dataset[i]["Market Share Perc. (May 2013 to May 2014)"]);
-		websites.push(dataset[i].Browser);}
+		//marketShares.push(dataset[i]["Market Share Perc. (May 2013 to May 2014)"]);
+		//websites.push(dataset[i].Browser);}
 		d3.select("body").append("svg").attr("class", "chart");
 		console.log(marketShares)
 		svg.selectAll("svg").data(dataset).enter().append("svg").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });
