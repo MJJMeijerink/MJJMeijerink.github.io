@@ -6,6 +6,9 @@
   </head>
   <body>
 	<script type="text/javascript">
+		for (i=0;i<5;i++) {
+		marketShares.push(data[i]["Market Share Perc. (May 2013 to May 2014)"]);
+		websites.push(data[i].Browser);}
 		var svg = d3.select("body").append("svg").attr("class", "chart");
 		console.log(marketShares)
 		var newSvg = svg.selectAll("svg").data(marketShares).enter().append("svg").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });
