@@ -20,6 +20,7 @@
 			.style("text-align", "right")
 			.style("font", "10px sans-serif")
 			.style("color", "white")
+			.text(function(d,i) { return websites[i] } 
 			.text(function(d) { return d + "%"; });
 		clicked = true;}}
 		var clicked = false
