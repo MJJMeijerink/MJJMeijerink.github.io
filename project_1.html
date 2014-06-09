@@ -29,8 +29,9 @@
 		marketShares.push(data[i]["Market Share Perc. (May 2013 to May 2014)"]);
 		websites.push(data[i].Browser); }
 		});
+		var both=new Object();
 		for (var i=0; i<marketShares.length; i++)
-			{var both[websites[i]] = marketShares[i];}
+			{both[websites[i]] = marketShares[i];}
 </script>
 <button onclick="make();"> Market Share Percentages for the Five Most Popular Browsers </button>
   </body>
