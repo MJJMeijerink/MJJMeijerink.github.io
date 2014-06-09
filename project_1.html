@@ -13,7 +13,6 @@
 			marketShares.push(parseFloat(data[i]["Market Share Perc. (May 2013 to May 2014)"]));
 			websites.push(data[i].Browser);}
 		});
-		d3.select("body").append("div").attr("class", "chart")
 		d3.select(".chart")
 			.selectAll("div")
 			.data(marketShares)
@@ -21,5 +20,6 @@
 			.style("width", function(d) { return d * 4 + "px"; })
 			.text(function(d) { return d; });
 </script>
+<div class = "chart"></div>
   </body>
 </html>
