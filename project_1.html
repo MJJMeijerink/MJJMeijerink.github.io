@@ -12,7 +12,7 @@
 					totalRest = totalRest + marketShares[i]
 				}
 				websites.push("Other");
-				marketShares.push(totalRest);
+				marketShares.push(100 - totalRest);
 				d3.select("body").append("div").attr("class", "chart");
 				d3.select(".chart").selectAll("div")
 					.data(marketShares)
