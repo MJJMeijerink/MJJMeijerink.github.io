@@ -13,7 +13,7 @@
 				}
 				totalRest = 100.0 - totalRest;
 				websites.push("Others");
-				marketShares.push(totalRest);
+				marketShares.push(totalRest.toPrecision(3));
 				d3.select("body").append("div").attr("class", "chart");
 				d3.select(".chart").selectAll("div")
 					.data(marketShares)
