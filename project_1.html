@@ -12,9 +12,9 @@
 			{both[websites[i]] = marketShares[i];}
 		d3.select("body").append("div").attr("class", "chart");
 		d3.select(".chart").selectAll("div")
-			.data(marketShares)
+			.data(both)
 			.enter().append("div")
-			.style("width", function(d) { return d * 25 + "px"; })
+			.style("width", function(d) { return d[1] * 25 + "px"; })
 			.style("height", 30)
 			.style("display", "block")
 			.style("background-color", "steelblue")
