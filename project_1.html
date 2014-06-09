@@ -7,8 +7,8 @@
 	<script type="text/javascript">
 		function make() {
 		if (!clicked) {
-		d3.select("body").append("svg").attr("class", "chart");
-		d3.select(".chart").selectAll("svg").data(marketShares).enter().append("svg").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });
+		d3.select("body").append("div").attr("class", "chart");
+		d3.select(".chart").selectAll("div").data(marketShares).enter().append("div").style("width", function(d) { return d * 4 + "px"; }).style("height", 30).style("background-color", "blue").style("text-align", "right").text(function(d) { return d; });
 		clicked = true;}}
 		var clicked = false
 		var marketShares = []
