@@ -7,9 +7,10 @@
 	<script type="text/javascript">
 		var marketShares = []
 		var websites = []
-		d3.csv("browser-ww-monthly-201305-201405.csv", function (d) {
+		var data = d3.csv("browser-ww-monthly-201305-201405.csv", function (d) {
 		console.log(d)
 		});
+		console.log(data[0])
 		var svg = d3.select("body").append("svg").attr("class", "chart");
 		console.log(marketShares)
 		var newSvg = svg.selectAll("svg").data(marketShares).enter().append("svg").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });
