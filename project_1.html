@@ -11,7 +11,7 @@
 		d3.select(".chart").selectAll("div")
 			.data(marketShares)
 			.enter().append("div")
-			.style("width", 100)
+			.style("width", "100px")
 			.style("height", function(d) { return d * 10 + "px"; })
 			.style("display", "block")
 			.style("background-color", "steelblue")
