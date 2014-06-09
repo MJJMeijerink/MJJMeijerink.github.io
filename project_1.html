@@ -7,6 +7,9 @@
 	<script type="text/javascript">
 		function make() {
 		if (!clicked) {
+		var both=new Object();
+		for (var i=0; i<marketShares.length; i++)
+			{both[websites[i]] = marketShares[i];}
 		d3.select("body").append("div").attr("class", "chart");
 		d3.select(".chart").selectAll("div")
 			.data(marketShares)
@@ -29,9 +32,6 @@
 		marketShares.push(data[i]["Market Share Perc. (May 2013 to May 2014)"]);
 		websites.push(data[i].Browser); }
 		});
-		var both=new Object();
-		for (var i=0; i<marketShares.length; i++)
-			{both[websites[i]] = marketShares[i];}
 </script>
 <button onclick="make();"> Market Share Percentages for the Five Most Popular Browsers </button>
   </body>
