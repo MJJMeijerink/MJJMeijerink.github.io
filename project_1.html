@@ -6,8 +6,9 @@
   <body>
     <p>Hello!</p>
 	<script type="text/javascript">
-		d3.tsv("18-year-olds-in-education.tsv", function(data) {
-			console.log(data);
+		d3.csv("browser-ww-monthly-201305-201405.csv", function(data) {
+			for(i=0;i<5;i++) {
+			console.log(data[i]);}
 		});
 </script>
   </body>
