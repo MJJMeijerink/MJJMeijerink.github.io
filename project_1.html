@@ -11,7 +11,7 @@
 		d3.select(".chart").selectAll("div")
 			.data(marketShares)
 			.enter().append("div")
-			.style("width", function(d) { return d[1] * 25 + "px"; })
+			.style("width", function(d) { return d * 25 + "px"; })
 			.style("height", 30)
 			.style("display", "block")
 			.style("background-color", "steelblue")
@@ -25,9 +25,12 @@
 		var marketShares = []
 		var websites = []
 		d3.csv("browser-ww-monthly-201305-201405.csv", function (data) {
-		for (i=0;i<5;i++) {
-		marketShares.push((data[i].Browser, data[i]["Market Share Perc. (May 2013 to May 2014)"]));
+		for (var i=0;i<5;i++) {
+		marketShares.push(data[i]["Market Share Perc. (May 2013 to May 2014)"]);
+		websites.push(data[i].Browser);
 		});
+		for (var i=0; i<marketShares.length; i++)
+			{var both[websites[i]] = marketShares[i];}
 </script>
 <button onclick="make();"> Market Share Percentages for the Five Most Popular Browsers </button>
   </body>
