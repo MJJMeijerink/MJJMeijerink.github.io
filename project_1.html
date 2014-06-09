@@ -13,14 +13,8 @@
 			marketShares.push(parseFloat(data[i]["Market Share Perc. (May 2013 to May 2014)"]));
 			websites.push(data[i].Browser);}
 		});
-		function addDiv () {d3.select("body").append("svg").attr("class", "chart");
-		done = true}
-		function addDivs ()
-		{if (done)
-		{d3.select(".chart").selectAll("svg").data(marketShares).enter().append("svg").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });}
-		done = false}
-		addDiv()
-		addDivs()
+		var svg = d3.select("body").append("svg").attr("class", "chart");
+		var newSvg = svg.selectAll("svg").data(marketShares).enter().append("svg").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });
 </script>
   </body>
 </html>
