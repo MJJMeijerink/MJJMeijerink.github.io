@@ -8,9 +8,7 @@
 		var marketShares = []
 		var websites = []
 		d3.csv("browser-ww-monthly-201305-201405.csv", function (d) {
-		for (i=0; i<5; i++)
-		{marketShares.push(d[i]["Market Share Perc. (May 2013 to May 2014)"]);
-		websites.push(d[i].Browser);}
+		console.log(data)
 		});
 		var svg = d3.select("body").append("svg").attr("class", "chart");
 		console.log(marketShares)
