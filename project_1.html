@@ -9,7 +9,7 @@
 		var websites = []
 		var dataset = []
 		d3.csv("browser-ww-monthly-201305-201405.csv", function (data) {
-		dataset = data.forEach(function(d) {return "[" + d.Browser + "," + d["Market Share Perc. (May 2013 to May 2014)"] + "]";}
+		dataset = data.forEach(function(d) {return "[" + d.Browser + "," + d["Market Share Perc. (May 2013 to May 2014)"] + "]";)}
 		});
 		for (i=0;i<5;i++) {
 		marketShares.push(data[i]["Market Share Perc. (May 2013 to May 2014)"]);
