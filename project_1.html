@@ -7,14 +7,18 @@
 	<script type="text/javascript">
 		var marketShares = []
 		var websites = []
+		var done = false
 		d3.csv("browser-ww-monthly-201305-201405.csv", function(data) {
 			for(i=0;i<5;i++) {
 			marketShares.push(parseFloat(data[i]["Market Share Perc. (May 2013 to May 2014)"]));
 			websites.push(data[i].Browser);}
 		});
-		function addDiv () {d3.select("body").append("svg").attr("class", "chart");}
+		function addDiv () {d3.select("body").append("svg").attr("class", "chart");
+		done = true}
 		function addDivs ()
+		{if (done)
 		{d3.select(".chart").selectAll("svg").data(marketShares).enter().append("svg").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });}
+		done = false}
 		addDiv()
 		addDivs()
 </script>
