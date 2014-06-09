@@ -28,10 +28,17 @@
 		var websites = []
 		d3.csv("browser-ww-monthly-201305-201405.csv", function (data) {
 			for (var i=0;i<5;i++) {
-				marketShares.push(data[i]["Market Share Perc. (May 2013 to May 2014)"]);
+				marketShares.push(parseInt(data[i]["Market Share Perc. (May 2013 to May 2014)"]));
 				websites.push(data[i].Browser); }
 		});
+		var totalRest = 0
+		for (var i = 0; i<5; i++){
+			totalRest += marketShares[i]
+		}
+		websites.push("Other");
+		marketShares.push(totalRest);
 	</script>
-	<button onclick="make();"> Market Share Percentages for the Five Most Popular Browsers </button> <br>
+	<button onclick="make();"> Market Share Percentages for the Five Most Popular Browsers </button>
+	<button onclick="make2();"></button><br>
   </body>
 </html>
