@@ -7,9 +7,9 @@
 	<script type="text/javascript">
 		function make() {
 			if (!clicked) {
-				var totalRest = 0
+				var totalRest = 0.0
 				for (var i = 0; i<5; i++){
-					totalRest += marketShares[i]
+					totalRest = totalRest + marketShares[i]
 				}
 				websites.push("Other");
 				marketShares.push(totalRest);
