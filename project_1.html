@@ -10,7 +10,7 @@
 				d3.select("body").append("div").attr("class", "chart");
 				d3.select(".chart").selectAll("div")
 					.data(marketShares)
-					.enter().append("div")
+					.enter().append("div").attr("class", "chart")
 					.style("width", function(d) { return d * 25 + "px"; })
 					.style("height", "30px")
 					.style("display", "block")
@@ -24,7 +24,7 @@
 				clicked = true;}
 			if (clicked) {
 				var remove = document.getElementsByClassName("chart");
-				remove.parentNode(remove);
+				remove.parentNode.removeChild(remove);
 			}
 				}
 		var clicked = false
