@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script type="text/javascript" src="d3.min.js"></script>
+  </head>
+  <body>
+    <p>Hello!</p>
+	<script type="text/javascript">
+		d3.tsv("18-year-olds-in-education.tsv", function(data) {
+			console.log(data[0].x);
+		});
+</script>
+  </body>
+</html>
