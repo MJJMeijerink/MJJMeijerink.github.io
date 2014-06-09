@@ -5,17 +5,18 @@
   </head>
   <body>
 	<script type="text/javascript">
+		function make() {
+		d3.select("body").append("svg").attr("class", "chart");
+		d3.select(".chart").selectAll("svg").data(marketShares).enter().append("svg").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });
+		}
 		var marketShares = []
 		var websites = []
-		var dataset = []
 		d3.csv("browser-ww-monthly-201305-201405.csv", function (data) {
-		dataset = data
+		for (i=0;i<5;i++) {
+		marketShares.push(data[i]["Market Share Perc. (May 2013 to May 2014)"]);
+		websites.push(data[i].Browser);}
 		});
-		//for (i=0;i<5;i++) {
-		//marketShares.push(dataset[i]["Market Share Perc. (May 2013 to May 2014)"]);
-		//websites.push(dataset[i].Browser);}
-		d3.select("body").append("svg").attr("class", "chart");
-		d3.select(".chart").selectAll("svg").data(dataset).enter().append("svg").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });
 </script>
+<button onclick="make();"> click </button>
   </body>
 </html>
