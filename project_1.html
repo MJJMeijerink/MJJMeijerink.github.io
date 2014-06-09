@@ -7,28 +7,20 @@
 	<script type="text/javascript">
 		function make() {
 		if (!clicked) {
-		var x = d3.scale.linear()
-			.domain([0, d3.max(marketShares)])
-			.range([0, (42.92*25)]);
-		d3.select("body").append("svg").attr("class", "chart");
-var chart = d3.select(".chart")
-    .attr("width", 42.9*25)
-    .attr("height", 30 * marketShares.length);
-
-var bar = chart.selectAll("g")
-    .data(marketShares)
-  .enter().append("g")
-    .attr("transform", function(d, i) { return "translate(0," + i * 30 + ")"; });
-
-bar.append("rect")
-    .attr("width", x)
-    .attr("height", 30 - 1);
-
-bar.append("text")
-    .attr("x", function(d) { return x(d) - 3; })
-    .attr("y", 30 / 2)
-    .attr("dy", ".35em")
-    .text(function(d) { return d; });
+		d3.select("body").append("div").attr("class", "chart");
+		d3.select(".chart").selectAll("div")
+			.data(marketShares)
+			.enter().append("div")
+			.style("width", function(d) { return d * 25 + "px"; })
+			.style("height", 30)
+			.style("display", "block")
+			.style("background-color", "steelblue")
+			.style("padding", "3px")
+			.style("margin", "1px")
+			.style("text-align", "right")
+			.style("font", "10px sans-serif")
+			.style("font-color", "white")
+			.text(function(d) { return d + "%"; });
 		clicked = true;}}
 		var clicked = false
 		var marketShares = []
@@ -39,6 +31,6 @@ bar.append("text")
 		websites.push(data[i].Browser); }
 		});
 </script>
-<button onclick="make();"> Market Share Percentages for the Five Most Popular Browsers </button>
+<button onclick="make();"> Market Share Percentages for the Five Most Popular Browsers </button> <br>
   </body>
 </html>
