@@ -14,6 +14,7 @@
 			websites.push(data[i].Browser);}
 		});
 		var svg = d3.select("body").append("svg").attr("class", "chart");
+		console.log(marketShares)
 		var newSvg = svg.selectAll("svg").data(marketShares).enter().append("svg").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });
 </script>
   </body>
