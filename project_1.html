@@ -2,10 +2,16 @@
 <html>
   <head>
   <script type="text/javascript" src="d3.min.js"></script>
-  <script type="text/javascript" src="dataparse.js"></script>
   </head>
   <body>
 	<script type="text/javascript">
+		var marketShares = []
+		var websites = []
+		var dataset = []
+		d3.csv("browser-ww-monthly-201305-201405.csv", function (data) {
+		dataset = data.map(function(d) { return [ +d["Browser"], +d["Market Share Perc. (May 2013 to May 2014)"] ]; });
+		});
+		console.log(dataset)
 		for (i=0;i<5;i++) {
 		marketShares.push(data[i]["Market Share Perc. (May 2013 to May 2014)"]);
 		websites.push(data[i].Browser);}
