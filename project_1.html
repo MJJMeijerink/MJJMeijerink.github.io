@@ -14,7 +14,7 @@
 		});
 		function addDiv () {d3.select("body").append("svg").attr("class", "chart");}
 		function addDivs ()
-		{d3.select(".chart").selectAll("svg").data(marketShares).enter().append("div").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });}
+		{d3.select(".chart").selectAll("svg").data(marketShares).enter().append("svg").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });}
 		addDiv()
 		addDivs()
 </script>
