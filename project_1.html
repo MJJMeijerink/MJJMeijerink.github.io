@@ -28,7 +28,7 @@
 		var websites = []
 		d3.csv("browser-ww-monthly-201305-201405.csv", function (data) {
 			for (var i=0;i<5;i++) {
-				marketShares.push(parseInt(data[i]["Market Share Perc. (May 2013 to May 2014)"]));
+				marketShares.push(parseFloat(data[i]["Market Share Perc. (May 2013 to May 2014)"]));
 				websites.push(data[i].Browser); }
 		});
 		var totalRest = 0
