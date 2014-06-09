@@ -10,8 +10,8 @@
 		var websites = []
 		d3.csv("browser-ww-monthly-201305-201405.csv", function(data) {
 			for(i=0;i<5;i++) {
-			marketShares.push(parseFloat(data[i]["Market Share Perc. (May 2013 to May 2014)"]))
-			websites.push(data[i].Browser)}
+			marketShares.push(parseFloat(data[i]["Market Share Perc. (May 2013 to May 2014)"]));
+			websites.push(data[i].Browser);}
 		});
 		d3.select("body").append("div").attr("class", "chart").style(";
 		d3.select(".chart")
