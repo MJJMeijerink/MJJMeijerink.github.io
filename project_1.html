@@ -9,9 +9,8 @@
 		var marketShares = []
 		d3.csv("browser-ww-monthly-201305-201405.csv", function(data) {
 			for(i=0;i<5;i++) {
-			marketShares.push(data[i]["Market Share Perc. (May 2013 to May 2014)"]) }
+			marketShares.push(parseFloat(data[i]["Market Share Perc. (May 2013 to May 2014)"])) }
 		});
-		console.log(marketShares);
 </script>
   </body>
 </html>
