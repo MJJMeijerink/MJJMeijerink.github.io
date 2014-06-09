@@ -2,18 +2,10 @@
 <html>
   <head>
   <script type="text/javascript" src="d3.min.js"></script>
+  <script type="text/javascript" src="dataparse.js></script>
   </head>
   <body>
 	<script type="text/javascript">
-		var marketShares = []
-		var websites = []
-		var data = []
-		d3.csv("browser-ww-monthly-201305-201405.csv", function (d) {
-		data = d;
-		});
-		for (i=0;i<5;i++) {
-			marketShares.push(data[i]["Market Share Perc. (May 2013 to May 2014)"]);
-			websites.push(data[i].Browser);}
 		var svg = d3.select("body").append("svg").attr("class", "chart");
 		console.log(marketShares)
 		var newSvg = svg.selectAll("svg").data(marketShares).enter().append("svg").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });
