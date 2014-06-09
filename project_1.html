@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <script type="text/javascript" src="d3.min.js"></script>
-  </head>
-  <body>
+<head>
+	<script type="text/javascript" src="d3.min.js"></script>
+</head>
+<body>
 	<script type="text/javascript">
 		function make() {
-		if (!clicked) {
-		d3.select("body").append("div").attr("class", "chart");
-		d3.select(".chart").selectAll("div")
-			.data(marketShares)
-			.enter().append("div")
-			.style("width", function(d) { return d * 25 + "px"; })
-			.style("height", "30px")
-			.style("display", "block")
-			.style("background-color", "steelblue")
-			.style("padding", "3px")
-			.style("margin", "1px")
-			.style("text-align", "right")
-			.style("font", "10px sans-serif")
-			.style("color", "white")
-			.text(function(d,i) { return websites[i] + " " + d + "%"; });
-		clicked = true;}}
+			if (!clicked) {
+				d3.select("body").append("div").attr("class", "chart");
+				d3.select(".chart").selectAll("div")
+					.data(marketShares)
+					.enter().append("div")
+					.style("width", function(d) { return d * 25 + "px"; })
+					.style("height", "30px")
+					.style("display", "block")
+					.style("background-color", "steelblue")
+					.style("padding", "3px")
+					.style("margin", "1px")
+					.style("text-align", "right")
+					.style("font", "10px sans-serif")
+					.style("color", "white")
+					.text(function(d,i) { return websites[i] + " " + d + "%"; });
+				clicked = true;}
+			if (clicked) {
+				var elem - document.getElementByClass("chart");
+				elem.parentNode.removeChild(elem);
+			}
+				}
 		var clicked = false
 		var marketShares = []
 		var websites = []
 		d3.csv("browser-ww-monthly-201305-201405.csv", function (data) {
-		for (var i=0;i<5;i++) {
-		marketShares.push(data[i]["Market Share Perc. (May 2013 to May 2014)"]);
-		websites.push(data[i].Browser); }
+			for (var i=0;i<5;i++) {
+				marketShares.push(data[i]["Market Share Perc. (May 2013 to May 2014)"]);
+				websites.push(data[i].Browser); }
 		});
-</script>
-<button onclick="make();"> Market Share Percentages for the Five Most Popular Browsers </button> <br>
+	</script>
+	<button onclick="make();"> Market Share Percentages for the Five Most Popular Browsers </button> <br>
   </body>
 </html>
