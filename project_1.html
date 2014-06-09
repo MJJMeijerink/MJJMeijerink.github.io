@@ -11,7 +11,13 @@
 			for(i=0;i<5;i++) {
 			marketShares.push(parseFloat(data[i]["Market Share Perc. (May 2013 to May 2014)"])) }
 		});
-		d3.select("body").append("div").attr("class", "chart");
+		d3.select("body").append("div").attr("class", "chart").style(";
+		d3.select(".chart")
+			.selectAll("div")
+			.data(marketShares)
+			.enter().append("div")
+			.style("width", function(d) { return d * 4 + "px"; })
+			.text(function(d) { return d; });
 </script>
   </body>
 </html>
