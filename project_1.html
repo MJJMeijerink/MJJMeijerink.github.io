@@ -6,9 +6,11 @@
   <body>
 	<script type="text/javascript">
 		function make() {
+		if (!clicked) {
 		d3.select("body").append("svg").attr("class", "chart");
 		d3.select(".chart").selectAll("svg").data(marketShares).enter().append("svg").style("width", function(d) { return d * 4 + "px"; }).text(function(d) { return d; });
-		}
+		clicked = true;}}
+		var clicked = false
 		var marketShares = []
 		var websites = []
 		d3.csv("browser-ww-monthly-201305-201405.csv", function (data) {
