@@ -9,7 +9,7 @@
 			if (!clicked) {
 				var totalRest = 0.0
 				for (var i = 0; i<5; i++){
-					totalRest = totalRest + marketShares[i]
+					totalRest = totalRest + marketShares[i];
 				}
 				totalRest = 100.0 - totalRest;
 				websites.push("Others");
@@ -37,7 +37,10 @@
 			for (var i=0;i<5;i++) {
 				marketShares.push(parseFloat(data[i]["Market Share Perc. (May 2013 to May 2014)"]));
 				websites.push(data[i].Browser); }
+		
 		});
+		d3.tsv("18-year-olds-in-education.tsv", function (data) {
+			console.log(data[0]); });
 	</script>
 	<button onclick="make();"> Market Share Percentages for the Five Most Popular Browsers </button>
 	<button onclick="make2();"></button><br>
