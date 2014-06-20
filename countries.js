@@ -33,5 +33,6 @@ var Countries = {
 "SK" : "Slovakia",
 "TR" : "Turkey",
 "UK" : "United Kingdom",
-"US" : "United States"
+"US" : "United States",
+"HR" : "Croatia"
 }
