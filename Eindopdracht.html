@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="d3.min.js"></script>
+	</head>
+	<style>
+	</style>
+<body>
+		<script>
+
+			var countries = [];	
+			var countries2 = [];
+			var cleandata = [];	
+			var cleandata2 = [];	
+			var json = [];
+			
+			d3.tsv("tec00114.tsv", function (data) {
+				for (var i=0;i<data.length;i++) {
+					data[i]["2001 "] = parseFloat(data[i]["2001 "]);
+					data[i]["2002 "] = parseFloat(data[i]["2002 "]);
+					data[i]["2003 "] = parseFloat(data[i]["2003 "]);
+					data[i]["2004 "] = parseFloat(data[i]["2004 "]);
+					data[i]["2005 "] = parseFloat(data[i]["2005 "]);
+					data[i]["2006 "] = parseFloat(data[i]["2006 "]);
+					data[i]["2007 "] = parseFloat(data[i]["2007 "]);
+					data[i]["2008 "] = parseFloat(data[i]["2008 "]);
+					data[i]["2009 "] = parseFloat(data[i]["2009 "]);
+					data[i]["2010 "] = parseFloat(data[i]["2010 "]);
+					data[i]["2011 "] = parseFloat(data[i]["2011 "]);
+					data[i]["2012 "] = parseFloat(data[i]["2012 "]);
+					if(!isNaN(data[i]["2001 "])){
+						cleandata.push(data[i]);
+					};
+				};
+				
+				d3.tsv("tec00104.tsv", function (sec_data) {
+					for (var i=0;i<sec_data.length;i++) {
+						
+						sec_data[i]["2002 "] = parseFloat(sec_data[i]["2002 "]);
+						sec_data[i]["2003 "] = parseFloat(sec_data[i]["2003 "]);
+						sec_data[i]["2004 "] = parseFloat(sec_data[i]["2004 "]);
+						sec_data[i]["2005 "] = parseFloat(sec_data[i]["2005 "]);
+						sec_data[i]["2006 "] = parseFloat(sec_data[i]["2006 "]);
+						sec_data[i]["2007 "] = parseFloat(sec_data[i]["2007 "]);
+						sec_data[i]["2008 "] = parseFloat(sec_data[i]["2008 "]);
+						sec_data[i]["2009 "] = parseFloat(sec_data[i]["2009 "]);
+						sec_data[i]["2010 "] = parseFloat(sec_data[i]["2010 "]);
+						sec_data[i]["2011 "] = parseFloat(sec_data[i]["2011 "]);
+						sec_data[i]["2012 "] = parseFloat(sec_data[i]["2012 "]);
+						if(!isNaN(sec_data[i]["2004 "])){
+							cleandata2.push(sec_data[i]);
+						};
+					};
+	
+					for(var i=0;i<cleandata.length;i++){
+						keys = Object.keys(data[i]);
+						countries.push(cleandata[i][keys[0]]);
+					};
+					
+					for(var i=0;i<cleandata2.length;i++){
+						keys = Object.keys(sec_data[i]);
+						countries2.push(cleandata2[i][keys[0]]);
+					};					
+
+					for(var i=0;i<cleandata2.length;i++){
+
+						debt = {						
+							2002: cleandata2[i]['2002 '],
+							2003: cleandata2[i]['2003 '],
+							2004: cleandata2[i]['2004 '],
+							2005: cleandata2[i]['2005 '],
+							2006: cleandata2[i]['2006 '],
+							2007: cleandata2[i]['2007 '],
+							2008: cleandata2[i]['2008 '],
+							2009: cleandata2[i]['2009 '],
+							2010: cleandata2[i]['2010 '],
+							2011: cleandata2[i]['2011 '],
+							2012: cleandata2[i]['2012 ']
+						};						
+
+						
+						for(var j=0;j<cleandata.length;j++){
+							
+							gdp = {									
+								2002: cleandata[j]['2002 '],
+								2003: cleandata[j]['2003 '],
+								2004: cleandata[j]['2004 '],
+								2005: cleandata[j]['2005 '],
+								2006: cleandata[j]['2006 '],
+								2007: cleandata[j]['2007 '],
+								2008: cleandata[j]['2008 '],
+								2009: cleandata[j]['2009 '],
+								2010: cleandata[j]['2010 '],
+								2011: cleandata[j]['2011 '],
+								2012: cleandata[j]['2012 ']
+							};
+
+							if(countries[j].slice(-2) === countries2[i].slice(-2)) {
+		
+								ratio = {
+									2002: parseFloat((debt[2002] / gdp[2002] *100).toFixed(2)),
+									2003: parseFloat((debt[2003] / gdp[2003] *100).toFixed(2)),
+									2004: parseFloat((debt[2004] / gdp[2004] *100).toFixed(2)),
+									2005: parseFloat((debt[2005] / gdp[2005] *100).toFixed(2)),
+									2006: parseFloat((debt[2006] / gdp[2006] *100).toFixed(2)),
+									2007: parseFloat((debt[2007] / gdp[2007] *100).toFixed(2)),
+									2008: parseFloat((debt[2008] / gdp[2008] *100).toFixed(2)),
+									2009: parseFloat((debt[2009] / gdp[2009] *100).toFixed(2)),
+									2010: parseFloat((debt[2010] / gdp[2010] *100).toFixed(2)),
+									2011: parseFloat((debt[2011] / gdp[2011] *100).toFixed(2)),
+									2012: parseFloat((debt[2012] / gdp[2012] *100).toFixed(2)),
+								};
+								
+								comb_data = {
+									country: countries[j].slice(-2),
+									'gdp' : gdp,
+									'debt' : debt,
+									'ratio' : ratio
+								};
+							};
+						};
+						
+						
+						json[json.length] = comb_data ;
+					};
+					console.log(json);
+					console.log(json[1]['debt'][2002]);
+						
+				})
+			})
+
+
+		</script>
+	</body>
+</html>

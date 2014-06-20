@@ -9,7 +9,7 @@ var Countries = {
 "EA17" : "Eurozone, 17 countries",
 "EA18" : "Eurozone, 18 countries",
 "EE" : "Estonia",
-"EL" : "Greece",
+"GR" : "Greece",
 "ES" : "Spain",
 "EU27" : "All of Europe",
 "FI" : "Finland",
