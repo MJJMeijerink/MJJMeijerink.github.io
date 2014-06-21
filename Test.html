@@ -13,7 +13,9 @@
 var count = 2002;
 var done = false;
 var done2=false;
+var done3=false;
 function slideshow () {
+	done3 = true;
 	done2 = true;
 	if (!done) {
 		setTimeout(function () {
@@ -43,6 +45,7 @@ function slideshow () {
 	}
 	if (count === 2012) {
 		done = true;
+		done3=false;
 		return
 	}
 }
@@ -335,6 +338,7 @@ function outline4(x, t, el, year) {
 //Show the colors!
 var clicked = false;
 function color(dataSet) {
+	if (!done3) {
 	done2= false;
 	current = 2002;
 	if (!clicked && !clicked2){
@@ -454,6 +458,7 @@ function color(dataSet) {
 
 		clicked = true;
 	}
+	}
 }
 
 function color2(dataSet2, year) {
@@ -492,7 +497,7 @@ function color2(dataSet2, year) {
 			d3.select("." + c).style("fill", gradient[9]);
 		}
 	}
-	if (current === 2002 && count === 2002 && !done2) {
+	if (current === 2002 && !done2) {
 	var g = d3.select('svg').selectAll('rect').data(gradient).enter()
 	g.append('rect').attr('class', function(d,i){return 'rect'+i})
 		.attr('x', function(d,i){return 70 + 35 * i}).attr('y', 420)
