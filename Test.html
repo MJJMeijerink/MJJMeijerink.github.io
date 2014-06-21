@@ -9,6 +9,45 @@
 <button onclick="color(fixedData);"> GDP Changes </button>
 <button onclick="slider();"> Debts as a percentage of GDP</button><br><br>
 <script>
+//Slideshow!
+var count = 2002;
+var done = false;
+var done2=false;
+function slideshow () {
+	done2 = true;
+	if (!done) {
+		setTimeout(function () {
+			d3.select('.year').text(count);
+			d3.select('.slider').attr('value', count);
+			color2(json, count);
+			count++;                   
+			if (count <= 2012) {          
+				slideshow();           
+			}                        
+		}, 500)
+	}
+	else if (done) {
+		count = 2002;
+		d3.select('.year').text(count);
+		d3.select('.slider').attr('value', count);
+		done = false;
+		setTimeout(function () {
+			d3.select('.year').text(count);
+			d3.select('.slider').attr('value', count);
+			color2(json, count);
+			count++;                   
+			if (count <= 2012) {          
+				slideshow();           
+			}                        
+		}, 500)
+	}
+	if (count === 2012) {
+		done = true;
+		return
+	}
+}
+//Slideshow made!
+
 //Make the slider!
 var clicked2 = false;
 function slider() {
@@ -18,9 +57,10 @@ function slider() {
 	d3.select('body').append('br').attr('class', 'tempbreak');
 	d3.select('body').append('label').text('2002');
 	d3.select('body').append('input').attr('type', 'range')
-		.attr('name', 'slider').attr('min', '2002').attr('max', '2012')
+		.attr('class', 'slider').attr('min', '2002').attr('max', '2012')
 		.attr('onchange', 'year(this)').attr('value', '0').attr('step', '1');
 	d3.select('body').append('label').text('2012');
+	d3.select('body').append('button').attr('class', 'slideshow').attr('onclick', 'slideshow()').style('margin-left', '50px').text('slidehow');
 	d3.select('body').append('br').attr('class', 'tempbreak');
 	d3.select('body').append('br').attr('class', 'tempbreak');
 	var y = d3.select('svg');
@@ -36,6 +76,7 @@ function slider() {
 		d3.selectAll('.tempbreak').remove();
 		d3.selectAll('input').remove();
 		d3.selectAll('label').remove();
+		d3.selectAll('.slideshow').remove();
 		clicked = false;
 		
 		d3.select('body').append('label').text('Show data of ');
@@ -46,6 +87,7 @@ function slider() {
 			.attr('name', 'slider').attr('min', '2002').attr('max', '2012')
 			.attr('onchange', 'year(this)').attr('value', '0').attr('step', '1');
 		d3.select('body').append('label').text('2012');
+		d3.select('body').append('button').attr('class', 'slideshow').attr('onclick', 'slideshow()').style('margin-left', '50px').text('slidehow');
 		d3.select('body').append('br').attr('class', 'tempbreak');
 		d3.select('body').append('br').attr('class', 'tempbreak');
 		var y = d3.select('svg');
@@ -59,7 +101,7 @@ function slider() {
 
 //Update the slider!
 var current = 2002;
-function year(x) {
+function year(x, year) {
 	current = x.value;
 	d3.select('.year').text(current);
 	color2(json, current);
@@ -293,6 +335,7 @@ function outline4(x, t, el, year) {
 //Show the colors!
 var clicked = false;
 function color(dataSet) {
+	done2= false;
 	current = 2002;
 	if (!clicked && !clicked2){
 	var gradient = ['#d7191c','#fdae61','#ffffbf','#a6d96a','#1a9641'];
@@ -356,6 +399,7 @@ function color(dataSet) {
 		d3.selectAll('.tempbreak').remove();
 		d3.selectAll('input').remove();
 		d3.selectAll('label').remove();
+		d3.selectAll('.slideshow').remove();
 		clicked2 = false;
 		
 		var gradient = ['#d7191c','#fdae61','#ffffbf','#a6d96a','#1a9641'];
@@ -448,7 +492,7 @@ function color2(dataSet2, year) {
 			d3.select("." + c).style("fill", gradient[9]);
 		}
 	}
-	if (current === 2002) {
+	if (current === 2002 && count === 2002 && !done2) {
 	var g = d3.select('svg').selectAll('rect').data(gradient).enter()
 	g.append('rect').attr('class', function(d,i){return 'rect'+i})
 		.attr('x', function(d,i){return 70 + 35 * i}).attr('y', 420)
