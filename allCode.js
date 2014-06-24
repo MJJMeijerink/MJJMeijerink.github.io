@@ -537,8 +537,8 @@ var countries = [];
 var data1 = [];    
 var allData = [];  
 d3.tsv("tec00114.tsv", function (data) {
-	console.log('doen we');
     for (var i=0;i<data.length;i++) {
+	console.log(data.length);
         if(data[i]["2001 "] != ": " && data[i]["2012 "] != ": "){
 			var keys = Object.keys(data[i]);
 			var c = data[i][keys[0]].substring(19,23);
