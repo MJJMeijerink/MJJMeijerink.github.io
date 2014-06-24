@@ -555,7 +555,7 @@ d3.tsv("tec00114.tsv", function (data) {
          };
     };
 });
-}
+
 			var countries3 = [];	
 			var countries2 = [];
 			var cleandata = [];	
@@ -673,4 +673,5 @@ d3.tsv("tec00114.tsv", function (data) {
 					};						
 				})
 			})
+}
 //Data organized and cleaned
