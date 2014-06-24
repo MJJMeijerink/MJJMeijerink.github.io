@@ -548,27 +548,6 @@ var path = d3.geo.path()
 
 var g = svg.append("g");
 
-var Country = []
-// load and display the World
-d3.json("europe.json", function(error, topology) {
-    g.selectAll("path")
-      .data(topology.features)
-    .enter()
-      .append("path")
-	  .attr("class", function(d){return d.id})
-	  .attr("onmouseover", function(d){return 'outline("' + d.id + '", this)'})
-	  .attr("onmouseout", function(d){return 'outline2()'})
-      .attr("d", path)
-	  .style("stroke", "#999")
-	  .style("stroke-width", 1)
-	  .style("fill", "grey");
-	for (var i=0; i < topology.features.length; i++) {
-		var C = topology.features[i].id;
-		Country.push(C);
-	}
-});
-//Made the base of the map!
-
 //Organizing and cleaning data!
 var fixedData = [];
 var countries = [];    
