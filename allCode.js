@@ -52,7 +52,7 @@ function slider() {
 		.attr('class', 'slider').attr('min', '2002').attr('max', '2012')
 		.attr('onchange', 'year(this)').attr('value', '0').attr('step', '1');
 	d3.select('body').append('label').text('2012');
-	d3.select('body').append('button').attr('class', 'slideshow').attr('onclick', 'if (!done3) {slideshow()}').style('margin-left', '50px').text('slidehow');
+	d3.select('body').append('button').attr('class', 'slideshow').attr('onclick', 'if (!done3) {slideshow()}').style('margin-left', '50px').text('slideshow');
 	d3.select('body').append('br').attr('class', 'tempbreak');
 	d3.select('body').append('br').attr('class', 'tempbreak');
 	var y = d3.select('svg');
