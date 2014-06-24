@@ -99,6 +99,7 @@ function year(x, year) {
 	count = 2002;
 	current = x.value;
 	d3.select('.year').text(current);
+	d3.select('.slider').attr('value', current);
 	color2(json, current);
 	}
 }
@@ -535,7 +536,8 @@ function color2(dataSet2, year) {
 var fixedData = [];
 var countries = [];    
 var data1 = [];    
-var allData = [];  
+var allData = []; 
+function Laterpas() {
 d3.tsv("tec00114.tsv", function (data) {
     for (var i=0;i<data.length;i++) {
 	console.log(data.length);
@@ -554,7 +556,7 @@ d3.tsv("tec00114.tsv", function (data) {
          };
     };
 });
-
+}
 			var countries3 = [];	
 			var countries2 = [];
 			var cleandata = [];	
