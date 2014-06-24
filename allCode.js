@@ -535,11 +535,15 @@ function color2(dataSet2, year) {
 var fixedData = [];
 var countries = [];    
 var data1 = [];    
-var allData = []; 
+var allData = [];
+var countries3 = [];	
+var countries2 = [];
+var cleandata = [];	
+var cleandata2 = [];	
+var json = [];
 function Laterpas() {
 d3.tsv("tec00114.tsv", function (data) {
     for (var i=0;i<data.length;i++) {
-	console.log(data.length);
         if(data[i]["2001 "] != ": " && data[i]["2012 "] != ": "){
 			var keys = Object.keys(data[i]);
 			var c = data[i][keys[0]].substring(19,23);
@@ -556,11 +560,6 @@ d3.tsv("tec00114.tsv", function (data) {
     };
 });
 
-			var countries3 = [];	
-			var countries2 = [];
-			var cleandata = [];	
-			var cleandata2 = [];	
-			var json = [];
 			
 			d3.tsv("tec00114.tsv", function (data) {
 				for (var i=0;i<data.length;i++) {
