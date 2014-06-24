@@ -7,6 +7,7 @@ function slideshow () {
 	done3 = true;
 	done2 = true;
 	if (!done) {
+		count = current;
 		setTimeout(function () {
 			d3.select('.year').text(count);
 			d3.select('.slider').attr('value', count);
