@@ -4,6 +4,7 @@ var done = false;
 var done2=false;
 var done3=false;
 function slideshow () {
+	count = current;
 	done3 = true;
 	done2 = true;
 	if (!done) {
