@@ -93,7 +93,7 @@ function slider() {
 
 //Update the slider!
 var current = 2002;
-function year(x, year) {
+function year(x) {
 	if (!done3) {
 	done = false;
 	count = 2002;
