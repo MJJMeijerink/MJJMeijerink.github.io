@@ -529,24 +529,7 @@ function color2(dataSet2, year) {
 
 //End of color showing!
 
-//Making the base of the map!
-var width = 600,
-    height = 600;
 
-var projection = d3.geo.stereographic()
-    .center([3.9, 43.0 ])
-    .scale(1000)
-    .translate([width / 4 , height / 2]); 
-
-var svg = d3.select("body").append("svg")
-	.attr("class", 'parent')
-    .attr("width", width)
-    .attr("height", height);
-
-var path = d3.geo.path()
-    .projection(projection);
-
-var g = svg.append("g");
 
 //Organizing and cleaning data!
 var fixedData = [];
