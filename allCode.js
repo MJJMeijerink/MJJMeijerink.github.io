@@ -18,7 +18,7 @@ function slideshow () {
 		}, 500)
 	}
 	else if (done) {
-		count = 2002;
+		count = current;
 		d3.select('.year').text(count);
 		d3.select('.slider').attr('value', count);
 		done = false;
@@ -99,7 +99,6 @@ function year(x, year) {
 	count = 2002;
 	current = x.value;
 	d3.select('.year').text(current);
-	d3.select('.slider').attr('value', current);
 	color2(json, current);
 	}
 }
