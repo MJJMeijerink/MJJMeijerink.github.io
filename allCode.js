@@ -44,10 +44,10 @@ function slideshow () {
 var clicked2 = false;
 function slider() {
 	if (!clicked2 && !clicked) {
-	d3.select('body').append('label').text('Show data for ');
+	d3.select('body').append('label').style('margin-left', '30px').text('Show data for ');
 	d3.select('body').append('label').attr('class', 'year').attr('name', 'year').text('2002');
 	d3.select('body').append('br').attr('class', 'tempbreak');
-	d3.select('body').append('label').text('2002');
+	d3.select('body').append('label').text('2002').style('margin-left', '30px');
 	d3.select('body').append('input').attr('type', 'range')
 		.attr('class', 'slider').attr('min', '2002').attr('max', '2012')
 		.attr('onchange', 'year(this)').attr('value', '0').attr('step', '1');
@@ -71,10 +71,10 @@ function slider() {
 		d3.selectAll('.slideshow').remove();
 		clicked = false;
 		
-		d3.select('body').append('label').text('Show data of ');
+		d3.select('body').append('label').style('margin-left', '30px').text('Show data of ');
 		d3.select('body').append('label').attr('class', 'year').attr('name', 'year').text('2002');
 		d3.select('body').append('br').attr('class', 'tempbreak');
-		d3.select('body').append('label').text('2002');
+		d3.select('body').append('label').style('margin-left', '30px').text('2002');
 		d3.select('body').append('input').attr('type', 'range')
 			.attr('name', 'slider').attr('min', '2002').attr('max', '2012')
 			.attr('onchange', 'year(this)').attr('value', '0').attr('step', '1');
@@ -86,6 +86,7 @@ function slider() {
 		y[0][0].parentNode.appendChild(y[0][0]);
 		color2(json, 2002);
 		clicked2 = true;
+		done = false;
 		
 	}
 }
@@ -136,11 +137,11 @@ function outline(x, el, year) {
 			else {y = 'available'}
 		}
 		
-		d3.select('.' + x).style('stroke', 'black').style('stroke-width', 2)
+		d3.select('.' + x).style('stroke', 'black')
 			.append('animate')
 			.attr("attributeType", "CSS")
 			.attr("attributeName", "stroke-width")
-			.attr('from', '1').attr('to', '3')
+			.attr('from', '1').attr('to', '2')
 			.attr('dur', '1s').attr('repeatCount', 'indefinite');
 		var g = d3.select('svg').append('g')
 			.attr('class', 'tekst')
@@ -177,11 +178,10 @@ function outline3(x, t, el) {
 				var y = d3.select('.' + fixedData[i][0]);
 				y[0][0].parentNode.appendChild(y[0][0]);
 				d3.select('.' + fixedData[i][0]).style("stroke", "black")
-					.style("stroke-width", 2)
 					.append('animate')
 					.attr("attributeType", "CSS")
 					.attr("attributeName", "stroke-width")
-					.attr('from', '1').attr('to', '3')
+					.attr('from', '1').attr('to', '2')
 					.attr('dur', '1s').attr('repeatCount', 'indefinite');
 				countrySet.push(fixedData[i][0]);
 			}
@@ -193,11 +193,10 @@ function outline3(x, t, el) {
 				var y = d3.select('.' + fixedData[i][0]);
 				y[0][0].parentNode.appendChild(y[0][0]);
 				d3.select('.' + fixedData[i][0]).style("stroke", "black")
-					.style("stroke-width", 2)
 					.append('animate')
 					.attr("attributeType", "CSS")
 					.attr("attributeName", "stroke-width")
-					.attr('from', '1').attr('to', '3')
+					.attr('from', '1').attr('to', '2')
 					.attr('dur', '1s').attr('repeatCount', 'indefinite');
 				countrySet.push(fixedData[i][0]);
 			}
@@ -209,11 +208,10 @@ function outline3(x, t, el) {
 				var y = d3.select('.' + fixedData[i][0]);
 				y[0][0].parentNode.appendChild(y[0][0]);
 				d3.select('.' + fixedData[i][0]).style("stroke", "black")
-					.style("stroke-width", 2)
 					.append('animate')
 					.attr("attributeType", "CSS")
 					.attr("attributeName", "stroke-width")
-					.attr('from', '1').attr('to', '3')
+					.attr('from', '1').attr('to', '2')
 					.attr('dur', '1s').attr('repeatCount', 'indefinite');
 				countrySet.push(fixedData[i][0]);
 			}
@@ -225,11 +223,10 @@ function outline3(x, t, el) {
 				var y = d3.select('.' + fixedData[i][0]);
 				y[0][0].parentNode.appendChild(y[0][0]);
 				d3.select('.' + fixedData[i][0]).style("stroke", "black")
-					.style("stroke-width", 2)
 					.append('animate')
 					.attr("attributeType", "CSS")
 					.attr("attributeName", "stroke-width")
-					.attr('from', '1').attr('to', '3')
+					.attr('from', '1').attr('to', '2')
 					.attr('dur', '1s').attr('repeatCount', 'indefinite');
 				countrySet.push(fixedData[i][0]);
 			}
@@ -241,11 +238,10 @@ function outline3(x, t, el) {
 				var y = d3.select('.' + fixedData[i][0]);
 				y[0][0].parentNode.appendChild(y[0][0]);
 				d3.select('.' + fixedData[i][0]).style("stroke", "black")
-				.style("stroke-width", 2)
 				.append('animate')
 					.attr("attributeType", "CSS")
 					.attr("attributeName", "stroke-width")
-					.attr('from', '1').attr('to', '3')
+					.attr('from', '1').attr('to', '2')
 					.attr('dur', '1s').attr('repeatCount', 'indefinite');
 				countrySet.push(fixedData[i][0]);
 			}
@@ -282,34 +278,36 @@ function outline4(x, t, el, year) {
 	var gradient = [['#ffffcc', 0, 25], ['#ffeda0', 25, 50],['#fed976', 50, 75],['#feb24c', 75, 100],
 		['#fd8d3c', 100, 125],['#fc4e2a', 125, 150], ['#e31a1c', 150, 175], 
 		['#bd0026', 175, 200], ['#800026', 200, 225], ['#630021', 225, 250]];
-	for (y in gradient) {
-	var range1 = gradient[y][1];
-	var range2 = gradient[y][2];
-	if (gradient[y][0] === x) {
-		for (var i =0; i<json.length; i++) {
-			var name = json[i]['country'];
-			if (json[i]['ratio'][year] > range1 && json[i]['ratio'][year] <= range2) {
-				var y = d3.select('.' + name);
-				y[0][0].parentNode.appendChild(y[0][0]);
-				d3.select('.' + name).style("stroke", "black")
-					.style("stroke-width", 2)
-					.append('animate')
-					.attr("attributeType", "CSS")
-					.attr("attributeName", "stroke-width")
-					.attr('from', '1').attr('to', '3')
-					.attr('dur', '1s').attr('repeatCount', 'indefinite');
-				countrySet.push(name);
+	for (var i =0; i<json.length; i++) {
+		var name = json[i]['country'];
+		for (y in gradient) {
+			var range1 = gradient[y][1];
+			var range2 = gradient[y][2];
+			if (gradient[y][0] === x) {
+				if (json[i]['ratio'][year] > range1 && json[i]['ratio'][year] <= range2) {
+					var y = d3.select('.' + name);
+					y[0][0].parentNode.appendChild(y[0][0]);
+					d3.select('.' + name).style("stroke", "black")
+						.append('animate')
+						.attr("attributeType", "CSS")
+						.attr("attributeName", "stroke-width")
+						.attr('from', '1').attr('to', '2')
+						.attr('dur', '1s').attr('repeatCount', 'indefinite');
+					countrySet.push(name);
+				}
 			}
 		}
-	}}
-	countrySet.pop('DK');
+	}
+	var DK = false;
 	for (i in Object.keys(Countries)){
 		for (c in countrySet) {
 			if (countrySet[c] === Object.keys(Countries)[i]) {
 				actualSet.push(Countries[countrySet[c]]);
+				if (countrySet[c] === 'DK') {DK = true;}
 			}
 		}
 	}
+	if (DK) {actualSet.pop();}
 	
 	if (actualSet.length != 0) {
 		actualSet.sort();
@@ -358,7 +356,7 @@ function color(dataSet) {
 	};
 	var g = d3.select('svg').selectAll('rect').data(gradient).enter()
 	g.append('rect').attr('class', function(d,i){return 'rect'+i})
-		.attr('x', function(d,i){return 70 + 70 * i}).attr('y', 420)
+		.attr('x', function(d,i){return 70 + 70 * i}).attr('y', 470)
 		.attr('width', 70)
 		.attr('height', 20)
 		.attr('onmouseover', function(d,i){return 'outline3("'+d+'", "rect'+i+'", this)'})
@@ -372,19 +370,19 @@ function color(dataSet) {
 							if (i === 4) {return ''}})
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "12px")
-		.attr('x', function(d,i){return 140 + 70 * i}).attr('y', 455)
+		.attr('x', function(d,i){return 140 + 70 * i}).attr('y', 505)
 		.attr("text-anchor", 'middle');
 	d3.select('svg').append('text')
 		.text('European GDP changes in 2012, compared to 2001.')
 		.attr("text-anchor", 'middle')
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "20px")
-		.attr('x', 245).attr('y', 400);
+		.attr('x', 245).attr('y', 450);
 		var lines = [140, 210, 280, 350];
 	d3.select('svg').selectAll('line').data(lines).enter()
 		.append('line')
-		.attr('x1', function(d) {return d}).attr('y1', 420)
-		.attr('x2', function(d) {return d}).attr('y2', 440)
+		.attr('x1', function(d) {return d}).attr('y1', 470)
+		.attr('x2', function(d) {return d}).attr('y2', 490)
 		.style('stroke', 'black').style('stroke-width', 2);
 
 	clicked = true;
@@ -422,7 +420,7 @@ function color(dataSet) {
 		};
 		var g = d3.select('svg').selectAll('rect').data(gradient).enter()
 		g.append('rect').attr('class', function(d,i){return 'rect'+i})
-			.attr('x', function(d,i){return 70 + 70 * i}).attr('y', 420)
+			.attr('x', function(d,i){return 70 + 70 * i}).attr('y', 470)
 			.attr('width', 70)
 			.attr('height', 20)
 			.attr('onmouseover', function(d,i){return 'outline3("'+d+'", "rect'+i+'", this)'})
@@ -436,19 +434,19 @@ function color(dataSet) {
 								if (i === 4) {return ''}})
 			.attr("font-family", "sans-serif")
 			.attr("font-size", "12px")
-			.attr('x', function(d,i){return 140 + 70 * i}).attr('y', 455)
+			.attr('x', function(d,i){return 140 + 70 * i}).attr('y', 505)
 			.attr("text-anchor", 'middle');
 		d3.select('svg').append('text')
 			.text('European GDP changes in 2012, compared to 2001.')
 			.attr("text-anchor", 'middle')
 			.attr("font-family", "sans-serif")
 			.attr("font-size", "20px")
-			.attr('x', 245).attr('y', 400);
+			.attr('x', 245).attr('y', 450);
 			var lines = [140, 210, 280, 350];
 		d3.select('svg').selectAll('line').data(lines).enter()
 			.append('line')
-			.attr('x1', function(d) {return d}).attr('y1', 420)
-			.attr('x2', function(d) {return d}).attr('y2', 440)
+			.attr('x1', function(d) {return d}).attr('y1', 470)
+			.attr('x2', function(d) {return d}).attr('y2', 490)
 			.style('stroke', 'black').style('stroke-width', 2);
 
 		clicked = true;
@@ -495,7 +493,7 @@ function color2(dataSet2, year) {
 	if (current === 2002 && !done2) {
 	var g = d3.select('svg').selectAll('rect').data(gradient).enter()
 	g.append('rect').attr('class', function(d,i){return 'rect'+i})
-		.attr('x', function(d,i){return 70 + 35 * i}).attr('y', 420)
+		.attr('x', function(d,i){return 90 + 35 * i}).attr('y', 480)
 		.attr('width', 35)
 		.attr('height', 20)
 		.attr('onmouseover', function(d,i){return 'outline4("'+d+'", "rect'+i+'", this)'})
@@ -509,19 +507,18 @@ function color2(dataSet2, year) {
 							if (i === 4) {return ''}})
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "12px")
-		.attr('x', function(d,i){return 140 + 70 * i}).attr('y', 455)
+		.attr('x', function(d,i){return 160 + 70 * i}).attr('y', 515)
 		.attr("text-anchor", 'middle');
 	d3.select('svg').append('text')
 		.text('Debts as a percentage of GDP in European countries, from 2002 to 2012.')
-		.attr("text-anchor", 'middle')
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "14px")
-		.attr('x', 245).attr('y', 400);
-		var lines = [140, 210, 280, 350];
+		.attr('x', 50).attr('y', 450);
+		var lines = [160, 230, 300, 370];
 	d3.select('svg').selectAll('line').data(lines).enter()
 		.append('line')
-		.attr('x1', function(d) {return d}).attr('y1', 420)
-		.attr('x2', function(d) {return d}).attr('y2', 440)
+		.attr('x1', function(d) {return d}).attr('y1', 480)
+		.attr('x2', function(d) {return d}).attr('y2', 500)
 		.style('stroke', 'black').style('stroke-width', 2);
 	}
 }
