@@ -44,19 +44,22 @@ function slideshow () {
 var clicked2 = false;
 function slider() {
 	if (!clicked2 && !clicked) {
-	d3.select('body').append('label').style('margin-left', '30px').text('Show data for ');
-	d3.select('body').append('label').attr('class', 'year').attr('name', 'year').text('2002');
-	d3.select('body').append('br').attr('class', 'tempbreak');
-	d3.select('body').append('label').text('2002').style('margin-left', '30px');
-	d3.select('body').append('input').attr('type', 'range')
+	d3.select('body').append('div').attr('class', 'extrabuttons');
+	d3.select('.extrabuttons').append('label').style('margin-left', '30px').text('Show data for ');
+	d3.select('.extrabuttons').append('label').attr('class', 'year').attr('name', 'year').text('2002');
+	d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
+	d3.select('.extrabuttons').append('label').text('2002').style('margin-left', '30px');
+	d3.select('.extrabuttons').append('input').attr('type', 'range')
 		.attr('class', 'slider').attr('min', '2002').attr('max', '2012')
 		.attr('onchange', 'year(this)').attr('value', '0').attr('step', '1');
-	d3.select('body').append('label').text('2012');
-	d3.select('body').append('button').attr('class', 'slideshow').attr('onclick', 'if (!done3) {slideshow()}').style('margin-left', '50px').text('slideshow');
-	d3.select('body').append('br').attr('class', 'tempbreak');
-	d3.select('body').append('br').attr('class', 'tempbreak');
+	d3.select('.extrabuttons').append('label').text('2012');
+	d3.select('.extrabuttons').append('button').attr('class', 'slideshow').attr('onclick', 'if (!done3) {slideshow()}').style('margin-left', '50px').text('slideshow');
+	d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
+	d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
 	var y = d3.select('svg');
 	y[0][0].parentNode.appendChild(y[0][0]);
+	var y2 = d3.select('#both');
+	y2[0][0].parentNode.appendChild(y2[0][0]);
 	color2(json, 2002);
 	clicked2 = true;
 	}
@@ -71,19 +74,22 @@ function slider() {
 		d3.selectAll('.slideshow').remove();
 		clicked = false;
 		
-		d3.select('body').append('label').style('margin-left', '30px').text('Show data of ');
-		d3.select('body').append('label').attr('class', 'year').attr('name', 'year').text('2002');
-		d3.select('body').append('br').attr('class', 'tempbreak');
-		d3.select('body').append('label').style('margin-left', '30px').text('2002');
-		d3.select('body').append('input').attr('type', 'range')
+		d3.select('body').append('div').attr('class', 'extrabuttons');
+		d3.select('.extrabuttons').append('label').style('margin-left', '30px').text('Show data of ');
+		d3.select('.extrabuttons').append('label').attr('class', 'year').attr('name', 'year').text('2002');
+		d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
+		d3.select('.extrabuttons').append('label').style('margin-left', '30px').text('2002');
+		d3.select('.extrabuttons').append('input').attr('type', 'range')
 			.attr('name', 'slider').attr('min', '2002').attr('max', '2012')
 			.attr('onchange', 'year(this)').attr('value', '0').attr('step', '1');
-		d3.select('body').append('label').text('2012');
-		d3.select('body').append('button').attr('class', 'slideshow').attr('onclick', 'slideshow()').style('margin-left', '50px').text('slidehow');
-		d3.select('body').append('br').attr('class', 'tempbreak');
-		d3.select('body').append('br').attr('class', 'tempbreak');
+		d3.select('.extrabuttons').append('label').text('2012');
+		d3.select('.extrabuttons').append('button').attr('class', 'slideshow').attr('onclick', 'slideshow()').style('margin-left', '50px').text('slidehow');
+		d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
+		d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
 		var y = d3.select('svg');
 		y[0][0].parentNode.appendChild(y[0][0]);
+		var y2 = d3.select('#both');
+		y2[0][0].parentNode.appendChild(y2[0][0]);
 		color2(json, 2002);
 		clicked2 = true;
 		done = false;
@@ -493,7 +499,7 @@ function color2(dataSet2, year) {
 	if (current === 2002 && !done2) {
 	var g = d3.select('svg').selectAll('rect').data(gradient).enter()
 	g.append('rect').attr('class', function(d,i){return 'rect'+i})
-		.attr('x', function(d,i){return 90 + 35 * i}).attr('y', 480)
+		.attr('x', function(d,i){return 50 + 35 * i}).attr('y', 480)
 		.attr('width', 35)
 		.attr('height', 20)
 		.attr('onmouseover', function(d,i){return 'outline4("'+d+'", "rect'+i+'", this)'})
@@ -507,14 +513,14 @@ function color2(dataSet2, year) {
 							if (i === 4) {return ''}})
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "12px")
-		.attr('x', function(d,i){return 160 + 70 * i}).attr('y', 515)
+		.attr('x', function(d,i){return 120 + 70 * i}).attr('y', 515)
 		.attr("text-anchor", 'middle');
 	d3.select('svg').append('text')
 		.text('Debts as a percentage of GDP in European countries, from 2002 to 2012.')
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "14px")
-		.attr('x', 50).attr('y', 450);
-		var lines = [160, 230, 300, 370];
+		.attr('x', 10).attr('y', 450);
+		var lines = [120, 190, 260, 330];
 	d3.select('svg').selectAll('line').data(lines).enter()
 		.append('line')
 		.attr('x1', function(d) {return d}).attr('y1', 480)
