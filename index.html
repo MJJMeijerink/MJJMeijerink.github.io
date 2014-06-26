@@ -10,10 +10,14 @@
 <script type="text/javascript" src="countries.js"></script>
 <script type="text/javascript" src="allCode.js"></script>
 <script type="text/javascript">
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-	alert('Hi');
-	d3.select('.banner').style('font-size', '45px');
-}
+$( document ).ready(function() {      
+    var isMobile = window.matchMedia("only screen and (max-width: 760px)");
+
+    if (isMobile.matches) {
+        alert('Hi');
+		d3.select('.banner').style('font-size', '45px');
+    }
+ });
 </script>
 </head>
 
