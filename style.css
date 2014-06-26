@@ -13,7 +13,8 @@ html,body {
 #balk{
 	background: black;
 	width: 100%;
-	height: 80px;
+	height: 75px;
+	padding-top: 10px;
 	}
 
 #line{
