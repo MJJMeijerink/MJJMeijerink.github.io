@@ -10,16 +10,6 @@ html,body {
 }
 
 
-
-#banner{
-	text-align:center;
-	font-size: 60px;
-	display:block;
-	color: white;
-	width:100%;
-
-}
-
 #balk{
 	background: black;
 	width: 100%;
@@ -65,26 +55,6 @@ border-right:1px solid white;
 a:hover {background-color:#ff3300;}
 li {display:inline;}
 
-#title{
-	width:80%;
-	margin-left: auto;
-	margin-right:auto;
-	font-size: 35px;
-	display:block;
-	margin-top:-130px;
-	}
-
-
-#textvak{
-	background-color: white;
-	width: 80%;
-	margin-top: 20px;
-	margin-bottom: 2.5%; 
-	margin-left: auto;
-	margin-right:auto;
-	display:block;
-}
-
 #text{
 	color: black;
 	font-size: 20px;
@@ -117,4 +87,31 @@ li {display:inline;}
 	display:block;
 	margin-left:auto;
 	margin-right:auto;
+}
+
+#textvak {
+background-color: white;
+width: 80%;
+margin-top: 20px;
+margin-bottom: 2.5%;
+margin-left: 10%;
+margin-right: auto;
+display: block;
+}
+
+#title {
+width: 80%;
+font-size: 35px;
+display: block;
+margin-top: -130px;
+margin-left: 10%;}
+
+#banner {
+text-align: center;
+text-height: 20px;
+font-size: 45px;
+display: block;
+color: white;
+width: 100%;
+
 }
