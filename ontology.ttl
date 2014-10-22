@@ -29,15 +29,15 @@ dbpedia:Electronic_Arts dbpprop:products <http://dbpedia.org/resource/Skate_(vid
 	<http://dbpedia.org/resource/Dead_Space_(series)> .
 	
 	
-<http://dbpedia.org/resource/SimCity> rdf:type dbpprop:EA-VideoGameSerie; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Sim City"@en; dbpprop:url <http://xaviermarseille.nl/Sim_City.html> .
+<http://dbpedia.org/resource/SimCity> rdf:type dbpprop:EA-VideoGameSerie; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Sim_City"@en; dbpprop:url <http://xaviermarseille.nl/Sim_City.html> .
 
 <http://dbpedia.org/resource/Battlefield_(series)> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Battlefield"@en; dbpprop:url <http://xaviermarseille.nl/Battlefield.html> .
 
 <http://dbpedia.org/resource/FIFA_(video_game_series)> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "FIFA"@en; dbpprop:url <http://xaviermarseille.nl/FIFA.html> .
 
-<http://dbpedia.org/resource/Need_for_Speed> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Need for Speed"@en; dbpprop:url <http://xaviermarseille.nl/NfS.html> .
+<http://dbpedia.org/resource/Need_for_Speed> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Need_for_Speed"@en; dbpprop:url <http://xaviermarseille.nl/NfS.html> .
 
-<http://dbpedia.org/resource/Command_&_Conquer> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Command & Conquer"@en; dbpprop:url <http://xaviermarseille.nl/CC.html> .
+<http://dbpedia.org/resource/Command_&_Conquer> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Command_&_Conquer"@en; dbpprop:url <http://xaviermarseille.nl/CC.html> .
 
 <http://dbpedia.org/resource/Burnout_(series)> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Burnout"@en; dbpprop:url <http://xaviermarseille.nl/Burnout.html> .
 
@@ -45,19 +45,19 @@ dbpedia:Electronic_Arts dbpprop:products <http://dbpedia.org/resource/Skate_(vid
 
 <http://dbpedia.org/resource/Crysis_(series)> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Crysis"@en; dbpprop:url <http://xaviermarseille.nl/Crysis.html> .
 
-<http://dbpedia.org/resource/Madden_NFL> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Madden NFL"@en; dbpprop:url <http://xaviermarseille.nl/Madden.html> .
+<http://dbpedia.org/resource/Madden_NFL> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Madden_NFL"@en; dbpprop:url <http://xaviermarseille.nl/Madden.html> .
 
-<http://dbpedia.org/resource/Medal_of_Honor_(series)> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Medal of Honor"@en; dbpprop:url <http://xaviermarseille.nl/MoH.html> .
+<http://dbpedia.org/resource/Medal_of_Honor_(series)> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Medal_of_Honor"@en; dbpprop:url <http://xaviermarseille.nl/MoH.html> .
 
-<http://dbpedia.org/resource/Dragon_Age> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Dragon Age"@en; dbpprop:url <http://xaviermarseille.nl/Dragon_Age.html> .
+<http://dbpedia.org/resource/Dragon_Age> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Dragon_Age"@en; dbpprop:url <http://xaviermarseille.nl/Dragon_Age.html> .
 
-<http://dbpedia.org/resource/Mass_Effect> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Mass Effect"@en; dbpprop:url <http://xaviermarseille.nl/Mass_Effect.html> .
+<http://dbpedia.org/resource/Mass_Effect> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Mass_Effect"@en; dbpprop:url <http://xaviermarseille.nl/Mass_Effect.html> .
 
-<http://dbpedia.org/resource/The_Sims> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "The Sims"@en; dbpprop:url <http://xaviermarseille.nl/The_Sims.html> .
+<http://dbpedia.org/resource/The_Sims> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "The_Sims"@en; dbpprop:url <http://xaviermarseille.nl/The_Sims.html> .
 
-<http://dbpedia.org/resource/NBA_Live_(video_game_series)> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "NBA Live"@en; dbpprop:url <http://xaviermarseille.nl/NBA.html> .
+<http://dbpedia.org/resource/NBA_Live_(video_game_series)> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "NBA_Live"@en; dbpprop:url <http://xaviermarseille.nl/NBA.html> .
 
-<http://dbpedia.org/resource/Dead_Space_(series)> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Dead Space"@en; dbpprop:url <http://xaviermarseille.nl/Dead_Space.html> .
+<http://dbpedia.org/resource/Dead_Space_(series)> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Dead_Space"@en; dbpprop:url <http://xaviermarseille.nl/Dead_Space.html> .
 
 @prefix ns1:	<http://dbpedia.org/resource/Command_&_Conquer:> .
 ns1:_Red_Alert_3	rdf:type	dbpedia-owl:VideoGame .
