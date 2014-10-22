@@ -37,7 +37,7 @@ dbpedia:Electronic_Arts dbpprop:products <http://dbpedia.org/resource/Skate_(vid
 
 <http://dbpedia.org/resource/Need_for_Speed> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Need for Speed"@en; dbpprop:url <http://xaviermarseille.nl/NfS.html> .
 
-<http://dbpedia.org/resource/Command_&_Conquer> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Command & Conquer"@en; dbpprop:url <http://xaviermarseille.nl/C&C.html> .
+<http://dbpedia.org/resource/Command_&_Conquer> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Command & Conquer"@en; dbpprop:url <http://xaviermarseille.nl/CC.html> .
 
 <http://dbpedia.org/resource/Burnout_(series)> rdf:type dbpprop:EA-VideoGameSerie ; rdfs:subClassOf dbpedia:Electronic_Arts; rdfs:label "Burnout"@en; dbpprop:url <http://xaviermarseille.nl/Burnout.html> .
 
