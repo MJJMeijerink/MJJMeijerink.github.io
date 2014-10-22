@@ -10,7 +10,7 @@
 dbpedia:Electronic_Arts dbpedia-owl:abstract "Electronic Arts, Inc. (EA) is an American developer, marketer, publisher and distributor of video games headquartered in Redwood City, California, USA. Founded and incorporated on May 28, 1982 by Trip Hawkins, the company was a pioneer of the early home computer games industry and was notable for promoting the designers and programmers responsible for its games. In 2011 Electronic Arts was the world's third-largest gaming company by revenue after Nintendo and Activision Blizzard.Currently, EA develops and publishes games under several labels including EA Sports titles, Madden NFL, FIFA, NHL, NCAA Football, NBA Live, and SSX. Other EA labels produce established franchises such as Battlefield, Need for Speed, The Sims, Medal of Honor, Command & Conquer, as well as newer franchises such as Dead Space, Mass Effect, Dragon Age, Army of Two, Titanfall and Star Wars: Knights of the Old Republic, produced in partnership with LucasArts. EA also owns and operates major gaming studios, Tiburon in Orlando, EA Canada in Burnaby, BioWare in Edmonton as well as Montreal and DICE in Sweden."@en .
 dbpedia:Electronic_Arts rdf:type dbpedia:Public_company .
 dbpedia:Electronic_Arts owl:sameAs dbpedia:EA_Sports .
-dbpedia:Electronic_Arts dbpprop:url <http://xaviermarseille.nl/EA.html> .
+dbpedia:Electronic_Arts dbpprop:url <http://xaviermarseille.nl/index.html> .
 dbpedia:Electronic_Arts dbpprop:products <http://dbpedia.org/resource/Skate_(video_game)>,
 	<http://dbpedia.org/resource/SimCity>,
 	<http://dbpedia.org/resource/List_of_The_Simpsons_video_games>,
