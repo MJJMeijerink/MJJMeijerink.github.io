@@ -1,0 +1,299 @@
+<html>
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>Sgvizler</title>
+      <meta charset="UTF-8">
+	  <link rel="stylesheet" href="style.css" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script><script type="text/javascript" src="https://www.google.com/jsapi"></script><script type="text/javascript" src="sgvizler.js"></script><script type="text/javascript">sgvizler.prefix('npd', 'http://sws.ifi.uio.no/npd/');
+      sgvizler.prefix('npdv', 'http://sws.ifi.uio.no/vocab/npd#');
+      
+	$(document).ready(function() { sgvizler.containerDrawAll(); });
+      </script>
+	  <script type="text/javascript">
+	  var clicked;
+	  var prev;
+	  function myFunction(x) {
+		var y = document.getElementById(x);
+		y.style.display  = "initial";
+		console.log(prev);
+		if (prev) {
+		if (prev != y) {
+		prev.style.display = "none";}}
+		prev = y;}
+	  </script>
+</head>
+<body id='body'>
+<div id="balk">
+<div id="banner">
+	 FIFA
+</div>
+</div>
+	<div id="main">
+	 <div id="List"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
+						  PREFIX dbpedia: <http://dbpedia.org/resource/>
+					      SELECT ?y
+						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
+                          WHERE {?x rdfs:subClassOf <http://dbpedia.org/resource/FIFA_(video_game_series)>; rdfs:label ?y .}
+						  ORDER BY ?y"
+     data-sgvizler-chart="sgvizler.visualization.Text2"></div>
+	 
+	 <div id="all">
+	 <div id="FIFA07" style="display:none"
+	 data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_07 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . 
+						} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>">
+	 </div>
+	 
+	 <div id="FIFA97" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_97 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . 
+						} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFA06" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_06 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFA08" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_08 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFA09" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_09 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFA10" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_10 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFA11" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_11 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFA12" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_12 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFA13" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_13 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFA14" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_14 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFAFootball2002" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_Football_2002 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFAFootball2003" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_Football_2003 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFAFootball2004" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_Football_2004 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFAFootball2005" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_Football_2005 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFASoccer96" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_Soccer_96 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFAStreet2005videogame" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {<http://dbpedia.org/resource/FIFA_Street_(2005_video_game)> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFAStreet2012videogame" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {<http://dbpedia.org/resource/FIFA_Street_(2012_video_game)> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFAStreet2" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_Street_2 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="FIFAStreet3" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {dbpedia:FIFA_Street_3 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 </div>
+	 </div>
+	 
+	 <div id="footer">
+		Made by Xavier Marseille & Jan Jaap Meijerink<br>
+		Semantic Web
+	 </div>
+</body>
+</html>

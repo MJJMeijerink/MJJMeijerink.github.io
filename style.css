@@ -26,79 +26,23 @@ html,body {
 	height: 2px;
 	background: black;
 	}
-	
 
-#horizontalmenu{
-	margin-left: 15%;
-	margin-top: 6%;
-	position: absolute;
-}
 
-ul
-{
-float:left;
-width:100%;
-padding:0;
-margin:0;
-list-style-type:none;
-}
-a
-{
-text-align: center;
-float:left;
-width:175px;
-text-decoration:none;
-color:white;
-background-color:#524D4D;
-padding:0.2em 0.6em;
-border-right:1px solid white;
-}
-a:hover {background-color:#ff3300;}
-li {display:inline;}
-
-#text{
+#all{
 	color: black;
-	font-size: 20px;
-	margin-left: 10px;
-	margin-right: 10px;
-	margin-top: 5px;
+	font-size: 17.5px;
+	margin-left: 40px;
+	margin-right: 40px;
+	margin-top: 20px;
 	margin-bottom: 5px;
 }
 
 
-.parent{
-	margin-left: auto;
-	margin-right:auto;
-	display:block;
-	bottom: 0px;
-	bottom:-200px;
-}
-
-#buttons{
-	margin-top: 40px;
+#main{
 	text-align:center;
-	margin-left:10%;
-	margin-right:20%;
-	display:block;
-	width:70%;
+	margin-top:50px;
 }
 
-.extrabuttons {
-	width:600px;
-	display:block;
-	margin-left:auto;
-	margin-right:auto;
-}
-
-#textvak {
-background-color: white;
-width: 80%;
-margin-top: 20px;
-margin-bottom: 2.5%;
-margin-left: 10%;
-margin-right: auto;
-display: block;
-}
 
 #title {
 width: 80%;
@@ -114,5 +58,11 @@ font-size: 45px;
 display: block;
 color: white;
 width: 100%;
+}
 
+#footer {
+text-align: center;
+font-size: 12px;
+margin-bottom: 10px;
+margin-top:50px;
 }

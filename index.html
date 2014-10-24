@@ -1,84 +1,104 @@
 <!DOCTYPE html>
-<html>
 
+<html> 
 <head>
-<title>GDP</title>
-<link rel="stylesheet" href="style.css" />
-<meta charset="utf-8">
-<script type="text/javascript" src="d3.min.js"></script>
-<script type="text/javascript" src="topojson.js"></script>
-<script type="text/javascript" src="countries.js"></script>
-<script type="text/javascript" src="allCode.js"></script>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <link rel="stylesheet" href="style.css" />
+<title>Semantic Web</title>
+
+<link rel="shortcut icon" href="images/icon.ico" type="image/x-icon" /> 
+
+	 <meta charset="UTF-8">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script><script type="text/javascript" src="https://www.google.com/jsapi"></script><script type="text/javascript" src="sgvizler.js"></script><script type="text/javascript">sgvizler.prefix('npd', 'http://sws.ifi.uio.no/npd/');
+      sgvizler.prefix('npdv', 'http://sws.ifi.uio.no/vocab/npd#');
+      
+	$(document).ready(function() { sgvizler.containerDrawAll(); });
+      </script>
+	<script type="text/javascript">
+	function myFunction() {
+		document.getElementById("text").innerHTML = "Loaded";
+		}
+		
+		
+		
+	</script>
 </head>
 
-<body onload="Laterpas();">
-
+<body>
 <div id="balk">
 <div id="banner">
-GDP and gross debt-­to-­income ratio of households in EU
+	 Semantic Web
 </div>
 </div>
 
-<div id='buttons'>
-<button onclick="color(fixedData);"> GDP Changes </button>
-<button onclick="slider();"> Debts as a percentage of GDP</button><br><br>
+<div id="main">
+<h1>
+Studio's
+</h1>
+
+<div id="all">
+<div id="Crysis"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
+						  PREFIX dbpedia: <http://dbpedia.org/resource/>
+					      SELECT ?x
+						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
+                          WHERE {?b rdfs:label 'Crysis'@en; rdfs:label ?x .} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"></div>
+	 <div id="Dragon_Age"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
+						  PREFIX dbpedia: <http://dbpedia.org/resource/>
+					      SELECT ?x
+						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
+                          WHERE {?b rdfs:label 'Dragon_Age'@en; rdfs:label ?x .} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"></div>
+	 <div id="Medal_of_Honor"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
+						  PREFIX dbpedia: <http://dbpedia.org/resource/>
+					      SELECT ?x
+						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
+                          WHERE {?b rdfs:label 'Medal_of_Honor'@en; rdfs:label ?x .} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"></div>
+	 <div id="FIFA"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
+						  PREFIX dbpedia: <http://dbpedia.org/resource/>
+					      SELECT ?x
+						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
+                          WHERE {?b rdfs:label 'FIFA'@en; rdfs:label ?x .} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"></div>
+	 <div id="Madden_NFL"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
+						  PREFIX dbpedia: <http://dbpedia.org/resource/>
+					      SELECT ?x
+						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
+                          WHERE {?b rdfs:label 'Madden_NFL'@en; rdfs:label ?x .} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"></div>
+	 <div id="Sim_City"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
+						  PREFIX dbpedia: <http://dbpedia.org/resource/>
+					      SELECT ?x
+						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
+                          WHERE {?b rdfs:label 'Sim_City'@en; rdfs:label ?x .} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"></div>
+</div>
 </div>
 
-<script type="text/javascript">
-//Making the base of the map!
-var width = 600,
-    height = 700;
+	 <div id="footer">
+		Made by Xavier Marseille & Jan Jaap Meijerink<br>
+		Semantic Web
+	 </div>
 
-var projection = d3.geo.stereographic()
-    .center([3.9, 43.0 ])
-    .scale(1000)
-    .translate([width / 4 , height / 2]); 
-
-
-var svg = d3.select('body').append("svg")
-	.attr("class", 'parent')
-    .attr("width", width)
-    .attr("height", height);
-
-var path = d3.geo.path()
-    .projection(projection);
-
-var g = svg.append("g");
-var Country = []
-// load and display the World
-d3.json("europe.json", function(error, topology) {
-    g.selectAll("path")
-      .data(topology.features)
-    .enter()
-      .append("path")
-	  .attr("class", function(d){return d.id})
-	  .attr("onmouseover", function(d){return 'outline("' + d.id + '", this)'})
-	  .attr("onmouseout", function(d){return 'outline2()'})
-      .attr("d", path)
-	  .style("stroke", "#999")
-	  .style("stroke-width", 1)
-	  .style("fill", "grey");
-	for (var i=0; i < topology.features.length; i++) {
-		var C = topology.features[i].id;
-		Country.push(C);
-	}
-});
-//Made the base of the map!
-</script>
-
-<div id="both">
-<div id="title">
-Wat hebben wij gemaakt:
-</div>
-
-<div id="textvak">
-<div id="text">
-	Voor het vak Informatie visualisatie hebben wij de opdracht GDP & Gross debt income gekregen. 
-	Voor het visualiseren hebben wij gebruik gemaakt van de kaart van Europa. Door middel van verschillende kleuren 
-	willen wij de grote van de verandering aangeven. Als de gebruiker op de eerste knop klikt wordt de verandering van het BBP per hoofd weergeven.
-	Deze verandering gaat over 2012 ten opzichte van hoe het was in 2001. Als er op de rechter knop wordt geklikt dan wordt het percentage van schuld
-	ten opzichte van het BBP per hoofd weergeven. Hierbij kan de verandering per jaar worden bekeken.
-	</div>
-	</div>
-	</div>
 </body>
+
+</html>
