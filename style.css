@@ -9,6 +9,14 @@ html,body {
 	font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
 
+#homebut a:visited {
+	text-decoration: none;
+}
+#homebut {
+	margin-top:20px;
+	margin-left:20px;
+	position: fixed;
+}
 
 #balk{
 	background: black;

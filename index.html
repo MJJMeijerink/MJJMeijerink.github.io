@@ -6,7 +6,7 @@
 	  <link rel="stylesheet" href="style.css" />
 <title>Semantic Web</title>
 
-<link rel="shortcut icon" href="images/icon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="image/icon.ico" type="image/x-icon" /> 
 
 	 <meta charset="UTF-8">
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script><script type="text/javascript" src="https://www.google.com/jsapi"></script><script type="text/javascript" src="sgvizler.js"></script><script type="text/javascript">sgvizler.prefix('npd', 'http://sws.ifi.uio.no/npd/');
@@ -25,11 +25,18 @@
 </head>
 
 <body>
+
+<a id="homebut" href="index.html">
+	<img src="home.png">
+</a>
+
 <div id="balk">
 <div id="banner">
 	 Semantic Web
 </div>
 </div>
+
+
 
 <div id="main">
 <h1>
@@ -72,15 +79,6 @@ Studio's
 					      SELECT ?x
 						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
                           WHERE {?b rdfs:label 'FIFA'@en; rdfs:label ?x .} LIMIT 1"
-     data-sgvizler-chart="sgvizler.visualization.Text"></div>
-	 <div id="Madden_NFL"
-     data-sgvizler-endpoint="http://sparql.org/sparql"
-     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
-						  PREFIX dbpedia: <http://dbpedia.org/resource/>
-					      SELECT ?x
-						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
-                          WHERE {?b rdfs:label 'Madden_NFL'@en; rdfs:label ?x .} LIMIT 1"
      data-sgvizler-chart="sgvizler.visualization.Text"></div>
 	 <div id="Sim_City"
      data-sgvizler-endpoint="http://sparql.org/sparql"
