@@ -1,9 +1,9 @@
 <html>
 <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-      <title>MoH</title>
-	  <link rel="stylesheet" href="style.css" />
+      <title>SimCity</title>
       <meta charset="UTF-8">
+	  <link rel="stylesheet" href="style.css" />
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script><script type="text/javascript" src="https://www.google.com/jsapi"></script><script type="text/javascript" src="sgvizler.js"></script><script type="text/javascript">sgvizler.prefix('npd', 'http://sws.ifi.uio.no/npd/');
       sgvizler.prefix('npdv', 'http://sws.ifi.uio.no/vocab/npd#');
       
@@ -30,7 +30,7 @@
 
 <div id="balk">
 <div id="banner">
-Medal of Honor
+	 SimCity
 </div>
 </div>
 <div id="main">
@@ -41,11 +41,11 @@ Medal of Honor
 						  PREFIX dbpedia: <http://dbpedia.org/resource/>
 					      SELECT ?y
 						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
-                          WHERE {?x rdfs:subClassOf <http://dbpedia.org/resource/Medal_of_Honor_(series)>; rdfs:label ?y .}
+                          WHERE {?x rdfs:subClassOf <http://dbpedia.org/resource/SimCity>; rdfs:label ?y .}
 						  ORDER BY ?y"
      data-sgvizler-chart="sgvizler.visualization.Text2"></div>
-	 <div id= "all">
-	 <div id="MedalofHonor2010videogame" style="display:none"
+	 <div id="all">
+	 <div id="SimCity2013videogame" style="display:none"
      data-sgvizler-endpoint="http://sparql.org/sparql"
      data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 							PREFIX dbpprop: <http://dbpedia.org/property/> 
@@ -53,12 +53,12 @@ Medal of Honor
 							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
 							SELECT ?abstract ?developer ?console ?genre ?label
 							FROM <http://mjjmeijerink.github.io/ontology.ttl>
-							WHERE {<http://dbpedia.org/resource/Medal_of_Honor_(2010_video_game)> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . 
+							WHERE {<http://dbpedia.org/resource/SimCity_(2013_video_game)> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . 
 						} LIMIT 1"
      data-sgvizler-chart="sgvizler.visualization.Text"
 	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
 	 
-	 <div id="MedalofHonorAirborne" style="display:none"
+	 <div id="SimCity3000" style="display:none"
      data-sgvizler-endpoint="http://sparql.org/sparql"
      data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 							PREFIX dbpprop: <http://dbpedia.org/property/> 
@@ -66,12 +66,12 @@ Medal of Honor
 							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
 							SELECT ?abstract ?developer ?console ?genre ?label
 							FROM <http://mjjmeijerink.github.io/ontology.ttl>
-							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_Airborne> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . 
+							WHERE {dbpedia:SimCity_3000 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . 
 						} LIMIT 1"
      data-sgvizler-chart="sgvizler.visualization.Text"
 	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
 	 
-	 <div id="MedalofHonorEuropeanAssault" style="display:none"
+	 <div id="SimCity4" style="display:none"
      data-sgvizler-endpoint="http://sparql.org/sparql"
      data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 							PREFIX dbpprop: <http://dbpedia.org/property/> 
@@ -79,12 +79,12 @@ Medal of Honor
 							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
 							SELECT ?abstract ?developer ?console ?genre ?label
 							FROM <http://mjjmeijerink.github.io/ontology.ttl>
-							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_European_Assault> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							WHERE {dbpedia:SimCity_4 rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
 							LIMIT 1"
      data-sgvizler-chart="sgvizler.visualization.Text"
 	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
 	 
-	 <div id="MedalofHonorFrontline" style="display:none"—
+	 <div id="SimCity4RushHour" style="display:none"
      data-sgvizler-endpoint="http://sparql.org/sparql"
      data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 							PREFIX dbpprop: <http://dbpedia.org/property/> 
@@ -92,13 +92,12 @@ Medal of Honor
 							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
 							SELECT ?abstract ?developer ?console ?genre ?label
 							FROM <http://mjjmeijerink.github.io/ontology.ttl>
-							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_Frontline> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							WHERE {dbpedia:SimCity_4:_Rush_Hour rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
 							LIMIT 1"
      data-sgvizler-chart="sgvizler.visualization.Text"
 	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
 	 
-	 
-	 <div id="MedalofHonorPacificAssault" style="display:none"—
+	 <div id="SimCitySocieties" style="display:none"
      data-sgvizler-endpoint="http://sparql.org/sparql"
      data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 							PREFIX dbpprop: <http://dbpedia.org/property/> 
@@ -106,13 +105,12 @@ Medal of Honor
 							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
 							SELECT ?abstract ?developer ?console ?genre ?label
 							FROM <http://mjjmeijerink.github.io/ontology.ttl>
-							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_Pacific_Assault> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							WHERE {dbpedia:SimCity_Societies rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
 							LIMIT 1"
      data-sgvizler-chart="sgvizler.visualization.Text"
 	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
 	 
-	 
-	 <div id="MedalofHonorWarfighter" style="display:none"—
+	 <div id="SimCitySocietiesDestinations" style="display:none"
      data-sgvizler-endpoint="http://sparql.org/sparql"
      data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 							PREFIX dbpprop: <http://dbpedia.org/property/> 
@@ -120,13 +118,12 @@ Medal of Honor
 							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
 							SELECT ?abstract ?developer ?console ?genre ?label
 							FROM <http://mjjmeijerink.github.io/ontology.ttl>
-							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_Warfighter> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							WHERE {dbpedia:SimCity_Societies:_Destinations rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
 							LIMIT 1"
      data-sgvizler-chart="sgvizler.visualization.Text"
 	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
 	 
-	 
-	 <div id="MedalofHonorRisingSun" style="display:none"—
+	 <div id="TheSimCityBox" style="display:none"
      data-sgvizler-endpoint="http://sparql.org/sparql"
      data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 							PREFIX dbpprop: <http://dbpedia.org/property/> 
@@ -134,13 +131,12 @@ Medal of Honor
 							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
 							SELECT ?abstract ?developer ?console ?genre ?label
 							FROM <http://mjjmeijerink.github.io/ontology.ttl>
-							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_Rising_Sun> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							WHERE {dbpedia:The_SimCity_Box rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
 							LIMIT 1"
      data-sgvizler-chart="sgvizler.visualization.Text"
 	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
 	 
-	 
-	 <div id="MedalofHonorVanguard" style="display:none"—
+	 <div id="TheSimsCarnivalSnapCity" style="display:none"
      data-sgvizler-endpoint="http://sparql.org/sparql"
      data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 							PREFIX dbpprop: <http://dbpedia.org/property/> 
@@ -148,16 +144,16 @@ Medal of Honor
 							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
 							SELECT ?abstract ?developer ?console ?genre ?label
 							FROM <http://mjjmeijerink.github.io/ontology.ttl>
-							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_Vanguard> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							WHERE {dbpedia:The_Sims_Carnival:_Snap_City rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
 							LIMIT 1"
      data-sgvizler-chart="sgvizler.visualization.Text"
 	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
-	 </div>
-	 </div>
-	 
-	 <div id="footer">
+	</div>
+	</div>
+	
+	<div id="footer">
 		Made by Xavier Marseille & Jan Jaap Meijerink<br>
 		Semantic Web
 	 </div>
-</body>
+	 </body>
 </html>
