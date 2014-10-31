@@ -1,0 +1,165 @@
+<html>
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>MoH</title>
+	  <link rel="stylesheet" href="style.css" />
+      <meta charset="UTF-8">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script><script type="text/javascript" src="https://www.google.com/jsapi"></script><script type="text/javascript" src="sgvizler.js"></script><script type="text/javascript">sgvizler.prefix('npd', 'http://sws.ifi.uio.no/npd/');
+      sgvizler.prefix('npdv', 'http://sws.ifi.uio.no/vocab/npd#');
+      
+	$(document).ready(function() { sgvizler.containerDrawAll(); });
+      </script>
+	  <script type="text/javascript">
+	  var clicked;
+	  var prev;
+	  function myFunction(x) {
+		var y = document.getElementById(x);
+		y.style.display  = "initial";
+		console.log(prev);
+		if (prev) {
+		if (prev != y) {
+		prev.style.display = "none";}}
+		prev = y;}
+	  </script>
+</head>
+<body id='body'>
+
+<a id="homebut" href="index.html">
+	<img src="home.PNG">
+</a>
+
+<a id="back" href="http://mjjmeijerink.github.io/SemWeb/index.html"><<< Back </a>
+
+<div id="balk">
+<div id="banner">
+Medal of Honor
+</div>
+</div>
+<div id="main">
+	 <div id="List"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
+						  PREFIX dbpedia: <http://dbpedia.org/resource/>
+					      SELECT ?y
+						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
+                          WHERE {?x rdfs:subClassOf <http://dbpedia.org/resource/Medal_of_Honor_(series)>; rdfs:label ?y .}
+						  ORDER BY ?y"
+     data-sgvizler-chart="sgvizler.visualization.Text2"></div>
+	 <div id= "all">
+	 <div id="MedalofHonor2010videogame" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {<http://dbpedia.org/resource/Medal_of_Honor_(2010_video_game)> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . 
+						} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="MedalofHonorAirborne" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_Airborne> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . 
+						} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="MedalofHonorEuropeanAssault" style="display:none"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_European_Assault> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 <div id="MedalofHonorFrontline" style="display:none"—
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_Frontline> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 
+	 <div id="MedalofHonorPacificAssault" style="display:none"—
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_Pacific_Assault> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 
+	 <div id="MedalofHonorWarfighter" style="display:none"—
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_Warfighter> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 
+	 <div id="MedalofHonorRisingSun" style="display:none"—
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_Rising_Sun> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 
+	 
+	 <div id="MedalofHonorVanguard" style="display:none"—
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+							PREFIX dbpprop: <http://dbpedia.org/property/> 
+							PREFIX dbpedia: <http://dbpedia.org/resource/>
+							PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+							SELECT ?abstract ?developer ?console ?genre ?label
+							FROM <http://mjjmeijerink.github.io/ontology.ttl>
+							WHERE {<http://dbpedia.org/resource/Medal_of_Honor:_Vanguard> rdfs:label ?label; dbpedia-owl:abstract ?abstract; dbpprop:platforms ?console; dbpedia-owl:genre ?genre; dbpedia-owl:developer ?developer . }
+							LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"
+	 data-sgvizler-chart-options="cellPrefix=<p>|cellPostfix=</p>"></div>
+	 </div>
+	 </div>
+	 
+	 <div id="footer">
+		Made by Xavier Marseille & Jan Jaap Meijerink<br>
+		Semantic Web
+	 </div>
+</body>
+</html>

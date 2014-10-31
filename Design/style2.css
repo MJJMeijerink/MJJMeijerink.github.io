@@ -1,0 +1,212 @@
+body {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+min-width: 800px;
+color: black;
+background-image: url("images/dark-canvas.gif");
+background-size:repeat;
+background-attachment:fixed;
+}
+
+#logo {
+position:absolute;
+top:30px;
+left:30px;
+background-attachment:fixed;}
+
+#back{
+	top: 50%;
+	margin-left:20px;
+	position: absolute;
+	text-decoration: none;
+	color:white;
+}
+#back:hover{font-weight:bold;}
+
+#menu ul {
+list-style-type: none;
+background-image: url('images/menu.png');
+height: 100px;
+width:900px;
+margin:auto;
+}
+#menu li{float:left;}
+#menu ul a {
+background-image: url(images/divider.png), url(images/divider2.png);
+background-repeat: no-repeat, no-repeat;
+background-position: right, bottom;
+margin-top:10px;
+padding-right: 100px;
+padding-left: 100px;
+display: block;
+line-height: 80px;
+text-decoration: none;
+font-family: Georgia, "Times New Roman", Times, serif;
+font-size: 21px;
+color: rgba(150,150,150,1);
+}
+#menu ul a:hover {color: #FFF;}
+#current {color:#FFF;}
+
+#menu ul a:hover{
+color: #FFF;
+text-shadow: 3px 3px 0 #000;}
+#menu ul a:active, #menu ul a:visited{
+text-shadow:none;}
+#current {
+color:#FFF;
+text-shadow:none;}
+
+#submenu ul {
+list-style-type: none;
+display:block;
+background-color:black;
+height: 50px;
+width: 900px;
+margin: auto;
+}
+
+#submenu li{float:left;}
+#submenu ul a {
+padding-right: 132px;
+padding-left: 132px;
+display: block;
+line-height: 45px;
+text-decoration: none;
+font-family: Georgia, "Times New Roman", Times, serif;
+font-size: 16px;
+color: rgba(150,150,150,1);
+}
+
+#submenu ul a:hover {color: #FFF;}
+#current {color:#FFF;}
+
+#content{
+position:relative;
+display:block;
+width:810px;
+margin-top:50px;
+margin-left:-405px;
+left:50%;
+color:#FFF;
+font-size:21px;
+padding-bottom:50px;
+}
+
+#content h1{text-align:center;}
+#content a{text-decoration:none; color: rgba(80,50,255,1);}
+#content a:hover{font-weight:bold;}
+#content ul{
+list-style-type:none;
+width: 900px;
+height: 375px;
+}
+#content li{
+float:left;
+margin-right:24px;
+margin-bottom:24px;
+}
+
+#content ul a{
+display:block;
+border: 2px solid black;
+width: 250px;
+height: 375px;
+color:rgba(150,150,150,1);
+font-size:0px;
+text-decoration:none;
+text-align:center;
+transition: font 0.1s ease;
+text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+#content ul a:hover{font-size:40px;}
+#content p{margin-top: 100px;}
+#strip a:hover{font-size:40px;}
+#strip p{color: rgba(150,150,150,1);}
+.deliverable1{background:url(images/preview1-1.png);}
+.deliverable2{background:url(images/preview2-1.png);}
+.deliverable3{background:url(images/preview3-1.png);}
+.deliverable5{background:url(images/preview5.jpg);}
+.deliverable6{background:url(images/preview6.jpg);}
+.deliverable7{background:url(images/preview7.jpg);}
+.deliverable8{background:url(images/preview8.jpg);}
+.deliverable9{background:url(images/preview9.jpg);}
+.deliverable10{background:url(images/preview10.jpg);}
+.deliverable11{background:url(images/preview13.png);}
+.deliverable12{background:url(images/preview14.png);}
+.deliverable13{background:url(images/preview15.png);}
+.deliverable14{background:url(images/preview11.png);}
+.deliverable15{background:url(images/preview16.png);}
+.deliverable16{background:url(images/preview12.png);}
+.deliverable4 {
+display:block;
+width: 806px;
+height: 400px;
+background:url(images/thumbnailstrip.jpg) no-repeat;
+font-size:0px;
+margin-bottom: 24px;
+margin-top: 24px;
+text-decoration:none;
+border: 2px solid black;
+text-align:center;
+transition: font 0.1s ease;
+text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+#uitleg{font-size:14px;}
+
+#facebook{position:relative; width:200px; left:50%; margin-left:-120px; top:40px; padding-bottom:50px;}
+
+#body{
+z-index:-1;
+display:block;
+position:fixed;
+background-color: rgba(0,0,0,0.5);
+width:900px;
+height:100%;
+margin-left:-450px;
+left:50%;
+top:0;
+}
+
+
+#footer{
+top:0;
+height:50px;
+width:100%;
+text-align:center;
+font-size:12px;
+color:white;
+bottom:0;
+}
+
+.lightbox {                            /* Lightbox van: http://schier.co/post/creating-pure-css-lightboxes-with-the-:target-selector */
+	/** Default lightbox to hidden */
+	display: none;
+
+	/** Position and style */
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	color: white;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.6);
+}
+
+.lightbox img {
+	/** Pad the lightbox image */
+	max-width: 100%;
+	max-height: 95%;
+	margin-top: 12px;
+}
+.lightbox:target {
+	/** Unhide lightbox **/
+	display: block;
+}
+* {
+margin: 0;
+padding: 0;
+}

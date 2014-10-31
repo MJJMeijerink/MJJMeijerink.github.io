@@ -4,24 +4,24 @@
 <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	  <link rel="stylesheet" href="style.css" />
-<title>Semantic Web</title>
+<title>Jan Jaap Meijerink</title>
 
 <link rel="shortcut icon" href="image/icon.ico" type="image/x-icon" /> 
 
-	 <meta charset="UTF-8">
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script><script type="text/javascript" src="https://www.google.com/jsapi"></script><script type="text/javascript" src="sgvizler.js"></script><script type="text/javascript">sgvizler.prefix('npd', 'http://sws.ifi.uio.no/npd/');
-      sgvizler.prefix('npdv', 'http://sws.ifi.uio.no/vocab/npd#');
-      
-	$(document).ready(function() { sgvizler.containerDrawAll(); });
-      </script>
-	<script type="text/javascript">
-	function myFunction() {
-		document.getElementById("text").innerHTML = "Loaded";
-		}
-		
-		
-		
-	</script>
+
+<script type="text/javascript">
+	var clicked;
+	var prev;
+	function infoShow(x) {
+		document.getElementById('Welcome').style.display = "none";
+	  	var y = document.getElementById(x);
+		y.style.display  = "initial";
+		if (prev) {
+		if (prev != y) {
+		prev.style.display = "none";}}
+		prev = y;
+		}	
+</script>
 </head>
 
 <body>
@@ -31,70 +31,48 @@
 </a>
 
 <div id="balk">
-<div id="banner">
-	 Semantic Web
+Jan Jaap Meijerink
 </div>
-</div>
-
 
 
 <div id="main">
 <h1>
-Series
+Website Content
 </h1>
+<p onclick="infoShow('Welcome');">Welcome</p>
 
-<div id="all">
-<div id="Crysis"
-     data-sgvizler-endpoint="http://sparql.org/sparql"
-     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
-						  PREFIX dbpedia: <http://dbpedia.org/resource/>
-					      SELECT ?x
-						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
-                          WHERE {?b rdfs:label 'Crysis'@en; rdfs:label ?x .} LIMIT 1"
-     data-sgvizler-chart="sgvizler.visualization.Text"></div>
-	 <div id="Dragon_Age"
-     data-sgvizler-endpoint="http://sparql.org/sparql"
-     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
-						  PREFIX dbpedia: <http://dbpedia.org/resource/>
-					      SELECT ?x
-						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
-                          WHERE {?b rdfs:label 'Dragon_Age'@en; rdfs:label ?x .} LIMIT 1"
-     data-sgvizler-chart="sgvizler.visualization.Text"></div>
-	 <div id="Medal_of_Honor"
-     data-sgvizler-endpoint="http://sparql.org/sparql"
-     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
-						  PREFIX dbpedia: <http://dbpedia.org/resource/>
-					      SELECT ?x
-						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
-                          WHERE {?b rdfs:label 'Medal_of_Honor'@en; rdfs:label ?x .} LIMIT 1"
-     data-sgvizler-chart="sgvizler.visualization.Text"></div>
-	 <div id="FIFA"
-     data-sgvizler-endpoint="http://sparql.org/sparql"
-     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
-						  PREFIX dbpedia: <http://dbpedia.org/resource/>
-					      SELECT ?x
-						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
-                          WHERE {?b rdfs:label 'FIFA'@en; rdfs:label ?x .} LIMIT 1"
-     data-sgvizler-chart="sgvizler.visualization.Text"></div>
-	 <div id="Sim_City"
-     data-sgvizler-endpoint="http://sparql.org/sparql"
-     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
-						  PREFIX dbpedia: <http://dbpedia.org/resource/>
-					      SELECT ?x
-						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
-                          WHERE {?b rdfs:label 'Sim_City'@en; rdfs:label ?x .} LIMIT 1"
-     data-sgvizler-chart="sgvizler.visualization.Text"></div>
+<p onclick="infoShow('SemWeb');">Semantic Web</p>
+
+<p onclick="infoShow('Design');">Multimediaontwerpproject en Interactieontwerp</p>
+</div>
+
+<div class="desc">
+<div id="SemWeb" style="display:none;">
+<h1>
+Semantic Web
+</h1>
+This project is about the Semantic Web, the objective was to create a Semantic application.
+A <a href="http://en.wikipedia.org/wiki/Semantic_Web" target = "_blank">Semantic Web</a> application uses data from the web, that data is in organized in RDF format. During this project we collected data from <a href="http://dbpedia.org/About" target = "_blank">dbpedia.org</a>, we put that together in a turtle file and used it to make an application that is supposed to help gamers choose their games.<br> <a href="SemWeb/index.html">This is a prototype</a>.
+</div>
+<div id="Design" style="display:none;">
+<h1>
+Multimediaontwerpproject en Interactieontwerp
+</h1>
+Multimediaontwerpproject en Interactieontwerp is a course to do with designing websites and applications. In the link below you will find a whole seperate website, it contains a project for the zoo <a href="http://www.artis.nl/" target = "_blank">Artis</a> and a lot of seperate exercises. <br> <a href="Design/index.html">Go to website</a>
+</div>
+<div id="Welcome">
+<h1>
+Welcome
+</h1>
+Hello and welcome to my website. <br>
+My name is Jan Jaap Meijerink and I'm a student at the University of Amsterdam. <br>
+This website consists of projects I have done during my study: Information Sciences. The main goal of this website is documenting for future entertainment.
 </div>
 </div>
 
 	 <div id="footer">
-		Made by Xavier Marseille & Jan Jaap Meijerink<br>
-		Semantic Web
+		Jan Jaap Meijerink <br>
+		University of Amsterdam
 	 </div>
 
 </body>

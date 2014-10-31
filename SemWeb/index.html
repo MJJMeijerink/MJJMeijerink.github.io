@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html> 
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <link rel="stylesheet" href="style.css" />
+<title>Semantic Web</title>
+
+<link rel="shortcut icon" href="image/icon.ico" type="image/x-icon" /> 
+
+	 <meta charset="UTF-8">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script><script type="text/javascript" src="https://www.google.com/jsapi"></script><script type="text/javascript" src="sgvizler.js"></script><script type="text/javascript">sgvizler.prefix('npd', 'http://sws.ifi.uio.no/npd/');
+      sgvizler.prefix('npdv', 'http://sws.ifi.uio.no/vocab/npd#');
+      
+	$(document).ready(function() { sgvizler.containerDrawAll(); });
+      </script>
+	<script type="text/javascript">
+	function myFunction() {
+		document.getElementById("text").innerHTML = "Loaded";
+		}
+		
+		
+		
+	</script>
+</head>
+
+<body>
+
+<a id="homebut" href="index.html">
+	<img src="home.PNG">
+</a>
+
+<a id="back" href="http://mjjmeijerink.github.io/index.html"><<< Back </a>
+
+<div id="balk">
+<div id="banner">
+	 Semantic Web
+</div>
+</div>
+
+<a id="back" href="http://mjjmeijerink.github.io/index.html"><<< Back </a>
+
+<div id="main">
+<h1>
+Series
+</h1>
+<div id="all">
+<div id="Crysis"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
+						  PREFIX dbpedia: <http://dbpedia.org/resource/>
+					      SELECT ?x
+						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
+                          WHERE {?b rdfs:label 'Crysis'@en; rdfs:label ?x .} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"></div>
+	 <div id="Dragon_Age"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
+						  PREFIX dbpedia: <http://dbpedia.org/resource/>
+					      SELECT ?x
+						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
+                          WHERE {?b rdfs:label 'Dragon_Age'@en; rdfs:label ?x .} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"></div>
+	 <div id="Medal_of_Honor"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
+						  PREFIX dbpedia: <http://dbpedia.org/resource/>
+					      SELECT ?x
+						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
+                          WHERE {?b rdfs:label 'Medal_of_Honor'@en; rdfs:label ?x .} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"></div>
+	 <div id="FIFA"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
+						  PREFIX dbpedia: <http://dbpedia.org/resource/>
+					      SELECT ?x
+						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
+                          WHERE {?b rdfs:label 'FIFA'@en; rdfs:label ?x .} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"></div>
+	 <div id="Sim_City"
+     data-sgvizler-endpoint="http://sparql.org/sparql"
+     data-sgvizler-query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	                      PREFIX dbpprop: <http://dbpedia.org/property/> 
+						  PREFIX dbpedia: <http://dbpedia.org/resource/>
+					      SELECT ?x
+						  FROM <http://mjjmeijerink.github.io/ontology.ttl>
+                          WHERE {?b rdfs:label 'Sim_City'@en; rdfs:label ?x .} LIMIT 1"
+     data-sgvizler-chart="sgvizler.visualization.Text"></div>
+</div>
+</div>
+
+	 <div id="footer">
+		Made by Xavier Marseille & Jan Jaap Meijerink<br>
+		Semantic Web
+	 </div>
+
+</body>
+
+</html>
