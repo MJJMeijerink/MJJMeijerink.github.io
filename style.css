@@ -29,6 +29,7 @@ a:hover{font-weight:bold;}
 	right:5%;
 	}
 .desc a {display:inline;}
+.desc p{margin-left:35%;}
 
 #balk{
 	background: black;
