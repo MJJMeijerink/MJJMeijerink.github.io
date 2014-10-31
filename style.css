@@ -1,10 +1,12 @@
 /* CSS Document style.css */
 
+html, body, #container { height: 100%; }
+body > #container { height: auto; min-height: 100%; }
+
 html,body {
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	height: 100%;
 	background-attachment: fixed;
 	font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 	}
@@ -45,19 +47,19 @@ a:hover{font-weight:bold;}
 #main{
 	width:36.5%;
 	display:block;
-	position:absolute;
+	position:relative;
 	color: black;
 	font-size: 17.5px;
 	left:3.5%;
 	}
 
 
-#footer {
-	width:100%;
+#footer{
 	text-align:center;
-	margin-bottom:20px;
 	font-size: 12px;
-	display:block;
-	position:absolute;
-	bottom:0;
+    clear: both;
+    position: absolute;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;
 	}
