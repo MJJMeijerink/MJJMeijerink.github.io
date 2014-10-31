@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html> 
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <link rel="stylesheet" href="style.css" />
+<title>Jan Jaap Meijerink</title>
+
+<link rel="shortcut icon" href="image/icon.ico" type="image/x-icon" /> 
+
+
+<script type="text/javascript">
+	var clicked;
+	var prev;
+	function infoShow(x) {
+		document.getElementById('Welcome').style.display = "none";
+	  	var y = document.getElementById(x);
+		y.style.display  = "initial";
+		if (prev) {
+		if (prev != y) {
+		prev.style.display = "none";}}
+		prev = y;
+		}	
+</script>
+</head>
+
+<body>
+
+<a id="homebut" href="http://mjjmeijerink.github.io/index.html">
+	<img src="home.PNG">
+</a>
+
+<div id="balk">
+Programmeren IK
+</div>
+
+
+<div id="main">
+<h1>
+Content
+</h1>
+<p onclick="infoShow('Welcome');">Tower of Hanoi</p>
+
+<p onclick="infoShow('EXE');">Game download</p>
+
+<p onclick="infoShow('RAR');">Python files</p>
+
+</div>
+
+<div class="desc">
+<div id="EXE" style="display:none;">
+<h1>
+Game Download
+</h1>
+Click the link below to download the game.<br><br>
+<a href="ToH.exe">ToH.exe</a><br><br>
+Instructions:<br>
+<ul>
+<li>Run ToH.exe</li>
+<li>Select where you want to install the files</li>
+<li>Run Hanoi.exe to play the game</li>
+</ul>
+</div>
+<div id="RAR" style="display:none;">
+<h1>
+Python files download
+</h1>
+If you want to view the source code for this game, download the rar files from the link below.<br><br>
+<a href="Hanoi.rar">ToH RAR Files</a><br><br>
+To run hanoi.py you need Python and Pygame installed on your system.
+</div>
+<div id="Welcome">
+<h1>
+Tower of Hanoi
+</h1>
+For the course Programmeren IK, we created a small game using Python and the Pygame library.<br><br>
+The Tower of Hanoi (also called the Tower of Brahma or Lucas' Tower, and sometimes pluralized) is a mathematical game or puzzle. It consists of three rods, and a number of disks of different sizes which can slide onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the smallest at the top, thus making a conical shape.
+
+The objective of the puzzle is to move the entire stack to another rod, obeying the following simple rules:<br>
+
+<ul>
+<li>Only one disk can be moved at a time.</li>
+<li>Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack i.e. a disk can only be moved if it is the uppermost disk on a stack.</li>
+<li>No disk may be placed on top of a smaller disk.</li>
+</ul>
+</div>
+</div>
+
+	 <div id="footer">
+		Jan Jaap Meijerink <br>
+		University of Amsterdam
+	 </div>
+
+</body>
+
+</html>
