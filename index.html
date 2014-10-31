@@ -12,14 +12,22 @@
 <script type="text/javascript">
 	var clicked;
 	var prev;
+	var prev2 = document.getElementById('WelcomeID');
 	function infoShow(x) {
 		document.getElementById('Welcome').style.display = "none";
+		document.getElementById('WelcomeID').style.fontWeight = "initial";
 	  	var y = document.getElementById(x);
 		y.style.display  = "initial";
+		var z = document.getElementById(x+"ID");
+		z.style.fontWeight = "bold";
 		if (prev) {
-		if (prev != y) {
-		prev.style.display = "none";}}
+			if (prev != y) {
+				prev.style.display = "none";
+				prev2.style.fontWeight="initial";
+				}
+			}
 		prev = y;
+		prev2 = z;
 		}	
 </script>
 </head>
@@ -39,13 +47,13 @@ Jan Jaap Meijerink
 <h1>
 Website Content
 </h1>
-<p onclick="infoShow('Welcome');">Welcome</p>
+<p style="font-weight:bold;" id="WelcomeID" onclick="infoShow('Welcome');">Welcome</p>
 
-<p onclick="infoShow('SemWeb');">Semantic Web</p>
+<p id="SemWebID" onclick="infoShow('SemWeb');">Semantic Web</p>
 
-<p onclick="infoShow('Design');">Multimediaontwerpproject en Interactieontwerp</p>
+<p id="DesignID" onclick="infoShow('Design');">Multimediaontwerpproject en Interactieontwerp</p>
 
-<p onclick="infoShow('Programmeren');">Programmeren IK</p>
+<p id="ProgrammerenID" onclick="infoShow('Programmeren');">Programmeren IK</p>
 </div>
 
 <div class="desc">

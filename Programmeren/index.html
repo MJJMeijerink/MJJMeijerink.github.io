@@ -12,14 +12,22 @@
 <script type="text/javascript">
 	var clicked;
 	var prev;
+	var prev2 = document.getElementById('WelcomeID');
 	function infoShow(x) {
 		document.getElementById('Welcome').style.display = "none";
+		document.getElementById('WelcomeID').style.fontWeight = "initial";
 	  	var y = document.getElementById(x);
 		y.style.display  = "initial";
+		var z = document.getElementById(x+"ID");
+		z.style.fontWeight = "bold";
 		if (prev) {
-		if (prev != y) {
-		prev.style.display = "none";}}
+			if (prev != y) {
+				prev.style.display = "none";
+				prev2.style.fontWeight="initial";
+				}
+			}
 		prev = y;
+		prev2 = z;
 		}	
 </script>
 </head>
@@ -39,11 +47,11 @@ Programmeren IK
 <h1>
 Content
 </h1>
-<p onclick="infoShow('Welcome');">Tower of Hanoi</p>
+<p style="font-weight:bold;" id="WelcomeID" onclick="infoShow('Welcome');">Tower of Hanoi</p>
 
-<p onclick="infoShow('EXE');">Game download</p>
+<p id="EXEID" onclick="infoShow('EXE');">Game download</p>
 
-<p onclick="infoShow('RAR');">Python files</p>
+<p id="RARID" onclick="infoShow('RAR');">Python files</p>
 
 </div>
 
