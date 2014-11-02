@@ -3,11 +3,31 @@
 <html> 
 <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	  <link rel="stylesheet" href="style.css" />
+	  <link rel="stylesheet" href="http://mjjmeijerink.github.io/style.css" />
 <title>Jan Jaap Meijerink</title>
 
 <link rel="shortcut icon" href="image/icon.ico" type="image/x-icon" /> 
 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+function initialize() {
+  var myLatlng = new google.maps.LatLng(52.533203, 5.714159);
+  var mapOptions = {
+    zoom: 6,
+    center: myLatlng
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Dronten'
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
 
 <script type="text/javascript">
 	var clicked;
@@ -75,7 +95,14 @@ Welcome
 </h1>
 Hello and welcome to my website. <br>
 My name is Jan Jaap Meijerink and I'm a student at the University of Amsterdam. <br>
-This website consists of projects I have done during my study: Information Sciences. The main goal of this website is documenting for future entertainment.
+I love gaming, reading, movies, music and sports. <br>
+I live in the middle of The Netherlands, in a town called Dronten:<br>
+<div id="map-canvas"></div><br>
+This websites content consists of projects I have done during my study: Information Sciences. The main goal of this website is documenting for future entertainment.<br>
+And for those who know me by the name of 'Japie', I'm not Japanese, it's a nickname for my real name: Jan Jaap.<br>
+<a target = "_blank" href = "http://www.facebook.com/janjaap.meijerink"><img src = "facebook.png"></a>
+<br>
+E-mail: janjaap.meijerink2@gmail.com
 </div>
 <div id="Programmeren" style="display:none;">
 <h1>
@@ -88,8 +115,7 @@ During this course you learn the basics of programming using Python. The homepag
 </div>
 
 	 <div id="footer">
-		Jan Jaap Meijerink <br>
-		University of Amsterdam
+		<div id='text'>Jan Jaap Meijerink ♦ University of Amsterdam</div>
 	 </div>
 
 </body>

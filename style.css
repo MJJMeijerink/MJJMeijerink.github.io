@@ -17,11 +17,8 @@ html,body {
 	position: absolute;
 	}
 
-p{color:blue;}
-p:hover{font-weight:bold; cursor: hand; cursor: pointer;}
-
-a {text-decoration:none;}
-a:hover{font-weight:bold;}
+#main p{color:blue;}
+#main p:hover{font-weight:bold; cursor: hand; cursor: pointer;}
 
 .desc {
 	display:block;
@@ -29,10 +26,33 @@ a:hover{font-weight:bold;}
 	position:absolute;
 	left: 40%;
 	right:5%;
+	margin-bottom:30px;
 	}
-.desc a {display:inline;}
+.desc a {display:inline; text-decoration:none;}
+.desc a:hover{font-weight:bold;}
 .desc p{margin-left:35%;}
+.desc img{float:right;}
 
+#map-canvas {
+        height: 196px;
+		width: 500px;
+        margin: 0px;
+        padding: 0px
+      }
+	  
+#back{
+	top: 50%;
+	margin-left:50px;
+	position: absolute;
+	text-decoration: none;
+	color:black;
+}
+#back:hover {font-weight: bold;}
+
+#links{
+	text-align:center;
+	margin-top:50px;
+}
 
 #balk{
 	background: black;
@@ -54,13 +74,49 @@ a:hover{font-weight:bold;}
 	left:3.5%;
 	}
 
+#all{
+	color: black;
+	font-size: 17.5px;
+	margin-left: 40px;
+	margin-right: 40px;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
 
 #footer{
 	text-align:center;
 	font-size: 12px;
+	background-color:black;
+	color:white;
     clear: both;
-    position: relative;
+    position: fixed;
+	width:100%;
     z-index: 10;
-    height: 3em;
-    margin-top: -3em;
+    height: 2.5em;
+    margin-top: -2.5em;
 	}
+#footer2{
+	text-align:center;
+	font-size: 12px;
+	background-color:black;
+	color:white;
+    clear: both;
+    position: fixed;
+	width:100%;
+    z-index: 10;
+    height: 2.5em;
+    margin-top: -4.1em;
+	}
+#footer3{
+	text-align:center;
+	font-size: 12px;
+	background-color:black;
+	color:white;
+    clear: both;
+    position: fixed;
+	width:100%;
+    z-index: 10;
+    height: 2.5em;
+    margin-top: -6.5em;
+	}
+#text {margin-top:7px;}
