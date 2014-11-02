@@ -101,4 +101,6 @@ html,body {
 	text-align: center;
 	display:block;
 	width:100%;
+	font-size: 12px;
+	margin-bottom: 10px;
 }
