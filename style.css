@@ -95,5 +95,10 @@ html,body {
     height: 2.5em;
     margin-top: -2.5em;
 	}
-
 #text {margin-top:7px;}
+
+#footer2{
+	text-align: center;
+	display:block;
+	width:100%;
+}
