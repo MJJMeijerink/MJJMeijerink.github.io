@@ -100,7 +100,8 @@ html,body {
 #footer2{
 	text-align: center;
 	display:block;
+	position: absolute;
 	width:100%;
 	font-size: 12px;
-	margin-bottom: 10px;
+	bottom: 20px;
 }
