@@ -95,28 +95,5 @@ html,body {
     height: 2.5em;
     margin-top: -2.5em;
 	}
-#footer2{
-	text-align:center;
-	font-size: 12px;
-	background-color:black;
-	color:white;
-    clear: both;
-    position: fixed;
-	width:100%;
-    z-index: 10;
-    height: 2.5em;
-    margin-top: -4.1em;
-	}
-#footer3{
-	text-align:center;
-	font-size: 12px;
-	background-color:black;
-	color:white;
-    clear: both;
-    position: fixed;
-	width:100%;
-    z-index: 10;
-    height: 2.5em;
-    margin-top: -6.5em;
-	}
+
 #text {margin-top:7px;}
