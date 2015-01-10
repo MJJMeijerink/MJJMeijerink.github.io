@@ -6,17 +6,16 @@ body > #container { height: auto; min-height: 100%; }
 html,body {
 	margin: 0;
 	padding: 0;
-	width: 100%;
-	background-attachment: fixed;
+	max-width: 100%;
 	font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 	}
 
 #homebut {
 	margin-top:20px;
 	margin-left:20px;
-	position: absolute;
+	position: fixed;
 	}
-
+	
 #main p{color:blue;}
 #main p:hover{font-weight:bold; cursor: hand; cursor: pointer;}
 
@@ -27,6 +26,7 @@ html,body {
 	left: 40%;
 	right:5%;
 	margin-bottom:30px;
+	margin-top: 75px;
 	}
 .desc a {display:inline; text-decoration:none;}
 .desc a:hover{font-weight:bold;}
@@ -63,15 +63,18 @@ html,body {
 	color: white;
 	text-align:center;
 	padding-top:10px;
+	position: fixed;
+	z-index: 1;
 	}
 
 #main{
 	width:36.5%;
 	display:block;
-	position:absolute;
+	position:fixed;
 	color: black;
 	font-size: 17.5px;
 	left:3.5%;
+	margin-top: 75px;
 	}
 
 #all{

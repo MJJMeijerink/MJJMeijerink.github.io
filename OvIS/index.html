@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html> 
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <link rel="stylesheet" href="http://mjjmeijerink.github.io/style.css" />
+<title>Jan Jaap Meijerink</title>
+
+<link rel="shortcut icon" href="image/icon.ico" type="image/x-icon" /> 
+
+
+<script type="text/javascript">
+	var clicked;
+	var prev;
+	var prev2 = document.getElementById('WelcomeID');
+	function infoShow(x) {
+		document.getElementById('Welcome').style.display = "none";
+		document.getElementById('WelcomeID').style.fontWeight = "initial";
+	  	var y = document.getElementById(x);
+		y.style.display  = "initial";
+		var z = document.getElementById(x+"ID");
+		z.style.fontWeight = "bold";
+		if (prev) {
+			if (prev != y) {
+				prev.style.display = "none";
+				prev2.style.fontWeight="initial";
+				}
+			}
+		prev = y;
+		prev2 = z;
+		}	
+</script>
+</head>
+
+<body>
+<div id="container">
+<a id="homebut" href="http://mjjmeijerink.github.io/index.html">
+	<img src="home.png">
+</a>
+
+<div id="balk">
+Programmeren IK
+</div>
+
+
+<div id="main">
+<h1>
+Content
+</h1>
+<p style="font-weight:bold;" id="WelcomeID" onclick="infoShow('Welcome');">Research paper</p>
+
+<p id="InfoID" onclick="infoShow('Info');">More information (Handout)</p>
+
+<p id="PaperID" onclick="infoShow('Paper');">The paper</p>
+
+</div>
+
+<div class="desc">
+<div id="Info" style="display:none;">
+<h1 style = "text-align:center;">
+More information about the paper:
+</h1>
+<a target = "_blank" href = "Handout.pdf"><img src = "Handout.png" width = "100%"></a>
+</div>
+<div id="Paper" style="display:none;">
+<h1>
+The paper
+</h1>
+Click the link below for the final version of the paper.<br><br>
+<a target = "_blank" href = "Eindpaper_groep_A3.pdf">Final Paper</a>
+</div>
+<div id="Welcome">
+<h1>
+Research paper with My Japanese Coach
+</h1>
+For Onderzoek van Interactieve Systemen (Research of interactive systems), we were supposed to research either the effects of serious games, visual analytics or robots. We chose to research a Serious game. Serious games are games made to entertain and teach people. We decided to use My Japanese Coach as our serious game. It's a game that teaches you Japanese. We studied the effects of this game compared to traditional language learning.
+</div>
+</div>
+</div>
+
+	 <div id="footer">
+		<div id='text'>Jan Jaap Meijerink ♦ University of Amsterdam</div>
+	 </div>
+
+</body>
+
+</html>
