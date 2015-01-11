@@ -17,6 +17,12 @@ html,body {
 	z-index: 2;
 	}
 	
+#homebut2 {
+	margin-top:20px;
+	margin-left:20px;
+	position: absolute;
+	}
+	
 #main p{color:blue;}
 #main p:hover{font-weight:bold; cursor: hand; cursor: pointer;}
 
@@ -67,6 +73,18 @@ html,body {
 	position: fixed;
 	z-index: 1;
 	}
+	
+#balk2{
+	background: black;
+	width: 100%;
+	height: 75px;
+	font-size: 45px;
+	display: block;
+	color: white;
+	text-align:center;
+	padding-top:10px;
+	}
+
 
 #main{
 	width:36.5%;
