@@ -28,7 +28,16 @@
 			}
 		prev = y;
 		prev2 = z;
-		}	
+	}	
+	
+	function mouseIn(x) {
+			x.style.fontWeight = "bold";
+	}
+
+	function mouseOut(x) {
+		if (x != prev2)
+			{x.style.fontWeight = "initial";}
+	}
 </script>
 </head>
 
@@ -47,11 +56,11 @@ Onderzoek van Interactieve Systemen
 <h1>
 Content
 </h1>
-<p style="font-weight:bold;" id="WelcomeID" onclick="infoShow('Welcome');">Research paper</p>
+<p style="font-weight:bold;" id="WelcomeID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Welcome');">Research paper</p>
 
-<p id="InfoID" onclick="infoShow('Info');">More information (Handout)</p>
+<p id="InfoID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Info');">More information (Handout)</p>
 
-<p id="PaperID" onclick="infoShow('Paper');">The paper</p>
+<p id="PaperID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Paper');">The paper</p>
 
 </div>
 

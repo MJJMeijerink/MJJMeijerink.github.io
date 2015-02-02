@@ -24,7 +24,7 @@ html,body {
 	}
 	
 #main p{color:blue;}
-#main p:hover{font-weight:bold; cursor: hand; cursor: pointer;}
+#main p:hover{cursor: hand; cursor: pointer;}
 
 .desc {
 	display:block;

@@ -28,7 +28,16 @@
 			}
 		prev = y;
 		prev2 = z;
-		}	
+	}	
+	
+	function mouseIn(x) {
+			x.style.fontWeight = "bold";
+	}
+
+	function mouseOut(x) {
+		if (x != prev2)
+			{x.style.fontWeight = "initial";}
+	}
 </script>
 </head>
 
@@ -47,11 +56,11 @@ Programmeren IK
 <h1>
 Content
 </h1>
-<p style="font-weight:bold;" id="WelcomeID" onclick="infoShow('Welcome');">Tower of Hanoi</p>
+<p style="font-weight:bold;" id="WelcomeID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Welcome');">Tower of Hanoi</p>
 
-<p id="EXEID" onclick="infoShow('EXE');">Game download</p>
+<p id="EXEID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('EXE');">Game download</p>
 
-<p id="RARID" onclick="infoShow('RAR');">Python files</p>
+<p id="RARID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('RAR');">Python files</p>
 
 </div>
 
