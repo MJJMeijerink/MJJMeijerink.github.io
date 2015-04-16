@@ -24,10 +24,19 @@ width:100%;
 
 #wrap {
 	width:100%;
-	float:left;
+	<--width:100%;
+	--margin:0 auto;
 }
 
+#left_col {
+	float:left;
+	width:50%;
+}
 
+#right_col {
+	float:right;
+	width:50%;
+}
 
 #footer1 {
 	clear:both;

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!-- Hey there :) -->
 
 <html>
@@ -28,7 +29,7 @@
         ga('send', 'pageview');
     </script>
 
-   <div class="center">
+    <div class="center">
 		<div id="livestatus">
 			<a class="ltwitch" href="#" data-tnick="kyr_sp33dy">KYR SP33DY</a> (<span>...</span>)
 			<a class="ltwitch" href="#" data-tnick="imjahova">Jahova</a> (<span>...</span>)
@@ -47,6 +48,7 @@
     </div>
 
     <div id="wrap">
+        <div id="left_col">
             <p>Window 1</p>
             <select id="mySelect">
                 <optgroup label="Stream">
@@ -176,7 +178,9 @@
             </select>
             
             <button type="button" onclick="SetSrca2()">Bam!</button>
+        </div>
 
+        <div id="right_col">
             <p>Window 2</p>
             <select id="mySelect2">
                 <optgroup label="Stream">
@@ -305,6 +309,7 @@
             </select>
             
             <button type="button" onclick="SetSrcb2()">Bam!</button>
+        </div>
     </div>
 
     <div id="footer1">
