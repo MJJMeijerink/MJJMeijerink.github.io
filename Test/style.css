@@ -9,6 +9,7 @@ body {
 
 #menuslist {
 margin-top:10px;
+padding-bottom: 30px;
 text-align:center;
 background-color: red;
 border-style: double;
@@ -69,12 +70,15 @@ width:100%;
 }
 
 #copyright {
-	position:fixed;
-	bottom:20;
+    text-align:center;
+	display:block;
 	width:100%;
-	height:33px;
-/* Height of the footer */
-/* Height of the footer */
+	background-color: rgb(30,30,30);
+	padding-top:8px;
+	padding-bottom:8px;
+	border-radius:10px;
+	bottom:0;
+	position:fixed;
 }
 
 #copyright .copy-text {
