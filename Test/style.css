@@ -7,14 +7,22 @@ body {
     color:#fff;
 }
 
-#menuslist ul li{
-	display:inline;
+#window1 {
+float:left;
+width:25%;
 }
-#menuslist ul {
-	Text-align:center;
+#window2 {
+float:left;
+width:25%;
 }
-
-
+#window3 {
+float:left;
+width:25%;
+}
+#window4 {
+float:left;
+width:25%;
+}
 
 #beginning {
 	position:relative;
