@@ -1,0 +1,88 @@
+html, body {
+    height:100%;
+}
+
+body {
+	background-color:#000;
+    color:#fff;
+}
+
+#beginning {
+	position:relative;
+	left:0;
+	top:0;
+	width:100%;
+	border-bottom:1px solid #000;
+	background-color:#606060;
+	text-indent:10px;
+}
+
+#livestatus {
+background:#000;
+width:100%;
+}
+
+#wrap {
+	width:100%;
+	float:left;
+}
+
+
+
+#footer1 {
+	clear:both;
+}
+
+#copyright {
+	position:relative;
+	bottom:0;
+	width:100%;
+	height:33px;
+/* Height of the footer */
+	background:#000;
+}
+
+#copyright .copy-text {
+    color:grey;
+}
+
+p:not(#top-menu) {
+    margin:0;
+}
+
+p#top-menu {
+    color:red;
+    margin-top:0;
+}
+
+a:link {
+	color:#FFF;
+}
+
+/* unvisited link */
+a:visited {
+	color:#FFF;
+}
+
+/* visited link */
+a:hover {
+	color:#FFF;
+}
+
+/* mouse over link */
+a:active {
+	color:#FFF;
+}
+
+iframe {
+    border:0;
+    height:48vh;
+    overflow:hidden;
+    width:98%;
+}
+
+.center {
+    text-align:center;
+}
+
+/* selected link */
