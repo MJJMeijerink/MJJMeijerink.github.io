@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-	background-color:#000;
+	background-color:#333;
     color:#fff;
 }
 
@@ -104,7 +104,9 @@ iframe {
 	display:block;
 	width:100%;
 	background-color: rgb(30,30,30);
-	padding: 20px;
+	padding-top:15px;
+	padding-bottom:20px;
 }
+
 
 /* selected link */
