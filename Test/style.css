@@ -71,17 +71,17 @@ width:100%;
 }
 
 #copyright {
-    text-align:center;
 	display:block;
-	width:100%;
 	background-color: rgb(30,30,30);
 	padding-top:8px;
 	padding-bottom:8px;
 	border-radius:10px;
 }
 #container {
+	text-align:center;
 	position: fixed;
 	bottom: 13px;
+	width: 100%;
 }
 
 #copyright .copy-text {
