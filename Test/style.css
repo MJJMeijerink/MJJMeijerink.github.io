@@ -7,6 +7,10 @@ body {
     color:#fff;
 }
 
+#menuslist{
+	float:left;
+}
+
 #navlist li {
 	display: inline;
 	list-style-type: none;
