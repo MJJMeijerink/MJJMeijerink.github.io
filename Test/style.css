@@ -55,11 +55,13 @@ width:100%;
 }
 
 #left_col {
+	margin-top: 15px;
 	float:left;
 	width:50%;
 }
 
 #right_col {
+	margin-top: 15px;
 	float:right;
 	width:50%;
 }
@@ -76,8 +78,6 @@ width:100%;
 	padding-top:8px;
 	padding-bottom:8px;
 	border-radius:10px;
-	bottom:5px;
-	position:fixed;
 }
 
 #copyright .copy-text {
