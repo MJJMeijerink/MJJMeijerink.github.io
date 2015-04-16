@@ -7,15 +7,14 @@ body {
     color:#fff;
 }
 
-#menuslist{
-	float:left;
+#menuslist ul li{
+	display:inline;
+}
+#menuslist ul {
+	Text-align:center;
 }
 
-#navlist li {
-	display: inline;
-	list-style-type: none;
-	padding-right: 20px;
-}
+
 
 #beginning {
 	position:relative;
