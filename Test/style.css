@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-	background-color:#333;
+	background-color:#000;
     color:#fff;
 }
 
@@ -27,7 +27,7 @@ body {
 }
 
 #livestatus {
-background:#000;
+background:#303030;
 width:100%;
 }
 
