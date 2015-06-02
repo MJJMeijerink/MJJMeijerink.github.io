@@ -12,7 +12,7 @@
 <script type="text/javascript">
 	var clicked;
 	var prev;
-	var prev2 = document.getElementById('WelcomeID');
+	var prev2;
 	function infoShow(x) {
 		document.getElementById('Welcome').style.display = "none";
 		document.getElementById('WelcomeID').style.fontWeight = "initial";
@@ -28,14 +28,17 @@
 			}
 		prev = y;
 		prev2 = z;
-	}	
+		return;
+	  }
 	
 	function mouseIn(x) {
 			x.style.fontWeight = "bold";
 	}
 
 	function mouseOut(x) {
-		if (x != prev2)
+		if (typeof prev2 === 'undefined')
+			{prev2 = document.getElementById('WelcomeID');}
+		else if (prev2 != x)
 			{x.style.fontWeight = "initial";}
 	}
 </script>
