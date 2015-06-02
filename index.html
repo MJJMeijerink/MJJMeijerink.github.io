@@ -32,7 +32,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <script type="text/javascript">
 	var clicked;
 	var prev;
-	var prev2 = document.getElementById('WelcomeID');
+	var prev2;
 	function infoShow(x) {
 		document.getElementById('Welcome').style.display = "none";
 		document.getElementById('WelcomeID').style.fontWeight = "initial";
@@ -56,8 +56,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	}
 
 	function mouseOut(x) {
-		if (prev2 == x)
-			{return;}
+		if (typeof prev2 === 'undefined')
+			{console.log('true');}
 		else if (prev2 != x)
 			{x.style.fontWeight = "initial";}
 	}
