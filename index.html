@@ -57,7 +57,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 	function mouseOut(x) {
 		if (typeof prev2 === 'undefined')
-			{console.log('true');}
+			{prev2 = document.getElementById('WelcomeID');}
 		else if (prev2 != x)
 			{x.style.fontWeight = "initial";}
 	}
