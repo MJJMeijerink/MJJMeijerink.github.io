@@ -40,11 +40,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		y.style.display  = "initial";
 		var z = document.getElementById(x+"ID");
 		z.style.fontWeight = "bold";
-		if (prev) {
-			if (prev != y) {
-				prev.style.display = "none";
-				prev2.style.fontWeight="initial";
-				}
+		if (prev && prev != y) {
+			prev.style.display = "none";
+			prev2.style.fontWeight="initial";
 			}
 		prev = y;
 		prev2 = z;
