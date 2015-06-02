@@ -56,11 +56,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	}
 
 	function mouseOut(x) {
-		if (x != prev2)
-			mouseOut2(x);
+		if (prev2 == x)
+			{return;}
+		else if (prev2 != x)
+			{x.style.fontWeight = "initial";}
 	}
-	
-	function mouseOut2(x) {x.style.fontWeight = "initial";}
 </script>
 
 </head>
