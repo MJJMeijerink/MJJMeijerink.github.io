@@ -30,18 +30,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
 <script type="text/javascript">
-	var ready = false;
-	var prev2 = false;
-	function onload() {
-		prev2 = document.getElementById('WelcomeID');
-		ready = true;
-		return;
-	}
-
 	var clicked;
 	var prev;
-	function infoShow(x, y) {
-	  if y {
+	var prev2 = document.getElementById('WelcomeID');
+	function infoShow(x) {
 		document.getElementById('Welcome').style.display = "none";
 		document.getElementById('WelcomeID').style.fontWeight = "initial";
 	  	var y = document.getElementById(x);
@@ -56,7 +48,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			}
 		prev = y;
 		prev2 = z;
-		return;		
+		return;
 	  }
 	  else {return;}
 	}	
@@ -87,15 +79,15 @@ Jan Jaap Meijerink
 <h1>
 Website Content
 </h1>
-<p style="font-weight:bold;" id="WelcomeID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Welcome', ready);">Welcome</p>
+<p style="font-weight:bold;" id="WelcomeID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Welcome');">Welcome</p>
 
-<p id="SemWebID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('SemWeb', ready);">Semantic Web</p>
+<p id="SemWebID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('SemWeb');">Semantic Web</p>
 
-<p id="DesignID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Design', ready);">Multimediaontwerpproject en Interactieontwerp</p>
+<p id="DesignID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Design');">Multimediaontwerpproject en Interactieontwerp</p>
 
-<p id="ProgrammerenID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Programmeren', ready);">Programmeren IK</p>
+<p id="ProgrammerenID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Programmeren');">Programmeren IK</p>
 
-<p id="OvisID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Ovis', ready);">Onderzoek van Interactieve Systemen</p>
+<p id="OvisID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Ovis');">Onderzoek van Interactieve Systemen</p>
 </div>
 
 <div class="desc">
