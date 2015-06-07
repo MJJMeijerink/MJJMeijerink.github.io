@@ -1,3 +1,8 @@
+var okay = false;
+function onload(){
+	okay = true;
+}
+
 	var clicked;
 	var prev;
 	var prev2;
@@ -18,7 +23,9 @@
 	  }
 	
 	function mouseIn(x) {
+		if (okay) {
 			x.style.fontWeight = "bold";
+		}
 	}
 
 	function mouseOut(x) {
