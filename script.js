@@ -22,9 +22,12 @@
 	}
 
 	function mouseOut(x) {
-		if (typeof prev2 === 'undefined')
-			{prev2 = document.getElementById('WelcomeID');
-			 x.style.fontWeight = "initial";}
+		if (typeof prev2 === 'undefined'){
+			prev2 = document.getElementById('WelcomeID');
+			if (prev2 != x){
+				x.style.fontWeight = "initial";
+			}
+		}
 		else if (prev2 != x)
 			{x.style.fontWeight = "initial";}
 	}
