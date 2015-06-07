@@ -1,8 +1,3 @@
-var okay = false;
-function onload(){
-	okay = true;
-}
-
 	var clicked;
 	var prev;
 	var prev2;
@@ -23,14 +18,13 @@ function onload(){
 	  }
 	
 	function mouseIn(x) {
-		if (okay) {
 			x.style.fontWeight = "bold";
-		}
 	}
 
 	function mouseOut(x) {
 		if (typeof prev2 === 'undefined')
-			{prev2 = document.getElementById('WelcomeID');}
+			{prev2 = document.getElementById('WelcomeID');
+			 x.style.fontWeight = "initial";}
 		else if (prev2 != x)
 			{x.style.fontWeight = "initial";}
 	}
