@@ -9,6 +9,9 @@
 <link rel="shortcut icon" href="image/icon.ico" type="image/x-icon" /> 
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<script src="hhtp://mjjmeijerink.github.io/script.js"></script>
+
     <script>
 function initialize() {
   var myLatlng2= new google.maps.LatLng(52.369790, 4.894153);
@@ -29,38 +32,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
 
-<script type="text/javascript">
-	var clicked;
-	var prev;
-	var prev2;
-	function infoShow(x) {
-		document.getElementById('Welcome').style.display = "none";
-		document.getElementById('WelcomeID').style.fontWeight = "initial";
-	  	var y = document.getElementById(x);
-		y.style.display  = "initial";
-		var z = document.getElementById(x+"ID");
-		z.style.fontWeight = "bold";
-		if (prev && prev != y) {
-			prev.style.display = "none";
-			prev2.style.fontWeight="initial";
-			}
-		prev = y;
-		prev2 = z;
-		return;
-	  }
-	
-	function mouseIn(x) {
-			x.style.fontWeight = "bold";
-	}
-
-	function mouseOut(x) {
-		if (typeof prev2 === 'undefined')
-			{prev2 = document.getElementById('WelcomeID');}
-		else if (prev2 != x)
-			{x.style.fontWeight = "initial";}
-	}
-</script>
-
 </head>
 
 <body>
@@ -77,6 +48,7 @@ Jan Jaap Meijerink
 <h1>
 Website Content
 </h1>
+
 <p style="font-weight:bold;" id="WelcomeID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Welcome');">Welcome</p>
 
 <p id="SemWebID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('SemWeb');">Semantic Web</p>
@@ -86,6 +58,7 @@ Website Content
 <p id="ProgrammerenID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Programmeren');">Programmeren IK</p>
 
 <p id="OvisID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Ovis');">Onderzoek van Interactieve Systemen</p>
+
 </div>
 
 <div class="desc">
