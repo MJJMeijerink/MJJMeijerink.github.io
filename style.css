@@ -115,6 +115,9 @@ html,body {
     z-index: 11;
   }
   .overlay:hover {cursor: hand; cursor: pointer;}
+  .overlay:target {
+	display: initial;
+}
 
 #footer{
 	text-align:center;
