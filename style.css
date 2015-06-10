@@ -122,10 +122,10 @@ html,body {
 	display: block;
 }
 .overlay p{
-	font-size:25px;
+	font-size:35px;
 	color:white;
-	margin-left:30%;
-	margin-right:30%;
+	margin-left:25%;
+	margin-right:25%;
 }
 
 #footer{
