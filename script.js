@@ -31,16 +31,16 @@ function mouseOut(x) {
 		{x.style.fontWeight = "initial";}
 }
 
-var div = document.getElementsByClassName('overlay');
 function popUp() {
+	var div = document.getElementsByClassName('overlay');
 	var clicked = false;
 	if (!clicked) {
-		div.style.display = 'initial';
+		div[0].style.display = 'initial';
 		clicked = true;
 		return;
 	}
 	else if (clicked) {
-		div.style.display = 'none';
+		div[0].style.display = 'none';
 		clicked = false;
 		return;
 	}
