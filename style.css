@@ -114,6 +114,7 @@ html,body {
     background: rgba(51,51,51,0.7);
     z-index: 11;
   }
+  .overlay:hover {cursor: hand; cursor: pointer;}
 
 #footer{
 	text-align:center;
