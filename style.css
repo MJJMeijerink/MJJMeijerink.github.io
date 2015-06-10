@@ -116,7 +116,7 @@ html,body {
   }
   .overlay:hover {cursor: hand; cursor: pointer;}
   .overlay:target {
-	display: initial;
+	display: block;
 }
 
 #footer{
