@@ -31,9 +31,9 @@ function mouseOut(x) {
 		{x.style.fontWeight = "initial";}
 }
 
+var div = document.getElementsByClassName('overlay');
 function popUp() {
 	var clicked = false;
-	var div = document.getElementsByClassName('overlay');
 	if (!clicked) {
 		div.style.display = 'initial';
 		clicked = true;
