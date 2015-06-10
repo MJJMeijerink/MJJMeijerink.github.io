@@ -9,6 +9,12 @@
 <link rel="shortcut icon" href="image/icon.ico" type="image/x-icon" /> 
 
 <script src="http://mjjmeijerink.github.io/script.js"></script>
+
+<style>
+#Paper p{color:blue;}
+#Paper p:hover{cursor: hand; cursor: pointer; font-weight:bold;} 
+</style>
+
 </head>
 
 <body>
@@ -47,7 +53,7 @@ More information about the paper:
 The paper
 </h1>
 Click the link below for the final version of the paper.<br>
-<p><a target = "_blank" href = "Eindpaper_groep_A3.pdf">Final Paper</a></p>
+<p onclick="popUp();">Final Paper</p>
 </div>
 <div id="Welcome">
 <h1>
@@ -62,6 +68,14 @@ For Onderzoek van Interactieve Systemen (Research of interactive systems), we we
 		<div id='text'>Jan Jaap Meijerink ♦ University of Amsterdam</div>
 	 </div>
 
+<div onclick='popUp();' class='overlay' style='display:none;'><object data="Eindpaper_groep_A3.pdf" type="application/pdf" style='margin-left:8%;' width="84%" height="100%">
+ 
+  <p>It appears you don't have a PDF plugin for this browser.
+  No biggie... you can <a href="Eindpaper_groep_A3.pdf">click here to
+  download the PDF file.</a></p>
+  
+</object></div>
+	 
 </body>
 
 </html>

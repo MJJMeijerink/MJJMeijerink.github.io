@@ -30,3 +30,18 @@ function mouseOut(x) {
 	else if (prev2 != x)
 		{x.style.fontWeight = "initial";}
 }
+
+function popUp() {
+	var clicked = false;
+	var div = document.getElementByClassName('overlay');
+	if (!clicked) {
+		div.style.display = 'initial';
+		clicked = true;
+		return;
+	}
+	else if (clicked) {
+		div.style.display = 'none';
+		clicked = false;
+		return;
+	}
+}
