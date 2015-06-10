@@ -124,6 +124,8 @@ html,body {
 .overlay p{
 	font-size:25px;
 	color:white;
+	margin-left:30%;
+	margin-right:30%;
 }
 
 #footer{
