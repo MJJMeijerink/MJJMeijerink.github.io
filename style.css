@@ -104,8 +104,7 @@ html,body {
 	margin-top: 75px;
 	margin-bottom: 5px;
 }
-
-  .overlay {
+.overlay {
 	display:none;
     position: fixed;
     width: 100%;
@@ -114,10 +113,17 @@ html,body {
     top: 0;
     background: rgba(51,51,51,0.7);
     z-index: 11;
+	text-align:center;
   }
-  .overlay:hover {cursor: hand; cursor: pointer;}
+
+.overlay:hover {cursor: hand; cursor: pointer;}
+
 .overlay:target {
 	display: block;
+}
+.overlay p{
+	font-size:25px;
+	color:white;
 }
 
 #footer{
