@@ -33,7 +33,7 @@ function mouseOut(x) {
 
 function popUp() {
 	var clicked = false;
-	var div = document.getElementByClassName('overlay');
+	var div = document.getElementsByClassName('overlay');
 	if (!clicked) {
 		div.style.display = 'initial';
 		clicked = true;
