@@ -115,17 +115,17 @@ html,body {
     z-index: 11;
 	text-align:center;
   }
-
 .overlay:hover {cursor: hand; cursor: pointer;}
-
-.overlay:target {
-	display: block;
-}
+.overlay:target {display: block;}
 .overlay p{
 	font-size:35px;
 	color:white;
 	margin-left:25%;
 	margin-right:25%;
+}
+.overlay img{
+	width:2%;
+	height:2%;
 }
 
 #footer{
