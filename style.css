@@ -127,7 +127,8 @@ html,body {
 	width:auto;
 	height:5%;
 	position:fixed;
-	float:right;
+	right:0px;
+	top:0px;
 }
 
 #footer{
