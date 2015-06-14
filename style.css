@@ -125,7 +125,9 @@ html,body {
 }
 .overlay img{
 	width:auto;
-	height:2%;
+	height:5%;
+	margin-top:2%;
+	margin-right:2%;
 }
 
 #footer{
