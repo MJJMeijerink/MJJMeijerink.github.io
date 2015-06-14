@@ -126,7 +126,7 @@ html,body {
 .overlay img{
 	width:auto;
 	height:5%;
-	position:relative;
+	position:fixed;
 }
 
 #footer{
