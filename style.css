@@ -115,7 +115,7 @@ html,body {
     z-index: 11;
 	text-align:center;
   }
-.overlay:hover {cursor: hand; cursor: pointer;}
+.overlay img:hover {cursor: hand; cursor: pointer;}
 .overlay:target {display: block;}
 .overlay p{
 	font-size:35px;
