@@ -38,7 +38,6 @@ html,body {
 .desc a {display:inline; text-decoration:none;}
 .desc a:hover{font-weight:bold;}
 .desc p{margin-left:35%;}
-.desc img{float:right;}
 
 #map-canvas {
         height: 196px;
