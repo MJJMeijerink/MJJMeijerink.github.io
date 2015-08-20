@@ -33,7 +33,7 @@ html,body {
 	left: 40%;
 	right:5%;
 	margin-bottom:30px;
-	margin-top: 75px;
+	margin-top: 80px;
 	}
 .desc a {display:inline; text-decoration:none;}
 .desc a:hover{font-weight:bold;}
@@ -68,7 +68,7 @@ html,body {
 	display: block;
 	color: white;
 	text-align:center;
-	padding-top:10px;
+	padding-top:15px;
 	position: fixed;
 	z-index: 1;
 	}
@@ -92,7 +92,7 @@ html,body {
 	color: black;
 	font-size: 17.5px;
 	left:3.5%;
-	margin-top: 75px;
+	margin-top: 80px;
 	}
 
 #all{
