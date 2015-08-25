@@ -3,8 +3,8 @@ var prev2;
 function infoShow(x) {
 	document.getElementById('Welcome').style.display = "none";
 	document.getElementById('WelcomeID').style.fontWeight = "initial";
+	var y = document.getElementById(x);
 	if (window.innerWidth > 799) {
-		var y = document.getElementById(x);
 		y.style.display  = "initial";
 	}
 	var z = document.getElementById(x+"ID");
