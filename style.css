@@ -1,7 +1,7 @@
 /* CSS Document style.css */
 
-html, body, #container { height: 100%; }
-body > #container { height: auto; min-height: 100%; }
+html, body, #container { height: 100%; width:100%;}
+body > #container { height: auto; min-height: 100%; min-width:100%;}
 
 html,body {
 	margin: 0;
@@ -11,6 +11,7 @@ html,body {
 	}
 
 #homebut {
+	top:0;
 	margin-top:20px;
 	margin-left:20px;
 	position: fixed;
@@ -18,32 +19,48 @@ html,body {
 	}
 	
 #homebut2 {
+	top:0;
 	margin-top:20px;
 	margin-left:20px;
 	position: absolute;
 	}
-	
+
+#center{
+	width:1280px;
+	margin-left:auto;
+	margin-right:auto;
+		}
+#wrapper{
+	position:absolute;
+	margin-top:75px;
+	width:inherit;
+	display: block;
+	}
+
+#main{
+	width:40%;
+	display:inline-block;
+	vertical-align:top;
+	position:fixed;
+	}
 #main p{color:blue;}
 #main p:hover{cursor: hand; cursor: pointer;}
 
-.desc {
-	display:block;
-	width: 55%;
-	position:absolute;
-	left: 40%;
-	right:5%;
-	margin-bottom:30px;
-	margin-top: 80px;
+#desc {
+	margin-left:40%;
+	width:60%;
+	display:inline-block;
+	vertical-align:top;
 	}
-.desc a {display:inline; text-decoration:none;}
-.desc a:hover{font-weight:bold;}
-.desc p{margin-left:35%;}
+#desc a {display:inline; text-decoration:none;}
+#desc a:hover{font-weight:bold;}
+#desc p{margin-left:35%;}
 
 #map-canvas {
-        height: 196px;
-		width: 500px;
-        margin: 0px;
-        padding: 0px
+    height: 196px;
+	width: 500px;
+    margin: 0px;
+    padding: 0px
       }
 	  
 #back{
@@ -61,6 +78,7 @@ html,body {
 }
 
 #balk{
+	top:0;
 	background: black;
 	width: 100%;
 	height: 70px;
@@ -82,17 +100,6 @@ html,body {
 	color: white;
 	text-align:center;
 	padding-top:10px;
-	}
-
-
-#main{
-	width:36.5%;
-	display:block;
-	position:fixed;
-	color: black;
-	font-size: 17.5px;
-	left:3.5%;
-	margin-top: 80px;
 	}
 
 #all{
@@ -131,6 +138,7 @@ html,body {
 }
 
 #footer{
+	bottom:0;
 	text-align:center;
 	font-size: 12px;
 	background-color:black;
@@ -140,7 +148,6 @@ html,body {
 	width:100%;
     z-index: 10;
     height: 2.5em;
-    margin-top: -2.5em;
 	}
 #text {margin-top:7px;}
 
