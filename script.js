@@ -35,11 +35,16 @@ function mouseOut(x) {
 
 window.onresize = function() {
 	if (window.innerWidth<800) {
+		if (typeof prev === 'undefined'){
+			prev = document.getElementById('Welcome');
+			}
 		document.getElementById('balk').style.fontSize = '20px';
 		prev.style.display = "none"
+		document.getElementById('main').style.marginLeft = '10%';
 	}
 	else {
 		document.getElementById('balk').style.fontSize = '45px';
+		document.getElementById('main').style.marginLeft = '0%';
 		prev.style.display = "initial"
 	}
 }
