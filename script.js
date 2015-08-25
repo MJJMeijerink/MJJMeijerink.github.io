@@ -32,7 +32,7 @@ function mouseOut(x) {
 }
 
 window.onresize = function() {
-	if (window.innerWidth<555) {
+	if (window.innerWidth<800) {
 		document.getElementById('balk').style.fontSize = '20px';
 	}
 	else {
