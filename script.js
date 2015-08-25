@@ -3,8 +3,10 @@ var prev2;
 function infoShow(x) {
 	document.getElementById('Welcome').style.display = "none";
 	document.getElementById('WelcomeID').style.fontWeight = "initial";
-	var y = document.getElementById(x);
-	y.style.display  = "initial";
+	if (window.innerWidth > 799) {
+		var y = document.getElementById(x);
+		y.style.display  = "initial";
+	}
 	var z = document.getElementById(x+"ID");
 	z.style.fontWeight = "bold";
 	if (prev && prev != y) {
