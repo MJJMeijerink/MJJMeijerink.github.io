@@ -53,7 +53,7 @@ html,body {
 	vertical-align:top;
 	}
 #desc a {display:inline; text-decoration:none;}
-#desclink{font-weight:bold;}
+#desclink:hover{font-weight:bold;}
 
 #btn{
 	background: #3498db;
