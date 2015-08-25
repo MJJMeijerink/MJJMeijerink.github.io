@@ -30,3 +30,12 @@ function mouseOut(x) {
 	else if (prev2 != x)
 		{x.style.fontWeight = "initial";}
 }
+
+window.onresize = function() {
+	if (window.innerWidth<555) {
+		document.getElementById('balk').style.fontSize = '20px';
+	}
+	else {
+		document.getElementById('balk').style.fontSize = '45px';
+	}
+}
