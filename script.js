@@ -34,8 +34,10 @@ function mouseOut(x) {
 window.onresize = function() {
 	if (window.innerWidth<800) {
 		document.getElementById('balk').style.fontSize = '20px';
+		prev.style.display = "none"
 	}
 	else {
 		document.getElementById('balk').style.fontSize = '45px';
+		prev.style.display = "initial"
 	}
 }
