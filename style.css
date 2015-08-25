@@ -54,6 +54,7 @@ html,body {
 	}
 #desc a {display:inline; text-decoration:none;}
 #desc a:hover{font-weight:bold;}
+
 #btn{
 	margin-left:35%;
 	background: #3498db;
@@ -72,6 +73,15 @@ html,body {
 	text-decoration: none;
 	color:white;
 	}
+#btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
 
 #map-canvas {
     height: 196px;
