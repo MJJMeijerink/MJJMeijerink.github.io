@@ -46,8 +46,8 @@ html,body {
 #main p:hover{cursor: hand; cursor: pointer;}
 
 #desc {
-	margin-left:40%;
-	width:60%;
+	margin-left:35%;
+	width:65%;
 	display:inline-block;
 	vertical-align:top;
 	}
