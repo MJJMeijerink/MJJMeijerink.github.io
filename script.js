@@ -32,7 +32,15 @@ function mouseOut(x) {
 	else if (prev2 != x)
 		{x.style.fontWeight = "initial";}
 }
-
+/* 
+function mouseOut(x) {
+	if (typeof prev2 === 'undefined'){
+		prev2 = document.getElementById('WelcomeID');
+	}
+	if (prev2 != x)
+		{x.style.fontWeight = "initial";}
+}
+*/
 window.onresize = function() {
 	if (window.innerWidth<800) {
 		if (typeof prev === 'undefined'){
