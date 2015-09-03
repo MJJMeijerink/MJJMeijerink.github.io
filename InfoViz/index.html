@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>GDP</title>
+<link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<script type="text/javascript" src="d3.min.js"></script>
+<script type="text/javascript" src="topojson.js"></script>
+<script type="text/javascript" src="countries.js"></script>
+<script type="text/javascript" src="allCode.js"></script>
+</head>
+
+<body onload="Laterpas();">
+
+<div id="balk">
+<div id="banner">
+GDP and gross debt-­to-­income ratio of households in EU
+</div>
+</div>
+
+<div id='buttons'>
+<button onclick="color(fixedData);"> GDP Changes </button>
+<button onclick="slider();"> Debts as a percentage of GDP</button><br><br>
+</div>
+
+<script type="text/javascript">
+//Making the base of the map!
+var width = 600,
+    height = 700;
+
+var projection = d3.geo.stereographic()
+    .center([3.9, 43.0 ])
+    .scale(1000)
+    .translate([width / 4 , height / 2]); 
+
+
+var svg = d3.select('body').append("svg")
+	.attr("class", 'parent')
+    .attr("width", width)
+    .attr("height", height);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var g = svg.append("g");
+var Country = []
+// load and display the World
+d3.json("europe.json", function(error, topology) {
+    g.selectAll("path")
+      .data(topology.features)
+    .enter()
+      .append("path")
+	  .attr("class", function(d){return d.id})
+	  .attr("onmouseover", function(d){return 'outline("' + d.id + '", this)'})
+	  .attr("onmouseout", function(d){return 'outline2()'})
+      .attr("d", path)
+	  .style("stroke", "#999")
+	  .style("stroke-width", 1)
+	  .style("fill", "grey");
+	for (var i=0; i < topology.features.length; i++) {
+		var C = topology.features[i].id;
+		Country.push(C);
+	}
+});
+//Made the base of the map!
+</script>
+
+<div id="both">
+<div id="title">
+Wat hebben wij gemaakt:
+</div>
+
+<div id="textvak">
+<div id="text">
+	Voor het vak Informatie visualisatie hebben wij de opdracht GDP & Gross debt income gekregen. 
+	Voor het visualiseren hebben wij gebruik gemaakt van de kaart van Europa. Door middel van verschillende kleuren 
+	willen wij de grote van de verandering aangeven. Als de gebruiker op de eerste knop klikt wordt de verandering van het BBP per hoofd weergeven.
+	Deze verandering gaat over 2012 ten opzichte van hoe het was in 2001. Als er op de rechter knop wordt geklikt dan wordt het percentage van schuld
+	ten opzichte van het BBP per hoofd weergeven. Hierbij kan de verandering per jaar worden bekeken.
+	</div>
+	</div>
+	</div>
+</body>

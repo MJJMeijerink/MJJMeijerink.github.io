@@ -9,15 +9,10 @@ html,body {
 	font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
 
-#homebut {
-	margin-top:20px;
-	margin-left:20px;
-	position: fixed;
-}
 
 #balk{
 	background: black;
-	width: 100%;
+	width: 2000px;
 	height: 75px;
 	padding-top: 10px;
 	}
@@ -31,23 +26,79 @@ html,body {
 	height: 2px;
 	background: black;
 	}
+	
 
+#horizontalmenu{
+	margin-left: 15%;
+	margin-top: 6%;
+	position: absolute;
+}
 
-#all{
+ul
+{
+float:left;
+width:100%;
+padding:0;
+margin:0;
+list-style-type:none;
+}
+a
+{
+text-align: center;
+float:left;
+width:175px;
+text-decoration:none;
+color:white;
+background-color:#524D4D;
+padding:0.2em 0.6em;
+border-right:1px solid white;
+}
+a:hover {background-color:#ff3300;}
+li {display:inline;}
+
+#text{
 	color: black;
-	font-size: 17.5px;
-	margin-left: 40px;
-	margin-right: 40px;
-	margin-top: 20px;
+	font-size: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 5px;
 	margin-bottom: 5px;
 }
 
 
-#main{
-	text-align:center;
-	margin-top:50px;
+.parent{
+	margin-left: auto;
+	margin-right:auto;
+	display:block;
+	bottom: 0px;
+	bottom:-200px;
 }
 
+#buttons{
+	margin-top: 40px;
+	text-align:center;
+	margin-left:10%;
+	margin-right:20%;
+	display:block;
+	width:70%;
+}
+
+.extrabuttons {
+	width:600px;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#textvak {
+background-color: white;
+width: 80%;
+margin-top: 20px;
+margin-bottom: 2.5%;
+margin-left: 10%;
+margin-right: auto;
+display: block;
+}
 
 #title {
 width: 80%;
@@ -57,17 +108,11 @@ margin-top: -130px;
 margin-left: 10%;}
 
 #banner {
-text-align: center;
+text-align: left;
 text-height: 20px;
 font-size: 45px;
 display: block;
 color: white;
-width: 100%;
-}
+margin-left: 50px;
 
-#footer {
-text-align: center;
-font-size: 12px;
-margin-bottom: 10px;
-margin-top:50px;
 }
