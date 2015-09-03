@@ -15,6 +15,7 @@
 <script type="text/javascript" src="allCode.js"></script>
 
 <script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) { 
 //Making the base of the map!
 var width = 600,
     height = 700;
@@ -52,6 +53,7 @@ d3.json("europe.json", function(error, topology) {
 		var C = topology.features[i].id;
 		Country.push(C);
 	}
+});
 });
 //Made the base of the map!
 </script>
@@ -99,7 +101,7 @@ Demonstration
 </h1>
 
 <h3>What am I looking at?</h3>
-	You're looking at the GDP and gross debt-to­income ratio of households in EU.
+	You're looking at the GDP and gross debt-to-income ratio of households in the EU.
 	We decided to use a map of Europe for our visualization. Through the use of different colors we show the differences between the countries.
 	If the user presses the left button, he will see the differences in GDP per country. The colors show how the country's GDP performed from 2001-2012. 
 	Pressing the button on the right will show you the debt percentage with respect to the country's GDP. This can be seen per year.
