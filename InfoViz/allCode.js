@@ -44,7 +44,7 @@ function slideshow () {
 var clicked2 = false;
 function slider() {
 	if (!clicked2 && !clicked) {
-	d3.select('body').append('div').attr('class', 'extrabuttons');
+	d3.select('#Demo').append('div').attr('class', 'extrabuttons');
 	d3.select('.extrabuttons').append('label').style('margin-left', '30px').text('Show data for ');
 	d3.select('.extrabuttons').append('label').attr('class', 'year').attr('name', 'year').text('2002');
 	d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
@@ -74,7 +74,7 @@ function slider() {
 		d3.selectAll('.slideshow').remove();
 		clicked = false;
 		
-		d3.select('body').append('div').attr('class', 'extrabuttons');
+		d3.select('#Demo').append('div').attr('class', 'extrabuttons');
 		d3.select('.extrabuttons').append('label').style('margin-left', '30px').text('Show data of ');
 		d3.select('.extrabuttons').append('label').attr('class', 'year').attr('name', 'year').text('2002');
 		d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
@@ -83,7 +83,7 @@ function slider() {
 			.attr('name', 'slider').attr('min', '2002').attr('max', '2012')
 			.attr('onchange', 'year(this)').attr('value', '0').attr('step', '1');
 		d3.select('.extrabuttons').append('label').text('2012');
-		d3.select('.extrabuttons').append('button').attr('class', 'slideshow').attr('onclick', 'slideshow()').style('margin-left', '50px').text('slidehow');
+		d3.select('.extrabuttons').append('button').attr('class', 'slideshow').attr('onclick', 'slideshow()').style('margin-left', '50px').text('slideshow');
 		d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
 		d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
 		var y = d3.select('svg');
