@@ -56,8 +56,6 @@ function slider() {
 	d3.select('.extrabuttons').append('button').attr('class', 'slideshow').attr('onclick', 'if (!done3) {slideshow()}').style('margin-left', '50px').text('slideshow');
 	d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
 	d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
-	var y = d3.select('svg');
-	y[0][0].parentNode.appendChild(y[0][0]);
 	color2(json, 2002);
 	clicked2 = true;
 	}
@@ -84,8 +82,6 @@ function slider() {
 		d3.select('.extrabuttons').append('button').attr('class', 'slideshow').attr('onclick', 'slideshow()').style('margin-left', '50px').text('slideshow');
 		d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
 		d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
-		var y = d3.select('svg');
-		y[0][0].parentNode.appendChild(y[0][0]);
 		color2(json, 2002);
 		clicked2 = true;
 		done = false;
