@@ -26,7 +26,7 @@ var projection = d3.geo.stereographic()
     .translate([width / 4 , height / 2]); 
 
 
-var svg = d3.select('#Demo').append("svg")
+var svg = d3.select('#vis').append("svg")
 	.attr("class", 'parent')
     .attr("width", width)
     .attr("height", height);
@@ -109,7 +109,9 @@ Demonstration
 <button onclick="color(fixedData);"> GDP Changes </button>
 <button onclick="slider();"> Debts as a percentage of GDP</button>
 
-<div id = 'text'>
+<div id='vis'></div>
+
+<div id = 'text' style='margin-bottom: 100px'>
 <h3>What am I looking at?</h3>
 	You're looking at the GDP and gross debt-to-income ratio of households in the EU.
 	We decided to use a map of Europe for our visualization. Through the use of different colors we show the differences between the countries.
