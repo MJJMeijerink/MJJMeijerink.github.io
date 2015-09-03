@@ -55,11 +55,6 @@ d3.json("europe.json", function(error, topology) {
 	}
 });
 
-text = document.getElementById("text");
-parent = document.getElementById("Demo");
-
-parent.appendChild(text);
-
 d3.tsv("tec00114.tsv", function (data) {
     for (var i=0;i<data.length;i++) {
         if(data[i]["2001 "] != ": " && data[i]["2012 "] != ": "){
