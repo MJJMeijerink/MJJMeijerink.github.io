@@ -58,8 +58,6 @@ function slider() {
 	d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
 	var y = d3.select('svg');
 	y[0][0].parentNode.appendChild(y[0][0]);
-	var y2 = d3.select('#slider');
-	y2[0][0].parentNode.appendChild(y2[0][0]);
 	color2(json, 2002);
 	clicked2 = true;
 	}
@@ -88,8 +86,6 @@ function slider() {
 		d3.select('.extrabuttons').append('br').attr('class', 'tempbreak');
 		var y = d3.select('svg');
 		y[0][0].parentNode.appendChild(y[0][0]);
-		var y2 = d3.select('#slider');
-		y2[0][0].parentNode.appendChild(y2[0][0]);
 		color2(json, 2002);
 		clicked2 = true;
 		done = false;
