@@ -675,5 +675,4 @@ d3.tsv("tec00114.tsv", function (data) {
 					};						
 				})
 			})
-}
 //Data organized and cleaned
