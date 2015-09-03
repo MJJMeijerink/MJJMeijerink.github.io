@@ -1,30 +1,21 @@
 <!DOCTYPE html>
-<html>
 
+<html> 
 <head>
-<title>GDP</title>
-<link rel="stylesheet" href="style.css" />
-<meta charset="utf-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <link rel="stylesheet" href="http://mjjmeijerink.github.io/style.css" />
+<title>Jan Jaap Meijerink</title>
+
+<link rel="shortcut icon" href="http://mjjmeijerink.github.io/Design/images/icon.ico" type="image/x-icon" /> 
+
+<script src="http://mjjmeijerink.github.io/script.js"></script>
 <script type="text/javascript" src="d3.min.js"></script>
 <script type="text/javascript" src="topojson.js"></script>
 <script type="text/javascript" src="countries.js"></script>
 <script type="text/javascript" src="allCode.js"></script>
-</head>
-
-<body onload="Laterpas();">
-
-<div id="balk">
-<div id="banner">
-GDP and gross debt-­to-­income ratio of households in EU
-</div>
-</div>
-
-<div id='buttons'>
-<button onclick="color(fixedData);"> GDP Changes </button>
-<button onclick="slider();"> Debts as a percentage of GDP</button><br><br>
-</div>
 
 <script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) { 
 //Making the base of the map!
 var width = 600,
     height = 700;
@@ -35,7 +26,7 @@ var projection = d3.geo.stereographic()
     .translate([width / 4 , height / 2]); 
 
 
-var svg = d3.select('body').append("svg")
+var svg = d3.select('#vis').append("svg")
 	.attr("class", 'parent')
     .attr("width", width)
     .attr("height", height);
@@ -63,22 +54,119 @@ d3.json("europe.json", function(error, topology) {
 		Country.push(C);
 	}
 });
+
+text = document.getElementById("text");
+parent = document.getElementById("Demo");
+
+parent.appendChild(text);
+
+d3.tsv("tec00114.tsv", function (data) {
+    for (var i=0;i<data.length;i++) {
+        if(data[i]["2001 "] != ": " && data[i]["2012 "] != ": "){
+			var keys = Object.keys(data[i]);
+			var c = data[i][keys[0]].substring(19,23);
+			allData.push(data[i]);
+			dataX = parseFloat(data[i]["2001 "]);
+			dataY = parseFloat(data[i]["2012 "]);
+			Diff = dataX-dataY;
+			for (x in Country){
+				if (c === Country[x]){
+					fixedData.push([c, Diff]);
+				}
+			}
+         };
+    };
+});
+});
 //Made the base of the map!
 </script>
+</head>
 
-<div id="both">
-<div id="title">
-Wat hebben wij gemaakt:
+<body>
+<div id="container">
+<a id="homebut" href="http://mjjmeijerink.github.io/index.html">
+	<img src="home.png">
+</a>
+
+<div id="balk">
+Information Visualization
 </div>
 
-<div id="textvak">
-<div id="text">
-	Voor het vak Informatie visualisatie hebben wij de opdracht GDP & Gross debt income gekregen. 
-	Voor het visualiseren hebben wij gebruik gemaakt van de kaart van Europa. Door middel van verschillende kleuren 
-	willen wij de grote van de verandering aangeven. Als de gebruiker op de eerste knop klikt wordt de verandering van het BBP per hoofd weergeven.
-	Deze verandering gaat over 2012 ten opzichte van hoe het was in 2001. Als er op de rechter knop wordt geklikt dan wordt het percentage van schuld
-	ten opzichte van het BBP per hoofd weergeven. Hierbij kan de verandering per jaar worden bekeken.
-	</div>
-	</div>
-	</div>
+<div id='center'>
+<div id='wrapper'>
+<div id="main">
+<h1>
+Content
+</h1>
+<p style="font-weight:bold;" id="WelcomeID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Welcome');">Information Visualization</p>
+
+<p id="DemoID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Demo');">Demonstration</p>
+
+<p id="InfoID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Info');">More information</p>
+
+</div>
+
+<div id="desc">
+<div id="Info" style="display:none;">
+<h1>
+More information
+</h1>
+
+Click the link below for a report about our work during the course (Dutch).<br>
+<br>
+<br>
+<a id='btn' href='#doc'>Final Report</a>
+</div>
+
+<div id="Demo" style="display:none;">
+<h1>
+Demonstration
+</h1>
+
+<button onclick="color(fixedData);"> GDP Changes </button>
+<button onclick="slider();"> Debts as a percentage of GDP</button><br><br>
+<div id='slider'></div>
+<div id='vis'></div>
+
+<div id = 'text' style='margin-top: -160px; margin-bottom: 80px;'>
+<h3>What am I looking at?</h3>
+	You're looking at the GDP and gross debt-to-income ratio of households in the EU.
+	We decided to use a map of Europe for our visualization. Through the use of different colors we show the differences between the countries.
+	If the user presses the left button, he will see the differences in GDP per country. The colors show how the country's GDP performed from 2001-2012. 
+	Pressing the button on the right will show you the debt percentage with respect to the country's GDP. This can be seen per year.</div>
+
+
+</div>
+
+<div id="Welcome">
+<h1>
+Information visualization
+</h1>
+A very interesting course that teaches you about the importance of information visualization. <br><br>
+The tool we used was <a id='desclink' href="https://en.wikipedia.org/wiki/D3.js" target = "_blank">D3</a>.
+A very useful javascript library to make easy visualisation such as ours.
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+	 <div id="footer">
+		<div id='text'>Jan Jaap Meijerink ♦ University of Amsterdam</div>
+	 </div>
+
+<div class='overlay' id='doc'>
+<object data="D3_project_ final_report.pdf" type="application/pdf" style='margin-left:auto;' style='margin-right:auto;' width="84%" height="100%">
+ 
+  <p>It appears you don't have a PDF plugin for this browser.
+  No biggie... you can <a href="D3_project_ final_report.pdf">click here to
+  download the PDF file.</a></p>
+  
+</object>
+<a href='#_'><img src="cross.png" alt='x-button'></a>
+</div>
 </body>
+
+</html>
