@@ -32,7 +32,7 @@ function slideshow () {
 			}                        
 		}, 500)
 	}
-	if (count === 2012) {
+	if (count >= 2012) {
 		done = true;
 		done3=false;
 		return
