@@ -60,12 +60,29 @@ parent = document.getElementById("Demo");
 
 parent.appendChild(text);
 
+d3.tsv("tec00114.tsv", function (data) {
+    for (var i=0;i<data.length;i++) {
+        if(data[i]["2001 "] != ": " && data[i]["2012 "] != ": "){
+			var keys = Object.keys(data[i]);
+			var c = data[i][keys[0]].substring(19,23);
+			allData.push(data[i]);
+			dataX = parseFloat(data[i]["2001 "]);
+			dataY = parseFloat(data[i]["2012 "]);
+			Diff = dataX-dataY;
+			for (x in Country){
+				if (c === Country[x]){
+					fixedData.push([c, Diff]);
+				}
+			}
+         };
+    };
+
 });
 //Made the base of the map!
 </script>
 </head>
 
-<body onload="Laterpas();">
+<body>
 <div id="container">
 <a id="homebut" href="http://mjjmeijerink.github.io/index.html">
 	<img src="home.png">
@@ -111,7 +128,7 @@ Demonstration
 
 <div id='vis'></div>
 
-<div id = 'text' style='margin-bottom: 100px'>
+<div id = 'text' style='margin-top: -160px;'>
 <h3>What am I looking at?</h3>
 	You're looking at the GDP and gross debt-to-income ratio of households in the EU.
 	We decided to use a map of Europe for our visualization. Through the use of different colors we show the differences between the countries.

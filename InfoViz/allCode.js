@@ -544,7 +544,7 @@ var countries2 = [];
 var cleandata = [];	
 var cleandata2 = [];	
 var json = [];
-function Laterpas() {
+/*function Laterpas() {
 d3.tsv("tec00114.tsv", function (data) {
     for (var i=0;i<data.length;i++) {
         if(data[i]["2001 "] != ": " && data[i]["2012 "] != ": "){
@@ -561,7 +561,7 @@ d3.tsv("tec00114.tsv", function (data) {
 			}
          };
     };
-});
+});*/
 
 			
 			d3.tsv("tec00114.tsv", function (data) {
