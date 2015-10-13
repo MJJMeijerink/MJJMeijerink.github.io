@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="showKVR.xsl"?>
+<kvr xmlns:xs="http://www.w3.org/2001/XMLSchema" type="Antwoord" aantalvragen="3">
+   <meta><!--
+          Metadata toegevoegd door de griffie, geparsed uit Parlando.
+         --><metadata>
+         <item attribuut="Bibliografische_omschrijving">Vragen van de leden Oedayraj Singh Varma en MB Vos (beiden GroenLinks) over de genetisch gemanipuleerde tomaat Flavr Savr (Ingezonden 30 november 1994); Antwoord</item>
+         <item attribuut="Bestand">16Kb</item>
+         <item attribuut="Permalink">
+http://www.geencommentaar.nl/parlando/index.php?action=doc&amp;filename=KVR935
+</item>
+         <item attribuut="Inhoud">De vragen betreffen de toelating en produktaanduiding van de tomaat.</item>
+         <item attribuut="Rubriek">Consument (Levensmiddelen) Consument (Levensmiddelenkeuring)</item>
+         <item attribuut="Trefwoorden">Biotechnologie Groenten Levensmiddelenkeuring</item>
+         <item attribuut="Vindplaats">Kamervragen met antwoord 1994-1995, nr. 308, Tweede Kamer</item>
+         <item attribuut="Afkomstig_van">Volksgezondheid, Welzijn en Sport</item>
+         <item attribuut="Indiener">
+            <persoon partij="GroenLinks">Oedayraj Singh Varma</persoon>
+            <persoon partij="GroenLinks">M.B. Vos</persoon>
+         </item>
+         <item attribuut="Datum_reaktie">1994-12-23</item>
+         <item attribuut="Datum_indiening">1994-11-30</item>
+         <item attribuut="Document-id">KVR935</item>
+         <item attribuut="Omvang">2 pag.</item>
+      </metadata>
+      <header titel="Tweede Kamer der Staten-Generaal" kamer="2" vergaderjaar="Vergaderjaar 1994–1995" typehandeling="Aanhangsel van de Handelingen" typedoc="Vragen gesteld door de leden der Kamer, met de daarop door de regering gegeven antwoorden"/>
+      <footer firstpaginanummer="623" allpagenumbers="623 624" vetnummer="" code="" lopendefooter="Tweede Kamer, vergaderjaar 1994–1995, Aanhangsel" filenaam="" issn-nummer="ISSN 0921 - 7398" uitgever="Sdu Uitgeverij Plantijnstraat ’s-Gravenhage 1995"/>
+      <vraagdata vraagnummer="308" onderwerp="" indiendatum="1994-11-30">
+         <vrager partij="GroenLinks" oorsprong="parlement">Oedayraj Singh Varma</vrager>
+         <vrager partij="GroenLinks" oorsprong="parlement">M.B. Vos</vrager>
+         <vraagt-aan/>
+      </vraagdata>
+      <antwoorddata antwoorddatum="1994-12-23">
+         <antwoorder functie="minister" ministerie="Volksgezondheid, Welzijn en Sport">Borst-Eilers</antwoorder>
+         <mede-antwoorder>de minister van Landbouw, Natuurbeheer en Visserij</mede-antwoorder>
+      </antwoorddata>
+   </meta>
+   <vragen aantal="3">
+      <vraag nummer="1" voetnoot="1">Mag de genetisch gemanipuleerde tomaat Flavr Savr binnenkort in de Europese Unie op de markt gebracht worden, nu het Europees Patentbureau in Mu¨nchen een aanvraag daartoe heeft ingewilligd? <voetnoot nummer="1"/>
+      </vraag>
+      <vraag nummer="2">Zal toelating van deze tomaat in Nederland afhankelijk zijn van het oordeel van de Voorlopige Commissie Veiligheid Nieuwe Voedingsmiddelen? </vraag>
+      <vraag nummer="3">Mag Flavr Savr, als tot toelating wordt besloten, alleen in de handel worden gebracht als de tomaat voorzien is van een etiket waarop is aangeduid dat het produkt door genetische manipulatie is vervaardigd? Zal dit ook gelden voor produkten waarin de Flavr Savr is verwerkt? </vraag>
+      <noten afkomstig="vraag">
+         <noot nummer="1" datum="1994-11-19" bron="Agrarisch Dagblad">Agrarisch Dagblad, 19 november 1994</noot>
+      </noten>
+   </vragen>
+   <antwoorden aantal="3">
+      <antwoord nummer="1">Nee. Een besluit van het Europees Octrooibureau in Mu¨nchen staat los van de vraag of de tomaat ook in de Europese Unie in de handel mag worden gebracht. Hierbij is onder meer de toets op de milieuveiligheid van belang zoals vereist in de Richtlijn van de Europese Unie inzake het in het milieu brengen van genetisch gemodificeerde organismen (EEG/90/220) en de toets op de veiligheid voor de mens (voedselveiligheid), welke echter (nog) behoort tot de bevoegdheid van de nationale overheden. </antwoord>
+      <antwoord nummer="2">Ja. In de Warenwetregeling Nieuwe voedingsmiddelen (Stcrt. 139 van 17 juli 1993) wordt bepaald dat nieuwe voedingsmiddelen niet in de handel mogen worden gebracht tenzij hiervoor een ontheffing is verleend door de minister van Volksgezondheid, Welzijn en Sport. In Nederland wordt in deze regeling een toets op de voedselveiligheid vereist. Degene die de Flavr Savr-tomaat voor het eerst in de handel wil brengen dient dan ook een verzoek in te dienen bij de bovengenoemde Minister. Alvorens een besluit te nemen vraagt de Minister advies aan de Voorlopige Commissie Veiligheid Nieuwe voedingsmiddelen en de Adviescommissie Warenwet. </antwoord>
+      <antwoord nummer="3">In de voornoemde Warenwetregeling is een bepaling opgenomen dat voorschriften gesteld kunnen worden ten aanzien van de aanduiding en de vermeldingen van het nieuwe voedingsmiddel zodat de consument de ware aard en herkomst van het nieuwe voedingsmiddel dan wel van het produkt waarin het is verwerkt kan onderkennen. Met name op dit aspect richt het advies van de Adviescommissie Warenwet zich. In de tot nu toe afgegeven ontheffingen is de bepaling opgenomen dat het betreffende produkt van een vermelding moet zijn voorzien waaruit blijkt dat het met behulp van moderne biotechnologie is geproduceerd. Voor de terminologie, «geproduceerd met behulp van moderne biotechnologie», is gekozen omdat zij de consument informeert over de wijze van totstandbrenging van het produkt en deze de mogelijkheid geeft een bewuste keuze te maken. Het ligt in de lijn der verwachtingen dat indien een ontheffing wordt verleend aan de Flavr Savr-tomaat ook een dergelijk vereiste wordt opgenomen. In welke mate dit vereiste ook geldt voor produkten waarin deze tomaat als ingredie¨nt wordt gebruikt is nog onderwerp van discussie. In de besprekingen in het kader van een ontwerp-Verordening voor nieuwe voedingsmiddelen en nieuwe voedselingredie¨nten van de EU neemt de Nederlandse regering het standpunt in dat dit in de meeste gevallen voor de hand zal liggen. Het is echter nog niet duidelijk welke lijn de Europese Unie zal volgen. </antwoord>
+      <noten afkomstig="antwoord"/>
+   </antwoorden>
+</kvr>
