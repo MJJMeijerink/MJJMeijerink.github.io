@@ -110,11 +110,11 @@ function map() { //Function map gets called when the body is loaded (see d3map.h
 		crossHair.append('line').attr('id', 'yLine');
 		crossHair.append('circle').attr('id', 'hitCircle').attr('r', 3).style('fill', 'red');
 		crossHair.append('rect').attr('id', 'xRect').attr('class', 'tooltip')
-			.style('fill', 'white').style('stroke', 'green').style('stroke-width', '1px');
+			.style('fill', 'white').style('stroke', 'red').style('stroke-width', '1px');
 		crossHair.append('text').attr('id', 'xTooltip').attr('class', 'tooltip')
 			.style('font-family', 'Arial, "Helvetica Neue", Helvetica, sans-serif');
 		crossHair.append('rect').attr('id', 'yRect').attr('class', 'tooltip')
-			.style('fill', 'white').style('stroke', 'green').style('stroke-width', '1px');
+			.style('fill', 'white').style('stroke', 'red').style('stroke-width', '1px');
 		crossHair.append('text').attr('id', 'yTooltip').attr('class', 'tooltip')
 			.style('font-family', 'Arial, "Helvetica Neue", Helvetica, sans-serif');
 		
