@@ -147,31 +147,31 @@ function map() { //Function map gets called when the body is loaded (see d3map.h
 					var yText = (data[xIndex].temp/10).toString() + unescape('%B0') + 'C';
 					//Code below draws tooltip
 					//And makes sure tooltips move when they don't fit on the svg anymore
-					if (x < (width - 200) && y < 400 && x > 155) {
+					if (x < (width - 200) && y < (height - 100) && x > 155) {
 						crossHair.select('#xRect').attr('width', 150).attr('height', 30).attr('x', x).attr('y', y+29);
 						crossHair.select('#xTooltip').attr('x', x+10).attr('y', y+50).text(xText);
 						crossHair.select('#yRect').attr('width', 70).attr('height', 30).attr('x', x-100).attr('y', y-30);
 						crossHair.select('#yTooltip').attr('x', x-90).attr('y', y-9).text(yText);
 					}
-					else if (x >= (width - 200) && y >= 400){
+					else if (x >= (width - 200) && y >= (height - 100)){
 						crossHair.select('#xRect').attr('width', 150).attr('height', 30).attr('x', x-150).attr('y', y-121);
 						crossHair.select('#xTooltip').attr('x', x-140).attr('y', y-100).text(xText);
 						crossHair.select('#yRect').attr('width', 70).attr('height', 30).attr('x', x-100).attr('y', y-30);
 						crossHair.select('#yTooltip').attr('x', x-90).attr('y', y-9).text(yText);
 					}
-					else if (x >= (width - 200) && y < 400){
+					else if (x >= (width - 200) && y < (height - 100)){
 						crossHair.select('#xRect').attr('width', 150).attr('height', 30).attr('x', x-150).attr('y', y+29);
 						crossHair.select('#xTooltip').attr('x', x-140).attr('y', y+50).text(xText);
 						crossHair.select('#yRect').attr('width', 70).attr('height', 30).attr('x', x-100).attr('y', y-30);
 						crossHair.select('#yTooltip').attr('x', x-90).attr('y', y-9).text(yText);
 					}
-					else if (x <= 155 && y >= 400){
+					else if (x <= 155 && y >= (height - 100)){
 						crossHair.select('#xRect').attr('width', 150).attr('height', 30).attr('x', x).attr('y', y-121);
 						crossHair.select('#xTooltip').attr('x', x+10).attr('y', y-100).text(xText);
 						crossHair.select('#yRect').attr('width', 70).attr('height', 30).attr('x', x+100).attr('y', y-30);
 						crossHair.select('#yTooltip').attr('x', x+120).attr('y', y-9).text(yText);
 					}
-					else if (x <= 155 && y < 400){
+					else if (x <= 155 && y < (height - 100)){
 						crossHair.select('#xRect').attr('width', 150).attr('height', 30).attr('x', x).attr('y', y+29);
 						crossHair.select('#xTooltip').attr('x', x+10).attr('y', y+50).text(xText);
 						crossHair.select('#yRect').attr('width', 70).attr('height', 30).attr('x', x+100).attr('y', y-30);
