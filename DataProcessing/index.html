@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html> 
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <link rel="stylesheet" href="http://mjjmeijerink.github.io/style.css" />
+	  <script type="text/javascript" src="topojson.js"></script>
+	  <script type="text/javascript" src="d3.js"></script>
+	  <script type="text/javascript" src="datamaps.world.min.js"></script>
+	  <script type="text/javascript" src="d3map&line.js"></script>
+
+<title>Jan Jaap Meijerink</title>
+
+<link rel="shortcut icon" href="http://mjjmeijerink.github.io/Design/images/icon.ico" type="image/x-icon" /> 
+
+<script src="http://mjjmeijerink.github.io/script.js"></script>
+</head>
+
+<body onload='map();'>
+<div id="container">
+<a id="homebut" href="http://mjjmeijerink.github.io/index.html">
+	<img src="home.png">
+</a>
+
+<div id="balk">
+Data Processing
+</div>
+
+<div id='center'>
+<div id='wrapper'>
+<div id="main">
+<h1>
+Content
+</h1>
+<p style="font-weight:bold;" id="WelcomeID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Welcome');">Data Processing</p>
+
+<p id="MapID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Map');">D3 Map</p>
+
+<p id="LineID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Line');">D3 Line Graph</p>
+
+</div>
+
+<div id="desc">
+<div id="Line" style="display:none;">
+<h1>
+D3 Line Graph
+</h1>
+This graph shows the maximum temperatures in De Bilt (Netherlands) for 2014.
+<svg id="graph" width="800" height="400"></svg>
+</div>
+<div id="Map" style="display:none;">
+<h1>
+D3 Map
+</h1>
+This map shows the percentage of ages 65+ per country.
+<div id="mappp" width='800px' height='400px'></div>
+</div>
+<div id="Welcome">
+<h1>
+Data Processing
+</h1>
+During this course we learnt about different visualization techniques and important aspects of information visualization. With help from the D3 javascript library we made two different visualization using public data.
+<br>
+Right click: 'Save link as...' to download files.
+<br>
+<br>
+<table id ="DPTable">
+  <tr>
+    <th>
+		Data used to create the map:<br><br>
+		<a id='btn' href="ages.csv">Ages 65+ worldwide (raw data)</a><br><br><br>
+		<a id='btn' href="mapConvert.py">Script to convert data to JSON (.py)</a><br><br><br>
+		<a id='btn' href="mapData.json">Ages 65+ worldwide (JSON)</a><br>
+	</th>
+    <th>
+		Data used to create the line graph:<br><br>
+		<a id='btn' href="KNMI.txt">Max. temp. in De Bilt (Netherlands) (raw data)</a><br><br><br>
+		<a id='btn' href="lineConvert.py">Script to convert data to JSON (.py)</a><br><br><br>
+		<a id='btn' href="lineData.json">Max. temp. in De Bilt (Netherlands) (JSON)</a>
+	</th>
+  </tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+	 <div id="footer">
+		<div id='text'>Jan Jaap Meijerink ♦ University of Amsterdam</div>
+	 </div>
+
+</body>
+
+</html>
