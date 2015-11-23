@@ -35,7 +35,6 @@ html,body {
 	margin-top:95px;
 	width:inherit;
 	display: block;
-	margin-bottom:50px;
 	}
 
 #main{
@@ -51,6 +50,7 @@ html,body {
 	width:65%;
 	display:inline-block;
 	vertical-align:top;
+	margin-bottom: 50px;
 	}
 #desc a {display:inline; text-decoration:none; font-weight:normal;}
 #desclink:hover{font-weight:bold;}
