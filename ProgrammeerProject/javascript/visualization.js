@@ -42,7 +42,7 @@ function ready() { // Load SVG before doing ANYTHING
 				slider.min = 0;
 				slider.max = 2;
 			}
-			drawMap(this.id, data, slider, w, h, legend, parent);
+			drawMap(this.id, data, slider, w, h, legend, parent, false);
 			if ($('#graph').is(':visible')) {
 				back();
 			}
@@ -193,7 +193,7 @@ function getData(d, v) {
 }
 
 
-function drawMap(v, data, slider, w, h, legend, parent, slide = false){
+function drawMap(v, data, slider, w, h, legend, parent, slide){
 	if (slider.value > 1950) {
 		document.getElementById('sliderText').innerHTML = 'Year: ' + slider.value;
 	}else {
