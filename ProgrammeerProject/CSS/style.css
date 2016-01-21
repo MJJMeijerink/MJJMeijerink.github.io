@@ -4,6 +4,7 @@ html, body, #container { height: 100%; width:100%;}
 
 #container {
 	position:absolute;
+	display:table;
 	}
 
 html,body {
@@ -16,26 +17,36 @@ html,body {
 #back {
 	position:absolute;
 	right: 0;
-	margin-top: 100px;
+	margin-top: 50px;
 	}
 
 #title {
 	position: absolute;
-	margin-top:80px;
+	margin-top:10px;
 	}
 	
 #buttons {
-	margin-top: 150px;
+	margin-top: 70px;
 	font-size:12px;
 	width: 15%;
 	float:left;
 	}
 	
 #SVG {
-	margin-top:20px;
+	margin-top:-50px;
 	float:left;
 	width: 65%;
 	}
+#parent {
+	margin-top:-20px;
+	}
+#explanation {
+	position: absolute;
+	font-size: 12px;
+	width:35%;
+	margin-left:-20px;
+	text-align:right;
+}
 	
 #graph {
 	display:none;
@@ -46,7 +57,7 @@ html,body {
 #chart{
 	width: 100%;
 	height: 100%;
-	margin-top:150px;
+	margin-top:80px;
 	}
 	
 #compare {
@@ -54,12 +65,13 @@ html,body {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	float:left;
+	font-size:12px;
+	line-height:20px;
     border: solid black 1px;
     border-radius: 5px;
-    width: 20%;
+    width: 17%;
 	height: 400px;
-	margin-top:130px;
-	margin-left: -30px;
+	margin-top:70px;
 	}
 #headerText {
 	margin-top: 10px;
@@ -76,7 +88,8 @@ html,body {
 	}
 #checkboxes { margin-top: 10px;}
 .checkboxes {
-	margin-left: 50px;
+	float:right;
+	margin-right: 10px;
 	}
 .label {
 	text-align: start;
@@ -94,10 +107,16 @@ html,body {
 	}
 #submitButton {
 	padding: 3px 12px 3px 12px;
+	float:left;
+	margin-left: 10px;
+	}
+#selectAll{
+	float:right;
+	margin-top:10px;
+	margin-right:27px;
 	}
 	
 #wrapper{
-	margin-top:6px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top:auto;
@@ -106,16 +125,20 @@ html,body {
 	position:relative;
 	}
 	
+#middle {
+	vertical-align: middle;
+	display:table-cell;
+	}
+	
 #slider {
-	position:absolute;
+	position:relative;
 	width:100%;
-	margin-bottom:40px;
 	}
 #slide {
 	display:block;
 	width:100%;
 	float:left;
-	margin-top:-30px;
+	margin-top:-20px;
 	}
 input[type=range] {
   -webkit-appearance: none;
@@ -243,6 +266,32 @@ input[type=range]:focus::-ms-fill-upper {
 	position: fixed;
 	z-index: 1;
 	}
+	
+#nav-arrows{
+	position:absolute;
+	margin-top:-60px;
+}
+#arrow_left{
+	width: 30px;
+	height: 30px;
+	float:left;
+}
+#arrow_left:hover {
+	cursor:pointer;
+	width: 33px;
+	height: 33px;
+}
+#arrow_right{
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin-left: 5px;
+}
+#arrow_right:hover {
+	cursor:pointer;
+	width: 33px;
+	height: 33px;
+}
 	
 #footer{
 	bottom:0;

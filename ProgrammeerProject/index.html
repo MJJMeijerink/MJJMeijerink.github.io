@@ -17,13 +17,12 @@
 	</head>
 
 	<body onload="ready();">
-		
 		<div id="container">
 
 			<div id="balk">
 			Crime in the USA
 			</div>
-	 
+			<div id="middle">
 			<div id="wrapper">
 				<div id='buttons'>
 					<form action="">
@@ -37,8 +36,9 @@
 						<input type="radio" name="variable" class="radButton" id="Larceny-theft rate" value="Theft reports per 100,000 inhabitants"> Theft<br>
 						<input type="radio" name="variable" class="radButton" id="Motor vehicle theft rate" value="Vehicle theft reports per 100,000 inhabitants"> Vehicle theft<br>
 						<input type="radio" name="variable" class="radButton" id="Murder rate" value="Murder reports per 100,000 inhabitants"> Murder<br><br>
-						<strong>Demographics: 1976-2015</strong><br>
-						<input type="radio" name="variable" class="radButton" id="Unemployment" value="Unemployment rate %"> Unemployment<br><br>
+						<strong>Demographics</strong><br>
+						<input type="radio" name="variable" class="radButton" id="Unemployment" value="Unemployment rate %"> Unemployment: 1976-2015<br>
+						<input type="radio" name="variable" class="radButton" id="Cook PVI" value="Cook PVI"> <a target="_blank" href= "https://en.wikipedia.org/wiki/Cook_Partisan_Voting_Index">Cook PVI</a>: 1960 - 2012<br><br>
 						<strong>Weapon-possession:<br> Average for last three decades</strong><br>
 						<input type="radio" name="variable" class="radButton" id="Guns per household" value="Guns per household"> Guns per household<br><br>
 					</form>
@@ -281,6 +281,7 @@
 					   id="labels"
 					   style="font-size:3.10444403px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Sans"
 					   inkscape:connector-curvature="0"/></svg>
+					<div id="explanation"></div>
 				</div>
 				<div id="graph">
 					<div id="back">
@@ -294,49 +295,73 @@
 					<div id="header"><h3 id="headerText">Compare states</h3></div>
 					<div id="states">
 						<div id="checkboxes">
-							<form onsubmit="return makeComparison();" id="compareForm">
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-								<div class="wrap"><label><span class="label">label</span><input class="checkboxes" type="checkbox" /></label> </div>
-							</form>
+							<div class="wrap"><label class="label" id="AK"><span>Alaska</span><input value="AK" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="AL"><span>Alabama</span><input value="AL" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="AR"><span>Arkansas</span><input value="AR" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="AZ"><span>Arizona</span><input value="AZ" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="CA"><span>California</span><input value="CA" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="CO"><span>Colorado</span><input value="CO" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="CT"><span>Connecticut</span><input value="CT" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="DE"><span>Delaware</span><input value="DE" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="FL"><span>Florida</span><input value="FL" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="GA"><span>Georgia</span><input value="GA" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="HI"><span>Hawaii</span><input value="HI" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="IA"><span>Iowa</span><input value="IA" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="ID"><span>Idaho</span><input value="ID" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="IL"><span>Illinois</span><input value="IL" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="IN"><span>Indiana</span><input value="IN" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="KS"><span>Kansas</span><input value="KS" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="KY"><span>Kentucky</span><input value="KY" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="LA"><span>Louisiana</span><input value="LA" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="MA"><span>Massachusetts</span><input value="MA" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="MD"><span>Maryland</span><input value="MD" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="ME"><span>Maine</span><input value="ME" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="MI"><span>Michigan</span><input value="MI" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="MN"><span>Minnesota</span><input value="MN" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="MO"><span>Missouri</span><input value="MO" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="MS"><span>Mississippi</span><input value="MS" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="MT"><span>Montana</span><input value="MT" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="NC"><span>North Carolina</span><input value="NC" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="ND"><span>North Dakota</span><input value="ND" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="NE"><span>Nebraska</span><input value="NE" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="NH"><span>New Hampshire</span><input value="NH" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="NJ"><span>New Jersey</span><input value="NJ" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="NM"><span>New Mexico</span><input value="NM" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="NV"><span>Nevada</span><input value="NV" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="NY"><span>New York</span><input value="NY" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="OH"><span>Ohio</span><input value="OH" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="OK"><span>Oklahoma</span><input value="OK" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="OR"><span>Oregon</span><input value="OR" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="PA"><span>Pennsylvania</span><input value="PA" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="RI"><span>Rhode Island</span><input value="RI" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="SC"><span>South Carolina</span><input value="SC" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="SD"><span>South Dakota</span><input value="SD" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="TN"><span>Tennessee</span><input value="TN" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="TX"><span>Texas</span><input value="TX" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="UT"><span>Utah</span><input value="UT" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="VA"><span>Virginia</span><input value="VA" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="VT"><span>Vermont</span><input value="VT" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="WA"><span>Washington</span><input value="WA" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="WI"><span>Wisconsin</span><input value="WI" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="WV"><span>West Virginia</span><input value="WV" class="checkboxes" type="checkbox" /></label> </div>
+							<div class="wrap"><label class="label" id="WY"><span>Wyoming</span><input value="WY" class="checkboxes" type="checkbox" /></label> </div>
 						</div>
 					</div>
 					<div id="buttonWrap">
-						<button type="submit" form="compareForm" value="Submit" id="submitButton">Compare</button>
+						<button value="Submit" id="submitButton">Compare</button>
 					</div>
+					<input id="selectAll" type="checkbox" />
 				</div>
 				<div id="slide">
-					<strong id="sliderText">Year</strong><br><br>
+					<strong id="sliderText">Year</strong>
+					<div id='nav-arrows'>
+						<img id='arrow_left' onclick="navigateSlider('left')" src="arrow_left.png">
+						<img id='arrow_right' onclick="navigateSlider('right')"src="arrow_right.png">
+					</div>
+					<br><br>
 					<input type="range" id="slider" name="year" min="0" max="0">
 				</div>
+			</div>
 			</div>
 		</div>
 

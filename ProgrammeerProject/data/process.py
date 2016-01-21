@@ -57,78 +57,86 @@ states = {
 }
 
 data = {}
-data['states'] = []
+
 for state in states.iteritems():
-    data['states'].append({'name': state[1], 'abbr': state[0]})
+    data[state[1]] = {}
+    data[state[1]]['Name'] = state[0]
+
 
 with open('unemployment.csv','r') as f:
+    for entry in data:
+        data[entry]['Unemployment'] = {}
     for line in f.readlines():
         line = line.strip('\n ').split(',')
         line = filter(None, line)
         if len(line) == 1:
-            x = []
-            name = line[0]
+            name = line[0] 
         elif len(line) > 1:
             line = [line[0]] + map(float, line[1:])
-            x.append(round(sum(line[1:]) / float(len(line[1:])), 2))
-        for state in data['states']:
-            if state['name'] == name:
-                state['Unemployment'] = x
+            data[name]['Unemployment'][int(line[0])] = round(sum(line[1:]) / float(len(line[1:])), 2)
 
 with open('CrimeStatebyState.csv', 'r') as f:
+    addedCat = False
     for line in f.readlines():
         line = line.strip('\n ').split(',')
         line = filter(None, line)
-        if len(line) == 1:
-            l1 = []
-            l2 = []
-            l3 = []
-            l4 = []
-            l5 = []
-            l6 = []
-            l7 = []
-            l8 = []
-            l9 = []
-            l10 = []
+        if 'Year' in line and not addedCat:
+            addedCat = True
+            for var in line:
+                if 'Population' in var or 'rate' in var:
+                    for entry in data:
+                        data[entry][var] = {}
+        elif len(line) == 1:
             name = line[0]
         elif line:
             if line[0] != 'Year' and len(line) > 1:
-                l1.append(int(line[1]))
-                l2.append(float(line[11]))
-                l3.append(float(line[12]))
-                l4.append(float(line[13]))
-                l5.append(float(line[14]))
-                l6.append(float(line[15]))
-                l7.append(float(line[16]))
-                l8.append(float(line[17]))
-                l9.append(float(line[18]))
-                l10.append(float(line[19]))
-        for state in data['states']:
-            if state['name'] == name:
-                state['Population'] = l1
-                state['Violent Crime rate'] = l2
-                state['Murder rate'] = l3
-                state['Forcible rape rate'] = l4
-                state['Robbery rate'] = l5
-                state['Aggravated assault rate'] = l6
-                state['Property crime rate'] = l7
-                state['Burglary rate'] = l8
-                state['Larceny-theft rate'] = l9
-                state['Motor vehicle theft rate'] = l10
+                data[name]['Population'][int(line[0])] = int(line[1])
+                data[name]['Violent Crime rate'][int(line[0])] = float(line[11])
+                data[name]['Murder rate'][int(line[0])] = float(line[12])
+                data[name]['Forcible rape rate'][int(line[0])] = float(line[13])
+                data[name]['Robbery rate'][int(line[0])] = float(line[14])
+                data[name]['Aggravated assault rate'][int(line[0])] = float(line[15])
+                data[name]['Property crime rate'][int(line[0])] = float(line[16])
+                data[name]['Burglary rate'][int(line[0])] = float(line[17])
+                data[name]['Larceny-theft rate'][int(line[0])] = float(line[18])
+                data[name]['Motor vehicle theft rate'][int(line[0])] = float(line[19])
 
 with open('Guns.csv', 'r') as f:
+    addedCat = False
     for line in f.readlines():
         line = line.strip('\n ').split(',')
         line = filter(None, line)
-        if len(line) == 1:
-            l1 = []
+        if 'year' in line and not addedCat:
+            addedCat = True
+            for entry in data:
+                data[entry]['Guns per household'] = {}
+        elif len(line) == 1:
             name = line[0]
         elif line[0] != 'year' and len(line) > 1:
-                l1.append(float(line[1]))
-        for state in data['states']:
-            if state['name'] == name:
-                state['Guns per household'] = l1
+            if line[0] == '1981':
+                data[name]['Guns per household'][line[0] + ' - 1990'] = float(line[1])
+            elif line[0] == '1991':
+                data[name]['Guns per household'][line[0] + ' - 2000'] = float(line[1])
+            elif line[0] == '2001':    
+                data[name]['Guns per household'][line[0] + ' - 2010'] = float(line[1])
 
-     
+
+with open('PVI.csv', 'r') as f:
+    addedCat = False
+    for line in f.readlines():
+        line = line.strip('\n ').split(',')
+        line = filter(None, line)
+        if 'Year' in line and not addedCat:
+            addedCat = True
+            years = line[1:]
+            for entry in data:
+                data[entry]['Presidential election statistics'] = {}
+                for year in line[1:]:
+                    data[entry]['Presidential election statistics'][int(year)] = 0
+        if 'Year' not in line:
+            name = line[0]
+            for x in range(len(line[1:])):
+                data[name]['Presidential election statistics'][int(years[x])] = float(line[1:][x])
+                     
 jsonfile = open('data.json', 'w')
 json.dump([data], jsonfile)
