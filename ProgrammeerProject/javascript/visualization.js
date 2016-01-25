@@ -1,7 +1,7 @@
 var barChart;
 function ready() { // Load SVG before doing ANYTHING
 
-	if (window.innerHeight<650) { // If visualization is loaded on a small screen, make the graph smaller so it still fits
+	if (window.innerHeight<600) { // If visualization is loaded on a small screen, make the graph smaller so it still fits
 		document.getElementById('graph').style.height = '350px';
 		document.getElementById('graph').style.marginTop = '50px';
 	}
