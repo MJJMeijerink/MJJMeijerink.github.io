@@ -1,160 +1,157 @@
 ﻿<!DOCTYPE html>
 
 <html> 
-<head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	  <link rel="stylesheet" href="http://mjjmeijerink.github.io/style.css" />
-<title>Jan Jaap Meijerink</title>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	    <link rel="stylesheet" href="http://mjjmeijerink.github.io/style.css" />
+		<title>Jan Jaap Meijerink</title>
 
-<link rel="shortcut icon" href="http://mjjmeijerink.github.io/Design/images/icon.ico" type="image/x-icon" /> 
+		<link rel="shortcut icon" href="http://mjjmeijerink.github.io/Design/images/icon.ico" type="image/x-icon" /> 
 
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+		<script src="http://mjjmeijerink.github.io/script.js"></script>
 
-<script src="http://mjjmeijerink.github.io/script.js"></script>
+		<script>
+		function initialize() {
+		    var myLatlng2= new google.maps.LatLng(52.3550506, 4.9509669);
+		    var mapOptions = {
+				zoom: 6,
+				center: myLatlng2
+		    }
+		    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-<script>
-function initialize() {
-  var myLatlng2= new google.maps.LatLng(52.3550506, 4.9509669);
-  var mapOptions = {
-    zoom: 6,
-    center: myLatlng2
-  }
-  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		    var marker2 = new google.maps.Marker({
+			    position: myLatlng2,
+			    map: map,
+			    title: 'Universiteit van Amsterdam'
+		    });
+		}
 
-  var marker2 = new google.maps.Marker({
-	  position: myLatlng2,
-	  map: map,
-	  title: 'Universiteit van Amsterdam'
-  });
-}
+		google.maps.event.addDomListener(window, 'load', initialize);
 
-google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
 
-</script>
+	</head>
 
-</head>
+	<body>
+		<div id="container">
+			<a id="homebut" href="index.html" title="Home">
+				<img src="home.PNG">
+			</a>
 
-<body>
-<div id="container">
-<a id="homebut" href="index.html" title="Home">
-	<img src="home.PNG">
-</a>
+			<div id="balk">
+				Jan Jaap Meijerink
+			</div>
 
-<div id="balk">
-Jan Jaap Meijerink
-</div>
+			<div id='center'>
+				<div id='wrapper'>
+					<div id="main">
+						<h1>
+							Website Content
+						</h1>
 
-<div id='center'>
-<div id='wrapper'>
-<div id="main">
-<h1>
-Website Content
-</h1>
+						<p style="font-weight:bold;" id="WelcomeID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Welcome');">Welcome</p>
 
-<p style="font-weight:bold;" id="WelcomeID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Welcome');">Welcome</p>
+						<p id="SemWebID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('SemWeb');">Semantic Web</p>
 
-<p id="SemWebID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('SemWeb');">Semantic Web</p>
+						<p id="DesignID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Design');">Multimediaontwerpproject en Interactieontwerp</p>
 
-<p id="DesignID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Design');">Multimediaontwerpproject en Interactieontwerp</p>
+						<p id="ProgrammerenID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Programmeren');">Programmeren IK</p>
 
-<p id="ProgrammerenID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Programmeren');">Programmeren IK</p>
+						<p id="OvisID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Ovis');">Onderzoek van Interactieve Systemen</p>
 
-<p id="OvisID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('Ovis');">Onderzoek van Interactieve Systemen</p>
+						<p id="IVID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('IV');">Information Visualization</p>
 
-<p id="IVID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('IV');">Information Visualization</p>
+						<p id="DPID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('DP');">Data Processing</p>
 
-<p id="DPID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('DP');">Data Processing</p>
+						<p id="PPID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('PP');">Programming Project</p>
+					</div>
 
-<p id="PPID" onmouseover="mouseIn(this);" onmouseout="mouseOut(this);" onclick="infoShow('PP');">Programming Project</p>
-</div>
+					<div id="desc">
+						<div id="SemWeb" style="display:none;">
+							<h1>
+								Semantic Web
+							</h1>
+							This project is about the Semantic Web, the goal was to create a Semantic application.<br>
+							A <a id='desclink' href="http://en.wikipedia.org/wiki/Semantic_Web" target = "_blank">Semantic Web</a> application uses data from the web, that data is in organized in <a href= "http://www.w3.org/RDF/" target="_blank">RDF format</a>. During this project we collected data from <a id='desclink' href="http://dbpedia.org/About" target = "_blank">dbpedia.org</a>, we put that together in a <a id='desclink' href="http://www.w3.org/TeamSubmission/turtle/" target="_blank">turtle file</a> and used it to make an application that is supposed to help gamers choose their games.<br> <br><br> <a id='btn' href="SemWeb/index.html">This is a prototype</a>
+						</div>
+						<div id="Design" style="display:none;">
+							<h1>
+								Multimediaontwerpproject en Interactieontwerp
+							</h1>
+							Multimediaontwerpproject en Interactieontwerp is a course to do with designing websites and applications. In the link below you will find a whole seperate website, it contains a project for the zoo <a id='desclink' href="http://www.artis.nl/" target = "_blank">Artis</a> and a lot of seperate exercises.<br> <br><br> <a id='btn' href="Design/index.html">Go to website</a>
+						</div>
+						<div id="Welcome">
+							<h1>
+								Welcome
+							</h1>
+							Hello and welcome to my website. <br>
+							My name is Jan Jaap and I'm a student at the University of Amsterdam. <br>
+							I love gaming, computers, reading, movies, music and sports. <br><br>
+							<div id="map-canvas"></div><br>
+							This website's content consists of projects I have done during my study: Information Sciences. The main goal of this website is documenting for future entertainment.<br>
+							<!-- Facebook Badge START --> <br><a style="float:left; position:relative;" href="https://www.facebook.com/janjaap.meijerink" title="Jan Jaap Meijerink" target="_TOP"><img class="img" src="https://badge.facebook.com/badge/100001247850273.2925.1427726984.png" style="border: 0px;" alt="" /></a><!-- Facebook Badge END --><br>
+							<a style="float:left; position:relative; margin-left:80px" href="https://nl.linkedin.com/pub/jan-jaap-meijerink/b3/30a/467">
+							    <img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_myprofile_160x33.png" width="160" height="33" border="0" alt="View Jan Jaap Meijerink's profile on LinkedIn">	
+							</a>
+						</div>
+						<div id="Programmeren" style="display:none;">
+							<h1>
+								Programmeren IK
+							</h1>
+								During this course you learn the basics of programming using Python. More information: <a id='desclink' href="http://studiegids.uva.nl/xmlpages/page/2015-2016/zoek-vak/vak/19798" target="_blank">UvA Programmeren IK</a>. At the end of this course we were asked to code a small game, called Tower of Hanoi. For more information click the link below. <br>
+							<br>
+							<br>
+							<a id='btn' href="Programmeren/index.html">Programmeren IK</a>
+						</div>
+						<div id="Ovis" style="display:none;">
+							<h1>
+								Onderzoek van Interactieve Systemen
+							</h1>
+								English: Research of Interactive Systems<br>
+								During this course we learned about interactive systems (robots, games, etc.). The final exercise was a paper about an interactive system you researched. The link below will take you to the paper and more information about our subject.<br>
+							<br>
+							<br>
+							<a id='btn' href="OvIS/index.html">Onderzoek van Interactieve Systemen</a>
+						</div>
+						<div id="IV" style = "display:none;">
+							<h1>
+								Information Visualization
+							</h1>
+							This course taught me how to correctly visualize digital data using javascript. On the webpage you will find a demonstration and a report about our activities during the course.<br>
+							<br>
+							<br>
+							<a id='btn' href="InfoViz/index.html">Information Visualization</a>
+						</div>
+						<div id="DP" style = "display:none;">
+							<h1>
+								Data Processing
+							</h1>
+							Similar to information visualization this course taught us how to visualize digital data. Additionally we learnt about important aspects of information visualization and data processing. On this page you will find two visualizations, their raw data and the scripts to convert the raw data to usable JSON format.<br>
+							<br>
+							<br>
+							<a id='btn' href="DataProcessing/index.html">Data Processing</a>
+						</div>
+						<div id="PP" style = "display:none;">
+							<h1>
+								Programming project
+							</h1>
+							This course was a programming project. In four weeks we had to program a visualization of our own choice. This is the result.<br>
+							<br>
+							<br>
+							<a id='btn' target="_blank" href="ProgrammeerProject/index.html">Working demo</a>
+							<a id='btn' target="_blank" href="https://github.com/MJJMeijerink/Programmeerproject.git">Git hub repository</a>
+						</div>
+					</div>
+				</div>
+			</div>
 
-<div id="desc">
-<div id="SemWeb" style="display:none;">
-<h1>
-Semantic Web
-</h1>
-This project is about the Semantic Web, the goal was to create a Semantic application.<br>
-A <a id='desclink' href="http://en.wikipedia.org/wiki/Semantic_Web" target = "_blank">Semantic Web</a> application uses data from the web, that data is in organized in <a href= "http://www.w3.org/RDF/" target="_blank">RDF format</a>. During this project we collected data from <a id='desclink' href="http://dbpedia.org/About" target = "_blank">dbpedia.org</a>, we put that together in a <a id='desclink' href="http://www.w3.org/TeamSubmission/turtle/" target="_blank">turtle file</a> and used it to make an application that is supposed to help gamers choose their games.<br> <br><br> <a id='btn' href="SemWeb/index.html">This is a prototype</a>
-</div>
-<div id="Design" style="display:none;">
-<h1>
-Multimediaontwerpproject en Interactieontwerp
-</h1>
-Multimediaontwerpproject en Interactieontwerp is a course to do with designing websites and applications. In the link below you will find a whole seperate website, it contains a project for the zoo <a id='desclink' href="http://www.artis.nl/" target = "_blank">Artis</a> and a lot of seperate exercises.<br> <br><br> <a id='btn' href="Design/index.html">Go to website</a>
-</div>
-<div id="Welcome">
-<h1>
-Welcome
-</h1>
-Hello and welcome to my website. <br>
-My name is Jan Jaap and I'm a student at the University of Amsterdam. <br>
-I love gaming, computers, reading, movies, music and sports. <br><br>
-<div id="map-canvas"></div><br>
-This website's content consists of projects I have done during my study: Information Sciences. The main goal of this website is documenting for future entertainment.<br>
-<!-- Facebook Badge START --> <br><a style="float:left; position:relative;" href="https://www.facebook.com/janjaap.meijerink" title="Jan Jaap Meijerink" target="_TOP"><img class="img" src="https://badge.facebook.com/badge/100001247850273.2925.1427726984.png" style="border: 0px;" alt="" /></a><!-- Facebook Badge END --><br>
-<a style="float:left; position:relative; margin-left:80px" href="https://nl.linkedin.com/pub/jan-jaap-meijerink/b3/30a/467">
-      
-          <img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_myprofile_160x33.png" width="160" height="33" border="0" alt="View Jan Jaap Meijerink's profile on LinkedIn">
-        
-    </a>
-</div>
-<div id="Programmeren" style="display:none;">
-<h1>
-Programmeren IK
-</h1>
-During this course you learn the basics of programming using Python. More information: <a id='desclink' href="http://studiegids.uva.nl/xmlpages/page/2015-2016/zoek-vak/vak/19798" target="_blank">UvA Programmeren IK</a>. At the end of this course we were asked to code a small game, called Tower of Hanoi. For more information click the link below. <br>
-<br>
-<br>
-<a id='btn' href="Programmeren/index.html">Programmeren IK</a>
-</div>
-<div id="Ovis" style="display:none;">
-<h1>
-Onderzoek van Interactieve Systemen
-</h1>
-English: Research of Interactive Systems<br>
-During this course we learned about interactive systems (robots, games, etc.). The final exercise was a paper about an interactive system you researched. The link below will take you to the paper and more information about our subject.<br>
-<br>
-<br>
-<a id='btn' href="OvIS/index.html">Onderzoek van Interactieve Systemen</a>
-</div>
-<div id="IV" style = "display:none;">
-<h1>
-Information Visualization
-</h1>
-This course taught me how to correctly visualize digital data using javascript. On the webpage you will find a demonstration and a report about our activities during the course.<br>
-<br>
-<br>
-<a id='btn' href="InfoViz/index.html">Information Visualization</a>
-</div>
-<div id="DP" style = "display:none;">
-<h1>
-Data Processing
-</h1>
-Similar to information visualization this course taught us how to visualize digital data. Additionally we learnt about important aspects of information visualization and data processing. On this page you will find two visualizations, their raw data and the scripts to convert the raw data to usable JSON format.<br>
-<br>
-<br>
-<a id='btn' href="DataProcessing/index.html">Data Processing</a>
-</div>
-<div id="PP" style = "display:none;">
-<h1>
-Programming project
-</h1>
-This course was a programming project. In four weeks we had to program a visualization of our own choice. This is the result.<br>
-<br>
-<br>
-<a id='btn' target="_blank" href="ProgrammeerProject/index.html">Working demo</a>
-<a id='btn' target="_blank" href="https://github.com/MJJMeijerink/Programmeerproject.git">Git hub repository</a>
-</div>
-</div>
-</div>
-</div>
+		</div>
 
-</div>
+		<div id="footer">
+			<div id='text'>Jan Jaap Meijerink ♦ University of Amsterdam</div>
+		</div>
 
-	 <div id="footer">
-		<div id='text'>Jan Jaap Meijerink ♦ University of Amsterdam</div>
-	 </div>
-
-</body>
+	</body>
 
 </html>
