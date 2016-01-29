@@ -237,6 +237,7 @@ function goTo(variables, state, data, slider) {  // Changes view when a graph ha
 			});
 		}
 	}else alert('Please select a variable to visualize.');
+}
 
 function back() {                              // Go back to initial view with just the map
 	$( "#graph" ).fadeOut(400, function() {
