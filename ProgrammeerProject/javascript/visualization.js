@@ -201,25 +201,26 @@ function ready() { // Load SVG before doing ANYTHING
 }
 
 function goTo(variables, state, data, slider) {  // Changes view when a graph has to be drawn
-	if (!$('#graph').is(':visible')) {
-		var parent = document.getElementById("graph"); 
-		var canvas = document.createElement('canvas');
-		canvas.id = 'chart';
-		parent.appendChild(canvas);								// Append or reset canvas when necessary
-	}else {
-		var parent = document.getElementById('graph');
-		var canvas = document.getElementById('chart');   
-		parent.removeChild(canvas);
-		var parent = document.getElementById("graph");
-		var canvas = document.createElement('canvas');
-		canvas.id = 'chart';
-		parent.appendChild(canvas);
-	}
 	for (x in variables) {
 		if (document.getElementById(variables[x]).checked) {
 			variable = document.getElementById(variables[x])
 		}
-	}if (typeof(variable) != 'undefined') {
+	}
+	if (typeof(variable) != 'undefined') {	
+		if (!$('#graph').is(':visible')) {
+			var parent = document.getElementById("graph"); 
+			var canvas = document.createElement('canvas');
+			canvas.id = 'chart';
+			parent.appendChild(canvas);								// Append or reset canvas when necessary
+		}else {
+			var parent = document.getElementById('graph');
+			var canvas = document.getElementById('chart');   
+			parent.removeChild(canvas);
+			var parent = document.getElementById("graph");
+			var canvas = document.createElement('canvas');
+			canvas.id = 'chart';
+			parent.appendChild(canvas);
+		}
 		if ($('#graph').is(':visible')) {         // No animations when the graph is already visible
 			if (typeof(state) != 'string'){       // Check whether we have to make a line- or barchart
 				canvas.value = 'bar';
@@ -236,7 +237,6 @@ function goTo(variables, state, data, slider) {  // Changes view when a graph ha
 			});
 		}
 	}else alert('Please select a variable to visualize.');
-}
 
 function back() {                              // Go back to initial view with just the map
 	$( "#graph" ).fadeOut(400, function() {
