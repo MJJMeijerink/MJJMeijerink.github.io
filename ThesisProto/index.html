@@ -1,13 +1,17 @@
 <html ng-app="EsConnector">
   <head>
+	<title>Thesis</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<script src="data/stopwords.js"></script>
 	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="javascript/d3.layout.cloud.js"></script>
+	<script type="text/javascript" src="javascript/word-cloud.js"></script>
 	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 	<script src="javascript/plotly.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-sanitize.js"></script>
     <script src="javascript/elasticsearch.angular.js"></script>
-    <script src="javascript/es_connect.js"></script>
+    <script src="javascript/script.js"></script>
 	<script src="javascript/rzslider.js"></script>
 	<script src="javascript/ttip.js"></script>
 	
@@ -16,85 +20,112 @@
 	
   </head>
   <body>
-	<div id="container">
-		<div ng-controller="QueryController">
-
+	<div ng-controller="QueryController">
+		<div id="banner">
+			<button ng-click="changeIndex('troonredes')" class="button">Troonrede</button>
+			<button ng-click="changeIndex('unions')" class="button">State of the Union</button>
+		</div>
+	
+		<div id="container">
 		  <!-- The search box puts the term into $scope.searchTerm
 			   and calls $scope.search() on submit -->
-		  <section class="searchField">
-			<form ng-submit="search()">
-			  <input type="text" ng-model="searchTerm">
-			  <input type="submit" value="Search for troonredes"><br><br>
-			  <b>Speakers:</b>
-			    <label ng-repeat="speaker in speakers">
-				  <input
-					type="checkbox"
-					name="selectedSpeakers[]"
-					value="{{speaker}}"
-					class="checkboxes"
-					ng-checked="selectedSpeakers.indexOf(speaker) > -1"
-					ng-click="toggleSelection(speaker)"> 
-					{{speaker}}
-				</label>
-			</form>
-		  </section>
-		
-		<div class="order">
-			<b>Order by: </b><select ng-change="changeOrder(selectedOrder)" ng-model="selectedOrder" ng-options="x for x in orderBy"></select>
-		</div>
-
-		<rzslider rz-slider-model="slider.minValue"
-			  rz-slider-high="slider.maxValue"
-			  rz-slider-options="slider.options"></rzslider>
-			  
-		  <section class="results">
-			<div class="no-results" ng-hide="results.length" ng-cloak>No results</div>
+			<div id="titleText">{{selectedIndex}}</div>
+			<section class="searchField">
+				<form ng-submit="search()">
+				  <input id="searchBar" type="text" ng-model="searchTerm" placeholder="Search query...">
+				  <input type="submit" value="Search"><br><br>
+				</form>
+			</section>
 			
-			<div id="results"> 
-				
+			<button ng-click="drawCloud();" class="selectionBut">&#x2193; Word cloud &#x2193;</button>
+			<div id="wordCloud">
+				<div id="word">
+				</div>
 			</div>
-			<article class="result" ng-repeat="result in results" ng-cloak>
-			  <div id="modal{{result.id}}" class="modal">
-				  <div class="modal-content">
-					<span id="close{{result.id}}" class="close">x</span>
-				    <h2>
-						Troonrede van {{result.year}} - {{result.speaker}}
-				    </h2>
-					<h1>Highlights</h1>
-					<div class="slide" ng-repeat="high in result.highlight">
-						...<span ng-bind-html="high | unsafe">
-							{{high}}
-						</span>...
-					</div><br>
-					<h1>Facts</h1>
-					<table class="tg">
-					  <tr>
-						<th class="tg-n1xd">Words</th>
-						<th class="tg-yw4l">{{result.totalWords}}</th>
-						<th class="tg-yzt1">Year</th>
-						<th class="tg-yw4l">{{result.year}}</th>
-					  </tr>
-					  <tr>
-						<td class="tg-n1xd">Sentences</td>
-						<td class="tg-yw4l">{{result.sentences.length}}</td>
-						<td class="tg-yzt1">Speaker</td>
-						<td class="tg-yw4l">{{result.speaker}}</td>
-					  </tr>
-					</table><br><br><br>
-					<h1 style="margin:0">Full text</h1>
-					<span style="white-space: pre-line; line-height:22px;" >
-						{{result.text.trim()}}
-					</span>
-				  </div>
+			
+			<button class="selectionBut">Search results</button>
+			<div id="selectSpeakers">
+			  <div id="header">
+				<h3 id="headerText">Speakers:</h3>
 			  </div>
-			</article>
-
-			<!-- We put a link that calls $scope.loadMore to load more recipes
-				 and append them to the results.-->
-			<div class="load-more" ng-hide="allResults" ng-cloak>
-			  <a ng-click="loadMore()">Load more...</a>
+				<div id="speakers">
+					<div id="checkboxes">
+						<div class="wrap" ng-repeat="speaker in speakers">
+						<label class="label">
+						  {{speaker}}
+						  <input
+							type="checkbox"
+							name="selectedSpeakers[]"
+							value="{{speaker}}"
+							class="checkboxes"
+							ng-checked="selectedSpeakers.indexOf(speaker) > -1"
+							ng-click="toggleSelection(speaker)"> 
+						</label>
+						</div>
+					</div>
+				</div>
 			</div>
-		  </section>
+		
+			<div id="slider">
+				<rzslider rz-slider-model="slider.minValue"
+				  rz-slider-high="slider.maxValue"
+				  rz-slider-options="slider.options"></rzslider>
+			</div>
+			
+			<div class="order">
+				<b>Order by: </b>
+				<select ng-change="changeOrder(selectedOrder)" ng-model="selectedOrder" ng-options="x for x in orderBy">
+					<option value=''>Relevance</option>
+				</select>
+			</div>
+			
+	
+			<section class="results">
+				<div class="no-results" ng-hide="results.length" ng-cloak>No results</div>
+				
+				<div id="results"> 
+					
+				</div>
+				<article class="result" ng-repeat="result in results" ng-cloak>
+				  <div id="modal{{result.id}}" class="modal">
+					  <div class="modal-content">
+						<span id="close{{result.id}}" class="close">x</span>
+						<h2>
+							{{result.title}} - {{result.speaker}}
+						</h2>
+						<h1>Highlights</h1>
+						<div class="slide" ng-repeat="high in result.highlight">
+							...<span ng-bind-html="high | unsafe">
+								{{high}}
+							</span>...
+						</div><br>
+						<h1>Facts</h1>
+						<table class="tg">
+						  <tr>
+							<th class="tg-n1xd">Words</th>
+							<th class="tg-yw4l">{{result.totalWords}}</th>
+							<th class="tg-yzt1">Year</th>
+							<th class="tg-yw4l">{{result.year}}</th>
+						  </tr>
+						  <tr>
+							<td class="tg-n1xd">Sentences</td>
+							<td class="tg-yw4l">{{result.sentences.length}}</td>
+							<td class="tg-yzt1">Speaker</td>
+							<td class="tg-yw4l">{{result.speaker}}</td>
+						  </tr>
+						</table><br><br><br>
+						<h1 style="margin:0">Full text</h1>
+						<div class="fullText" ng-bind-html="result.html | unsafe">
+							{{result.html}}
+						</div>
+					  </div>
+				  </div>
+				</article>
+
+				<div class="load-more" ng-hide="allResults" ng-cloak>
+				  <a ng-click="loadMore()">Load more...</a>
+				</div>
+			</section>
 		  </div>
 	  </div>
 </body>

@@ -5,31 +5,104 @@ window.EsConnector = angular.module('EsConnector', ['elasticsearch', 'ngSanitize
 
 EsConnector.controller('QueryController', ['es', '$location', '$scope', function(results, $location, $scope) {
 	
+	if (window.innerWidth < 1000) {
+		document.getElementById('container').style.width  = "804px";
+		document.getElementById('slider').style.width = "450px";
+	}else if (window.innerWidth < 1140) {
+		document.getElementById('container').style.width  = "1024";
+		document.getElementById('slider').style.width = "650px";
+	}
+
+	$scope.index = 'troonredes';
+	$scope.type = 'troonrede';
+	$scope.selectedIndex = 'Troonredes'
+	$scope.changeIndex = function(index) {
+		document.getElementsByClassName('no-results')[0].style.visibility = 'hidden';
+		document.getElementsByClassName('load-more')[0].style.visibility = 'hidden';
+		var res = document.getElementById('results');
+		while (res.firstChild) {
+			res.removeChild(res.firstChild);
+		}
+		$scope.page = 0;
+		$scope.results = [];
+		$scope.allResults = false;
+		$scope.speakers = [];
+		if (index == 'unions') {
+			$scope.selectedIndex = 'State of the Union Adresses'
+			$scope.index = index;
+			$scope.type = 'union';
+			results.info($scope.index).then(function(results) {
+				var minVal = results.min_value;
+				var maxVal = results.max_value;
+				$scope.slider = {
+					minValue: minVal,
+					maxValue: maxVal,
+					options: {
+						floor: minVal,
+						ceil: maxVal,
+						step: 1
+					}
+				};
+			});
+			results.getSpeakers($scope.index).then(function(results){
+				for (var ii = 0; ii < results.length; ii++) {
+						$scope.speakers.push(results[ii]);
+					}
+				$scope.selectedSpeakers = $scope.speakers.slice();
+			});
+		}
+		else if (index == 'troonredes'){
+			$scope.selectedIndex = 'Troonredes'
+			$scope.index = index;
+			$scope.type = 'troonrede';
+			results.info($scope.index).then(function(results) {
+				var minVal = results.min_value;
+				var maxVal = results.max_value;
+				$scope.slider = {
+					minValue: minVal,
+					maxValue: maxVal,
+					options: {
+						floor: minVal,
+						ceil: maxVal,
+						step: 1
+					}
+				};
+			});
+			results.getSpeakers($scope.index).then(function(results){
+				for (var ii = 0; ii < results.length; ii++) {
+						$scope.speakers.push(results[ii]);
+					}
+				$scope.selectedSpeakers = $scope.speakers.slice();
+			});
+		}
+	}
+	
 	$scope.results = [];   
 	$scope.page = 0;         
 	$scope.allResults = false;  
 	$scope.searchTerm = '';
 	$scope.speakers = [];
 	
-	results.getSpeakers().then(function(results){
+	results.getSpeakers($scope.index).then(function(results){
 		for (var ii = 0; ii < results.length; ii++) {
 			$scope.speakers.push(results[ii]);
 		}
 		$scope.selectedSpeakers = $scope.speakers.slice();
 	});
-	$scope.orderBy = ["Relevance (default)", "Date (asc)", "Date (desc)"];
+	
+	$scope.orderBy = ["Date (asc)", "Date (desc)"];
 	
 	$scope.selectedOrder = '';
 	$scope.orderQuery = [];
 	$scope.changeOrder = function(o) {
-		if (o == $scope.orderBy[0]) {
+		if (o === null) {
 			$scope.orderQuery = [];
 			$scope.search();
-		}else if (o == $scope.orderBy[1]) {
+		}else if (o == $scope.orderBy[0]) {
 			var query = {year : {order : "asc"}};
 			$scope.orderQuery = [query];
 			$scope.search();
-		}else if (o == $scope.orderBy[2]) {
+		}else if (o == $scope.orderBy[1]) {
 			var query = {year : {order : "desc"}};
 			$scope.orderQuery = [query];
 			$scope.search();
@@ -53,8 +126,10 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 	});
 
 	$scope.search = function() {
+		$scope.drawCloud($scope.tags);
 		document.getElementsByClassName('no-results')[0].style.visibility = 'initial';
 		document.getElementsByClassName('load-more')[0].style.visibility = 'initial';
+		document.getElementById('word').style.display = 'initial';
 		var res = document.getElementById('results');
 		while (res.firstChild) {
 			res.removeChild(res.firstChild);
@@ -63,25 +138,28 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 		$scope.results = [];
 		$scope.allResults = false;
 		$scope.loadMore();
+		$scope.drawCloud($scope.tags);
     };
 
 	$scope.loadMore = function() {
 		results.search($scope.searchTerm, $scope.page++, $scope.slider.minValue, 
-					$scope.slider.maxValue, $scope.selectedSpeakers, $scope.orderQuery).then(function(results) {
-		    draw(results, $scope.searchTerm, $scope.page);
-		    if (results.length !== 10) {
+					$scope.slider.maxValue, $scope.selectedSpeakers, $scope.orderQuery, $scope.index, $scope.type).then(function(results) {
+		    draw(results.hits, $scope.searchTerm, $scope.page, $scope.index);
+			$scope.tags = results.tags
+			console.log($scope.tags)
+		    if (results.hits.length !== 10) {
 			    $scope.allResults = true;
 		    }
 
 		    var ii = 0;
 
-		    for (; ii < results.length; ii++) {
-			  $scope.results.push(results[ii]);
+		    for (; ii < results.hits.length; ii++) {
+			  $scope.results.push(results.hits[ii]);
 		    }
 		});
 	};
 	
-	results.info().then(function(results) {
+	results.info($scope.index).then(function(results) {
 		var minVal = results.min_value;
 		var maxVal = results.max_value;
 		$scope.slider = {
@@ -95,20 +173,30 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 		};
 	});
 	
+	$scope.drawCloud = function() {
+		wordCloud($scope.tags);
+	}
 }]);
 
 
 EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elasticsearch, $location) {
   var client = elasticsearch({
-    host: 'https://p0ibqk3wzz:67dpxx06v0@thesis-8085233189.eu-west-1.bonsai.io'
+    host: '86.85.152.188:9200'
   });
-  var search = function(term, offset, min, max, speakers, sortQuery) {
+  var search = function(term, offset, min, max, speakers, sortQuery, index, type) {
+			var stopW = stopwords[index].splice(-1, 1);
+			var regex = /[^\w\s]/gi;
+			var term = term.replace(regex, '');
+			var termList = term.toLowerCase().trim().split(' ')
+			for (word in termList) {
+				stopW.push(termList[word])
+			}
 			var deferred = $q.defer();
 			var query = {
 			    filtered: {
 					query : {
 						match : {
-							_all : term
+							text : term
 						}
 					},
 					filter: {
@@ -119,8 +207,8 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
 				}
 			};
 			client.search({
-			  index: 'troonredes',
-			  type: 'troonrede',
+			  index: index,
+			  type: type,
 			  body: {
 				size: 10,
 				from: (offset || 0) * 10,
@@ -141,13 +229,22 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
 				    text : {}
 				  }
 				},
+				aggs : {
+					tagcloud : {
+						terms : {
+							field : "text",
+							size : 100,
+							exclude : stopW
+						}
+					}
+				},
 				sort : sortQuery
 			  }
 			}).then(function(result) {
 				console.log(result)
 				var ii = 0, hits_in, hits_out = [];
 				hits_in = (result.hits || {}).hits || [];
-			
+				var data = {}
 				for(; ii < hits_in.length; ii++) {
 					var ar = [];
 					for (var x=0; x < hits_in[ii]['highlight'].text.length; x++) {
@@ -157,17 +254,26 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
 					hits_in[ii]._source['highlight'] = ar;
 					hits_in[ii]._source['totalWords'] = hits_in[ii]._source.text.countWords() - 2;
 					hits_out.push(hits_in[ii]._source);
-				  }
-				deferred.resolve(hits_out);
+				}
+				data.hits = hits_out;
+				var aggs = result.aggregations.tagcloud.buckets;
+				var tags = [];
+				for (var i= 0; i<aggs.length; i++) {
+					if (aggs[i].doc_count < result.hits.total *0.9){
+						tags.push(aggs[i]);
+					}
+				}
+				data.tags = tags;
+				deferred.resolve(data);
 			}, deferred.reject);
 			
 			return deferred.promise;
 	};
 	
-	var info = function() {
+	var info = function(index) {
 		var deferred = $q.defer();
 			client.fieldStats({
-				index : 'troonredes',
+				index : index,
 				fields : ['year']
 			}).then(function(result) {
 			  var out = result.indices._all.fields.year
@@ -177,10 +283,10 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
 			return deferred.promise;
 	};
 	
-	var getSpeakers = function() {
+	var getSpeakers = function(index) {
 		var deferred = $q.defer();
 			client.search({
-			    index: 'troonredes',
+			    index: index,
 				  body: {
 					query: {
 					  match_all: {}
@@ -188,7 +294,8 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
 					aggs: {
 					  tags: {
 						terms: {
-						  field: 'speaker'
+						  field: 'speaker',
+						  size : 41
 						},
 						aggs : {
 						  statistics : { stats : { field : "year"}}
@@ -225,7 +332,10 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
 }]);
 
 
-function draw(hits, term, page) {
+function draw(hits, term, page, index) {
+	var stopW = stopwords[index]
+	var regex = /[^\w\s]/gi;
+	var term = term.replace(regex, '');
 	var termList = term.toLowerCase().trim().split(' ')
 	for (var hit = 0; hit < hits.length; hit++) {
 		hits[hit].text
@@ -233,19 +343,31 @@ function draw(hits, term, page) {
 		var lines = hits[hit].sentences
 		//console.log(hits[hit].year)
 		for (var t in termList) {
-			for (var sent in lines) {
-				var s = lines[sent].join(' ');
-				if (s.indexOf(termList[t]) > 0) {
-					//console.log(s)
-					d = {};
-					d.len = termList[t].length / s.length;
-					d.SPOS = lines.indexOf(lines[sent]) / lines.length;
-					d.TPOS = (s.indexOf(termList[t]) - 1) / s.length;
-					d.height = 1 / lines.length;
-					d.sentence = s;
-					d.sIndex = lines.indexOf(lines[sent]) + 1
-					data.push(d);
-					var linesLength = lines.length;
+			searchTerm = termList[t];
+			if (stopW.indexOf(searchTerm) == -1){
+				for (var sent in lines) {
+					var s = lines[sent].join(' ').toLowerCase()  ;
+					if (s.indexOf(searchTerm) > 0) {
+						var matches = getMatchIndexes(s, searchTerm)
+						for (idx in matches){
+							var i =  matches[idx]
+							var before = s[i-1]
+							var after = s[i+searchTerm.length]
+							if (regex.test(before) || before == ' ') {
+								if (regex.test(after) || after == ' ') {
+									d = {};
+									d.len = searchTerm.length / s.length;
+									d.SPOS = lines.indexOf(lines[sent]) / lines.length;
+									d.TPOS = (i - 1) / s.length;
+									d.height = 1 / lines.length;
+									d.sentence = s;
+									d.sIndex = lines.indexOf(lines[sent]) + 1
+									data.push(d);
+									var linesLength = lines.length;
+								}
+							}					
+						}
+					}
 				}
 			}
 		}
@@ -253,7 +375,8 @@ function draw(hits, term, page) {
 		var width = 250;
 		
 		var div = d3.select("#results").append("div").attr("class", "resultVis");
-		var title = div.append("p").html("Troonrede van " + hits[hit].year.toString() + " - " + hits[hit].speaker);
+		var title = div.append("p").style('text-align', 'center')
+					.html(hits[hit].title + "<br>" + hits[hit].speaker);
 		
 		var svg = div.append("svg")
 			.attr("width", width).attr("height", height)
@@ -278,6 +401,7 @@ function draw(hits, term, page) {
 			svg.append("line")
 				.style("stroke", "black")
 				.style("opacity", 0.5)
+				.style('stroke-width', 0.5)
 				.attr("x1", 0)
 				.attr("y1", (i / linesLength) * height)
 				.attr("x2", width)
@@ -321,4 +445,30 @@ function draw(hits, term, page) {
 
 String.prototype.countWords = function(){
   return this.split(/\s+/).length;
+}
+
+function getMatchIndexes(str, toMatch) {
+    var toMatchLength = toMatch.length,
+        indexMatches = [], match,
+        i = 0;
+    
+    while ((match = str.indexOf(toMatch, i)) > -1) {
+        indexMatches.push(match);
+        i = match + toMatchLength;
+    }
+    
+    return indexMatches;
+}
+
+window.onresize = function() {
+	if (window.innerWidth<1140) {
+		document.getElementById('container').style.width  = "804px";
+		document.getElementById('slider').style.width = "450px";
+	}else if (window.innerWidth < 1300 && window.innerWidth > 1139) {
+		document.getElementById('container').style.width  = "1024";
+		document.getElementById('slider').style.width = "650px";
+	}else if (window.innerWidth > 1299) {
+		document.getElementById('container').style.width  = "1140px";
+		document.getElementById('slider').style.width = "750px";
+	}
 }
