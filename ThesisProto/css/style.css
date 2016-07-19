@@ -9,7 +9,7 @@ body, input{
 }
 
 #searchBar{
-	margin-top:20px;
+	margin-top:50px;
 }
 
 #slider {
@@ -105,14 +105,16 @@ body, input{
 }
 
 input[type="text"] {
-    width: 80%;
+    width: 90%;
 	height: 40px;
 	font-size:18px;
 	padding-left: 12px;
+	float:left;
 }
 input[type="submit"] {
 	height: 40px;
-	margin-right:-40px;
+	width: 10%;
+	float:right;
 }
 
 .searchField{
@@ -126,13 +128,19 @@ input[type="submit"] {
 	margin-bottom: 10px;
 }
 
-.chartButton{
-	width: 46%;
+.chartButton1{
+	width: 49.5%;
 	height: 40px;
 	margin-top: 40px;
 	margin-bottom: 10px;
-	margin-left: 1%;
-	margin-right: 1%;
+	float:left;
+}
+.chartButton2{
+	width: 49.5%;
+	height: 40px;
+	margin-top: 40px;
+	margin-bottom: 10px;
+	float:right;
 }
 #word {
 	display: none;
@@ -144,6 +152,8 @@ input[type="submit"] {
 #buttons{
 	width:inherit;
 	text-align:center;
+	display:block;
+	height: 40px;
 }
 #chart {
 	width:inherit;

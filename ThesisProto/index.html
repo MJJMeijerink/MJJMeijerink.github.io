@@ -2,18 +2,18 @@
   <head>
 	<title>Thesis</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<script src="data/stopwords.js"></script>
 	<script src="http://d3js.org/d3.v3.min.js"></script>
-	<script type="text/javascript" src="javascript/d3.layout.cloud.js"></script>
-	<script type="text/javascript" src="javascript/word-cloud.js"></script>
-	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-	<script src="javascript/plotly.js"></script>
-	<script src="javascript/lineCharts.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-sanitize.js"></script>
-    <script src="javascript/elasticsearch.angular.js"></script>
-    <script src="javascript/angularConnect.js"></script>
+	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+	<script src="javascript/elasticsearch.angular.js"></script>
+	<script src="javascript/plotly.js"></script>
+	<script src="javascript/d3.layout.cloud.js"></script>
+	<script src="javascript/word-cloud.js"></script>
+	<script src="data/stopwords.js"></script>
+	<script src="javascript/barCharts.js"></script>
 	<script src="javascript/resultVis.js"></script>
+    <script src="javascript/angularConnect.js"></script>
 	<script src="javascript/rzslider.js"></script>
 	<script src="javascript/ttip.js"></script>
 	
@@ -32,16 +32,16 @@
 		  <!-- The search box puts the term into $scope.searchTerm
 			   and calls $scope.search() on submit -->
 			<div id="titleText">{{selectedIndex}}</div>
-			<section class="searchField">
+			<section id="searchBar" class="searchField">
 				<form ng-submit="search()">
-				  <input id="searchBar" type="text" ng-model="searchTerm" placeholder="Search query...">
-				  <input type="submit" value="Search"><br><br>
+				  <input type="text" ng-model="searchTerm" placeholder="Search query...">
+				  <input type="submit" value="Search">
 				</form>
 			</section>
 			
 			<div id="buttons">
-				<button ng-click="drawCharts(1);" class="chartButton">&#x2193; Hits per year &#x2193;</button>
-				<button ng-click="drawCharts(2);" class="chartButton">&#x2193; Hits per speaker &#x2193;</button>
+				<button ng-click="drawCharts(1);" class="chartButton1">&#x2193; Hits per year &#x2193;</button>
+				<button ng-click="drawCharts(2);" class="chartButton2">&#x2193; Hits per speaker &#x2193;</button>
 			</div>
 			<div id="barCharts">
 				<div id="chart">

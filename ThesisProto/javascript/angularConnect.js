@@ -192,7 +192,7 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 	$scope.drawCharts = function(kind) {
 		console.log(current)
 		if ($scope.chartData.length > 1) {
-			document.getElementById("chart").style.display = 'initial';
+			document.getElementById("chart").style.display = 'inline-block';
 			d3.select('#chart').html("");
 			if (kind == 1) {
 				if (current == 'per year') {
