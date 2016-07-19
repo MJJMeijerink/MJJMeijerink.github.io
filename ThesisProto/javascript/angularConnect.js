@@ -12,13 +12,15 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 		document.getElementById('container').style.width  = "1024";
 		document.getElementById('slider').style.width = "650px";
 	}
-
-	$scope.index = 'troonredes';
-	$scope.type = 'troonrede';
-	$scope.selectedIndex = 'Troonredes'
-	$scope.changeIndex = function(index) {
+	
+	function reset() {
+		$scope.tags = [];
+		$scope.drawCloud($scope.tags);
 		document.getElementsByClassName('no-results')[0].style.visibility = 'hidden';
 		document.getElementsByClassName('load-more')[0].style.visibility = 'hidden';
+		document.getElementById("chart").style.display = 'none';
+		d3.select('#chart').html("");
+		$scope.chartData = [];
 		var res = document.getElementById('results');
 		while (res.firstChild) {
 			res.removeChild(res.firstChild);
@@ -26,6 +28,14 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 		$scope.page = 0;
 		$scope.results = [];
 		$scope.allResults = false;
+	}
+
+	$scope.index = 'troonredes';
+	$scope.type = 'troonrede';
+	$scope.selectedIndex = 'Troonredes'
+	$scope.changeIndex = function(index) {
+		reset();
+		$scope.searchTerm = '';
 		$scope.speakers = [];
 		if (index == 'unions') {
 			$scope.selectedIndex = 'State of the Union Adresses'
@@ -82,6 +92,7 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 	$scope.allResults = false;  
 	$scope.searchTerm = '';
 	$scope.speakers = [];
+	$scope.chartData = [];
 	
 	results.getSpeakers($scope.index).then(function(results){
 		for (var ii = 0; ii < results.length; ii++) {
@@ -126,27 +137,17 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 	});
 
 	$scope.search = function() {
-		$scope.drawCloud($scope.tags);
+		reset();
 		document.getElementsByClassName('no-results')[0].style.visibility = 'initial';
 		document.getElementsByClassName('load-more')[0].style.visibility = 'initial';
-		document.getElementById('word').style.display = 'initial';
-		var res = document.getElementById('results');
-		while (res.firstChild) {
-			res.removeChild(res.firstChild);
-		}
-		$scope.page = 0;
-		$scope.results = [];
-		$scope.allResults = false;
 		$scope.loadMore();
-		$scope.drawCloud($scope.tags);
     };
 
 	$scope.loadMore = function() {
 		results.search($scope.searchTerm, $scope.page++, $scope.slider.minValue, 
 					$scope.slider.maxValue, $scope.selectedSpeakers, $scope.orderQuery, $scope.index, $scope.type).then(function(results) {
 		    draw(results.hits, $scope.searchTerm, $scope.page, $scope.index);
-			$scope.tags = results.tags
-			console.log($scope.tags)
+			$scope.tags = results.tags;
 		    if (results.hits.length !== 10) {
 			    $scope.allResults = true;
 		    }
@@ -157,6 +158,16 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 			  $scope.results.push(results.hits[ii]);
 		    }
 		});
+		var regex = /[^\w\s]/gi;
+		var term = $scope.searchTerm.replace(regex, '');
+		var termList = term.toLowerCase().trim().split(' ')
+		for (term in termList) {
+			results.barChartData(termList[term], $scope.slider.minValue, 
+					$scope.slider.maxValue, $scope.selectedSpeakers, $scope.index, $scope.type).then(function(results) {
+				$scope.chartData = $scope.chartData.concat(results);
+			});
+		}
+		
 	};
 	
 	results.info($scope.index).then(function(results) {
@@ -175,6 +186,34 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 	
 	$scope.drawCloud = function() {
 		wordCloud($scope.tags);
+	}
+	
+	var current = '';
+	$scope.drawCharts = function(kind) {
+		console.log(current)
+		if ($scope.chartData.length > 1) {
+			document.getElementById("chart").style.display = 'initial';
+			d3.select('#chart').html("");
+			if (kind == 1) {
+				if (current == 'per year') {
+					d3.select('#chart').html("");
+					document.getElementById("chart").style.display = 'none';
+					current = '';
+				}else {
+					current = 'per year';
+				}
+				barChart1($scope.chartData, $scope.slider.minValue, $scope.slider.maxValue);
+			}else if (kind == 2) {
+				if (current == 'per speaker') {
+					d3.select('#chart').html("");
+					document.getElementById("chart").style.display = 'none';
+					current = '';
+				}else {
+					current = 'per speaker';
+				}
+				barChart2($scope.chartData, $scope.speakers)
+			}
+		}
 	}
 }]);
 
@@ -285,179 +324,111 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
 	
 	var getSpeakers = function(index) {
 		var deferred = $q.defer();
-			client.search({
-			    index: index,
-				  body: {
-					query: {
-					  match_all: {}
+		client.search({
+			index: index,
+			  body: {
+				query: {
+				  match_all: {}
+				},
+				aggs: {
+				  tags: {
+					terms: {
+					  field: 'speaker',
+					  size : 41
 					},
-					aggs: {
-					  tags: {
-						terms: {
-						  field: 'speaker',
-						  size : 41
-						},
-						aggs : {
-						  statistics : { stats : { field : "year"}}
-						}
-					  }
+					aggs : {
+					  statistics : { stats : { field : "year"}}
 					}
 				  }
-			}).then(function(result) {
-				function compare(a,b) {
-					if (a.statistics.avg < b.statistics.avg)
-						return -1;
-					if (a.statistics.avg > b.statistics.avg)
-						return 1;
-					return 0;
 				}
-				var ii = 0, hits_in, hits_out = [];
-				hits_in = result.aggregations.tags.buckets.sort(compare)
+			}
+		}).then(function(result) {
+			function compare(a,b) {
+				if (a.statistics.avg < b.statistics.avg)
+					return -1;
+				if (a.statistics.avg > b.statistics.avg)
+					return 1;
+				return 0;
+			}
+			var ii = 0, hits_in, hits_out = [];
+			hits_in = result.aggregations.tags.buckets.sort(compare)
 
-				for(; ii < hits_in.length; ii++) {
-					hits_out.push(hits_in[ii].key);
-				  }
-				  deferred.resolve(hits_out);
-				}, deferred.reject);
+			for(; ii < hits_in.length; ii++) {
+				hits_out.push(hits_in[ii].key);
+			  }
+			  deferred.resolve(hits_out);
+			}, deferred.reject);
+			
+			return deferred.promise;
+	};
+	
+	var barChartData = function(term, min, max, speakers, index, type) {
+		var deferred = $q.defer();
+		var query = {
+			filtered: {
+				query : {
+					match : {
+						text : term
+					}
+				},
+				filter: {
+					terms: {
+						speaker : speakers
+					}
+				}
+			}
+		};
+		client.search({
+			  index: index,
+			  type: type,
+			  body: {
+				size: 1000,
+				query: query,
+				filter:{
+					range : {
+						year : {
+							gte : min,
+							lte : max
+						}
+					}
+				},
+				script_fields: {
+					tf: {
+					  script: "_index['text']['" + term + "'].tf()"
+					},
+					year: {
+					  script: "_doc['year'].value"
+					},
+					speaker : {
+					  script: "_doc['speaker'].value"
+					}
+				}
+			  }
+			}).then(function(result) {
+				var ii = 0, hits_in, data = [];
+				hits_in = result.hits.hits;
 				
-				return deferred.promise;
+				for(; ii < hits_in.length; ii++) {
+					data.push(hits_in[ii].fields)
+			    }
+				deferred.resolve(data);
+			}, deferred.reject);
+			
+			return deferred.promise;
 	};
 
   return {
 	search: search,
 	info: info,
-	getSpeakers : getSpeakers
+	getSpeakers : getSpeakers,
+	barChartData: barChartData
   };
   
 }]);
 
 
-function draw(hits, term, page, index) {
-	var stopW = stopwords[index]
-	var regex = /[^\w\s]/gi;
-	var term = term.replace(regex, '');
-	var termList = term.toLowerCase().trim().split(' ')
-	for (var hit = 0; hit < hits.length; hit++) {
-		hits[hit].text
-		var data = [];
-		var lines = hits[hit].sentences
-		//console.log(hits[hit].year)
-		for (var t in termList) {
-			searchTerm = termList[t];
-			if (stopW.indexOf(searchTerm) == -1){
-				for (var sent in lines) {
-					var s = lines[sent].join(' ').toLowerCase()  ;
-					if (s.indexOf(searchTerm) > 0) {
-						var matches = getMatchIndexes(s, searchTerm)
-						for (idx in matches){
-							var i =  matches[idx]
-							var before = s[i-1]
-							var after = s[i+searchTerm.length]
-							if (regex.test(before) || before == ' ') {
-								if (regex.test(after) || after == ' ') {
-									d = {};
-									d.len = searchTerm.length / s.length;
-									d.SPOS = lines.indexOf(lines[sent]) / lines.length;
-									d.TPOS = (i - 1) / s.length;
-									d.height = 1 / lines.length;
-									d.sentence = s;
-									d.sIndex = lines.indexOf(lines[sent]) + 1
-									data.push(d);
-									var linesLength = lines.length;
-								}
-							}					
-						}
-					}
-				}
-			}
-		}
-		var height = 400;
-		var width = 250;
-		
-		var div = d3.select("#results").append("div").attr("class", "resultVis");
-		var title = div.append("p").style('text-align', 'center')
-					.html(hits[hit].title + "<br>" + hits[hit].speaker);
-		
-		var svg = div.append("svg")
-			.attr("width", width).attr("height", height)
-		
-		var tip = d3.tip()
-		    .attr('class', 'd3-tip')
-		    .offset([-10, 0])
-		    .html(function(d) {
-				return "<p>Sentence #" + d.sIndex + "<br><br>" + d.sentence + "</p>";
-		    })
-		svg.call(tip);
-		
-		svg.append("rect")
-			.attr("width", "100%")
-			.attr("height", "100%")
-			.style("stroke", "black")
-			.style("stroke-location", "outside")
-			.style("fill", "none")
-			.style("stroke-width", 4);
-		
-		for (var i = 0; i < linesLength; i++) {
-			svg.append("line")
-				.style("stroke", "black")
-				.style("opacity", 0.5)
-				.style('stroke-width', 0.5)
-				.attr("x1", 0)
-				.attr("y1", (i / linesLength) * height)
-				.attr("x2", width)
-				.attr("y2", (i / linesLength) * height);
-		}
-		
-		var d = [{'id' : hits[hit].id}];
-		svg.selectAll("rect.background").data(d).enter().append("rect")
-			.attr("width", "100%")
-			.attr("height", "100%")
-			.on("click", function(d){
-				var modal = document.getElementById('modal' + d.id.toString());
-				modal.style.display = "block";
-				var close = document.getElementById('close' + d.id.toString());
-				close.onclick = function() {
-					modal.style.display = "none";
-				}
-			})
-			.style("fill", "steelblue")
-			.style("opacity", 0.1)
-			.append("svg:title")
-				.text("Click for more information");;
-		
-		svg.selectAll("rect.location")
-			.data(data)
-			.enter()
-			.append("rect")
-			.attr("class", "rectangle")
-			.attr("x", function(d) { return (d.TPOS * width) })
-			.attr("y", function(d) { return (d.SPOS * height) })
-			.attr("width", function(d) {return (d.len * 100).toString() + '%'}) 
-			.attr("height", function(d) {return (d.height * 100).toString() + '%'})
-			.on('mouseover', tip.show)
-			.on('mouseout', tip.hide)
-			.style("fill", "steelblue")			
-			.style("stroke", "black")
-			.style("stroke-location", "outside")
-			.style("stroke-width", 1);
-	}
-}
-
 String.prototype.countWords = function(){
   return this.split(/\s+/).length;
-}
-
-function getMatchIndexes(str, toMatch) {
-    var toMatchLength = toMatch.length,
-        indexMatches = [], match,
-        i = 0;
-    
-    while ((match = str.indexOf(toMatch, i)) > -1) {
-        indexMatches.push(match);
-        i = match + toMatchLength;
-    }
-    
-    return indexMatches;
 }
 
 window.onresize = function() {

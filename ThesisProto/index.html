@@ -8,10 +8,12 @@
 	<script type="text/javascript" src="javascript/word-cloud.js"></script>
 	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 	<script src="javascript/plotly.js"></script>
+	<script src="javascript/lineCharts.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-sanitize.js"></script>
     <script src="javascript/elasticsearch.angular.js"></script>
-    <script src="javascript/script.js"></script>
+    <script src="javascript/angularConnect.js"></script>
+	<script src="javascript/resultVis.js"></script>
 	<script src="javascript/rzslider.js"></script>
 	<script src="javascript/ttip.js"></script>
 	
@@ -37,13 +39,22 @@
 				</form>
 			</section>
 			
-			<button ng-click="drawCloud();" class="selectionBut">&#x2193; Word cloud &#x2193;</button>
+			<div id="buttons">
+				<button ng-click="drawCharts(1);" class="chartButton">&#x2193; Hits per year &#x2193;</button>
+				<button ng-click="drawCharts(2);" class="chartButton">&#x2193; Hits per speaker &#x2193;</button>
+			</div>
+			<div id="barCharts">
+				<div id="chart">
+				</div>
+			</div>
+			
+			<button ng-click="drawCloud();" class="cloudButton">&#x2193; Word cloud &#x2193;</button>
 			<div id="wordCloud">
 				<div id="word">
 				</div>
 			</div>
 			
-			<button class="selectionBut">Search results</button>
+			<button class="cloudButton">Search results</button>
 			<div id="selectSpeakers">
 			  <div id="header">
 				<h3 id="headerText">Speakers:</h3>
@@ -126,7 +137,7 @@
 				  <a ng-click="loadMore()">Load more...</a>
 				</div>
 			</section>
-		  </div>
-	  </div>
+		</div>
+	</div>
 </body>
 	  

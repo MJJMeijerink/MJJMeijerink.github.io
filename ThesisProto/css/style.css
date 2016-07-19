@@ -23,6 +23,10 @@ body, input{
 	height: 450px;
 }
 
+#wrapper {
+	display: none;
+}
+
 #checkboxes { margin-top: 10px;}
 #selectSpeakers {
 	margin-top:20px;
@@ -115,17 +119,36 @@ input[type="submit"] {
 	text-align:center;
 }
 
-.selectionBut{
+.cloudButton{
 	width:inherit;
 	height: 40px;
 	margin-top: 40px;
 	margin-bottom: 10px;
 }
+
+.chartButton{
+	width: 46%;
+	height: 40px;
+	margin-top: 40px;
+	margin-bottom: 10px;
+	margin-left: 1%;
+	margin-right: 1%;
+}
 #word {
 	display: none;
 	margin-left:70px;
 	margin-right:70px;
-	width:inherit
+	width:inherit;
+}
+
+#buttons{
+	width:inherit;
+	text-align:center;
+}
+#chart {
+	width:inherit;
+	height:400px;
+	display: none;
 }
 
 .resultVis{

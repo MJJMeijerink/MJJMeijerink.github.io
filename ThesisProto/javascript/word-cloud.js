@@ -3,8 +3,7 @@ function wordCloud(tags){
 	if (drawn) {
 		d3.select("#word").html("");
 		drawn = false;
-	}
-	else if (tags) {
+	} else if (tags.length > 1) {
 		drawn = true;
 		document.getElementById('word').style.display = 'initial'
 		var w = 1000,
@@ -32,9 +31,7 @@ function wordCloud(tags){
 		update();
 
 		function draw(data, bounds) {
-			var color = d3.scale.linear()
-				.domain([0, 100])
-				.range(["#000000", "#555555"]);
+			var color = d3.scale.category20b()
 			var w = 1000,
 				h = 300;
 			
@@ -93,5 +90,8 @@ function wordCloud(tags){
 			}
 			layout.stop().words(tags).start();
 		}
+	} else if (!tags) {
+		d3.select("#word").html("");
+		drawn = false;
 	}
 };
