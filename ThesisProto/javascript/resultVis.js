@@ -4,23 +4,21 @@ function draw(hits, term, page, index) {
 	var term = term.replace(regex, '');
 	var termList = term.toLowerCase().trim().split(' ')
 	for (var hit = 0; hit < hits.length; hit++) {
-		hits[hit].text
 		var data = [];
 		var lines = hits[hit].sentences
-		//console.log(hits[hit].year)
 		for (var t in termList) {
 			searchTerm = termList[t];
 			if (stopW.indexOf(searchTerm) == -1){
 				for (var sent in lines) {
 					var displayS = lines[sent].join(' ')
 					var s = displayS.toLowerCase();
-					if (s.indexOf(searchTerm) > 0) {
+					if (s.indexOf(searchTerm) > -1) {
 						var matches = getMatchIndexes(s, searchTerm)
 						for (idx in matches){
 							var i =  matches[idx]
 							var before = s[i-1]
 							var after = s[i+searchTerm.length]
-							if (regex.test(before) || before == ' ') {
+							if (regex.test(before) || before == ' ' || before == undefined) {
 								if (regex.test(after) || after == ' ') {
 									d = {};
 									d.len = searchTerm.length / s.length;
