@@ -64,6 +64,7 @@ body, input{
 	text-align:left;
 	border-bottom: lightgray solid 1px;
 	width: 100%;
+	display: inline-block;
 }
 	
 #banner{
