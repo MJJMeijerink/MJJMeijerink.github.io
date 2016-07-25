@@ -17,12 +17,12 @@
   <body>
 	<div ng-controller="QueryController">
 		<div id="banner">
+			<div id="titleText">Resoluties der Staten Generaal</div>
 		</div>
 	
 		<div id="container">
 		  <!-- The search box puts the term into $scope.searchTerm
 			   and calls $scope.search() on submit -->
-			<div id="titleText">Resoluties der Staten Generaal</div>
 			<section id="searchBar" class="searchField">
 				<form ng-submit="search()">
 				  <input type="text" ng-model="searchTerm" placeholder="Search query...">

@@ -94,7 +94,7 @@ body, input{
 }
 
 #titleText {
-	margin-top:20px;
+	line-height:70px;
 	font-size: 45px;
 	text-align: center;
 }
