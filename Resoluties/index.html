@@ -1,0 +1,74 @@
+<html ng-app="EsConnector">
+  <head>
+	<title>Resoluties</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-sanitize.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-sanitize.js"></script>
+	<script src="javascript/elasticsearch.angular.js"></script>
+	<script src="data/stopwords.js"></script>
+    <script src="javascript/angularConnect.js"></script>
+	<script src="javascript/rzslider.js"></script>
+	
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/rzslider.min.css">
+	
+  </head>
+  <body>
+	<div ng-controller="QueryController">
+		<div id="banner">
+		</div>
+	
+		<div id="container">
+		  <!-- The search box puts the term into $scope.searchTerm
+			   and calls $scope.search() on submit -->
+			<div id="titleText">Resoluties der Staten Generaal</div>
+			<section id="searchBar" class="searchField">
+				<form ng-submit="search()">
+				  <input type="text" ng-model="searchTerm" placeholder="Search query...">
+				  <input type="submit" value="Zoek">
+				</form>
+			</section>
+			
+			<div id="slider">
+				<rzslider rz-slider-model="slider.minValue"
+				  rz-slider-high="slider.maxValue"
+				  rz-slider-options="slider.options"></rzslider>
+			</div>
+			
+			<div class="order">
+				<b>Order by: </b>
+				<select ng-change="changeOrder(selectedOrder)" ng-model="selectedOrder" ng-options="x for x in orderBy">
+					<option value=''>Relevance</option>
+				</select>
+			</div>
+			
+	
+			<section class="results">
+				<div class="no-results" ng-hide="results.length" ng-cloak>No results</div>
+				
+				<div class="resultCount" ng-hide="!resultCount" ng-cloak>{{resultCount}} Results</div>
+				<article class="result" ng-repeat="result in results" ng-cloak>
+					<div id="content">
+					<div id="title">Resolutie {{result.id}}, {{result.date}}</div><div class="fullText" id="show{{result.id}}" ng-click="showText(result.id);">Show full text...</div><br><br>
+						
+						<div ng-repeat="name in result.names" class="names">{{name}}</div>
+						<br><br>
+						<div class="slide" ng-repeat="high in result.highlight">
+						  - <span ng-bind-html="high | unsafe">
+								{{high}}
+							</span> -
+						</div>
+						<div style="display:none;" id="text{{result.id}}"> <br>{{result.text}}</div>
+					</div>
+					<br>
+				</article>
+
+				<div class="load-more" ng-hide="allResults" ng-cloak>
+				  <a ng-click="loadMore()">Load more...</a>
+				</div>
+			</section>
+		</div>
+	</div>
+</body>
+	  
