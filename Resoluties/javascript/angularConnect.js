@@ -5,32 +5,24 @@ window.EsConnector = angular.module('EsConnector', ['elasticsearch', 'ngSanitize
 
 EsConnector.controller('QueryController', ['es', '$location', '$scope', function(results, $location, $scope) {
 	
-	if (window.innerWidth < 1000) {
-		document.getElementById('container').style.width  = "804px";
-		document.getElementById('slider').style.width = "804px";
-	}else if (window.innerWidth < 1140) {
-		document.getElementById('container').style.width  = "1024px";
-		document.getElementById('slider').style.width = "1024px";
-	}
-	
 	function reset() {
 		document.getElementsByClassName('no-results')[0].style.visibility = 'hidden';
 		document.getElementsByClassName('load-more')[0].style.visibility = 'hidden';
 		var res = document.getElementById('results');
-		$scope.page = 0;
+		$scope.page = -1;
 		$scope.results = [];
 		$scope.allResults = false;
 	}
 	
 	$scope.results = [];   
-	$scope.page = 0;         
+	$scope.page = -1;         
 	$scope.allResults = false;  
 	$scope.searchTerm = '';
 	$scope.speakers = [];
 	$scope.chartData = [];
 	$scope.resultCount = 0;
 	
-	$scope.orderBy = ["Date (asc)", "Date (desc)", "Doc size (asc)", "Doc size (desc)"];
+	$scope.orderBy = ["Datum (asc)", "Datum (desc)", "Doc. lengte (asc)", "Doc. lengte (desc)"];
 	
 	$scope.selectedOrder = '';
 	$scope.orderQuery = [];
@@ -69,10 +61,6 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 		}
 	}
 
-	$scope.$on("slideEnded", function() {
-		$scope.search();
-	});
-
 	$scope.search = function() {
 		reset();
 		document.getElementsByClassName('no-results')[0].style.visibility = 'initial';
@@ -81,15 +69,16 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
     };
 
 	$scope.loadMore = function() {
-		results.search($scope.searchTerm, $scope.page++, $scope.slider.minValue, 
-					$scope.slider.maxValue, $scope.selectedSpeakers, $scope.orderQuery, $scope.index, $scope.type).then(function(results) {
+		$scope.page += 1
+		results.search($scope.searchTerm, $scope.page, $scope.slider.minValue, 
+					$scope.slider.maxValue, $scope.selectedSpeakers, $scope.orderQuery).then(function(results) {
 			$scope.tags = results.tags;
 		    if (results.hits.length !== 10) {
 			    $scope.allResults = true;
 		    }
 
 		    var ii = 0;
-
+			$scope.results = [];
 		    for (; ii < results.hits.length; ii++) {
 			  $scope.results.push(results.hits[ii]);
 		    }
@@ -97,7 +86,28 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 		});
 	};
 	
-	results.info($scope.index).then(function(results) {
+	$scope.loadLess = function() {
+		if (!($scope.page < 1)) {
+			$scope.page -= 1
+			results.search($scope.searchTerm, $scope.page, $scope.slider.minValue, 
+						$scope.slider.maxValue, $scope.selectedSpeakers, $scope.orderQuery).then(function(results) {
+				$scope.tags = results.tags;
+				if (results.hits.length !== 10) {
+					$scope.allResults = true;
+				}
+
+				var ii = 0;
+				$scope.results = [];
+				for (; ii < results.hits.length; ii++) {
+				  $scope.results.push(results.hits[ii]);
+				}
+				$scope.resultCount = results.hitCount;
+			});
+		};
+	};
+	
+	
+	results.info().then(function(results) {
 		var minVal = results.min_value;
 		var maxVal = results.max_value;
 		$scope.slider = {
@@ -106,10 +116,62 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 			options: {
 				floor: minVal,
 				ceil: maxVal,
-				step: 1
+				step: 1,
+				onEnd: function () {
+					$scope.search();
+				}
 			}
 		};
 	});
+	
+	$scope.navigateSlider = function(dir) {
+		if (dir == 'left') {
+			$scope.slider2.value--
+			drawPlot($scope.plotlyData, $scope.slider2.value)
+		}else if (dir == 'right') {
+			$scope.slider2.value++
+			drawPlot($scope.plotlyData, $scope.slider2.value)
+		}
+	}
+	
+	$scope.plotlyData = false;
+	$scope.loaded = true;
+	var opened = true;
+	$scope.loadData = function(){
+		if (!$scope.plotlyData) {
+			$scope.loaded = false;
+			results.getAllData().then(function(results) {
+				$scope.plotlyData = results;
+				$scope.loaded = true;
+				$scope.slider2 = {
+					value: 0,
+					options: {
+						floor: 0,
+						ceil: results.length - 1,
+						translate: function(value) {
+							return results[value].date + ", resolutie " + results[value].resolution
+						},
+						onEnd: function() {
+							drawPlot($scope.plotlyData, $scope.slider2.value)
+						}
+					}
+				}
+				document.getElementById('plotControls').style.display = 'initial';
+				drawPlot($scope.plotlyData, $scope.slider2.value)
+			});
+		}
+		else {
+			if (!opened) {
+				drawPlot($scope.plotlyData, $scope.slider2.value);
+				document.getElementById('plotControls').style.display = 'initial';
+				opened = true;
+			}else {
+				document.getElementById('plotControls').style.display = 'none';
+				document.getElementById('plot').innerHTML = '';
+				opened = false;
+			}
+		}
+	}
 }]);
 
 
@@ -117,7 +179,7 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
   var client = elasticsearch({
     host: '86.85.152.188:9200'
   });
-  var search = function(term, offset, min, max, speakers, sortQuery, index, type) {
+  var search = function(term, offset, min, max, speakers, sortQuery) {
 			var stopW = stopwords;
 			var regex = /[^\w\s]/gi;
 			var term = term.replace(regex, '');
@@ -140,7 +202,7 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
 			  type: 'doc',
 			  body: {
 				size: 10,
-				from: (offset || 0) * 10,
+				from: offset * 10,
 				query: query,
 				filter:{
 					range : {
@@ -158,15 +220,6 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
 				    text : {}
 				  }
 				},
-				aggs : {
-					tagcloud : {
-						terms : {
-							field : "text",
-							size : 100,
-							exclude : stopW
-						}
-					}
-				},
 				sort : sortQuery
 			  }
 			}).then(function(result) {
@@ -181,9 +234,9 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
 					}
 					var date = new Date(hits_in[ii]._source['date']);
 					var options = {weekday: "long", year: "numeric", month: "long", day: "numeric"};
-					hits_in[ii]._source['names'] = hits_in[ii]._source['names'].filter(function(item,pos) {
-						return hits_in[ii]._source['names'].indexOf(item) == pos;
-					})
+					//hits_in[ii]._source['names'] = hits_in[ii]._source['names'].filter(function(item,pos) {
+					//	return hits_in[ii]._source['names'].indexOf(item) == pos;
+					//})
 					hits_in[ii]._source['date'] = date.toLocaleString("nl-NL", options);
 					hits_in[ii]._source['id'] = hits_in[ii]._id
 					hits_in[ii]._source['highlight'] = ar;
@@ -192,21 +245,13 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
 				}
 				data.hits = hits_out;
 				data.hitCount = result.hits.total;
-				var aggs = result.aggregations.tagcloud.buckets;
-				var tags = [];
-				for (var i= 0; i<aggs.length; i++) {
-					if (aggs[i].doc_count < result.hits.total *0.9){
-						tags.push(aggs[i]);
-					}
-				}
-				data.tags = tags;
 				deferred.resolve(data);
 			}, deferred.reject);
 			
 			return deferred.promise;
 	};
 	
-	var info = function(index) {
+	var info = function() {
 		var deferred = $q.defer();
 			client.fieldStats({
 				index : 'names',
@@ -219,124 +264,37 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
 			return deferred.promise;
 	};
 	
-	var getSpeakers = function(index) {
+	var getAllData = function(index) {
 		var deferred = $q.defer();
 		client.search({
-			index: index,
-			  body: {
+			index: 'names',
+			body: {
 				query: {
-				  match_all: {}
+					match_all: {}
 				},
-				aggs: {
-				  tags: {
-					terms: {
-					  field: 'speaker',
-					  size : 41
-					},
-					aggs : {
-					  statistics : { stats : { field : "year"}}
-					}
-				  }
-				}
+				size: 30000,
+				sort: {date : {order : "asc"}}
 			}
 		}).then(function(result) {
-			function compare(a,b) {
-				if (a.statistics.avg < b.statistics.avg)
-					return -1;
-				if (a.statistics.avg > b.statistics.avg)
-					return 1;
-				return 0;
-			}
 			var ii = 0, hits_in, hits_out = [];
-			hits_in = result.aggregations.tags.buckets.sort(compare)
-
+			hits_in = (result.hits || {}).hits || [];
 			for(; ii < hits_in.length; ii++) {
-				hits_out.push(hits_in[ii].key);
-			  }
-			  deferred.resolve(hits_out);
-			}, deferred.reject);
-			
-			return deferred.promise;
-	};
-	
-	var barChartData = function(term, min, max, speakers, index, type) {
-		var deferred = $q.defer();
-		var query = {
-			filtered: {
-				query : {
-					match : {
-						text : term
-					}
-				},
-				filter: {
-					terms: {
-						speaker : speakers
-					}
-				}
+				hits_out.push(hits_in[ii]._source);
 			}
-		};
-		client.search({
-			  index: index,
-			  type: type,
-			  body: {
-				size: 1000,
-				query: query,
-				filter:{
-					range : {
-						year : {
-							gte : min,
-							lte : max
-						}
-					}
-				},
-				script_fields: {
-					tf: {
-					  script: "_index['text']['" + term + "'].tf()"
-					},
-					year: {
-					  script: "_doc['year'].value"
-					},
-					speaker : {
-					  script: "_doc['speaker'].value"
-					}
-				}
-			  }
-			}).then(function(result) {
-				var ii = 0, hits_in, data = [];
-				hits_in = result.hits.hits;
-				
-				for(; ii < hits_in.length; ii++) {
-					data.push(hits_in[ii].fields)
-			    }
-				deferred.resolve(data);
-			}, deferred.reject);
+			deferred.resolve(hits_out);
+		}, deferred.reject);
 			
-			return deferred.promise;
+		return deferred.promise;
 	};
 
-  return {
-	search: search,
-	info: info,
-	getSpeakers : getSpeakers,
-	barChartData: barChartData
-  };
-  
+    return {
+		search: search,
+		info: info,
+		getAllData : getAllData
+    };
 }]);
 
 
 String.prototype.countWords = function(){
   return this.split(/\s+/).length;
-}
-
-window.onresize = function() {
-	if (window.innerWidth<1140) {
-		document.getElementById('container').style.width  = "804px";
-		document.getElementById('slider').style.width = "804px";
-	}else if (window.innerWidth < 1300 && window.innerWidth > 1139) {
-		document.getElementById('container').style.width  = "1024";
-		document.getElementById('slider').style.width = "1024px";
-	}else if (window.innerWidth > 1299) {
-		document.getElementById('container').style.width  = "1140px";
-		document.getElementById('slider').style.width = "1140px";
-	}
 }
