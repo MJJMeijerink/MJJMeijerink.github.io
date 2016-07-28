@@ -58,6 +58,13 @@ function drawPlot(data, index) {
 		return a
 	}
 	
+	var margin = function(){
+		if (index >= data.length * 0.5) {
+			return -50;
+		}
+		else return 50;
+	}
+
 	var layout = {
 		height: window.innerHeight * 0.8,
 		showlegend: false,
@@ -85,7 +92,7 @@ function drawPlot(data, index) {
 			autotick: false,
 			tickmode: 'array',
 			tickvals: tickvals(max),
-			dtick: 1,
+			dtick: 2,
 			gridcolor: "rgb(159, 197, 232)", 
 		},
 		xaxis: {
@@ -107,7 +114,7 @@ function drawPlot(data, index) {
 		}],
 		annotations: [{
 			yref: 'paper',
-			x: data[index + 50].date,
+			x: data[index + margin()].date,
 			y: 1.07,
 			yanchor: 'top',
 			text: 'Document focus: ' + data[index].date + '<br> Resolutie ' + data[index].resolution,

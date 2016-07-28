@@ -137,14 +137,20 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 	$scope.plotlyData = false;
 	$scope.loaded = true;
 	var opened = true;
-	$scope.loadData = function(){
+	$scope.loadData = function(i){
 		if (!$scope.plotlyData) {
 			$scope.loaded = false;
 			results.getAllData().then(function(results) {
+				if (i != null) {
+					var x = findData(i, results);
+					var val = x;
+				}else{
+					var val = 0;
+				}
 				$scope.plotlyData = results;
 				$scope.loaded = true;
 				$scope.slider2 = {
-					value: 0,
+					value: val,
 					options: {
 						floor: 0,
 						ceil: results.length - 1,
@@ -169,6 +175,26 @@ EsConnector.controller('QueryController', ['es', '$location', '$scope', function
 				document.getElementById('plotControls').style.display = 'none';
 				document.getElementById('plot').innerHTML = '';
 				opened = false;
+			}
+		}
+	}
+	
+	$scope.toVisualization = function(index) {
+		if (!$scope.plotlyData) {
+			$scope.loadData(index);
+		}else {
+			$scope.slider2.value = findData(index, $scope.plotlyData);
+			drawPlot($scope.plotlyData, $scope.slider2.value)
+			document.getElementById('plotControls').style.display = 'initial';
+			opened = true;
+		}
+		$('html, body').animate({ scrollTop: 0 }, 'fast');
+	}
+	
+	function findData(i, data) {
+		for (x in data) {
+			if (data[x].date == i[0] && data[x].resolution == i[1]) {
+				return data.indexOf(data[x])
 			}
 		}
 	}
@@ -233,11 +259,7 @@ EsConnector.factory('es', ['$q', 'esFactory', '$location', function($q, elastics
 						ar.push(hits_in[ii]['highlight'].text[x])
 					}
 					var date = new Date(hits_in[ii]._source['date']);
-					var options = {weekday: "long", year: "numeric", month: "long", day: "numeric"};
-					//hits_in[ii]._source['names'] = hits_in[ii]._source['names'].filter(function(item,pos) {
-					//	return hits_in[ii]._source['names'].indexOf(item) == pos;
-					//})
-					hits_in[ii]._source['date'] = date.toLocaleString("nl-NL", options);
+					hits_in[ii]._source['date'] = date;
 					hits_in[ii]._source['id'] = hits_in[ii]._id
 					hits_in[ii]._source['highlight'] = ar;
 					hits_in[ii]._source['totalWords'] = hits_in[ii]._source.text.countWords() - 2;

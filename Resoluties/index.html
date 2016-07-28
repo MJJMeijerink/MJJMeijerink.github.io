@@ -3,6 +3,7 @@
 	<title>Resoluties</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-sanitize.js"></script>
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -66,29 +67,37 @@
 				
 				<div class="resultCount" ng-hide="!resultCount" ng-cloak>{{resultCount}} Resultaten</div>
 				
-				<div class="load-more" ng-hide="allResults" ng-cloak>
+				<div class="load-more">
 					<a class="link" ng-click="loadLess()"> <<< Vorige pagina</a>
 					<span ng-model="page"> - Pagina {{page + 1}} - </span>
-					<a class="link" ng-click="loadMore()">Volgende pagina >>></a>
+					<a class="link" ng-click="loadMore()" ng-hide="allResults" ng-cloak>Volgende pagina >>></a>
 				</div>
 				
 				<article class="result" ng-repeat="result in results" ng-cloak>
 					<div id="content">
-					<div id="title">Resolutie {{result.resolution}}, {{result.date}}</div><div class="fullText" id="show{{result.id}}" ng-click="showText(result.id);">Show full text...</div><br><br>
+					<div id="title">Resolutie {{result.resolution}}, {{result.date.toLocaleString("nl-NL", {weekday: "long", year: "numeric", month: "long", day: "numeric"})}}</div>
+					<div class="fullText" id="show{{result.id}}" ng-click="showText(result.id);">Show full text...</div><br><br>
 						
 						<div ng-repeat="name in result.names" class="names">{{name}}</div>
 						<br><br>
-						<div class="slide" ng-repeat="high in result.highlight">
+						<div id="resultWrap"><div class="slide" ng-repeat="high in result.highlight">
 						  - <span ng-bind-html="high | unsafe">
 								{{high}}
 							</span> -
-						</div>
+						</div> 
+						<div class="timeLine" ng-click="toVisualization([result.date.toISOString().split('T')[0], result.resolution])">Timeline...</div></div><br>
 						<div style="display:none;" id="text{{result.id}}"> <br>{{result.text}}</div>
 					</div>
 					<br>
 				</article>
 			</section>
 		</div>
+	</div>
+	<div class="modal">
+	  <div class="modal-content">
+		<span class="close">x</span>
+		<div id="modalText"></div>
+	  </div>
 	</div>
 </body>
 	  
