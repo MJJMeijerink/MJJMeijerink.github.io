@@ -53,7 +53,17 @@ function drawPlot(data, index) {
 	var tickvals = function(max) {
 		a = [];
 		for (var i = 1; i <= max; i++) {
-			a.push(i)
+			if (max > 39) {
+				if (i % 5 == 0) {
+					a.push(i)
+				}
+			}else if (max > 19) {
+				if (i % 2 == 0) {
+					a.push(i)
+				} 
+			}else {
+				a.push(i)
+			}
 		}
 		return a
 	}
@@ -64,7 +74,7 @@ function drawPlot(data, index) {
 		}
 		else return 50;
 	}
-
+	
 	var layout = {
 		height: window.innerHeight * 0.8,
 		showlegend: false,
@@ -92,15 +102,6 @@ function drawPlot(data, index) {
 			autotick: false,
 			tickmode: 'array',
 			tickvals: tickvals(max),
-			dtick: function() {
-				if (max > 20) {
-					return 2
-				}else if (max > 40) {
-					return 5
-				}else {
-					return 1
-				}
-			},
 			gridcolor: "rgb(159, 197, 232)", 
 		},
 		xaxis: {
