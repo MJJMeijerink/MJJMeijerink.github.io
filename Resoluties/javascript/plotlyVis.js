@@ -92,7 +92,15 @@ function drawPlot(data, index) {
 			autotick: false,
 			tickmode: 'array',
 			tickvals: tickvals(max),
-			dtick: 2,
+			dtick: function() {
+				if (max > 20) {
+					return 2
+				}else if (max > 40) {
+					return 5
+				}else {
+					return 1
+				}
+			},
 			gridcolor: "rgb(159, 197, 232)", 
 		},
 		xaxis: {
