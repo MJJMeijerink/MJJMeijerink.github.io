@@ -82,6 +82,13 @@ body, input{
 	line-height:70px;
 	font-size: 45px;
 	text-align: center;
+	width: 100%;
+}
+
+#about {
+	position:fixed;
+	right: 40px;
+	bottom: 30px;
 }
 
 #plotControls {
@@ -99,6 +106,10 @@ body, input{
 	width:70%;
 	margin-left:auto;
 	margin-right:auto;
+}
+#wrap {
+	text-align:center;
+	margin-top: 30px;
 }
 
 input[type="text"] {
