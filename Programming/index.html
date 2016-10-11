@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     <title>Portfolio Jan Jaap Meijerink</title>
 
@@ -13,8 +15,12 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../css/1-col-portfolio.css" rel="stylesheet">
-
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,7 +31,7 @@
 
 </head>
 
-<body onload='map();'>
+<body>
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -59,58 +65,38 @@
     <!-- Page Content -->
     <div class="container">
 
-        <!-- Page Heading -->
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Data Processing</h1>
-            </div>
+            <div class="col-lg-10">
+                <h1>Tower of Hanoi</h1>
+                <p class="lead">For the Programming course, we created a small game using Python and the Pygame library.</p>
+				<p>The Tower of Hanoi (also called the Tower of Brahma or Lucas' Tower, and sometimes pluralized) is a mathematical game or puzzle. It consists of three rods, and a number of disks of different sizes which can slide onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the smallest at the top, thus making a conical shape. The objective of the puzzle is to move the entire stack to another rod, obeying the following simple rules:</p>
+                <ul>
+                    <li>Only one disk can be moved at a time.</li>
+                    <li>Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack i.e. a disk can only be moved if it is the uppermost disk on a stack.</li>
+					<li>No disk may be placed on top of a smaller disk.</li>
+				</ul>
+				<h1>Game Download</h1>
+				<p class="lead">Click the link below to download the game.</p>
+				<a class="btn btn-default" href="ToH.exe">ToH.exe</a>
+				<h1></h1>
+				<p>Instructions:</p>
+				<ul>
+					<li>Run ToH.exe</li>
+					<li>Select a folder to install the files</li>
+					<li>Run Hanoi.exe to play the game</li>
+				</ul>
+                <h1>Python files download</h1>
+                <p class="lead">To view the source code of our little game, download the rar files from the link below.</p>
+				<a class="btn btn-default" href="Hanoi.rar">ToH rar files</a>
+				<h1></h1>
+				<p>To run hanoi.py you need Python and Pygame installed on your system.</p>
+			</div>
         </div>
         <!-- /.row -->
 
-        <div class="row">
-            <div class="col-md-12">
-                <h3>JavaScript visualizations</h3>
-                <p>During this course we learnt about different visualization techniques and important aspects of information visualization. With help from the <a href="https://en.wikipedia.org/wiki/D3.js" target = "_blank">D3 javascript library</a> we made two different visualization using public data.</p>
-				
-				<hr>
-				
-				<h3>D3 Map</h3>
-				<p>This map shows the percentage of ages 65+ per country.</p>
-				<div id="mappp" width='800px' height='400px'></div>
-				
-				<hr>
-				
-				<h3>D3 Line Chart</h3>
-				<p>This graph shows the maximum temperatures in De Bilt (Netherlands) for 2014.</p>
-				<svg id="graph" width="800" height="400"></svg>
-				
-				<hr>
-				
-				<h3>File downloads</h3>
-				<table class="table">
-				  <tr>
-					<th>Data used to create the map:</th>
-					<th>Data used to create the line graph:</th>
-				  </tr>
-				  <tr>
-					<td><a class="btn btn-primary" href="ages.csv">Ages 65+ worldwide (raw data)</a></td>
-					<td><a class="btn btn-primary" href="KNMI.txt">Max. temp. in De Bilt (Netherlands) (raw data)</a></td>
-				  </tr>
-				  <tr>
-					<td><a class="btn btn-primary" href="mapConvert.py">Script to convert data to JSON (.py)</a></td>
-					<td><a class="btn btn-primary" href="lineConvert.py">Script to convert data to JSON (.py)</a></td>
-				  </tr>
-				  <tr>
-					<td><a class="btn btn-primary" href="mapData.json">Ages 65+ worldwide (JSON)</a></td>
-					<td><a class="btn btn-primary" href="lineData.json">Max. temp. in De Bilt (Netherlands) (JSON)</a></td>
-				  </tr>
-				</table>
-			</div>
-        </div>
+	    <hr>
 		
-        <hr>
-
-        <!-- Footer -->
+		<!-- Footer -->
         <footer>
             <div class="row">
                 <div class="col-lg-12">
@@ -119,22 +105,16 @@
             </div>
             <!-- /.row -->
         </footer>
-
+	
     </div>
     <!-- /.container -->
 
-    <!-- jQuery -->
+    <!-- jQuery Version 1.11.1 -->
     <script src="../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 
-	
-	<script type="text/javascript" src="topojson.js"></script>
-	<script type="text/javascript" src="d3.js"></script>
-	<script type="text/javascript" src="datamaps.world.min.js"></script>
-	<script type="text/javascript" src="d3map&line.js"></script>
-	
 </body>
 
 </html>

@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     <title>Portfolio Jan Jaap Meijerink</title>
 
@@ -13,8 +15,12 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../css/1-col-portfolio.css" rel="stylesheet">
-
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,7 +31,7 @@
 
 </head>
 
-<body onload='map();'>
+<body>
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -59,58 +65,26 @@
     <!-- Page Content -->
     <div class="container">
 
-        <!-- Page Heading -->
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Data Processing</h1>
-            </div>
+            <div class="col-lg-10">
+                <h1>Research paper with My Japanese Coach</h1>
+                <p class="lead">Researching an interactive game.</p>
+				<p>For Research of interactive systems we were supposed to research either the consequences of serious games, visual analytics or robots. We chose to research a Serious game. Serious games are games made to entertain and teach people. We decided to use My Japanese Coach as our serious game. It's a game that teaches you Japanese. We studied the effects of this game compared to traditional language learning.</p>
+       
+				<h1>Paper summary</h1>
+				<p class="lead">Click the link below for a summary of the paper.</p>
+				<a class="btn btn-default" href="Handout.pdf" target="_blank">Handout.pdf</a>
+				
+                <h1>The paper</h1>
+                <p class="lead">Click the link below for the final version of the paper.</p>
+				<a class="btn btn-default" href="Eindpaper_groep_A3.pdf" target="_blank">Final paper.pdf</a>
+			</div>
         </div>
         <!-- /.row -->
 
-        <div class="row">
-            <div class="col-md-12">
-                <h3>JavaScript visualizations</h3>
-                <p>During this course we learnt about different visualization techniques and important aspects of information visualization. With help from the <a href="https://en.wikipedia.org/wiki/D3.js" target = "_blank">D3 javascript library</a> we made two different visualization using public data.</p>
-				
-				<hr>
-				
-				<h3>D3 Map</h3>
-				<p>This map shows the percentage of ages 65+ per country.</p>
-				<div id="mappp" width='800px' height='400px'></div>
-				
-				<hr>
-				
-				<h3>D3 Line Chart</h3>
-				<p>This graph shows the maximum temperatures in De Bilt (Netherlands) for 2014.</p>
-				<svg id="graph" width="800" height="400"></svg>
-				
-				<hr>
-				
-				<h3>File downloads</h3>
-				<table class="table">
-				  <tr>
-					<th>Data used to create the map:</th>
-					<th>Data used to create the line graph:</th>
-				  </tr>
-				  <tr>
-					<td><a class="btn btn-primary" href="ages.csv">Ages 65+ worldwide (raw data)</a></td>
-					<td><a class="btn btn-primary" href="KNMI.txt">Max. temp. in De Bilt (Netherlands) (raw data)</a></td>
-				  </tr>
-				  <tr>
-					<td><a class="btn btn-primary" href="mapConvert.py">Script to convert data to JSON (.py)</a></td>
-					<td><a class="btn btn-primary" href="lineConvert.py">Script to convert data to JSON (.py)</a></td>
-				  </tr>
-				  <tr>
-					<td><a class="btn btn-primary" href="mapData.json">Ages 65+ worldwide (JSON)</a></td>
-					<td><a class="btn btn-primary" href="lineData.json">Max. temp. in De Bilt (Netherlands) (JSON)</a></td>
-				  </tr>
-				</table>
-			</div>
-        </div>
+		<hr>
 		
-        <hr>
-
-        <!-- Footer -->
+	    <!-- Footer -->
         <footer>
             <div class="row">
                 <div class="col-lg-12">
@@ -123,18 +97,12 @@
     </div>
     <!-- /.container -->
 
-    <!-- jQuery -->
+    <!-- jQuery Version 1.11.1 -->
     <script src="../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 
-	
-	<script type="text/javascript" src="topojson.js"></script>
-	<script type="text/javascript" src="d3.js"></script>
-	<script type="text/javascript" src="datamaps.world.min.js"></script>
-	<script type="text/javascript" src="d3map&line.js"></script>
-	
 </body>
 
 </html>
