@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Information Visualization">
+    <meta name="author" content="Jan Jaap Meijerink">
+	
+	<title>Information Visualization Project</title>
+	
+	<!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/1-col-portfolio.css" rel="stylesheet">
+  </head>
+  
+  <body>
+	<div id="overlay"></div>
+  
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="#">
+				  Information Visualization Project
+				</a>
+            </div>
+        </div>
+	</nav>	
+	
+	<div class="container">
+	
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+					SVG Map Amsterdam
+                </h1>
+            </div>
+        </div>
+
+		<div class="row">
+			<div id="svgContainer" class="col-lg-12">
+			</div>
+		</div>
+		
+	</div>
+	
+	<div id="overlay2"></div>
+	
+	<script src="js/d3.min.js"></script>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/Chart.bundle.min.js"></script>
+	<script src="js/panzoom.js"></script>
+	<script src="js/script.js"></script>
+	
+  </body>
+</html>
