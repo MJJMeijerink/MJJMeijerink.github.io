@@ -8,13 +8,14 @@ function init() {
 			.range(['#fb6a4a','#67000d']),
 		chart;
 
-	window.onerror = function(event) {
+	/*window.onerror = function(event) {
 		if (event.indexOf('Error: Unable to parse color from string') != -1) {
 			return true;
 		} else {
+			console.log(event)
 			return event;
 		}
-	};
+	};*/
 	
 	
 	//Loading text
@@ -34,42 +35,128 @@ function init() {
 	
 	// Loading all data, happens before anything else can happen.
 	d3.csv("data/flatmetbuurten.csv", function(data) {
-		for (i = 0; i < data.length; i++) {
-			var nbhCode = 'F' + data[i]['neighborhood_id_ams'];
-			var inciPrio = data[i]['incident_prio'];
-			var nbhName = data[i]['neighborhood_name_ams'];
-			var inciTime = new Date(data[i]['incident_timestamp'].substring(0,19));
-			var month = inciTime.getMonth() + 1
-			if (month < 10) {
-					month = '0' + (month);
-				}
-			var inciTimeMY = month + '/' + inciTime.getFullYear();
-			var inciHour = inciTime.getHours();
-			
-			if ( !dataDict.hasOwnProperty(nbhCode) ) {
-				dataDict[nbhCode] = {}
-			} else {
-				if (!dataDict[nbhCode].hasOwnProperty('name')) {
-					dataDict[nbhCode]['name'] = nbhName;
-				}
-				if (!dataDict[nbhCode].hasOwnProperty(inciTimeMY)) {
-					dataDict[nbhCode][inciTimeMY] = {};
-					dataDict[nbhCode][inciTimeMY]['total'] = 1;
-					for (var j = 0; j < 24; j++) {
-						if (j != inciHour) {
-							dataDict[nbhCode][inciTimeMY][j.toString()] = 0;
-						} else if (j == inciHour) {
-							dataDict[nbhCode][inciTimeMY][j.toString()] = 1;
-						}
-					}	
+		function getData(d) {
+			for (i = 0; i < d.length; i++) {
+				var nbhCode = 'F' + d[i]['neighborhood_id_ams'];
+				var inciPrio = d[i]['incident_prio'];
+				var nbhName = d[i]['neighborhood_name_ams'];
+				var inciTime = new Date(d[i]['incident_timestamp'].substring(0,19));
+				var month = inciTime.getMonth() + 1
+				if (month < 10) {
+						month = '0' + (month);
+					}
+				var inciTimeMY = month + '/' + inciTime.getFullYear();
+				var inciHour = inciTime.getHours();
+				
+				if ( !dataDict.hasOwnProperty(nbhCode) ) {
+					dataDict[nbhCode] = {}
 				} else {
-					dataDict[nbhCode][inciTimeMY]['total']++;
-					dataDict[nbhCode][inciTimeMY][inciHour.toString()]++;
+					if (!dataDict[nbhCode].hasOwnProperty('name')) {
+						dataDict[nbhCode]['name'] = nbhName;
+					}
+					if (!dataDict[nbhCode].hasOwnProperty(inciTimeMY)) {
+						dataDict[nbhCode][inciTimeMY] = {};
+						dataDict[nbhCode][inciTimeMY]['total'] = 1;
+						for (var j = 0; j < 24; j++) {
+							if (j != inciHour) {
+								dataDict[nbhCode][inciTimeMY][j.toString()] = 0;
+							} else if (j == inciHour) {
+								dataDict[nbhCode][inciTimeMY][j.toString()] = 1;
+							}
+						}	
+					} else {
+						dataDict[nbhCode][inciTimeMY]['total']++;
+						dataDict[nbhCode][inciTimeMY][inciHour.toString()]++;
+					}
 				}
 			}
 		}
+		getData(data);
+		
 		d3.select('#loadtext').remove();
+		
+		//
+		// Filter functionality
+		//
+		
+		d3.select('#filterBut').style('display', 'initial');
+		$(".check").prop("checked", true);
+		var priorities = ['1', '2', '3', '4', '5'];
 
+		$('.dropdown-menu .prio').on('click', function(event) {
+		    var $target = $( event.currentTarget ),
+			    val = $target.attr('data-value'),
+			    $inp = $target.find('input'),
+			    idx;
+
+		    if ((idx = priorities.indexOf(val)) > -1 ) {
+			    priorities.splice(idx, 1);
+			    setTimeout(function() {$inp.prop('checked', false)}, 0);
+			    dataDict = {}
+			  
+		    } else {
+			    priorities.push( val );
+			    setTimeout(function() {$inp.prop('checked', true)}, 0);
+			    dataDict = {}
+		    }
+
+		    $(event.target).blur();
+			
+		   	getData(data.filter(selectPrio));
+			colorMap(currentDate, currentHour);
+		    return false;
+		});
+		
+		function selectPrio(d) {
+			if (priorities.length == 5) {
+				return true
+			} else {
+				var i = priorities.indexOf(d.incident_prio);
+				if (i != -1) {
+					return d.incident_prio == priorities[i]
+				} 
+			}
+		}
+		
+		var categories = ['Alarm', 'Bezitsaantasting', 'Brand', 'Dienstverlening', 'Gezondheid', 'Leefmilieu', 'Ongeval', 'Overige', 'Railvervoer', 'Veiligheidenopenbareorde', 'Verkeer'];
+		
+		$('.dropdown-menu .cat').on('click', function(event) {
+
+		    var $target = $( event.currentTarget ),
+			    val = $target.attr('data-value'),
+			    $inp = $target.find('input'),
+			    idx;
+
+		    if ((idx = categories.indexOf(val)) > -1 ) {
+			    categories.splice(idx, 1);
+			    setTimeout(function() {$inp.prop('checked', false)}, 0);
+			    dataDict = {}
+			  
+		    } else {
+			    categories.push( val );
+			    setTimeout(function() {$inp.prop('checked', true)}, 0);
+			    dataDict = {}
+		    }
+
+		    $(event.target).blur();
+
+		   	getData(data.filter(selectCat));
+			colorMap(currentDate, currentHour);
+		    return false;
+		   
+		});
+		
+		function selectCat(d) {
+			if (categories.length == 11) {
+				return true
+			} else {
+				var i = categories.indexOf(d.incident_category);
+				if (i != -1) {
+					return d.incident_category == categories[i]
+				} 
+			}
+		}
+		
 		//
 		// Map variables/functionality
 		//
@@ -108,6 +195,7 @@ function init() {
 
 		var compareButton = d3.select('#svgContainer')
 			.append('button')
+			.attr('class', 'btn btn-default')
 			.attr('id', 'compare')
 			.style('position', 'absolute')
 			.html('Compare')
@@ -244,7 +332,6 @@ function init() {
 			.attr('id', 'parallaxViz')
 			.attr('width', '100%')
 			.attr('height', '100%')
-			//.attr('transform', 'translate(0, -' + window.innerHeight + ')')
 			.style('position', 'fixed')
 			.style('top', -window.innerHeight + 'px')
 			.style('left', 0)
@@ -310,26 +397,7 @@ function init() {
 				.style('stroke', '#000')
 				.style('stroke-width', 1)
 				.style('fill', '#999')
-				.on('mouseover', function(d) {
-					div = d3.select('body').append('div')	
-						.attr('id', 'tooltip');
-					div.html(d.properties.Buurt)
-						.style('left', (d3.event.pageX) + 'px')		
-						.style('top', (d3.event.pageY - 28) + 'px')
-					div
-						.style('width', (document.getElementById('tooltip').clientWidth + 16) + 'px')
-						.style('height', (document.getElementById('tooltip').clientHeight) + 'px');
-						
-					d3.select(this).style('cursor', 'pointer');
-					})					
-				.on('mouseout', function() {		
-					div.remove();
-				})
-				.on('mousemove', function() {
-					div
-						.style('left', (d3.event.pageX) + 'px')		
-						.style('top', (d3.event.pageY - 28) + 'px');
-				})
+				.style('cursor', 'pointer')
 				.on('mousedown', function(d) {
 					now = true;
 					setTimeout(function() {
@@ -345,29 +413,25 @@ function init() {
 					} else if (comp) {
 						var el = d3.select(this).node()
 						var sw = window.getComputedStyle(el).getPropertyValue('stroke-width');
-						var fill = window.getComputedStyle(el).getPropertyValue('fill');
-						if (fill != 'rgb(153, 153, 153)') {
-							if (sw != '3px' && sw != 3) {
-								d3.select(this).style('stroke-width', 3);
-								if (selected.length < 1) {
-									bchart(d.properties, 'create');
-								} else {
-									bchart(d.properties, 'update');
-								}
-								selected.push(this);
+						if (sw != '3px' && sw != 3) {
+							d3.select(this).style('stroke-width', 3);
+							if (selected.length < 1) {
+								bchart(d.properties, 'create');
 							} else {
-								d3.select(this).style('stroke-width', 1);
-								bchart(d.properties, 'remove');
-								selected.splice(selected.indexOf(this), 1);
+								bchart(d.properties, 'update');
 							}
+							selected.push(this);
+						} else {
+							d3.select(this).style('stroke-width', 1);
+							bchart(d.properties, 'remove');
+							selected.splice(selected.indexOf(this), 1);
 						}
 					}
 				});
 				
 				colorMap(currentDate, currentHour);
 		});
-
-
+		
 		function zoomIn(code) {
 			
 			
@@ -412,10 +476,20 @@ function init() {
 			};
 		};
 		
+		var compareColorScale = d3.scale.linear()
+			.domain([1, 10])
+			.range(['#fb6a4a','#67000d']);
+		
 		function bchart(d, mode) {
 			d3.select('#placeholdertext').transition().duration(800).style('opacity', 0).remove();
 			
-			var val = dataDict['F' + d.Buurt_code.substring(1)][currentDate][currentHour]
+			try {
+				var val = dataDict['F' + d.Buurt_code.substring(1)][currentDate].total;
+			} catch (e) {
+				var val = 0;
+			}
+
+		
 			if (mode == 'create') {
 				
 				addChartCanvas();
@@ -424,10 +498,10 @@ function init() {
 					datasets: [
 						{
 							label: 'Comparing neighborhoods',
-							data: [dataDict['F' + d.Buurt_code.substring(1)][currentDate][currentHour]],
+							data: [val],
 							borderWidth: 2,
-							borderColor: [mapColorScale(val)],
-							backgroundColor: [mapColorScale(val) + '4c']
+							borderColor: [compareColorScale(val)],
+							backgroundColor: [compareColorScale(val) + '4c']
 						}
 					]
 				}
@@ -452,7 +526,7 @@ function init() {
 						},
 						title: {
 							display: true,
-							text: 'Compare neighborhoods'
+							text: 'Compare neighborhoods - Incidents per month'
 						},
 						legend: {
 							display: false
@@ -464,10 +538,10 @@ function init() {
 			}
 			else if (mode == 'update') {
 			
-				chart.data.datasets[0].data.push(dataDict['F' + d.Buurt_code.substring(1)][currentDate][currentHour]);
+				chart.data.datasets[0].data.push(val);
 				chart.data.labels.push(d['Buurt'].split(' '));
-				chart.data.datasets[0].backgroundColor.push(mapColorScale(val) + '4c');
-				chart.data.datasets[0].borderColor.push(mapColorScale(val));
+				chart.data.datasets[0].backgroundColor.push(compareColorScale(val) + '4c');
+				chart.data.datasets[0].borderColor.push(compareColorScale(val));
 				chart.update();
 				
 			}
@@ -570,6 +644,7 @@ function init() {
 			dayNightSlide.style('display', 'none');
 			dateSlide.style('display', 'none');
 			compareButton.style('display', 'none');
+			d3.select('#filterBut').style('display', 'none');
 		}
 		
 		function setZoom(code) {
@@ -649,6 +724,7 @@ function init() {
 				compareButton.style('display', 'initial');
 				dayNightSlide.style('display', 'initial');
 				dateSlide.style('display', 'initial');
+				d3.select('#filterBut').style('display', 'initial');
 			}
 			
 			clicked = false;
@@ -678,6 +754,7 @@ function init() {
 				compareButton.style('display', 'initial');
 				dayNightSlide.style('display', 'initial');
 				dateSlide.style('display', 'initial');
+				d3.select('#filterBut').style('display', 'initial');
 			} 
 			
 			clicked = false;
@@ -734,15 +811,17 @@ function init() {
 
 
 	function colorMap(MY, hour) {
-		
 		for (nbh in dataDict) {
+		
 			if (MY in dataDict[nbh]) {
 				if (dataDict[nbh][MY][hour] == 0) {
 					d3.select('#' + nbh).transition().duration(300).style('fill', '#999');
+					tooltip(nbh, data=false);
 					continue;
 				}
 			} else {
 				d3.select('#' + nbh).transition().duration(300).style('fill', '#999');
+				tooltip(nbh, data=false);
 				continue;
 			}
 			var data = dataDict[nbh][MY][hour];
@@ -751,7 +830,33 @@ function init() {
 			d3.select('#' + nbh).transition().duration(300).style('fill', function () {
 					return mapColorScale(data);
 				});
+			tooltip(nbh, data);
 		}
-		
+	
+		function tooltip(nbh, data) {
+			
+			d3.select('#' + nbh)
+				.on('mouseover', function(d) {
+					
+					div = d3.select('body').append('div')	
+						.attr('id', 'tooltip');
+					if (!data) {
+						div.html(d.properties.Buurt)
+					} else {
+						div.html(d.properties.Buurt + '<br> Incidents: ' + data)
+					}					
+				
+					})					
+				.on('mouseout', function() {		
+					div.remove();
+				})
+				.on('mousemove', function() {
+					div
+						.style('left', (d3.event.pageX + 20) + 'px')		
+						.style('top', (d3.event.pageY - 50) + 'px');
+				})
+				
+		}
+	
 	}
 }
