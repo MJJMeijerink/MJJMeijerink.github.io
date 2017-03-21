@@ -479,6 +479,18 @@ function init() {
 		var compareColorScale = d3.scale.linear()
 			.domain([1, 10])
 			.range(['#fb6a4a','#67000d']);
+			
+		function hexToRGB(hex, alpha) {
+			var r = parseInt(hex.slice(1, 3), 16),
+				g = parseInt(hex.slice(3, 5), 16),
+				b = parseInt(hex.slice(5, 7), 16);
+
+			if (alpha) {
+				return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+			} else {
+				return "rgb(" + r + ", " + g + ", " + b + ")";
+			}
+		}
 		
 		function bchart(d, mode) {
 			d3.select('#placeholdertext').transition().duration(800).style('opacity', 0).remove();
@@ -501,7 +513,7 @@ function init() {
 							data: [val],
 							borderWidth: 2,
 							borderColor: [compareColorScale(val)],
-							backgroundColor: [compareColorScale(val) + '4c']
+							backgroundColor: [hexToRGB(compareColorScale(val), 0.3)]
 						}
 					]
 				}
@@ -540,7 +552,7 @@ function init() {
 			
 				chart.data.datasets[0].data.push(val);
 				chart.data.labels.push(d['Buurt'].split(' '));
-				chart.data.datasets[0].backgroundColor.push(compareColorScale(val) + '4c');
+				chart.data.datasets[0].backgroundColor.push(hexToRGB(compareColorScale(val), 0.3));
 				chart.data.datasets[0].borderColor.push(compareColorScale(val));
 				chart.update();
 				
