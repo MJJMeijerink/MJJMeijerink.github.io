@@ -350,32 +350,34 @@ function init() {
 		var parallaxsvg = d3.select('#parallaxViz');
 		var out = false;
 		function mouseWheelEvent(e) {
-			var f = 30;
-			var delta = e.detail < 0 || e.wheelDelta > 0 ? 1 : -1;
-			if (!out) {
-				var timeout = setTimeout(function() {
-					pos = 0;
-					out = false;
-				}, 1200);
-			}
-			out = true;
-			if (delta < 0) {
-				if (pos <= 5) {
-					pos += 1;
-				} else if (pos > 5) {
-					parallaxsvg.transition().duration(1000).style('top', '0px');
-					clearTimeout(timeout);
-					pos = 0;
-					out = false;
+			if (!$('#SVG').is(":hover")) {
+				var f = 30;
+				var delta = e.detail < 0 || e.wheelDelta > 0 ? 1 : -1;
+				if (!out) {
+					var timeout = setTimeout(function() {
+						pos = 0;
+						out = false;
+					}, 1200);
 				}
-			} else {
-				if (pos <= 5) {
-					pos += 1;
-				} else if (pos > 5) {
-					parallaxsvg.transition().duration(1000).style('top', -window.innerHeight + 'px');
-					clearTimeout(timeout);
-					pos = 0;
-					out = false;
+				out = true;
+				if (delta < 0) {
+					if (pos <= 5) {
+						pos += 1;
+					} else if (pos > 5) {
+						parallaxsvg.transition().duration(1000).style('top', '0px');
+						clearTimeout(timeout);
+						pos = 0;
+						out = false;
+					}
+				} else {
+					if (pos <= 5) {
+						pos += 1;
+					} else if (pos > 5) {
+						parallaxsvg.transition().duration(1000).style('top', -window.innerHeight + 'px');
+						clearTimeout(timeout);
+						pos = 0;
+						out = false;
+					}
 				}
 			}
 		}
