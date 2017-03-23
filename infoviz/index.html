@@ -10,6 +10,7 @@
 	<title>Information Visualization Project</title>
 	
     <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-switch.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
   </head>
   
@@ -34,7 +35,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-					SVG Map Amsterdam
                 </h1>
             </div>
         </div>
@@ -44,36 +44,46 @@
 				<div id = "filterBut" class="button-group">
 					<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Filters</span> <span class="caret"></span></button>
 					<ul class="dropdown-menu">
-					  <li class="dropdown-header">Priorities</li>
-					  <li><a class="prio" href="#" class="small" data-value="1" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Priority 1 (highest)</a></li>
-					  <li><a class="prio" href="#" class="small" data-value="2" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Priority 2</a></li>
-					  <li><a class="prio" href="#" class="small" data-value="3" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Priority 3</a></li>
-					  <li><a class="prio" href="#" class="small" data-value="4" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Priority 4</a></li>
-					  <li><a class="prio" href="#" class="small" data-value="5" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Priority 5 (lowest)</a></li>
-					  <li class="divider"></li>
-					  <li class="dropdown-header">Categories</li>
-					  <li><a class="cat" href="#" class="small" data-value="Ongeval" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Accident</a></li>
-					  <li><a class="cat" href="#" class="small" data-value="Alarm" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Alarm</a></li>
-					  <li><a class="cat" href="#" class="small" data-value="Bezitsaantasting" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Conversion of property</a></li>
-					  <li><a class="cat" href="#" class="small" data-value="Leefmilieu" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Environment</a></li>
-					  <li><a class="cat" href="#" class="small" data-value="Brand" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Fire</a></li>
-					  <li><a class="cat" href="#" class="small" data-value="Gezondheid" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Health</a></li>
-					  <li><a class="cat" href="#" class="small" data-value="Railvervoer" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Railway traffic</a></li>
-					  <li><a class="cat" href="#" class="small" data-value="Veiligheidenopenbareorde" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Safety and public order</a></li>
-					  <li><a class="cat" href="#" class="small" data-value="Dienstverlening" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Services</a></li>
-					  <li><a class="cat" href="#" class="small" data-value="Verkeer" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Traffic</a></li>
-					  <li><a class="cat" href="#" class="small" data-value="Overige" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Other</a></li>
+						<li>
+							<div class="row" style="width: 440px">
+								<ul class="list-unstyled col-sm-5">
+								  <li class="dropdown-header">Priorities</li>
+								  <li><a class="prio" href="#" class="small" data-value="1" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Priority 1 (highest)</a></li>
+								  <li><a class="prio" href="#" class="small" data-value="2" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Priority 2</a></li>
+								  <li><a class="prio" href="#" class="small" data-value="3" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Priority 3</a></li>
+								  <li><a class="prio" href="#" class="small" data-value="4" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Priority 4</a></li>
+								  <li><a class="prio" href="#" class="small" data-value="5" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Priority 5 (lowest)</a></li>
+								</ul>
+								<ul class="list-unstyled col-sm-6">
+								  <li class="dropdown-header">Categories</li>
+								  <li><a class="cat" href="#" class="small" data-value="Ongeval" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Accident</a></li>
+								  <li><a class="cat" href="#" class="small" data-value="Alarm" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Alarm</a></li>
+								  <li><a class="cat" href="#" class="small" data-value="Bezitsaantasting" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Conversion of property</a></li>
+								  <li><a class="cat" href="#" class="small" data-value="Leefmilieu" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Environment</a></li>
+								  <li><a class="cat" href="#" class="small" data-value="Brand" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Fire</a></li>
+								  <li><a class="cat" href="#" class="small" data-value="Gezondheid" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Health</a></li>
+								  <li><a class="cat" href="#" class="small" data-value="Railvervoer" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Railway traffic</a></li>
+								  <li><a class="cat" href="#" class="small" data-value="Veiligheidenopenbareorde" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Safety and public order</a></li>
+								  <li><a class="cat" href="#" class="small" data-value="Dienstverlening" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Services</a></li>
+								  <li><a class="cat" href="#" class="small" data-value="Verkeer" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Traffic</a></li>
+								  <li><a class="cat" href="#" class="small" data-value="Overige" tabIndex="-1"><input class="check" type="checkbox">&nbsp;Other</a></li>
+								</ul>
+							</div>
+						</li>
 					</ul>
 			    </div>
+				
 			</div>
 		</div>
 		
 	</div>
 	
 	<div id="overlay2"></div>
+	<div id="overlay3"></div>
 	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-switch.min.js"></script>
 	<script src="js/d3.min.js"></script>
 	<script src="js/Chart.bundle.min.js"></script>
 	<script src="js/panzoom.js"></script>

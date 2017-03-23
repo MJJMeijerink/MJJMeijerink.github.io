@@ -1,12 +1,13 @@
 function init() {
 	// Global variables
 	var dataDict = {},
-		currentDate = '03/2005',
+		currentDate = '07/2014',
 		currentHour = '14',
 		mapColorScale = d3.scale.linear()
 			.domain([1, 3])
 			.range(['#fb6a4a','#67000d']),
-		chart;
+		chart,
+		hours = true;
 
 	/*window.onerror = function(event) {
 		if (event.indexOf('Error: Unable to parse color from string') != -1) {
@@ -103,7 +104,7 @@ function init() {
 		    $(event.target).blur();
 			
 		   	getData(data.filter(selectPrio));
-			colorMap(currentDate, currentHour);
+			colorMap(currentDate, currentHour, false);
 		    return false;
 		});
 		
@@ -141,7 +142,7 @@ function init() {
 		    $(event.target).blur();
 
 		   	getData(data.filter(selectCat));
-			colorMap(currentDate, currentHour);
+			colorMap(currentDate, currentHour, false);
 		    return false;
 		   
 		});
@@ -205,76 +206,21 @@ function init() {
 		
 		var selected = [];
 		
-		//
-		// Day Night Slider Functionality
-		//
-		
-		var dayNightSlide = d3.select('#svgContainer')
-			.append('input')
-			.attr('type', 'range')
-			.attr('min', 1)
-			.attr('max', 1000)
-			.attr('value', 400)
-			.attr('id', 'dnslider');
-			
-		var dayNightOverlay = d3.select('#overlay').append('svg')
-			.attr('width', '100%')
-			.attr('height', '100%')
-			.style('position', 'fixed')
-			.style('top', 0)
-			.style('left', 0);
-
-
-		var dayNightColorScale = d3.scale.linear()
-			.domain([0, 0.3, 0.6, 1])
-			.range(["#003366", "#FFFFFF" , "#FFFFFF", "#003366"]);
-			
-		var rect = dayNightOverlay.append('rect')
-			.attr('height', '100%')
-			.attr('width', '100%')
-			.attr('fill', function() {
-				return dayNightColorScale(dayNightSlide.node().value/1000);
-			})
-			.attr('opacity', 0.9);
-
-		d3.select('.page-header').style('border-bottom', 'none')
-		var qcolorScale = d3.scale.quantize().domain([0,0.3,0.6,1])
-			  //.interpolate(d3.interpolateRgb)
-			  .range([d3.rgb("#FFF"), d3.rgb("#333"), d3.rgb("#333"), d3.rgb('#FFF')]);
-			
-		var h24 = 24 * 60 * 60 * 1000;
-		var initDate = new Date('jan 1 1970 05:00:00');
-
-		var timeDisplay = d3.select('.page-header')
-			.append('span')
-			.style('float', 'right')
-			.html(new Date(initDate.valueOf() + 0.4 * h24).getHours() + ':00'); //- ' + new Date(initDate.valueOf() + h24/12).getHours().toString() + ':00');
-
-		document.getElementById('dnslider').oninput = timeslide;
-		
-		var oldh = 831013; //random number that cannot be an hour
-		function timeslide() {
-			var val = this.value;
-			var perc = val/1000;
-			rect.attr('fill', dayNightColorScale(perc));
-			d3.select('.page-header')
-				.style('color', qcolorScale(perc));
-			var updateDate = new Date(initDate.valueOf() + perc * h24)
-			var hours = updateDate.getHours();
-			if (hours != oldh) {
-				timeDisplay.html(hours + ':00'); //- ' + new Date(updateDate.valueOf() + h24/12).getHours().toString() + ':00');
-				colorMap(currentDate, hours);
-				currentHour = hours;
-			}
-			oldh = hours;
-		}
 		
 		//
 		// Date Slider Functionality
 		//
-			
-		var dateSlide = d3.select('#svgContainer')
+		
+		var dateSlidediv = d3.select('#svgContainer').append('div')
+			.style('position', 'absolute')
+			.style('bottom', '-95px')
+			.style('width', 'inherit')
+			.style('left' , '0px');
+		dateSlidediv.append('label').html('Months')
+		
+		var dateSlide = dateSlidediv
 			.append('input')
+			//.attr('class', 'form-control')
 			.attr('type', 'range')
 			.attr('min', function() {
 				return new Date('2005/03/02').valueOf();
@@ -285,12 +231,14 @@ function init() {
 			.attr('step', function () {
 				return 7 * 24 * 60 * 60 * 1000;
 			})
+			.attr('value', function() {
+				return new Date('2014/07/02').valueOf();
+			})
 			.attr('id', 'dateSlide');
 			
 		var dateDisplay = d3.select('.page-header')
 			.append('span')
-			.style('float', 'right')
-			.html('March 2005 -&nbsp;');
+			.html('July 2014');
 
 		document.getElementById('dateSlide').oninput = datesliding;
 		
@@ -317,30 +265,139 @@ function init() {
 				if (m < 10) {
 					m = '0' + (m);
 				}
-				dateDisplay.html(fullMonth + ' ' + d.getFullYear() +  ' -&nbsp;');
-				colorMap(m+'/'+d.getFullYear(), currentHour);
+				dateDisplay.html(fullMonth + ' ' + d.getFullYear());
+				colorMap(m+'/'+d.getFullYear(), currentHour, false);
 				currentDate = m+'/'+d.getFullYear();
 			}
 			oldm = m;
 		}
 		
 		//
+		// Day Night Slider Functionality
+		//
+		
+		var dayNightdiv = d3.select('#svgContainer').append('div')
+			.style('position', 'absolute')
+			.style('width', 'inherit')
+			.style('left' , '0px')
+			.style('bottom', '-50px');
+		
+		dayNightdiv.append('label').html('Hours');
+		
+		var dayNightSlide = dayNightdiv
+			.append('input')
+			//.attr('class', 'form-control')
+			.attr('type', 'range')
+			.attr('min', 1)
+			.attr('max', 1000)
+			.attr('value', 400)
+			.attr('id', 'dnslider');
+			
+		var dayNightOverlay = d3.select('#overlay').append('svg')
+			.attr('width', '100%')
+			.attr('height', '100%')
+			.style('position', 'fixed')
+			.style('top', 0)
+			.style('left', 0);
+
+
+		var dayNightColorScale = d3.scale.linear()
+			.domain([0, 0.2, 0.6, .75, 1])
+			.range(["#003366", "#FFFFFF" , "#FFFFFF", "#003366", "#003366"]);
+			
+		var rect = dayNightOverlay.append('rect')
+			.attr('height', '100%')
+			.attr('width', '100%')
+			.attr('fill', function() {
+				return dayNightColorScale(dayNightSlide.node().value/1000);
+			})
+			.attr('opacity', 0.9);
+
+		d3.select('.page-header').style('border-bottom', 'none')
+		var displayColorScale = d3.scale.linear().domain([0,.2,.6,1])
+			  .range([d3.rgb("#FFF"), d3.rgb("#333"), d3.rgb("#333"), d3.rgb('#FFF')]);
+			
+		var h24 = 24 * 60 * 60 * 1000;
+		var initDate = new Date('jan 1 1970 05:00:00');
+
+		var timeDisplay = d3.select('.page-header')
+			.append('span')
+			.html(' -&nbsp;' + new Date(initDate.valueOf() + 0.4 * h24).getHours() + ':00'); //- ' + new Date(initDate.valueOf() + h24/12).getHours().toString() + ':00');
+
+		document.getElementById('dnslider').oninput = timeslide;
+		
+		var oldh = 831013; //random number that cannot be an hour
+		function timeslide() {
+			var val = this.value;
+			var perc = val/1000;
+			rect.attr('fill', dayNightColorScale(perc));
+			d3.select('.page-header')
+				.style('color', displayColorScale(perc));
+			var updateDate = new Date(initDate.valueOf() + perc * h24)
+			var hours = updateDate.getHours();
+			if (hours != oldh) {
+				timeDisplay.html(' -&nbsp;' + hours + ':00'); //- ' + new Date(updateDate.valueOf() + h24/12).getHours().toString() + ':00');
+				colorMap(currentDate, hours, false);
+				currentHour = hours;
+			}
+			oldh = hours;
+		}
+	
+		var toggle = d3.select('#svgContainer')
+			.append('div')
+			.attr('id', 'toggleBut')
+			.style('position', 'absolute')
+			.style('bottom', 0)
+			.style('left', 0)
+			.append('label')
+			.html('Turn hourly data on/off <br>')
+			.append('input')
+			.attr('checked', 'checked')
+			.attr('name', 'toggle')
+			.attr('type', 'checkbox')
+		
+		$.fn.bootstrapSwitch.defaults.size = 'small';
+		$('[name="toggle"]').bootstrapSwitch();
+		
+		$('input[name="toggle"]').on('switchChange.bootstrapSwitch', function(event, state) {
+		    hours = state;
+			if (!state) {
+				toggleHoursOff();
+			} else {
+				toggleHoursOn();
+			}
+			colorMap(currentDate, currentHour);
+		});
+	
+		//
 		// Parallax Functionality
 		//
 		
 		var parallaxOverlay = d3.select('#overlay2').append('svg')
 			.attr('id', 'parallaxViz')
-			.attr('width', '100%')
-			.attr('height', '100%')
+			.style('width', '100%')
+			.style('height', '100%')
+			.style('background-color', 'white')
+			.style('opacity', 0.96)
 			.style('position', 'fixed')
-			.style('top', -window.innerHeight + 'px')
+			.style('top', window.innerHeight*2 + 'px')
 			.style('left', 0)
 			
-		var backgroundRect = parallaxOverlay.append('rect')
-			.attr('width', '100%')
-			.attr('height', '100%')
-			.attr('fill', 'white')
-			.attr('opacity', 0.95);
+		var parallaxOverlay2 = d3.select('#overlay3').append('div')
+			.attr('id', 'parallaxIntro')
+			.style('width', '100%')
+			.style('height', '100%')
+			.style('background-color', 'white')
+			.style('opacity', 0.96)
+			.style('position', 'fixed')
+			.style('top', '0px')
+			.style('left', 0)
+			.append('h1')
+			.style('class', 'page-header')
+			.style('margin-top', '150px')
+			.style('text-align', 'center')
+			.html('The fire brigade<br>...<br><small>are pretty cool, yeah idk what you expected</small>')
+			
 
 		window.addEventListener('DOMMouseScroll', mouseWheelEvent);
 		window.addEventListener('mousewheel', mouseWheelEvent);
@@ -348,6 +405,9 @@ function init() {
 		var pos = 0; 
 
 		var parallaxsvg = d3.select('#parallaxViz');
+		var parallaxintro = d3.select('#parallaxIntro');
+		var layer = 'top';
+		
 		var out = false;
 		function mouseWheelEvent(e) {
 			if (!$('#SVG').is(":hover")) {
@@ -364,7 +424,13 @@ function init() {
 					if (pos <= 5) {
 						pos += 1;
 					} else if (pos > 5) {
-						parallaxsvg.transition().duration(1000).style('top', '0px');
+						if (layer == 'middle') {
+							parallaxintro.transition().duration(1000).style('top', '0px');
+							layer = 'top';
+						} else if (layer == 'bottom') {
+							parallaxsvg.transition().duration(1000).style('top', window.innerHeight*2 + 'px');
+							layer = 'middle';
+						}
 						clearTimeout(timeout);
 						pos = 0;
 						out = false;
@@ -373,14 +439,31 @@ function init() {
 					if (pos <= 5) {
 						pos += 1;
 					} else if (pos > 5) {
-						parallaxsvg.transition().duration(1000).style('top', -window.innerHeight + 'px');
+						if (layer == 'top') {
+							parallaxintro.transition().duration(1000).style('top', -window.innerHeight + 'px');
+							layer = 'middle';
+						} else if (layer == 'middle') {
+							parallaxsvg.transition().duration(1000).style('top', '0px');
+							layer = 'bottom';
+						}
 						clearTimeout(timeout);
 						pos = 0;
 						out = false;
 					}
 				}
+				console.log(pos)
 			}
 		}
+		
+		$(document).keyup(function(e) {
+			 if (e.keyCode == 27) { // escape key maps to keycode `27`
+				if (comp) {
+					undoCompare();
+				} else if (clicked) {
+					undoZoom();
+				}
+			}
+		});
 		
 		//
 		// Paint map
@@ -431,8 +514,34 @@ function init() {
 					}
 				});
 				
-				colorMap(currentDate, currentHour);
+				colorMap(currentDate, currentHour, false);
 		});
+		
+		//
+		// Functions
+		//
+		
+		function toggleHoursOff() {
+			dayNightdiv.style('opacity', 0.5);
+			dayNightSlide.attr('disabled', 'disabled');
+			mapColorScale = d3.scale.linear()
+				.domain([1, 15])
+				.range(['#fb6a4a','#67000d'])
+			timeDisplay.style('display', 'none');
+			rect.attr('fill', '#fff');
+			d3.select('.page-header').style('color', '#333');
+		}
+		
+		function toggleHoursOn() {
+			dayNightdiv.style('opacity', 1);
+			dayNightSlide.attr('disabled', null);
+			mapColorScale = d3.scale.linear()
+				.domain([1, 3])
+				.range(['#fb6a4a','#67000d'])
+			timeDisplay.style('display', 'initial');
+			rect.attr('fill', dayNightColorScale(document.getElementById('dnslider').value/1000));
+			d3.select('.page-header').style('color', displayColorScale(document.getElementById('dnslider').value/1000));			
+		}
 		
 		function zoomIn(code) {
 			
@@ -497,12 +606,19 @@ function init() {
 		function bchart(d, mode) {
 			d3.select('#placeholdertext').transition().duration(800).style('opacity', 0).remove();
 			
-			try {
-				var val = dataDict['F' + d.Buurt_code.substring(1)][currentDate].total;
-			} catch (e) {
-				var val = 0;
+			if (!hours) {
+				try {
+					var val = dataDict['F' + d.Buurt_code.substring(1)][currentDate].total;
+				} catch (e) {
+					var val = 0;
+				}
+			} else {
+				try {
+					var val = dataDict['F' + d.Buurt_code.substring(1)][currentDate][currentHour];
+				} catch (e) {
+					var val = 0;
+				}
 			}
-
 		
 			if (mode == 'create') {
 				
@@ -511,7 +627,7 @@ function init() {
 					labels: [d['Buurt'].split(' ')],
 					datasets: [
 						{
-							label: 'Comparing neighborhoods',
+							label: 'Incidents',
 							data: [val],
 							borderWidth: 2,
 							borderColor: [compareColorScale(val)],
@@ -614,7 +730,7 @@ function init() {
 				labels: nbhLabels,
 				datasets: [
 					{
-						label: dataDict['F' + code.substring(1)].name,
+						label: 'Incidents',
 						lineTension: 0.1,
 						backgroundColor: "rgba(200,25,25,0.4)",
 						borderColor: "rgba(200,25,25,1)",
@@ -655,13 +771,18 @@ function init() {
 		}
 		
 		function hideElements() {
-			dayNightSlide.style('display', 'none');
-			dateSlide.style('display', 'none');
+			dayNightdiv.style('display', 'none');
+			dateSlidediv.style('display', 'none');
 			compareButton.style('display', 'none');
 			d3.select('#filterBut').style('display', 'none');
+			d3.select('#toggleBut').style('display', 'none');
 		}
 		
+		var fill;
+		var c;
 		function setZoom(code) {
+			c = code;
+			
 			d3.selectAll('.neighborhood').transition().duration(800).style('opacity', .1);
 			
 			var newWidth = height,
@@ -671,7 +792,7 @@ function init() {
 			
 			var nbh = d3.select('#' + code);
 			var element = nbh.node();
-			var fill = window.getComputedStyle(element).getPropertyValue('fill');
+			fill = window.getComputedStyle(element).getPropertyValue('fill');
 			nbh.style('fill', '#999');
 			
 			var bbox = element.getBBox();
@@ -689,8 +810,6 @@ function init() {
 					.attr('transform', 'translate(' + (newWidth/2 - centroid[0]) + ',' + (newHeight/2 - centroid[1]) + ') scale(' + sf + ')');
 			
 			pz.dispose();
-			
-			return fill;
 		}
 		
 		function compareZoom() {
@@ -713,7 +832,7 @@ function init() {
 			d3.selectAll('path').transition().duration(800).attr('d', path);
 		}
 		
-		function undoCompare(t) {
+		function undoCompare() {
 			d3.select('#placeholdertext').transition().duration(800).style('opacity', 0).remove();
 			
 			svg
@@ -730,15 +849,16 @@ function init() {
 				
 			d3.selectAll('path').transition().duration(800).attr('d', path);
 			
-			t.remove();
+			d3.select('#closeBut').remove();
 			
 			setTimeout(reset ,800)
 			
 			function reset() {
 				compareButton.style('display', 'initial');
-				dayNightSlide.style('display', 'initial');
-				dateSlide.style('display', 'initial');
+				dayNightdiv.style('display', 'initial');
+				dateSlidediv.style('display', 'initial');
 				d3.select('#filterBut').style('display', 'initial');
+				d3.select('#toggleBut').style('display', 'initial');
 			}
 			
 			clicked = false;
@@ -751,7 +871,7 @@ function init() {
 			selected = [];
 		}
 		
-		function undoZoom(t, code, fill) {
+		function undoZoom() {
 			svg.transition().duration(800)
 				.attr('width', width)
 				.attr('height', height);
@@ -759,21 +879,22 @@ function init() {
 				.style('opacity', 1);
 			d3.select('#mapLayer').transition().duration(800)
 				.attr('transform', 'matrix(1, 0, 0, 1, 0, 0)');
-			t.remove();
+			d3.select('#closeBut').remove();
 			
 			setTimeout(reset, 800)
 			
 			function reset() {
 				pz = panzoom(g.node());
 				compareButton.style('display', 'initial');
-				dayNightSlide.style('display', 'initial');
-				dateSlide.style('display', 'initial');
+				dayNightdiv.style('display', 'initial');
+				dateSlidediv.style('display', 'initial');
 				d3.select('#filterBut').style('display', 'initial');
+				d3.select('#toggleBut').style('display', 'initial');
 			} 
 			
 			clicked = false;
 			
-			var nbh = d3.select('#' + code)
+			var nbh = d3.select('#' + c)
 			
 			nbh.style('fill' , fill);
 			
@@ -793,9 +914,9 @@ function init() {
 				})
 				.on('click', function(){
 					if (mode == 'compare') {
-						undoCompare(this);
+						undoCompare();
 					} else if (mode == 'zoom') {
-						undoZoom(this, code, fill);
+						undoZoom();
 					}
 				});
 		}
@@ -828,7 +949,7 @@ function init() {
 		for (nbh in dataDict) {
 		
 			if (MY in dataDict[nbh]) {
-				if (dataDict[nbh][MY][hour] == 0) {
+				if (dataDict[nbh][MY][hour] == 0 && hours) {
 					d3.select('#' + nbh).transition().duration(300).style('fill', '#999');
 					tooltip(nbh, data=false);
 					continue;
@@ -838,7 +959,11 @@ function init() {
 				tooltip(nbh, data=false);
 				continue;
 			}
-			var data = dataDict[nbh][MY][hour];
+			if (!hours) {
+				var data = dataDict[nbh][MY]['total'];
+			} else {
+				var data = dataDict[nbh][MY][hour];
+			}
 			var name = dataDict[nbh].name
 			
 			d3.select('#' + nbh).transition().duration(300).style('fill', function () {

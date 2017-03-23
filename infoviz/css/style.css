@@ -5,7 +5,7 @@
  */
 
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 40px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 footer {
@@ -39,4 +39,31 @@ div#tooltip {
 #filterBut {
 	position:absolute;
 	display:none;
+}
+
+a:link {
+    text-decoration: none;
+	color: black;
+}
+
+a:visited {
+    text-decoration: none;
+	color: black;
+}
+
+a:hover {
+    text-decoration: none;
+	color: black;
+}
+
+a:active {
+    text-decoration: none;
+	color: black;
+}
+
+.prio {
+	margin-left: 20px;
+}
+.cat {
+	margin-left: 20px;
 }
