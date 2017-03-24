@@ -242,12 +242,7 @@ function init() {
 
 		document.getElementById('dateSlide').oninput = datesliding;
 		
-		var oldm = 12000; //can't be a month so that's okay
-		function datesliding() {
-			var val = this.value;
-			var d = new Date(parseInt(val));
-			var m = d.getMonth() + 1;
-			var month = new Array();
+		var month = new Array();
 				month[0] = "January";
 				month[1] = "February";
 				month[2] = "March";
@@ -260,14 +255,21 @@ function init() {
 				month[9] = "October";
 				month[10] = "November";
 				month[11] = "December";
+		
+		var oldm = 12000; //can't be a month so that's okay
+		function datesliding() {
+			var val = this.value;
+			var d = new Date(parseInt(val));
+			var m = d.getMonth() + 1;
 			var fullMonth = month[m - 1];
 			if (m != oldm) {
 				if (m < 10) {
 					m = '0' + (m);
 				}
 				dateDisplay.html(fullMonth + ' ' + d.getFullYear());
-				colorMap(m+'/'+d.getFullYear(), currentHour, false);
 				currentDate = m+'/'+d.getFullYear();
+				colorMap(currentDate, currentHour, false);
+				bchart(d=null, 'updateMonths');
 			}
 			oldm = m;
 		}
@@ -337,8 +339,9 @@ function init() {
 			var hours = updateDate.getHours();
 			if (hours != oldh) {
 				timeDisplay.html(' -&nbsp;' + hours + ':00'); //- ' + new Date(updateDate.valueOf() + h24/12).getHours().toString() + ':00');
-				colorMap(currentDate, hours, false);
 				currentHour = hours;
+				colorMap(currentDate, currentHour, false);
+				bchart(d=null, 'updateHours');
 			}
 			oldh = hours;
 		}
@@ -367,13 +370,16 @@ function init() {
 				toggleHoursOn();
 			}
 			colorMap(currentDate, currentHour);
+			if (comp) {
+				bchart(d=null, 'updateMonths');
+			}
 		});
 	
 		//
 		// Parallax Functionality
 		//
 		
-		var parallaxOverlay = d3.select('#overlay2').append('svg')
+		var parallaxOverlay = d3.select('#overlay2').append('div')
 			.attr('id', 'parallaxViz')
 			.style('width', '100%')
 			.style('height', '100%')
@@ -561,6 +567,9 @@ function init() {
 
 		function compare() {
 			
+			comp = true;
+			clicked = true;
+			
 			hideElements();
 			
 			d3.select('#svgContainer')
@@ -572,11 +581,7 @@ function init() {
 				.html('<h1> Click neighborhoods to visualize </h1>')
 				.style('opacity', 0)
 				.transition().duration(800)
-				.style('opacity', 1)
-
-			
-			comp = true;
-			clicked = true;
+				.style('opacity', 1);
 			
 			compareZoom();
 				
@@ -693,6 +698,61 @@ function init() {
 				chart.update();
 				
 			}
+			else if (mode == 'updateMonths') {
+				var d = [];
+				var l = [];
+				var bgColors = [];
+				var bordColors = [];
+				for (var nbh in selected) {
+					var id = selected[nbh].id;
+					if (hours) {
+						try {
+							var val = dataDict[id][currentDate][currentHour];
+						} catch (e) {
+							var val = 0;
+						}
+						d.push(val);
+					} else {
+						try {
+							var val = dataDict[id][currentDate].total;
+						} catch (e) {
+							var val = 0;
+						}
+						d.push(val);
+					}
+					bgColors.push(hexToRGB(compareColorScale(val), 0.3));
+					bordColors.push(compareColorScale(val));
+					l.push(dataDict[id].name.split(' '));
+				}
+				chart.data.datasets[0].data = d;
+				chart.data.labels = l;
+				chart.data.datasets[0].backgroundColor = bgColors;
+				chart.data.datasets[0].borderColor = bordColors;
+				chart.update();
+			}
+			else if (mode == 'updateHours') {
+				var d = [];
+				var l = [];
+				var bgColors = [];
+				var bordColors = [];
+				for (var nbh in selected) {
+					var id = selected[nbh].id;
+					try {
+						var val = dataDict[id][currentDate][currentHour];
+					} catch (e) {
+						var val = 0;
+					}
+					d.push(val);
+					bgColors.push(hexToRGB(compareColorScale(val), 0.3));
+					bordColors.push(compareColorScale(val));
+					l.push(dataDict[id].name.split(' '));
+				}
+				chart.data.datasets[0].data = d;
+				chart.data.labels = l;
+				chart.data.datasets[0].backgroundColor = bgColors;
+				chart.data.datasets[0].borderColor = bordColors;
+				chart.update();
+			}
 		}
 		
 		function lchart(code) {
@@ -771,11 +831,13 @@ function init() {
 		}
 		
 		function hideElements() {
-			dayNightdiv.style('display', 'none');
-			dateSlidediv.style('display', 'none');
+			if (!comp) {
+				dayNightdiv.style('display', 'none');
+				dateSlidediv.style('display', 'none');
+				d3.select('#toggleBut').style('display', 'none');
+			}
 			compareButton.style('display', 'none');
 			d3.select('#filterBut').style('display', 'none');
-			d3.select('#toggleBut').style('display', 'none');
 		}
 		
 		var fill;
@@ -855,10 +917,10 @@ function init() {
 			
 			function reset() {
 				compareButton.style('display', 'initial');
-				dayNightdiv.style('display', 'initial');
-				dateSlidediv.style('display', 'initial');
+				//dayNightdiv.style('display', 'initial');
+				//dateSlidediv.style('display', 'initial');
 				d3.select('#filterBut').style('display', 'initial');
-				d3.select('#toggleBut').style('display', 'initial');
+				//d3.select('#toggleBut').style('display', 'initial');
 			}
 			
 			clicked = false;
