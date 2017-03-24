@@ -269,7 +269,9 @@ function init() {
 				dateDisplay.html(fullMonth + ' ' + d.getFullYear());
 				currentDate = m+'/'+d.getFullYear();
 				colorMap(currentDate, currentHour, false);
-				bchart(d=null, 'updateMonths');
+				if (comp) {
+					bchart(d=null, 'updateMonths');
+				}
 			}
 			oldm = m;
 		}
@@ -341,7 +343,9 @@ function init() {
 				timeDisplay.html(' -&nbsp;' + hours + ':00'); //- ' + new Date(updateDate.valueOf() + h24/12).getHours().toString() + ':00');
 				currentHour = hours;
 				colorMap(currentDate, currentHour, false);
-				bchart(d=null, 'updateHours');
+				if (comp) {
+					bchart(d=null, 'updateMonths');
+				}
 			}
 			oldh = hours;
 		}
