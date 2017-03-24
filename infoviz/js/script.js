@@ -7,7 +7,8 @@ function init() {
 			.domain([1, 3])
 			.range(['#fb6a4a','#67000d']),
 		chart,
-		hours = true;
+		hours = true,
+		comparing = false;
 
 	/*window.onerror = function(event) {
 		if (event.indexOf('Error: Unable to parse color from string') != -1) {
@@ -269,7 +270,7 @@ function init() {
 				dateDisplay.html(fullMonth + ' ' + d.getFullYear());
 				currentDate = m+'/'+d.getFullYear();
 				colorMap(currentDate, currentHour, false);
-				if (comp) {
+				if (comparing) {
 					bchart(d=null, 'updateMonths');
 				}
 			}
@@ -343,7 +344,7 @@ function init() {
 				timeDisplay.html(' -&nbsp;' + hours + ':00'); //- ' + new Date(updateDate.valueOf() + h24/12).getHours().toString() + ':00');
 				currentHour = hours;
 				colorMap(currentDate, currentHour, false);
-				if (comp) {
+				if (comparing) {
 					bchart(d=null, 'updateMonths');
 				}
 			}
@@ -374,7 +375,7 @@ function init() {
 				toggleHoursOn();
 			}
 			colorMap(currentDate, currentHour);
-			if (comp) {
+			if (comparing) {
 				bchart(d=null, 'updateMonths');
 			}
 		});
@@ -613,6 +614,7 @@ function init() {
 		}
 		
 		function bchart(d, mode) {
+			comparing = true;
 			d3.select('#placeholdertext').transition().duration(800).style('opacity', 0).remove();
 			
 			if (!hours) {
@@ -899,6 +901,7 @@ function init() {
 		}
 		
 		function undoCompare() {
+			comparing = false;
 			d3.select('#placeholdertext').transition().duration(800).style('opacity', 0).remove();
 			
 			svg
