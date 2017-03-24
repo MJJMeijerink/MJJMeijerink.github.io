@@ -389,7 +389,6 @@ function init() {
 			.style('width', '100%')
 			.style('height', '100%')
 			.style('background-color', 'white')
-			.style('opacity', 0.96)
 			.style('position', 'fixed')
 			.style('top', window.innerHeight*2 + 'px')
 			.style('left', 0)
@@ -462,7 +461,6 @@ function init() {
 						out = false;
 					}
 				}
-				console.log(pos)
 			}
 		}
 		
@@ -1011,6 +1009,137 @@ function init() {
 			chart.destroy();
 			d3.select('#chartDiv').remove();
 		}
+		
+		//
+		// Parallax Visualization
+		//
+		
+		var dataglob;
+		var year = 2005;
+		d3.csv("data/perpriobuurtjaar.csv", function(data) {
+			dataglob = data
+			createData(dataglob)
+		  
+		});
+
+		function createData(dataset){
+		    var areas = []
+		    for (i = 0; i < dataset.length; i++) { 
+				if (dataset[i].year == year){
+					var x = (Math.random() * (1 - 0) + 0).toFixed(2);
+					areas.push([dataset[i].neighborhood_name_ams, dataset[i].incident_prio,x])
+				}
+			}
+		 
+			drawPoints(areas)
+
+		};
+
+
+		function drawPoints(data){
+		  
+			/*https://www.dashingd3js.com/creating-svg-elements-based-on-data*/
+			var circleRadii = [5, 4, 3, 2, 1]
+			var radiusSize = 55
+			var placeX = 1170/2
+			var placeY = height/2
+			document.getElementById("year").innerHTML = 'Year: ' + year;
+
+			var transition = d3.transition();
+		 
+
+			var tip = d3.tip()
+				.attr('class', 'd3-tip')
+				.offset([-10, 0])
+				.html(function(d) {
+					return "<div id='tooltip'>" + d[0] + "</div> ";
+				})
+
+		 
+			var svg = d3.select("#svgContainer2").append("svg")
+				.attr('id', 'psvg')
+				.attr("width", 1170)
+				.attr("height", height);
+			svg.call(tip);
+		 
+			var circles = svg.selectAll("circle")
+				.data(circleRadii)
+				.enter()
+				.append("circle")
+
+			var circleAttributes = circles
+				.attr("cx", placeX)
+				.attr("cy", placeY)
+				.attr("r", function (d) { return d*radiusSize; })
+				.style("fill", function(d) {
+					var returnColor;
+					if (d === 5) { returnColor = "#F6CECE";
+					} else if (d === 3) { returnColor = "#FA5858";
+					} else if (d === 4) { returnColor = "#F5A9A9";
+					} else if (d === 2) { returnColor = "#FE2E2E"; 
+					} else if (d === 1) { returnColor = "#DF0101"; }
+					return returnColor;
+				});
+
+			/*http://alignedleft.com/tutorials/d3/making-a-scatterplot*/
+			var points = svg.selectAll(".point")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("cx", function(d) {
+					return ((d[1]*radiusSize -10)*Math.cos(2 * Math.PI * d[2] ))+placeX; 
+				})
+				.attr("cy", function(d) {
+					return ((d[1]*radiusSize -10)*Math.sin(2 * Math.PI * d[2]))+placeY; 
+				})
+				.attr("r", 3)
+				.on('mouseover', tip.show)
+				.on('mouseout', tip.hide) 
+				.style("opacity", 0.0)
+				.style('cursor', 'pointer')
+				.transition()
+				.duration(500)
+				.style("opacity", 1)
+				.style("fill", "black");
+
+		}; /*end function drawpoints*/
+		
+		var Psvg = d3.select('#parallaxViz').append('div')
+			.style('margin-top', '100px')
+			.attr('class', 'container')
+			.append('div')
+			.attr('class', 'row')
+			.append('div')
+			.attr('class', 'col-lg-12')
+			.attr('id', 'svgContainer2');
+			
+		var yearSlide = d3.select('#svgContainer2').append('div')
+			.style('position', 'absolute')
+			.style('bottom', '-50px')
+			.style('width', 'inherit')
+		
+		yearSlide.append('label').attr('id', 'year').html('Year: 2005');
+		
+		var yearSlider = yearSlide
+			.append('input')
+			//.attr('class', 'form-control')
+			.attr('type', 'range')
+			.attr('min', 2005)
+			.attr('max', 2017)
+			.attr('id', 'nYear');
+		
+		d3.select("#nYear").on("input", function() {
+			updateData(+this.value);
+		});
+		
+		//Function that updates the data for each year  
+		function updateData(val, val2) {
+			year = val;
+			//First remove the previous content of the barchart
+			d3.select("#psvg").remove();
+			createData(dataglob, year)
+			//Calls to draw the bar chart for the new year 
+		};
 	});
 
 
