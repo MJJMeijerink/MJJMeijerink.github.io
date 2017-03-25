@@ -402,11 +402,22 @@ function init() {
 			.style('position', 'fixed')
 			.style('top', '0px')
 			.style('left', 0)
+			.append('div')
+			.attr('class', 'container')
+			.append('div')
+			.attr('class', 'row')
+			.append('div')
+			.attr('class', 'col-log-12')
+			.attr('id', 'introText')
 			.append('h1')
 			.style('class', 'page-header')
 			.style('margin-top', '150px')
 			.style('text-align', 'center')
-			.html('The fire brigade<br>...<br><small>are pretty cool, yeah idk what you expected</small>')
+			.html('Information Visualization')
+			
+		d3.select('#introText').append('p')
+			.style('font-size', '20px')
+			.html('The fire brigade Amsterdam has handled more than 192.000 incidents in the last eleven years which you can see coming alive in the following map. <br>The neighborhoods are colored based on the amount of incidents in that neighborhood at a certain time, which you can change using the time sliders. The darker red the color of the neighborhood, the more incidents that have taken place there in that time period.<br>The map can be filtered on incident priority and category, based on the priority and categories provided by the fire brigade.<br>Neighborhoods can be compared using the compare button. Just click the button, then click two or more neighborhoods, and a graph comparing the incidents in that time period between those neighborhoods will appear.<br>The map will show when you scroll up. Just scroll down to read this message again! If you scroll up a second time, you will see priority circles containing dots, which stand for the different neighborhoods. Each dot represents a neighborhood\'s average incident priority. Using the slider you can see this change throughout the years.')
 			
 
 		window.addEventListener('DOMMouseScroll', mouseWheelEvent);
