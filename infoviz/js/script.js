@@ -8,17 +8,8 @@ function init() {
 			.range(['#fb6a4a','#67000d']),
 		chart,
 		hours = true,
-		comparing = false;
-
-	/*window.onerror = function(event) {
-		if (event.indexOf('Error: Unable to parse color from string') != -1) {
-			return true;
-		} else {
-			console.log(event)
-			return event;
-		}
-	};*/
-	
+		comparing = false,
+		pid = null;
 	
 	//Loading text
 	var conWidth = document.getElementById('svgContainer').offsetWidth;
@@ -82,11 +73,12 @@ function init() {
 		//
 		
 		d3.select('#filterBut').style('display', 'initial');
+		
 		$(".check").prop("checked", true);
 		var priorities = ['1', '2', '3', '4', '5'];
 
 		$('.dropdown-menu .prio').on('click', function(event) {
-		    var $target = $( event.currentTarget ),
+			var $target = $( event.currentTarget ),
 			    val = $target.attr('data-value'),
 			    $inp = $target.find('input'),
 			    idx;
@@ -370,8 +362,10 @@ function init() {
 		$('input[name="toggle"]').on('switchChange.bootstrapSwitch', function(event, state) {
 		    hours = state;
 			if (!state) {
+				notify('Data will now be displayed per month!')
 				toggleHoursOff();
 			} else {
+				notify('Data will now be displayed per month and hour of the day!')
 				toggleHoursOn();
 			}
 			colorMap(currentDate, currentHour);
@@ -417,7 +411,13 @@ function init() {
 			
 		d3.select('#introText').append('p')
 			.style('font-size', '20px')
-			.html('The fire brigade Amsterdam has handled more than 192.000 incidents in the last eleven years which you can see coming alive in the following map. <br>The neighborhoods are colored based on the amount of incidents in that neighborhood at a certain time, which you can change using the time sliders. The darker red the color of the neighborhood, the more incidents that have taken place there in that time period.<br>The map can be filtered on incident priority and category, based on the priority and categories provided by the fire brigade.<br>Neighborhoods can be compared using the compare button. Just click the button, then click two or more neighborhoods, and a graph comparing the incidents in that time period between those neighborhoods will appear.<br>The map will show when you scroll up. Just scroll down to read this message again! If you scroll up a second time, you will see priority circles containing dots, which stand for the different neighborhoods. Each dot represents a neighborhood\'s average incident priority. Using the slider you can see this change throughout the years.')
+			.html('The fire brigade Amsterdam has handled more than 192.000 incidents in the last eleven years which you can see coming alive in the following map.\
+				<br>The neighborhoods are colored based on the amount of incidents in that neighborhood at a certain time, which you can change using the time sliders. \
+				The darker red the color of the neighborhood, the more incidents that have taken place there in that time period.<br>The map can be filtered on incident priority and category,\
+				based on the priority and categories provided by the fire brigade.<br>Neighborhoods can be compared using the compare button. Just click the button, then click two or more neighborhoods, \
+				and a graph comparing the incidents in that time period between those neighborhoods will appear.<br>The map will show when you scroll down. Just scroll up to read this message again! \
+				If you scroll down a second time, you will see priority circles containing dots, which stand for the different neighborhoods. Each dot represents a neighborhood\'s average incident priority.\
+				Using the slider you can see this change throughout the years.')
 			
 
 		window.addEventListener('DOMMouseScroll', mouseWheelEvent);
@@ -442,6 +442,27 @@ function init() {
 				}
 				out = true;
 				if (delta < 0) {
+					
+					if (pos <= 5) {
+						pos += 1;
+					} else if (pos > 5) {
+						if (layer == 'top') {
+							parallaxintro.transition().duration(1000).style('top', -window.innerHeight + 'px');
+							layer = 'middle';
+						} else if (layer == 'middle') {
+							parallaxsvg.transition().duration(1000).style('top', '0px');
+							layer = 'bottom';
+							setTimeout( function() {
+								notify('You can see the average priority per neighborhood here!');
+							},1000);
+						}
+						clearTimeout(timeout);
+						pos = 0;
+						out = false;
+					}
+				
+				} else {
+					
 					if (pos <= 5) {
 						pos += 1;
 					} else if (pos > 5) {
@@ -456,21 +477,7 @@ function init() {
 						pos = 0;
 						out = false;
 					}
-				} else {
-					if (pos <= 5) {
-						pos += 1;
-					} else if (pos > 5) {
-						if (layer == 'top') {
-							parallaxintro.transition().duration(1000).style('top', -window.innerHeight + 'px');
-							layer = 'middle';
-						} else if (layer == 'middle') {
-							parallaxsvg.transition().duration(1000).style('top', '0px');
-							layer = 'bottom';
-						}
-						clearTimeout(timeout);
-						pos = 0;
-						out = false;
-					}
+					
 				}
 			}
 		}
@@ -512,8 +519,7 @@ function init() {
 				.on('mouseup', function(d) {
 					if (!clicked) {
 						if (now) {
-							zoomIn('F' + d.properties.Buurt_code.substring(1));
-							clicked = true;
+							nbhSelected(d);
 						}
 					} else if (comp) {
 						var el = d3.select(this).node()
@@ -580,6 +586,7 @@ function init() {
 		};
 
 		function compare() {
+			notify('Click on two or more neighborhoods to compare them!')
 			
 			comp = true;
 			clicked = true;
@@ -950,6 +957,10 @@ function init() {
 		}
 		
 		function undoZoom() {
+			pid = null;
+			d3.select("#psvg").remove();
+			createData(dataglob);
+			
 			svg.transition().duration(800)
 				.attr('width', width)
 				.attr('height', height);
@@ -1021,6 +1032,15 @@ function init() {
 			d3.select('#chartDiv').remove();
 		}
 		
+		function nbhSelected(d) {
+			zoomIn('F' + d.properties.Buurt_code.substring(1));
+			d3.select("#psvg").remove();
+			pid = d.properties.Buurt;
+			createData(dataglob);
+			notify('You can scroll down to see the average priority for this neighborhood!')
+			clicked = true;
+		}
+		
 		//
 		// Parallax Visualization
 		//
@@ -1030,7 +1050,6 @@ function init() {
 		d3.csv("data/perpriobuurtjaar.csv", function(data) {
 			dataglob = data
 			createData(dataglob)
-		  
 		});
 
 		function createData(dataset){
@@ -1041,14 +1060,13 @@ function init() {
 					areas.push([dataset[i].neighborhood_name_ams, dataset[i].incident_prio,x])
 				}
 			}
-		 
 			drawPoints(areas)
 
 		};
 
+		
 
-		function drawPoints(data){
-		  
+		function drawPoints(data) {
 			/*https://www.dashingd3js.com/creating-svg-elements-based-on-data*/
 			var circleRadii = [5, 4, 3, 2, 1]
 			var radiusSize = 55
@@ -1063,7 +1081,7 @@ function init() {
 				.attr('class', 'd3-tip')
 				.offset([-10, 0])
 				.html(function(d) {
-					return "<div id='tooltip'>" + d[0] + "</div> ";
+					return "<div id='tooltip'>" + d[0] + "</div>";
 				})
 
 		 
@@ -1097,13 +1115,22 @@ function init() {
 				.data(data)
 				.enter()
 				.append("circle")
+				.attr('id', function(d){
+					return d[0];
+				})
 				.attr("cx", function(d) {
 					return ((d[1]*radiusSize -10)*Math.cos(2 * Math.PI * d[2] ))+placeX; 
 				})
 				.attr("cy", function(d) {
 					return ((d[1]*radiusSize -10)*Math.sin(2 * Math.PI * d[2]))+placeY; 
 				})
-				.attr("r", 3)
+				.attr("r", function (d) {
+					if (d[0] == pid) {
+						return 6;
+					} else {
+						return 3;
+					}
+ 				})
 				.on('mouseover', tip.show)
 				.on('mouseout', tip.hide) 
 				.style("opacity", 0.0)
@@ -1111,7 +1138,18 @@ function init() {
 				.transition()
 				.duration(500)
 				.style("opacity", 1)
-				.style("fill", "black");
+				.style("fill", function(d) {
+					if (d[0] == pid) {
+						return 'green';
+					} else {
+						return 'black';
+					}
+				});
+			
+			if (pid != null) {
+				var ontop = d3.select('#' + pid).node();
+				ontop.parentNode.appendChild(ontop);
+			}
 
 		}; /*end function drawpoints*/
 		
@@ -1144,11 +1182,11 @@ function init() {
 		});
 		
 		//Function that updates the data for each year  
-		function updateData(val, val2) {
+		function updateData(val) {
 			year = val;
 			//First remove the previous content of the barchart
 			d3.select("#psvg").remove();
-			createData(dataglob, year)
+			createData(dataglob)
 			//Calls to draw the bar chart for the new year 
 		};
 	});
@@ -1207,4 +1245,30 @@ function init() {
 		}
 	
 	}
+}
+
+var notifTimeout;
+var activeNotifs = 0;
+function notify(text) {
+	d3.select('#N' + activeNotifs).remove();
+	if (typeof notifTimeout != 'undefined') {
+		clearTimeout(notifTimeout);
+	}
+	activeNotifs += 1
+	var notification = d3.select('body')
+		.append('div')
+		.attr('class', 'alert alert-info')
+		.attr('id', 'N' + activeNotifs)
+		.style('position', 'absolute')
+		.style('z-indez', 1000)
+		.style('top', '70px')
+		.style('right', '20px')
+		.append('strong')
+		.html(text)
+		
+	notifTimeout = setTimeout(function () {
+		d3.select('#N' + activeNotifs).remove();
+		activeNotifs -= 1
+	}, 4000);
+	
 }
