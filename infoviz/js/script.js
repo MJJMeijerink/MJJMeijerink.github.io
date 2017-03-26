@@ -1147,7 +1147,7 @@ function init() {
 		function drawPoints(data) {
 			/*https://www.dashingd3js.com/creating-svg-elements-based-on-data*/
 			var circleRadii = [5, 4, 3, 2, 1]
-			var radiusSize = 55
+			var radiusSize = height/10
 			var placeX = 1170/2
 			var placeY = height/2
 			document.getElementById("year").innerHTML = 'Year: ' + year;
