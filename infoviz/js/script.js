@@ -510,7 +510,7 @@ function init() {
 					undoCompare();
 				} else if (clicked) {
 					undoZoom();
-				} if (layer == 'bottom') {
+				} else if (layer == 'bottom') {
 					parallaxsvg.transition().duration(1000).style('top', window.innerHeight*2 + 'px');
 					layer = 'middle';
 				}
@@ -562,6 +562,8 @@ function init() {
 							bchart(d.properties, 'remove');
 							selected.splice(selected.indexOf(this), 1);
 						}
+						d3.select('#tooltip').remove();
+						el.parentNode.appendChild(el);
 					}
 				});
 				
@@ -688,6 +690,11 @@ function init() {
 				}
 				
 				var ctx = document.getElementById('charts').getContext('2d');
+				if (hours) {
+					var tText = 'Compare neighborhoods - Incidents per month and hour of the day';
+				} else {
+					var tText = 'Compare neighborhoods - Incidents per month';
+				}
 				
 				chart = new Chart(ctx, {
 					type: 'bar',
@@ -707,7 +714,7 @@ function init() {
 						},
 						title: {
 							display: true,
-							text: 'Compare neighborhoods - Incidents per month'
+							text: tText
 						},
 						legend: {
 							display: false
@@ -770,6 +777,14 @@ function init() {
 					bordColors.push(compareColorScale(val));
 					l.push(dataDict[id].name.split(' '));
 				}
+				
+				if (hours) {
+					var tText = 'Compare neighborhoods - Incidents per month and hour of the day';
+				} else {
+					var tText = 'Compare neighborhoods - Incidents per month';
+				}
+				
+				chart.options.title.text = tText;
 				chart.data.datasets[0].data = d;
 				chart.data.labels = l;
 				chart.data.datasets[0].backgroundColor = bgColors;
@@ -799,6 +814,19 @@ function init() {
 				chart.data.datasets[0].borderColor = bordColors;
 				chart.update();
 			}
+			
+			var c = d3.select('#charts').node();
+			c.onclick = function(e) {
+			    var active = chart.getElementsAtEvent(e);
+			    var key = active[0]._xScale.ticks[active[0]._index].join(' ')
+			    for (var el in selected) {
+			 	    var nbhName = dataDict[selected[el].id].name;
+		 		    if (nbhName == key) {
+	 				    key = selected[el].id
+ 				    }
+			    }
+			    showInfo(dataDict[key][currentDate], dataDict[key].name, currentDate);
+			};
 		}
 		
 		function lchart(code) {
@@ -885,7 +913,11 @@ function init() {
 		
 		function showInfo(info, nbhName, date) {
 			var y = date.split('/')[1]
-			var m = month[date.split('/')[0].substring(1) - 1]
+			if (date.split('/')[0][0] == '0') {
+				var m = month[date.split('/')[0].substring(1) - 1]
+			} else {
+				var m = month[date.split('/')[0] - 1]
+			}
 			
 			var prioString = '';
 			var catString = '';
@@ -926,7 +958,8 @@ function init() {
 						  </div>\
 						</div>\
 					  </div>');
-		
+			
+			$('#myModal').modal({backdrop: 'static'});
 			$('#myModal').modal('show');
 		}
 		
@@ -1146,10 +1179,10 @@ function init() {
 
 		function drawPoints(data) {
 			/*https://www.dashingd3js.com/creating-svg-elements-based-on-data*/
-			var circleRadii = [5, 4, 3, 2, 1]
-			var radiusSize = height/10
-			var placeX = 1170/2
-			var placeY = height/2
+			var circleRadii = [5, 4, 3, 2, 1];
+			var radiusSize = height/10;
+			var placeX = 1170/2;
+			var placeY = height/2;
 			document.getElementById("year").innerHTML = 'Year: ' + year;
 
 			var transition = d3.transition();
@@ -1162,7 +1195,7 @@ function init() {
 			var circles = svg.selectAll("circle")
 				.data(circleRadii)
 				.enter()
-				.append("circle")
+				.append("circle");
 
 			var circleAttributes = circles
 				.attr("cx", placeX)
@@ -1313,7 +1346,9 @@ function init() {
 				.on('mouseover', function(d) {
 					
 					div = d3.select('body').append('div')	
-						.attr('id', 'tooltip');
+						.attr('id', 'tooltip')
+						.style('left', (d3.event.pageX + 20) + 'px')		
+						.style('top', (d3.event.pageY - 50) + 'px');
 					if (!data) {
 						div.html(d.properties.Buurt)
 					} else {
@@ -1364,5 +1399,5 @@ function notify(text) {
 function closeModal() {
 	setTimeout(function() {
 		d3.select('#infoModal').remove();
-	}, 800)
+	}, 500)
 }
