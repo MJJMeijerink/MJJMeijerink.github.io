@@ -34,6 +34,7 @@ function init() {
 				var inciPrio = d[i]['incident_prio'];
 				var nbhName = d[i]['neighborhood_name_ams'];
 				var inciTime = new Date(d[i]['incident_timestamp'].substring(0,19));
+				var inciCat = d[i]['incident_category'];
 				var month = inciTime.getMonth() + 1
 				if (month < 10) {
 						month = '0' + (month);
@@ -56,14 +57,38 @@ function init() {
 							} else if (j == inciHour) {
 								dataDict[nbhCode][inciTimeMY][j.toString()] = 1;
 							}
-						}	
+						}
+						
+						for (var x in categories) {
+							if (categories[x] != inciCat) {
+								dataDict[nbhCode][inciTimeMY][categories[x]] = 0;
+							} else if (categories[x] == inciCat) {
+								dataDict[nbhCode][inciTimeMY][categories[x]] = 1;
+							}
+						}
+						
+						for (var y in priorities) {
+							if (priorities[y] != inciPrio) {
+								dataDict[nbhCode][inciTimeMY]['prio' + priorities[y]] = 0;
+							} else if (priorities[y] == inciPrio) {
+								dataDict[nbhCode][inciTimeMY]['prio' + priorities[y]] = 1;
+							}
+						}
+						
 					} else {
 						dataDict[nbhCode][inciTimeMY]['total']++;
 						dataDict[nbhCode][inciTimeMY][inciHour.toString()]++;
+						dataDict[nbhCode][inciTimeMY][inciCat]++;
+						dataDict[nbhCode][inciTimeMY]['prio' + inciPrio]++;
 					}
 				}
 			}
 		}
+		var categories = ['Alarm', 'Bezitsaantasting', 'Brand', 'Dienstverlening', 'Gezondheid', 'Leefmilieu', 'Ongeval', 'Overige', 'Railvervoer', 'Veiligheidenopenbareorde', 'Verkeer'];
+		var translated = ['Alarm', 'Conversion of property', 'Fire', 'Services', 'Health', 'Environment', 'Accident', 'Other', 'Railway traffic', 'Safety and public order', 'Traffic']
+		
+		var priorities = ['1', '2', '3', '4', '5'];
+		
 		getData(data);
 		
 		d3.select('#loadtext').remove();
@@ -75,7 +100,6 @@ function init() {
 		d3.select('#filterBut').style('display', 'initial');
 		
 		$(".check").prop("checked", true);
-		var priorities = ['1', '2', '3', '4', '5'];
 
 		$('.dropdown-menu .prio').on('click', function(event) {
 			var $target = $( event.currentTarget ),
@@ -111,8 +135,6 @@ function init() {
 				} 
 			}
 		}
-		
-		var categories = ['Alarm', 'Bezitsaantasting', 'Brand', 'Dienstverlening', 'Gezondheid', 'Leefmilieu', 'Ongeval', 'Overige', 'Railvervoer', 'Veiligheidenopenbareorde', 'Verkeer'];
 		
 		$('.dropdown-menu .cat').on('click', function(event) {
 
@@ -488,6 +510,9 @@ function init() {
 					undoCompare();
 				} else if (clicked) {
 					undoZoom();
+				} if (layer == 'bottom') {
+					parallaxsvg.transition().duration(1000).style('top', window.innerHeight*2 + 'px');
+					layer = 'middle';
 				}
 			}
 		});
@@ -570,7 +595,6 @@ function init() {
 		}
 		
 		function zoomIn(code) {
-			
 			
 			hideElements();
 			
@@ -850,6 +874,60 @@ function init() {
 				}
 			});
 			
+			ctx.onclick = function(e) {
+			   var active = chart.getElementsAtEvent(e);
+			   var key = active[0]._xScale.ticks[active[0]._index]
+			   showInfo(nbhJson[key], nbhJson.name, key);
+			};
+		
+		
+		}
+		
+		function showInfo(info, nbhName, date) {
+			var y = date.split('/')[1]
+			var m = month[date.split('/')[0].substring(1) - 1]
+			
+			var prioString = '';
+			var catString = '';
+			var tString = '';
+			for (var key in info) {
+			    if (info.hasOwnProperty(key)) {
+					if (key.indexOf('prio') != -1) {
+						if (info[key] > 0) {
+							prioString += 'Priority ' + key.substring(4) + ': ' + info[key] + '<br>'; 
+						}
+					} else if (categories.indexOf(key) != -1) {
+						if (info[key] > 0) {
+							catString += translated[categories.indexOf(key)] + ': ' + info[key] + '<br>';
+						}
+					} else if (key == 'total') {
+						tString += '<strong>Total incidents: '+ info[key] +'</strong>';
+					}
+			    }
+			}
+			
+			d3.select('body').append('div')
+				.attr('id', 'infoModal')
+				.style('position', 'absolute')
+				.html('<div class="modal fade" id="myModal" role="dialog">\
+						<div class="modal-dialog">\
+						  <div class="modal-content">\
+							<div class="modal-header">\
+							  <button type="button" class="close" data-dismiss="modal" onclick="closeModal();">&times;</button>\
+							  <h4 class="modal-title">' + nbhName +' - ' + m + ' ' + y + '</h4>\
+							</div>\
+							<div class="modal-body">\
+								<strong>Incident priorities</strong>\
+								<p id="prios">' + prioString + '</p>\
+								<strong>Incident categories</strong>\
+								<p id="cats">' + catString + '</p>\
+								' + tString + '\
+							</div>\
+						  </div>\
+						</div>\
+					  </div>');
+		
+			$('#myModal').modal('show');
 		}
 		
 		function hideElements() {
@@ -857,6 +935,7 @@ function init() {
 				dayNightdiv.style('display', 'none');
 				dateSlidediv.style('display', 'none');
 				d3.select('#toggleBut').style('display', 'none');
+				d3.select('#title').style('visibility', 'hidden')
 			}
 			compareButton.style('display', 'none');
 			d3.select('#filterBut').style('display', 'none');
@@ -979,6 +1058,7 @@ function init() {
 				dateSlidediv.style('display', 'initial');
 				d3.select('#filterBut').style('display', 'initial');
 				d3.select('#toggleBut').style('display', 'initial');
+				d3.select('#title').style('visibility', 'initial');
 			} 
 			
 			clicked = false;
@@ -1037,7 +1117,7 @@ function init() {
 			d3.select("#psvg").remove();
 			pid = 'F' + d.properties.Buurt_code.substring(1);
 			createData(dataglob);
-			notify('You can scroll down to see the average priority for this neighborhood!')
+			notify('Click on a datapoint to get extra information! <br><br> You can scroll down to see the average priority for this neighborhood!')
 			clicked = true;
 		}
 		
@@ -1063,8 +1143,6 @@ function init() {
 			drawPoints(areas)
 
 		};
-
-		
 
 		function drawPoints(data) {
 			/*https://www.dashingd3js.com/creating-svg-elements-based-on-data*/
@@ -1116,7 +1194,7 @@ function init() {
 				})
 				.attr("r", function (d) {
 					if ('F' + d[3] == pid) {
-						return 6;
+						return 8;
 					} else {
 						return 3;
 					}
@@ -1125,11 +1203,17 @@ function init() {
 					
 					div = d3.select('body').append('div')	
 						.attr('id', 'tooltip');
-					div.html(d[0] + '<br> Average priority: ' + d[1])			
+					div.html(d[0] + '<br> Average priority: ' + d[1])
+					d3.select(this).style('fill', 'gray')
 				
 				})
-				.on('mouseout', function() {		
+				.on('mouseout', function(d) {		
 					div.remove();
+					if ('F' + d[3] == pid) {
+						d3.select(this).style('fill', 'blue');
+					} else {
+						d3.select(this).style('fill', 'black');
+					}
 				})
 				.on('mousemove', function() {
 					div
@@ -1143,7 +1227,7 @@ function init() {
 				.style("opacity", 1)
 				.style("fill", function(d) {
 					if ('F' + d[3] == pid) {
-						return 'green';
+						return 'blue';
 					} else {
 						return 'black';
 					}
@@ -1219,6 +1303,7 @@ function init() {
 			d3.select('#' + nbh).transition().duration(300).style('fill', function () {
 					return mapColorScale(data);
 				});
+				
 			tooltip(nbh, data);
 		}
 	
@@ -1272,6 +1357,12 @@ function notify(text) {
 	notifTimeout = setTimeout(function () {
 		d3.select('#N' + activeNotifs).remove();
 		activeNotifs -= 1
-	}, 4000);
+	}, 6000);
 	
+}
+
+function closeModal() {
+	setTimeout(function() {
+		d3.select('#infoModal').remove();
+	}, 800)
 }
