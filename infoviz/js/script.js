@@ -1035,7 +1035,7 @@ function init() {
 		function nbhSelected(d) {
 			zoomIn('F' + d.properties.Buurt_code.substring(1));
 			d3.select("#psvg").remove();
-			pid = d.properties.Buurt;
+			pid = 'F' + d.properties.Buurt_code.substring(1);
 			createData(dataglob);
 			notify('You can scroll down to see the average priority for this neighborhood!')
 			clicked = true;
@@ -1057,7 +1057,7 @@ function init() {
 		    for (i = 0; i < dataset.length; i++) { 
 				if (dataset[i].year == year){
 					var x = (Math.random() * (1 - 0) + 0).toFixed(2);
-					areas.push([dataset[i].neighborhood_name_ams, dataset[i].incident_prio,x])
+					areas.push([dataset[i].neighborhood_name_ams, dataset[i].incident_prio,x,dataset[i].neighborhood_id_ams])
 				}
 			}
 			drawPoints(areas)
@@ -1076,20 +1076,10 @@ function init() {
 
 			var transition = d3.transition();
 		 
-
-			var tip = d3.tip()
-				.attr('class', 'd3-tip')
-				.offset([-10, 0])
-				.html(function(d) {
-					return "<div id='tooltip'>" + d[0] + "</div>";
-				})
-
-		 
 			var svg = d3.select("#svgContainer2").append("svg")
 				.attr('id', 'psvg')
 				.attr("width", 1170)
 				.attr("height", height);
-			svg.call(tip);
 		 
 			var circles = svg.selectAll("circle")
 				.data(circleRadii)
@@ -1102,11 +1092,11 @@ function init() {
 				.attr("r", function (d) { return d*radiusSize; })
 				.style("fill", function(d) {
 					var returnColor;
-					if (d === 5) { returnColor = "#F6CECE";
-					} else if (d === 3) { returnColor = "#FA5858";
-					} else if (d === 4) { returnColor = "#F5A9A9";
-					} else if (d === 2) { returnColor = "#FE2E2E"; 
-					} else if (d === 1) { returnColor = "#DF0101"; }
+					if (d === 5) { returnColor = "#F5A9A9";
+					} else if (d === 3) { returnColor = "#FE2E2E";
+					} else if (d === 4) { returnColor = "#FA5858";
+					} else if (d === 2) { returnColor = "#DF0101"; 
+					} else if (d === 1) { returnColor = "#FFFFFF"; }
 					return returnColor;
 				});
 
@@ -1116,30 +1106,43 @@ function init() {
 				.enter()
 				.append("circle")
 				.attr('id', function(d){
-					return d[0];
+					return 'PF' + d[3];
 				})
 				.attr("cx", function(d) {
-					return ((d[1]*radiusSize -10)*Math.cos(2 * Math.PI * d[2] ))+placeX; 
+					return ((d[1]*radiusSize)*Math.cos(2 * Math.PI * d[2] ))+placeX; 
 				})
 				.attr("cy", function(d) {
-					return ((d[1]*radiusSize -10)*Math.sin(2 * Math.PI * d[2]))+placeY; 
+					return ((d[1]*radiusSize)*Math.sin(2 * Math.PI * d[2]))+placeY; 
 				})
 				.attr("r", function (d) {
-					if (d[0] == pid) {
+					if ('F' + d[3] == pid) {
 						return 6;
 					} else {
 						return 3;
 					}
  				})
-				.on('mouseover', tip.show)
-				.on('mouseout', tip.hide) 
+				.on('mouseover', function(d) {
+					
+					div = d3.select('body').append('div')	
+						.attr('id', 'tooltip');
+					div.html(d[0] + '<br> Average priority: ' + d[1])			
+				
+				})
+				.on('mouseout', function() {		
+					div.remove();
+				})
+				.on('mousemove', function() {
+					div
+						.style('left', (d3.event.pageX + 20) + 'px')		
+						.style('top', (d3.event.pageY - 50) + 'px');
+				})
 				.style("opacity", 0.0)
 				.style('cursor', 'pointer')
 				.transition()
 				.duration(500)
 				.style("opacity", 1)
 				.style("fill", function(d) {
-					if (d[0] == pid) {
+					if ('F' + d[3] == pid) {
 						return 'green';
 					} else {
 						return 'black';
@@ -1147,7 +1150,7 @@ function init() {
 				});
 			
 			if (pid != null) {
-				var ontop = d3.select('#' + pid).node();
+				var ontop = d3.select('#P' + pid).node();
 				ontop.parentNode.appendChild(ontop);
 			}
 
