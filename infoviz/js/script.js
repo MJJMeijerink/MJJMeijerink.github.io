@@ -9,7 +9,8 @@ function init() {
 		chart,
 		hours = true,
 		comparing = false,
-		pid = null;
+		pid = null,
+		year = 2005;
 	
 	//Loading text
 	var conWidth = document.getElementById('svgContainer').offsetWidth;
@@ -35,7 +36,7 @@ function init() {
 				var nbhName = d[i]['neighborhood_name_ams'];
 				var inciTime = new Date(d[i]['incident_timestamp'].substring(0,19));
 				var inciCat = d[i]['incident_category'];
-				var month = inciTime.getMonth() + 1
+				var month = inciTime.getMonth() + 1;
 				if (month < 10) {
 						month = '0' + (month);
 					}
@@ -277,6 +278,7 @@ function init() {
 			var d = new Date(parseInt(val));
 			var m = d.getMonth() + 1;
 			var fullMonth = month[m - 1];
+			year = d.getFullYear()
 			if (m != oldm) {
 				if (m < 10) {
 					m = '0' + (m);
@@ -1172,7 +1174,6 @@ function init() {
 		//
 		
 		var dataglob;
-		var year = 2005;
 		d3.csv("data/perpriobuurtjaar.csv", function(data) {
 			dataglob = data
 			createData(dataglob)
@@ -1298,7 +1299,7 @@ function init() {
 		var yearSlide = d3.select('#svgContainer2').append('div')
 			.style('position', 'absolute')
 			.style('bottom', '-50px')
-			.style('width', 'inherit')
+			.style('width', 'inherit');
 		
 		yearSlide.append('label').attr('id', 'year').html('Year: 2005');
 		
@@ -1308,6 +1309,7 @@ function init() {
 			.attr('type', 'range')
 			.attr('min', 2005)
 			.attr('max', 2017)
+			.attr('value', year)
 			.attr('id', 'nYear');
 		
 		d3.select("#nYear").on("input", function() {
