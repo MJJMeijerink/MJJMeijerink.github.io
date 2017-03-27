@@ -1173,18 +1173,32 @@ function init() {
 		// Parallax Visualization
 		//
 		
+		var positions = {};
+		function createposition(dataset){
+		  
+		   
+		   for (i = 0; i < dataset.length; i++) {
+			 nameplace = dataset[i].neighborhood_name_ams;
+
+				if (!positions.hasOwnProperty(nameplace)){
+					positions[nameplace] = (Math.random() * (1 - 0) + 0).toFixed(2);
+				 }
+			}        
+		};		
+		
 		var dataglob;
 		d3.csv("data/perpriobuurtjaar.csv", function(data) {
-			dataglob = data
-			createData(dataglob)
+			dataglob = data;
+			createposition(data);
+			createData(dataglob);
 		});
 
 		function createData(dataset){
 		    var areas = []
 		    for (i = 0; i < dataset.length; i++) { 
 				if (dataset[i].year == year){
-					var x = (Math.random() * (1 - 0) + 0).toFixed(2);
-					areas.push([dataset[i].neighborhood_name_ams, dataset[i].incident_prio,x,dataset[i].neighborhood_id_ams])
+					//console.log(typeof positions[dataset[i].neighborhood_name_ams])
+					areas.push([dataset[i].neighborhood_name_ams, dataset[i].incident_prio,positions[dataset[i].neighborhood_name_ams], dataset[i].neighborhood_id_ams])
 				}
 			}
 			drawPoints(areas)
