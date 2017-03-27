@@ -471,10 +471,16 @@ function init() {
 					} else if (pos > limit) {
 						if (layer == 'top') {
 							parallaxintro.transition().duration(1000).style('top', -window.innerHeight + 'px');
-							layer = 'middle';
+							layer = 'nothing';
+							setTimeout(function() {
+								layer='middle';
+							}, 1000);
 						} else if (layer == 'middle') {
 							parallaxsvg.transition().duration(1000).style('top', '0px');
-							layer = 'bottom';
+							layer = 'nothing';
+							setTimeout(function() {
+								layer='bottom';
+							}, 1000);
 							setTimeout( function() {
 								notify('You can see the average priority per neighborhood here!');
 							},1000);
@@ -491,10 +497,16 @@ function init() {
 					} else if (pos > limit) {
 						if (layer == 'middle') {
 							parallaxintro.transition().duration(1000).style('top', '0px');
-							layer = 'top';
+							layer = 'nothing';
+							setTimeout(function() {
+								layer='top';
+							}, 1000);
 						} else if (layer == 'bottom') {
 							parallaxsvg.transition().duration(1000).style('top', window.innerHeight*2 + 'px');
-							layer = 'middle';
+							layer = 'nothing';
+							setTimeout(function() {
+								layer='middle';
+							}, 1000);
 						}
 						clearTimeout(timeout);
 						pos = 0;
