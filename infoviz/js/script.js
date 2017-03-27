@@ -450,6 +450,7 @@ function init() {
 		var parallaxsvg = d3.select('#parallaxViz');
 		var parallaxintro = d3.select('#parallaxIntro');
 		var layer = 'top';
+		var limit = 12;
 		
 		var out = false;
 		function mouseWheelEvent(e) {
@@ -465,9 +466,9 @@ function init() {
 				out = true;
 				if (delta < 0) {
 					
-					if (pos <= 5) {
+					if (pos <= limit) {
 						pos += 1;
-					} else if (pos > 5) {
+					} else if (pos > limit) {
 						if (layer == 'top') {
 							parallaxintro.transition().duration(1000).style('top', -window.innerHeight + 'px');
 							layer = 'middle';
@@ -485,9 +486,9 @@ function init() {
 				
 				} else {
 					
-					if (pos <= 5) {
+					if (pos <= limit) {
 						pos += 1;
-					} else if (pos > 5) {
+					} else if (pos > limit) {
 						if (layer == 'middle') {
 							parallaxintro.transition().duration(1000).style('top', '0px');
 							layer = 'top';
