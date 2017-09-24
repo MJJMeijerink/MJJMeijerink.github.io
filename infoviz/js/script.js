@@ -9,7 +9,8 @@ function init() {
 		chart,
 		hours = true,
 		comparing = false,
-		pid = null;
+		pid = null,
+		year = 2005;
 	
 	//Loading text
 	var conWidth = document.getElementById('svgContainer').offsetWidth;
@@ -35,7 +36,7 @@ function init() {
 				var nbhName = d[i]['neighborhood_name_ams'];
 				var inciTime = new Date(d[i]['incident_timestamp'].substring(0,19));
 				var inciCat = d[i]['incident_category'];
-				var month = inciTime.getMonth() + 1
+				var month = inciTime.getMonth() + 1;
 				if (month < 10) {
 						month = '0' + (month);
 					}
@@ -277,6 +278,7 @@ function init() {
 			var d = new Date(parseInt(val));
 			var m = d.getMonth() + 1;
 			var fullMonth = month[m - 1];
+			year = d.getFullYear()
 			if (m != oldm) {
 				if (m < 10) {
 					m = '0' + (m);
@@ -450,6 +452,7 @@ function init() {
 		var parallaxsvg = d3.select('#parallaxViz');
 		var parallaxintro = d3.select('#parallaxIntro');
 		var layer = 'top';
+		var limit = 12;
 		
 		var out = false;
 		function mouseWheelEvent(e) {
@@ -465,15 +468,21 @@ function init() {
 				out = true;
 				if (delta < 0) {
 					
-					if (pos <= 5) {
+					if (pos <= limit) {
 						pos += 1;
-					} else if (pos > 5) {
+					} else if (pos > limit) {
 						if (layer == 'top') {
 							parallaxintro.transition().duration(1000).style('top', -window.innerHeight + 'px');
-							layer = 'middle';
+							layer = 'nothing';
+							setTimeout(function() {
+								layer='middle';
+							}, 1000);
 						} else if (layer == 'middle') {
 							parallaxsvg.transition().duration(1000).style('top', '0px');
-							layer = 'bottom';
+							layer = 'nothing';
+							setTimeout(function() {
+								layer='bottom';
+							}, 1000);
 							setTimeout( function() {
 								notify('You can see the average priority per neighborhood here!');
 							},1000);
@@ -485,15 +494,21 @@ function init() {
 				
 				} else {
 					
-					if (pos <= 5) {
+					if (pos <= limit) {
 						pos += 1;
-					} else if (pos > 5) {
+					} else if (pos > limit) {
 						if (layer == 'middle') {
 							parallaxintro.transition().duration(1000).style('top', '0px');
-							layer = 'top';
+							layer = 'nothing';
+							setTimeout(function() {
+								layer='top';
+							}, 1000);
 						} else if (layer == 'bottom') {
 							parallaxsvg.transition().duration(1000).style('top', window.innerHeight*2 + 'px');
-							layer = 'middle';
+							layer = 'nothing';
+							setTimeout(function() {
+								layer='middle';
+							}, 1000);
 						}
 						clearTimeout(timeout);
 						pos = 0;
@@ -1158,19 +1173,32 @@ function init() {
 		// Parallax Visualization
 		//
 		
+		var positions = {};
+		function createposition(dataset){
+		  
+		   
+		   for (i = 0; i < dataset.length; i++) {
+			 nameplace = dataset[i].neighborhood_name_ams;
+
+				if (!positions.hasOwnProperty(nameplace)){
+					positions[nameplace] = (Math.random() * (1 - 0) + 0).toFixed(2);
+				 }
+			}        
+		};		
+		
 		var dataglob;
-		var year = 2005;
 		d3.csv("data/perpriobuurtjaar.csv", function(data) {
-			dataglob = data
-			createData(dataglob)
+			dataglob = data;
+			createposition(data);
+			createData(dataglob);
 		});
 
 		function createData(dataset){
 		    var areas = []
 		    for (i = 0; i < dataset.length; i++) { 
 				if (dataset[i].year == year){
-					var x = (Math.random() * (1 - 0) + 0).toFixed(2);
-					areas.push([dataset[i].neighborhood_name_ams, dataset[i].incident_prio,x,dataset[i].neighborhood_id_ams])
+					//console.log(typeof positions[dataset[i].neighborhood_name_ams])
+					areas.push([dataset[i].neighborhood_name_ams, dataset[i].incident_prio,positions[dataset[i].neighborhood_name_ams], dataset[i].neighborhood_id_ams])
 				}
 			}
 			drawPoints(areas)
@@ -1285,7 +1313,7 @@ function init() {
 		var yearSlide = d3.select('#svgContainer2').append('div')
 			.style('position', 'absolute')
 			.style('bottom', '-50px')
-			.style('width', 'inherit')
+			.style('width', 'inherit');
 		
 		yearSlide.append('label').attr('id', 'year').html('Year: 2005');
 		
@@ -1295,6 +1323,7 @@ function init() {
 			.attr('type', 'range')
 			.attr('min', 2005)
 			.attr('max', 2017)
+			.attr('value', year)
 			.attr('id', 'nYear');
 		
 		d3.select("#nYear").on("input", function() {
