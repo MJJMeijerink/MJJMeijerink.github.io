@@ -1,0 +1,59 @@
+/*!
+ * Start Bootstrap - 1 Col Portfolio (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+/*body {
+  padding-top: 40px;
+}*/
+
+#arrows {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+svg {
+  width:100%;
+  position:fixed;
+  left:0;
+  bottom:0;
+  right:0;
+}
+
+
+div#tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 8px;
+  font: 12px;
+  color: white;
+  background: rgba(0,0,0,0.9);
+  border: 0px;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+a:active {
+  text-decoration: none;
+  color: black;
+}
