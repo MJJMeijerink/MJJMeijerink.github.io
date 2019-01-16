@@ -39,9 +39,10 @@ d3.json('data/test_data.json', function(error, realData) {
   var curZ = 1.0; // current zoom
   var curR = 270; // current rotation
 
+  var svgContainer = d3.select("#tree-container");
 
   // define the svgBase, attaching a class for styling and the zoomListener
-  var svgBase = d3.select('#tree-container')
+  var svgBase = svgContainer
     .append('svg')
     .attr("id", "sourceSVG")
     .attr('width', width)
@@ -66,14 +67,34 @@ d3.json('data/test_data.json', function(error, realData) {
     .scaleExtent([1, 10])
     .on("zoom", zoomed);
 
-
-  svgBase.call(zoom).on("dblclick.zoom", null);
+  svgBase.call(zoom)
+    .on("dblclick.zoom", null)
+    .on("mousedown.zoom", null)
+    .on("touchstart.zoom", null)
+    .on("touchmove.zoom", null)
+    .on("touchend.zoom", null);
 
   // Group which holds all nodes
   var svgGroup = svgBase.append('g')
-    .attr('transform', 'translate(' + curX + ',' + curY + ')');
+    //.attr('transform', 'translate(' + curX + ',' + curY + ')');
 
-  d3.select(window).on('resize', resize);
+
+  svgBase.on('resize', resize)
+
+  var previousY;
+  var drag = false;
+  var startRotation;
+  var endRotation;
+  svgContainer
+    .on("mousedown", function(){
+      drag = true;
+      previousY = d3.mouse(this)[1];
+      startRotation = rotation;
+    })
+    .on("mouseup", function(){
+      drag = false;
+    })
+    .on("mousemove", rotate)
 
   // Define the data root
   var root = treeData;
@@ -154,14 +175,15 @@ d3.json('data/test_data.json', function(error, realData) {
       });
 
     node.select('text')
-      .attr('text-anchor', function(d) {
-          return (d.x + curR) % 360 <= 180 ? 'start' : 'end';
-      }).attr('transform', function(d) {
-          return ((d.x + curR) % 360 <= 180 ?
-              'translate(8)scale(' :
-              'rotate(180)translate(-8)scale('
-            ) + reduceZ() +')';
-      }).attr('fill', function(d) {
+      //.attr('text-anchor', function(d) {
+      //    return (d.x + curR) % 360 <= 180 ? 'start' : 'end';
+      //}).attr('transform', function(d) {
+      //    return ((d.x + curR) % 360 <= 180 ?
+      //        'translate(8)scale(' :
+      //        'rotate(180)translate(-8)scale('
+      //      ) + reduceZ() +')';
+      //})
+        .attr('fill', function(d) {
           return d.selected ? SELECTED_COLOR : 'black';
       }).attr('dy', '.35em');
 
@@ -377,6 +399,23 @@ d3.json('data/test_data.json', function(error, realData) {
     svgGroup.attr('transform', 'rotate(' + curR + ' ' + curX + ' ' + curY +
         ')translate(' + curX + ' ' + curY + ')scale(' + curZ + ')');
     update(root);
+  }
+
+  var rotation = 0;
+  function rotate() {
+    if (drag) {
+      var y = d3.mouse(this)[1]
+      diff = y - previousY;
+
+      rotation = Math.floor(rotation + diff / 10);
+      if (rotation > 360) {
+        rotation = 0 + rotation - 360;
+      }
+      console.log(rotation);
+      svgBase.transition().duration(10).attr("transform", "rotate("+ rotation + ")");
+
+      previousY = y;
+    }
   }
 
   function click(d) { // select node
