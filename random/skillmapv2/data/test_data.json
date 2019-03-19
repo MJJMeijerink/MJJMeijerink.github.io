@@ -1,1 +1,852 @@
-{"Jennny Tsatsaronis": {"skills": ["Machine leaning SQL'er", "Machine leaning cat-lady"], "projects": ["Content3.14", "Krappi"], "job_title": "Project Manager"}, "Michelle Gregory": {"skills": ["Contemplating stripper", "Semi-working would-be manager"], "projects": ["Word Sense Indoctrination", "Pinger Frint Engine"], "job_title": "Knowledge representation"}, "JJ Truong": {"skills": ["Semi-working would-be manager", "Semi-working stripper"], "projects": ["Word Sense Indoctrination", "Scopers"], "job_title": "Project Manager"}, "JJ van de Loo": {"skills": ["Berating latecomer", "Head-banging cat-lady"], "projects": ["Databricks2.0", "Krappi"], "job_title": "Knowledge representation"}, "Michelle Truong": {"skills": ["Procrastinating leaf blower", "Procrastinating latecomer"], "projects": ["Word Sense Indoctrination", "Scopers"], "job_title": "Machine Learning"}, "Yi van de Loo": {"skills": ["Machine leaning SQL'er", "Boxing cat-lady"], "projects": ["Scopers", "Machine daycare"], "job_title": "Machine Learning"}, "Georgios Illidge": {"skills": ["Contemplating rule writer", "Fingerprinting I gave you my heart."], "projects": ["QueNovel", "Databricks2.0"], "job_title": "Analyst"}, "Michelle Valetopoulos": {"skills": ["Believing if-statement collector", "Procrastinating pretender"], "projects": ["Pinger Frint Engine", "Scopers"], "job_title": "Natural Language Processing"}, "Yi Doornenbal": {"skills": ["Running if-statement collector", "Ice skating stripper"], "projects": ["I don't even work here."], "job_title": "Subject Matter Expert"}, "Michelle Alivas": {"skills": ["Hamstering I gave you my heart.", "Debugging would-be manager"], "projects": ["Word Sense Indoctrination", "Databricks2.0"], "job_title": "Analyst"}, "JJ He": {"skills": ["Machine leaning if-statement collector", "Berating would-be manager"], "projects": ["I only pretend to work."], "job_title": "Analyst"}, "Jennny Truong": {"skills": ["Debugging if-statement collector", "Machine leaning intellectual"], "projects": ["Databricks2.0", "Rocky"], "job_title": "Knowledge representation"}, "Janneke van de Loo": {"skills": ["Debugging stripper", "Debugging cat-lady"], "projects": ["Word Sense Indoctrination", "Content3.14"], "job_title": "Natural Language Processing"}, "Alexandros Illidge": {"skills": ["Boxing intellectual", "Grunting leaf blower"], "projects": ["I only pretend to work."], "job_title": "Project Manager"}, "Marius Doornenbal": {"skills": ["Fingerprinting if-statement collector", "Quacking if-statement collector"], "projects": ["Where am I?"], "job_title": "Machine Learning"}, "Georgios van de Loo": {"skills": ["Climbing intellectual", "Semi-working rule writer"], "projects": ["QueNovel", "Machine daycare"], "job_title": "Knowledge representation"}, "Michelle van de Loo": {"skills": ["Procrastinating for-loop nester", "Semi-working cat-lady"], "projects": ["Scopers", "Content3.14"], "job_title": "Natural Language Processing"}, "Dimitri Doornenbal": {"skills": ["Grunting would-be manager", "Contemplating would-be manager"], "projects": ["QueNovel", "Content3.14"], "job_title": "Analyst"}, "Alexandros Gregory": {"skills": ["Head-banging cat-lady", "Boxing SQL'er"], "projects": ["Machine daycare", "Rocky"], "job_title": "Project Manager"}, "Yi Kayal": {"skills": ["Hamstering latecomer", "Believing pretender"], "projects": ["Krappi", "Content3.14"], "job_title": "Natural Language Processing"}, "Janneke Valetopoulos": {"skills": ["Ice skating cat-lady", "Machine leaning latecomer"], "projects": ["Word Sense Indoctrination", "Scopers"], "job_title": "Analyst"}, "Michelle Berne": {"skills": ["Fingerprinting rule writer", "Running SQL'er"], "projects": ["Rocky", "Krappi"], "job_title": "Natural Language Processing"}, "Georgios Alivas": {"skills": ["Grunting cat-lady", "Running for-loop nester"], "projects": ["Machine daycare", "Scopers"], "job_title": "Knowledge representation"}, "Janneke Tsatsaronis": {"skills": ["Debugging leaf blower", "Procrastinating cat-lady"], "projects": ["I don't even work here."], "job_title": "Project Manager"}, "Alexandros Tsatsaronis": {"skills": ["Quacking rule writer", "Ping-ponging for-loop nester"], "projects": ["Where am I?"], "job_title": "Machine Learning"}, "Janneke Gregory": {"skills": ["Debugging stripper", "Pole dancing if-statement collector"], "projects": ["Scopers", "Rocky"], "job_title": "Analyst"}, "Yi He": {"skills": ["Head-banging pretender", "Hamstering intellectual"], "projects": ["Machine daycare", "Rocky"], "job_title": "Subject Matter Expert"}, "Michelle MJJ Meijerink": {"skills": ["Quacking for-loop nester", "Berating black metal listener"], "projects": ["Content3.14", "Krappi"], "job_title": "Subject Matter Expert"}, "JJ Alivas": {"skills": ["Hamstering stripper", "Grunting stripper"], "projects": ["I only pretend to work."], "job_title": "Machine Learning"}, "JJ Tsatsaronis": {"skills": ["Boxing I gave you my heart.", "Debugging if-statement collector"], "projects": ["I only pretend to work."], "job_title": "Subject Matter Expert"}, "Janneke Illidge": {"skills": ["Berating SQL'er", "Running pretender"], "projects": ["Krappi", "Content3.14"], "job_title": "Project Manager"}, "Subhradeep Valetopoulos": {"skills": ["Ping-ponging if-statement collector", "Day-dreaming leaf blower"], "projects": ["Content3.14", "Machine daycare"], "job_title": "Subject Matter Expert"}, "JJ Kayal": {"skills": ["Berating latecomer", "Head-banging pretender"], "projects": ["Machine daycare", "Rocky"], "job_title": "Subject Matter Expert"}, "JJ Doornenbal": {"skills": ["Last christmas, latecomer", "Head-banging intellectual"], "projects": ["Project? What project?"], "job_title": "Project Manager"}, "Georgios Berne": {"skills": ["Machine leaning for-loop nester", "Semi-working would-be manager"], "projects": ["I don't even work here."], "job_title": "Subject Matter Expert"}, "Jennny Doornenbal": {"skills": ["Procrastinating if-statement collector", "Head-banging black metal listener"], "projects": ["Project? What project?"], "job_title": "Analyst"}, "Alexandros Truong": {"skills": ["Day-dreaming intellectual", "Fingerprinting I gave you my heart."], "projects": ["Pinger Frint Engine", "Krappi"], "job_title": "Analyst"}, "Michelle He": {"skills": ["Ping-ponging cat-lady", "Climbing I gave you my heart."], "projects": ["QueNovel", "Rocky"], "job_title": "Natural Language Processing"}, "Dimitri Kayal": {"skills": ["Hamstering SQL'er", "Day-dreaming would-be manager"], "projects": ["Project? What project?"], "job_title": "Subject Matter Expert"}, "Subhradeep Kayal": {"skills": ["Quacking for-loop nester", "Climbing black metal listener"], "projects": ["Word Sense Indoctrination", "Krappi"], "job_title": "Natural Language Processing"}, "Subhradeep Alivas": {"skills": ["Procrastinating SQL'er", "Hamstering rule writer"], "projects": ["Krappi", "QueNovel"], "job_title": "Project Manager"}, "JJ Gregory": {"skills": ["Pole dancing black metal listener", "Debugging would-be manager"], "projects": ["Content3.14", "Krappi"], "job_title": "Natural Language Processing"}, "Jennny van de Loo": {"skills": ["Grunting rule writer", "Running intellectual"], "projects": ["Word Sense Indoctrination", "Machine daycare"], "job_title": "Machine Learning"}, "Marius MJJ Meijerink": {"skills": ["Debugging for-loop nester", "Running cat-lady"], "projects": ["Project? What project?"], "job_title": "Natural Language Processing"}, "Dimitri Illidge": {"skills": ["Fingerprinting leaf blower", "Pole dancing black metal listener"], "projects": ["Machine daycare", "Word Sense Indoctrination"], "job_title": "Knowledge representation"}, "Marius Tsatsaronis": {"skills": ["Procrastinating I gave you my heart.", "Contemplating SQL'er"], "projects": ["QueNovel", "Scopers"], "job_title": "Project Manager"}, "Marius Kayal": {"skills": ["Semi-working latecomer", "Machine leaning cat-lady"], "projects": ["Krappi", "Databricks2.0"], "job_title": "Machine Learning"}, "Marius Truong": {"skills": ["Climbing latecomer", "Last christmas, stripper"], "projects": ["Where am I?"], "job_title": "Subject Matter Expert"}, "Janneke Berne": {"skills": ["Ping-ponging cat-lady", "Debugging for-loop nester"], "projects": ["I only pretend to work."], "job_title": "Analyst"}, "Alexandros Alivas": {"skills": ["Procrastinating leaf blower", "Last christmas, SQL'er"], "projects": ["Krappi", "Rocky"], "job_title": "Natural Language Processing"}, "Janneke Kayal": {"skills": ["Debugging I gave you my heart.", "Ice skating intellectual"], "projects": ["Pinger Frint Engine", "Databricks2.0"], "job_title": "Analyst"}, "Marius Alivas": {"skills": ["Grunting for-loop nester", "Quacking SQL'er"], "projects": ["I don't even work here."], "job_title": "Machine Learning"}, "Dimitri He": {"skills": ["Climbing for-loop nester", "Grunting leaf blower"], "projects": ["Project? What project?"], "job_title": "Machine Learning"}, "Yi Gregory": {"skills": ["Ice skating leaf blower", "Ping-ponging for-loop nester"], "projects": ["Project? What project?"], "job_title": "Subject Matter Expert"}, "Georgios Gregory": {"skills": ["Running black metal listener", "Grunting I gave you my heart."], "projects": ["Rocky", "Word Sense Indoctrination"], "job_title": "Knowledge representation"}, "Michelle Illidge": {"skills": ["Hamstering latecomer", "Debugging SQL'er"], "projects": ["Scopers", "Krappi"], "job_title": "Machine Learning"}, "Subhradeep Berne": {"skills": ["Hamstering I gave you my heart.", "Ping-ponging black metal listener"], "projects": ["I don't even work here."], "job_title": "Machine Learning"}, "Georgios He": {"skills": ["Last christmas, I gave you my heart.", "Pole dancing SQL'er"], "projects": ["QueNovel", "Machine daycare"], "job_title": "Machine Learning"}, "Subhradeep Truong": {"skills": ["Grunting would-be manager", "Machine leaning SQL'er"], "projects": ["I don't even work here."], "job_title": "Analyst"}, "Yi Tsatsaronis": {"skills": ["Pole dancing would-be manager", "Quacking stripper"], "projects": ["I only pretend to work."], "job_title": "Project Manager"}, "Dimitri MJJ Meijerink": {"skills": ["Grunting pretender", "Last christmas, SQL'er"], "projects": ["Rocky", "Content3.14"], "job_title": "Machine Learning"}, "Alexandros MJJ Meijerink": {"skills": ["Fingerprinting latecomer", "Procrastinating leaf blower"], "projects": ["I don't even work here."], "job_title": "Machine Learning"}, "Dimitri Truong": {"skills": ["Day-dreaming for-loop nester", "Last christmas, I gave you my heart."], "projects": ["Where am I?"], "job_title": "Natural Language Processing"}, "Jennny Illidge": {"skills": ["Procrastinating latecomer", "Fingerprinting leaf blower"], "projects": ["Content3.14", "Machine daycare"], "job_title": "Knowledge representation"}, "Georgios Truong": {"skills": ["Boxing rule writer", "Pole dancing for-loop nester"], "projects": ["Where am I?"], "job_title": "Analyst"}, "Marius Berne": {"skills": ["Hamstering latecomer", "Ice skating would-be manager"], "projects": ["Project? What project?"], "job_title": "Machine Learning"}, "Janneke Alivas": {"skills": ["Believing black metal listener", "Hamstering latecomer"], "projects": ["Databricks2.0", "Krappi"], "job_title": "Knowledge representation"}, "Alexandros Berne": {"skills": ["Pole dancing cat-lady", "Debugging for-loop nester"], "projects": ["Scopers", "Rocky"], "job_title": "Machine Learning"}, "Subhradeep Gregory": {"skills": ["Last christmas, black metal listener", "Contemplating for-loop nester"], "projects": ["Project? What project?"], "job_title": "Knowledge representation"}, "Georgios MJJ Meijerink": {"skills": ["Grunting SQL'er", "Berating stripper"], "projects": ["Project? What project?"], "job_title": "Machine Learning"}, "JJ Berne": {"skills": ["Machine leaning black metal listener", "Last christmas, pretender"], "projects": ["Databricks2.0", "Machine daycare"], "job_title": "Natural Language Processing"}, "Jennny Berne": {"skills": ["Last christmas, I gave you my heart.", "Machine leaning for-loop nester"], "projects": ["Word Sense Indoctrination", "Krappi"], "job_title": "Analyst"}, "Marius Valetopoulos": {"skills": ["Running black metal listener", "Climbing intellectual"], "projects": ["Scopers", "Databricks2.0"], "job_title": "Machine Learning"}, "Dimitri Berne": {"skills": ["Contemplating stripper", "Grunting black metal listener"], "projects": ["Project? What project?"], "job_title": "Subject Matter Expert"}, "Jennny Valetopoulos": {"skills": ["Fingerprinting latecomer", "Grunting if-statement collector"], "projects": ["Pinger Frint Engine", "Rocky"], "job_title": "Project Manager"}, "Jennny He": {"skills": ["Day-dreaming cat-lady", "Ice skating SQL'er"], "projects": ["Krappi", "QueNovel"], "job_title": "Knowledge representation"}, "Jennny MJJ Meijerink": {"skills": ["Climbing intellectual", "Pole dancing SQL'er"], "projects": ["Machine daycare", "QueNovel"], "job_title": "Project Manager"}, "Michelle Kayal": {"skills": ["Debugging if-statement collector", "Day-dreaming if-statement collector"], "projects": ["Rocky", "Krappi"], "job_title": "Machine Learning"}, "Marius Illidge": {"skills": ["Ice skating if-statement collector", "Procrastinating SQL'er"], "projects": ["I only pretend to work."], "job_title": "Knowledge representation"}, "Alexandros Doornenbal": {"skills": ["Hamstering SQL'er", "Ping-ponging for-loop nester"], "projects": ["Where am I?"], "job_title": "Natural Language Processing"}}
+{
+    "Michelle van de Loo": {
+        "skills": [
+            "Debugging cat-lady",
+            "Procrastinating rule writer"
+        ],
+        "projects": [
+            "QueNovel",
+            "Rocky"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "Georgios Valetopoulos": {
+        "skills": [
+            "Grunting SQL'er",
+            "Head-banging if-statement collector"
+        ],
+        "projects": [
+            "I only pretend to work."
+        ],
+        "job_title": "Project Manager"
+    },
+    "JJ Kayal": {
+        "skills": [
+            "Quacking would-be manager",
+            "Contemplating pretender"
+        ],
+        "projects": [
+            "Project? What project?"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "JJ MJJ Meijerink": {
+        "skills": [
+            "Ice skating pretender",
+            "Contemplating stripper"
+        ],
+        "projects": [
+            "I only pretend to work."
+        ],
+        "job_title": "Knowledge representation"
+    },
+    "Alexandros Kayal": {
+        "skills": [
+            "Boxing for-loop nester",
+            "Ping-ponging SQL'er"
+        ],
+        "projects": [
+            "Project? What project?"
+        ],
+        "job_title": "Analyst"
+    },
+    "Jennny van de Loo": {
+        "skills": [
+            "Quacking leaf blower",
+            "Fingerprinting for-loop nester"
+        ],
+        "projects": [
+            "I only pretend to work."
+        ],
+        "job_title": "Knowledge representation"
+    },
+    "Michelle Alivas": {
+        "skills": [
+            "Grunting pretender",
+            "Believing if-statement collector"
+        ],
+        "projects": [
+            "Scopers",
+            "Krappi"
+        ],
+        "job_title": "Project Manager"
+    },
+    "Subhradeep He": {
+        "skills": [
+            "Running latecomer",
+            "Debugging pretender"
+        ],
+        "projects": [
+            "Machine daycare",
+            "Rocky"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Georgios Illidge": {
+        "skills": [
+            "Last christmas, stripper",
+            "Head-banging would-be manager"
+        ],
+        "projects": [
+            "Krappi",
+            "Databricks2.0"
+        ],
+        "job_title": "Machine Learning"
+    },
+    "Yi Gregory": {
+        "skills": [
+            "Day-dreaming if-statement collector",
+            "Fingerprinting SQL'er"
+        ],
+        "projects": [
+            "Krappi",
+            "Content3.14"
+        ],
+        "job_title": "Project Manager"
+    },
+    "Georgios Doornenbal": {
+        "skills": [
+            "Ice skating cat-lady",
+            "Semi-working leaf blower"
+        ],
+        "projects": [
+            "Word Sense Indoctrination",
+            "Machine daycare"
+        ],
+        "job_title": "Knowledge representation"
+    },
+    "Georgios Kayal": {
+        "skills": [
+            "Debugging pretender",
+            "Believing leaf blower"
+        ],
+        "projects": [
+            "Databricks2.0",
+            "Pinger Frint Engine"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Janneke He": {
+        "skills": [
+            "Boxing cat-lady",
+            "Boxing if-statement collector"
+        ],
+        "projects": [
+            "Project? What project?"
+        ],
+        "job_title": "Project Manager"
+    },
+    "JJ He": {
+        "skills": [
+            "Fingerprinting would-be manager",
+            "Boxing black metal listener"
+        ],
+        "projects": [
+            "Project? What project?"
+        ],
+        "job_title": "Machine Learning"
+    },
+    "Marius van de Loo": {
+        "skills": [
+            "Running rule writer",
+            "Day-dreaming would-be manager"
+        ],
+        "projects": [
+            "Word Sense Indoctrination",
+            "Pinger Frint Engine"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "Alexandros Berne": {
+        "skills": [
+            "Last christmas, if-statement collector",
+            "Climbing cat-lady"
+        ],
+        "projects": [
+            "Content3.14",
+            "Word Sense Indoctrination"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "Subhradeep MJJ Meijerink": {
+        "skills": [
+            "Believing leaf blower",
+            "Quacking stripper"
+        ],
+        "projects": [
+            "Databricks2.0",
+            "Scopers"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "JJ Alivas": {
+        "skills": [
+            "Last christmas, leaf blower",
+            "Quacking latecomer"
+        ],
+        "projects": [
+            "Rocky",
+            "Pinger Frint Engine"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Jennny Kayal": {
+        "skills": [
+            "Running intellectual",
+            "Semi-working pretender"
+        ],
+        "projects": [
+            "Word Sense Indoctrination",
+            "Krappi"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Georgios Gregory": {
+        "skills": [
+            "Contemplating would-be manager",
+            "Machine leaning stripper"
+        ],
+        "projects": [
+            "QueNovel",
+            "Pinger Frint Engine"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "Jennny Gregory": {
+        "skills": [
+            "Boxing cat-lady",
+            "Berating black metal listener"
+        ],
+        "projects": [
+            "Content3.14",
+            "Pinger Frint Engine"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "Yi Valetopoulos": {
+        "skills": [
+            "Ice skating latecomer",
+            "Believing stripper"
+        ],
+        "projects": [
+            "I only pretend to work."
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Alexandros Valetopoulos": {
+        "skills": [
+            "Procrastinating latecomer",
+            "Day-dreaming SQL'er"
+        ],
+        "projects": [
+            "Pinger Frint Engine",
+            "Scopers"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "Janneke MJJ Meijerink": {
+        "skills": [
+            "Ping-ponging pretender",
+            "Believing if-statement collector"
+        ],
+        "projects": [
+            "Krappi",
+            "Content3.14"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "Michelle Doornenbal": {
+        "skills": [
+            "Ping-ponging pretender",
+            "Fingerprinting if-statement collector"
+        ],
+        "projects": [
+            "Machine daycare",
+            "Content3.14"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "Michelle Illidge": {
+        "skills": [
+            "Head-banging intellectual",
+            "Ice skating pretender"
+        ],
+        "projects": [
+            "Krappi",
+            "Databricks2.0"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "Marius Doornenbal": {
+        "skills": [
+            "Last christmas, if-statement collector",
+            "Running stripper"
+        ],
+        "projects": [
+            "Where am I?"
+        ],
+        "job_title": "Knowledge representation"
+    },
+    "Jennny He": {
+        "skills": [
+            "Last christmas, latecomer",
+            "Head-banging cat-lady"
+        ],
+        "projects": [
+            "Where am I?"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Yi Berne": {
+        "skills": [
+            "Pole dancing black metal listener",
+            "Contemplating for-loop nester"
+        ],
+        "projects": [
+            "Rocky",
+            "Databricks2.0"
+        ],
+        "job_title": "Machine Learning"
+    },
+    "Dimitri Alivas": {
+        "skills": [
+            "Running stripper",
+            "Believing SQL'er"
+        ],
+        "projects": [
+            "Machine daycare",
+            "Content3.14"
+        ],
+        "job_title": "Project Manager"
+    },
+    "Michelle Tsatsaronis": {
+        "skills": [
+            "Berating would-be manager",
+            "Semi-working cat-lady"
+        ],
+        "projects": [
+            "Project? What project?"
+        ],
+        "job_title": "Analyst"
+    },
+    "JJ Valetopoulos": {
+        "skills": [
+            "Quacking would-be manager",
+            "Debugging cat-lady"
+        ],
+        "projects": [
+            "Krappi",
+            "Rocky"
+        ],
+        "job_title": "Project Manager"
+    },
+    "Subhradeep Tsatsaronis": {
+        "skills": [
+            "Debugging black metal listener",
+            "Berating I gave you my heart."
+        ],
+        "projects": [
+            "Databricks2.0",
+            "Pinger Frint Engine"
+        ],
+        "job_title": "Analyst"
+    },
+    "Yi Kayal": {
+        "skills": [
+            "Berating for-loop nester",
+            "Berating rule writer"
+        ],
+        "projects": [
+            "Where am I?"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Dimitri MJJ Meijerink": {
+        "skills": [
+            "Semi-working intellectual",
+            "Day-dreaming leaf blower"
+        ],
+        "projects": [
+            "Where am I?"
+        ],
+        "job_title": "Analyst"
+    },
+    "Marius Alivas": {
+        "skills": [
+            "Boxing I gave you my heart.",
+            "Ping-ponging for-loop nester"
+        ],
+        "projects": [
+            "Pinger Frint Engine",
+            "Krappi"
+        ],
+        "job_title": "Project Manager"
+    },
+    "Georgios Truong": {
+        "skills": [
+            "Ice skating cat-lady",
+            "Ice skating leaf blower"
+        ],
+        "projects": [
+            "Rocky",
+            "Scopers"
+        ],
+        "job_title": "Machine Learning"
+    },
+    "Michelle Truong": {
+        "skills": [
+            "Day-dreaming pretender",
+            "Boxing I gave you my heart."
+        ],
+        "projects": [
+            "Rocky",
+            "Machine daycare"
+        ],
+        "job_title": "Machine Learning"
+    },
+    "JJ Berne": {
+        "skills": [
+            "Debugging black metal listener",
+            "Fingerprinting if-statement collector"
+        ],
+        "projects": [
+            "Databricks2.0",
+            "Krappi"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Jennny Tsatsaronis": {
+        "skills": [
+            "Fingerprinting leaf blower",
+            "Running pretender"
+        ],
+        "projects": [
+            "I only pretend to work."
+        ],
+        "job_title": "Machine Learning"
+    },
+    "Yi Alivas": {
+        "skills": [
+            "Hamstering SQL'er",
+            "Ping-ponging I gave you my heart."
+        ],
+        "projects": [
+            "QueNovel",
+            "Machine daycare"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Marius Gregory": {
+        "skills": [
+            "Semi-working intellectual",
+            "Contemplating latecomer"
+        ],
+        "projects": [
+            "Scopers",
+            "QueNovel"
+        ],
+        "job_title": "Knowledge representation"
+    },
+    "Dimitri Illidge": {
+        "skills": [
+            "Machine leaning cat-lady",
+            "Procrastinating SQL'er"
+        ],
+        "projects": [
+            "Where am I?"
+        ],
+        "job_title": "Analyst"
+    },
+    "Marius Kayal": {
+        "skills": [
+            "Ping-ponging stripper",
+            "Day-dreaming latecomer"
+        ],
+        "projects": [
+            "Scopers",
+            "Content3.14"
+        ],
+        "job_title": "Analyst"
+    },
+    "Marius He": {
+        "skills": [
+            "Ice skating if-statement collector",
+            "Contemplating leaf blower"
+        ],
+        "projects": [
+            "Where am I?"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Janneke Alivas": {
+        "skills": [
+            "Believing I gave you my heart.",
+            "Contemplating intellectual"
+        ],
+        "projects": [
+            "Project? What project?"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "JJ van de Loo": {
+        "skills": [
+            "Machine leaning black metal listener",
+            "Day-dreaming I gave you my heart."
+        ],
+        "projects": [
+            "Scopers",
+            "Pinger Frint Engine"
+        ],
+        "job_title": "Project Manager"
+    },
+    "Alexandros Doornenbal": {
+        "skills": [
+            "Hamstering stripper",
+            "Day-dreaming for-loop nester"
+        ],
+        "projects": [
+            "Content3.14",
+            "Machine daycare"
+        ],
+        "job_title": "Analyst"
+    },
+    "Marius Illidge": {
+        "skills": [
+            "Ice skating for-loop nester",
+            "Machine leaning stripper"
+        ],
+        "projects": [
+            "Pinger Frint Engine",
+            "Scopers"
+        ],
+        "job_title": "Project Manager"
+    },
+    "Janneke Illidge": {
+        "skills": [
+            "Boxing cat-lady",
+            "Contemplating if-statement collector"
+        ],
+        "projects": [
+            "I only pretend to work."
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "Georgios MJJ Meijerink": {
+        "skills": [
+            "Grunting cat-lady",
+            "Day-dreaming cat-lady"
+        ],
+        "projects": [
+            "QueNovel",
+            "Databricks2.0"
+        ],
+        "job_title": "Analyst"
+    },
+    "Jennny Truong": {
+        "skills": [
+            "Quacking black metal listener",
+            "Quacking SQL'er"
+        ],
+        "projects": [
+            "Content3.14",
+            "Krappi"
+        ],
+        "job_title": "Analyst"
+    },
+    "Alexandros Tsatsaronis": {
+        "skills": [
+            "Believing leaf blower",
+            "Believing rule writer"
+        ],
+        "projects": [
+            "Machine daycare",
+            "Content3.14"
+        ],
+        "job_title": "Machine Learning"
+    },
+    "Janneke Berne": {
+        "skills": [
+            "Quacking rule writer",
+            "Climbing intellectual"
+        ],
+        "projects": [
+            "Krappi",
+            "Machine daycare"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Dimitri Kayal": {
+        "skills": [
+            "Semi-working if-statement collector",
+            "Hamstering leaf blower"
+        ],
+        "projects": [
+            "QueNovel",
+            "Content3.14"
+        ],
+        "job_title": "Machine Learning"
+    },
+    "Dimitri Berne": {
+        "skills": [
+            "Head-banging I gave you my heart.",
+            "Hamstering rule writer"
+        ],
+        "projects": [
+            "Databricks2.0",
+            "QueNovel"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "Subhradeep Illidge": {
+        "skills": [
+            "Ping-ponging black metal listener",
+            "Climbing latecomer"
+        ],
+        "projects": [
+            "Krappi",
+            "Scopers"
+        ],
+        "job_title": "Knowledge representation"
+    },
+    "Michelle Kayal": {
+        "skills": [
+            "Fingerprinting rule writer",
+            "Pole dancing intellectual"
+        ],
+        "projects": [
+            "Rocky",
+            "Content3.14"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Michelle MJJ Meijerink": {
+        "skills": [
+            "Contemplating SQL'er",
+            "Ping-ponging I gave you my heart."
+        ],
+        "projects": [
+            "I only pretend to work."
+        ],
+        "job_title": "Machine Learning"
+    },
+    "Alexandros Illidge": {
+        "skills": [
+            "Quacking for-loop nester",
+            "Last christmas, would-be manager"
+        ],
+        "projects": [
+            "I don't even work here."
+        ],
+        "job_title": "Project Manager"
+    },
+    "Alexandros He": {
+        "skills": [
+            "Running intellectual",
+            "Head-banging for-loop nester"
+        ],
+        "projects": [
+            "Content3.14",
+            "Word Sense Indoctrination"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "Alexandros MJJ Meijerink": {
+        "skills": [
+            "Ice skating if-statement collector",
+            "Berating intellectual"
+        ],
+        "projects": [
+            "Scopers",
+            "Rocky"
+        ],
+        "job_title": "Natural Language Processing"
+    },
+    "Yi Tsatsaronis": {
+        "skills": [
+            "Grunting rule writer",
+            "Debugging I gave you my heart."
+        ],
+        "projects": [
+            "Project? What project?"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Janneke Kayal": {
+        "skills": [
+            "Last christmas, black metal listener",
+            "Running latecomer"
+        ],
+        "projects": [
+            "Where am I?"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Subhradeep Doornenbal": {
+        "skills": [
+            "Contemplating black metal listener",
+            "Machine leaning pretender"
+        ],
+        "projects": [
+            "Content3.14",
+            "Scopers"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Janneke Truong": {
+        "skills": [
+            "Last christmas, intellectual",
+            "Day-dreaming intellectual"
+        ],
+        "projects": [
+            "I don't even work here."
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "JJ Doornenbal": {
+        "skills": [
+            "Last christmas, I gave you my heart.",
+            "Last christmas, leaf blower"
+        ],
+        "projects": [
+            "Word Sense Indoctrination",
+            "Pinger Frint Engine"
+        ],
+        "job_title": "Knowledge representation"
+    },
+    "Marius MJJ Meijerink": {
+        "skills": [
+            "Procrastinating if-statement collector",
+            "Climbing black metal listener"
+        ],
+        "projects": [
+            "Scopers",
+            "Krappi"
+        ],
+        "job_title": "Analyst"
+    },
+    "Dimitri van de Loo": {
+        "skills": [
+            "Contemplating for-loop nester",
+            "Quacking I gave you my heart."
+        ],
+        "projects": [
+            "I don't even work here."
+        ],
+        "job_title": "Project Manager"
+    },
+    "Jennny Doornenbal": {
+        "skills": [
+            "Head-banging rule writer",
+            "Ice skating latecomer"
+        ],
+        "projects": [
+            "I only pretend to work."
+        ],
+        "job_title": "Analyst"
+    },
+    "Subhradeep Valetopoulos": {
+        "skills": [
+            "Berating cat-lady",
+            "Quacking intellectual"
+        ],
+        "projects": [
+            "Databricks2.0",
+            "Machine daycare"
+        ],
+        "job_title": "Machine Learning"
+    },
+    "Alexandros van de Loo": {
+        "skills": [
+            "Quacking intellectual",
+            "Machine leaning latecomer"
+        ],
+        "projects": [
+            "I don't even work here."
+        ],
+        "job_title": "Knowledge representation"
+    },
+    "Georgios Alivas": {
+        "skills": [
+            "Grunting cat-lady",
+            "Believing stripper"
+        ],
+        "projects": [
+            "Project? What project?"
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Janneke Tsatsaronis": {
+        "skills": [
+            "Quacking if-statement collector",
+            "Pole dancing leaf blower"
+        ],
+        "projects": [
+            "Word Sense Indoctrination",
+            "Machine daycare"
+        ],
+        "job_title": "Knowledge representation"
+    },
+    "JJ Illidge": {
+        "skills": [
+            "Contemplating black metal listener",
+            "Ping-ponging if-statement collector"
+        ],
+        "projects": [
+            "I only pretend to work."
+        ],
+        "job_title": "Subject Matter Expert"
+    },
+    "Subhradeep Truong": {
+        "skills": [
+            "Machine leaning intellectual",
+            "Quacking pretender"
+        ],
+        "projects": [
+            "Krappi",
+            "Scopers"
+        ],
+        "job_title": "Machine Learning"
+    },
+    "Yi He": {
+        "skills": [
+            "Hamstering intellectual",
+            "Last christmas, I gave you my heart."
+        ],
+        "projects": [
+            "Where am I?"
+        ],
+        "job_title": "Knowledge representation"
+    },
+    "Georgios van de Loo": {
+        "skills": [
+            "Boxing SQL'er",
+            "Grunting rule writer"
+        ],
+        "projects": [
+            "Where am I?"
+        ],
+        "job_title": "Project Manager"
+    },
+    "Dimitri Gregory": {
+        "skills": [
+            "Ice skating SQL'er",
+            "Head-banging black metal listener"
+        ],
+        "projects": [
+            "Krappi",
+            "QueNovel"
+        ],
+        "job_title": "Analyst"
+    },
+    "Jennny Alivas": {
+        "skills": [
+            "Machine leaning cat-lady",
+            "Hamstering latecomer"
+        ],
+        "projects": [
+            "Pinger Frint Engine",
+            "Word Sense Indoctrination"
+        ],
+        "job_title": "Natural Language Processing"
+    }
+}
