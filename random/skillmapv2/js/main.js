@@ -3,8 +3,8 @@ $.getJSON("data/test_data.json", function(json) {
     console.log(json); // this will show the info it in firebug console
 
     var people = []
-  	for (var name in data) {
-  		people.push(new Person(name, data[name]))
+  	for (var name in json) {
+  		people.push(new Person(name, json[name]))
   	}
 
     people_by_title = getPeopleByTitle(people)
