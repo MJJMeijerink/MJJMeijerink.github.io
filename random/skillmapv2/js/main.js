@@ -9,7 +9,7 @@ $.getJSON("data/test_data.json", function(json) {
 
     people_by_title = getPeopleByTitle(people)
 
-    
+    console.log(people_by_title);
 });
 
 // create an array with nodes
