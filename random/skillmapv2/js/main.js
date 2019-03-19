@@ -1,5 +1,15 @@
+
 $.getJSON("data/test_data.json", function(json) {
     console.log(json); // this will show the info it in firebug console
+
+    var people = []
+  	for (var name in data) {
+  		people.push(new Person(name, data[name]))
+  	}
+
+    people_by_title = getPeopleByTitle(people)
+
+    
 });
 
 // create an array with nodes
@@ -28,3 +38,32 @@ var data = {
 };
 var options = {};
 var network = new vis.Network(container, data, options);
+
+
+
+function Person(name, information) {
+	this.name = name
+	this.job_title = information["job_title"]
+	this.skills = information["skills"]
+	this.projects = information["projects"]
+}
+
+// Adding a method to the constructor
+Person.prototype.renderInNode = function(node, x, y) {
+	var container = node.append("g")
+	container.append("rect").attr("fill", "white").attr("x", x).attr("y", y)
+	return
+}
+
+function getPeopleByTitle(people) {
+	people_by_title = {}
+	for (var name in people) {
+		job_title = people[name]["job_title"]
+
+		if (!(job_title in people_by_title)) {
+			people_by_title[job_title] = []
+		}
+		people_by_title[job_title].push(people[name])
+	}
+	return people_by_title
+}
