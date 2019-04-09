@@ -7,15 +7,15 @@ function ready() { // Load SVG before doing ANYTHING
 	}
 
 	// List of variables used to check which variable is checked
-	var variables = ['Violent crime rate', 'Forcible rape rate', 'Robbery rate', 'Aggravated assault rate', 'Murder rate', 'Cook PVI',
+	var variables = ['Violent Crime rate', 'Forcible rape rate', 'Robbery rate', 'Aggravated assault rate', 'Murder rate', 'Cook PVI',
 					'Property crime rate', 'Burglary rate', 'Larceny-theft rate', 'Motor vehicle theft rate', 'Unemployment', 'Guns per household']
-	
+
 	for (v in variables) { // Uncheck all variables in case a browser uses form history and the page is reloaded
 		document.getElementById(variables[v]).checked = false;
 	}
 	document.getElementById('slider').min = 0; // When no variable is selected, the slider should not be functional
 	document.getElementById('slider').max = 0;
-	
+
 	var w = 300, h = 60;  //Initiate the gradient legend for the map: http://bl.ocks.org/darrenjaworski/5874214
 	var parent = d3.select("#SVG").append("svg").attr("id", "parent").attr("width", '90%').attr("height", h);
 	var legend = parent.append("defs").append("svg:linearGradient").attr("id", "gradient").attr("x1", "100%").attr("y1", "0%").attr("x2", "0%").attr("y2", "0%");
@@ -35,23 +35,23 @@ function ready() { // Load SVG before doing ANYTHING
 			}
 		}
 	}
-	
+
 	var data;
 	var loadData = new XMLHttpRequest();
 	loadData.onload = dataLoaded;                  // Load the data using XMLHttpRequest
 	loadData.open("get", "data/data.json", true);
 	loadData.send();
-	
+
 	function dataLoaded(){ // Do all this when data is loaded
 		var data = JSON.parse(this.responseText); // Store data object in a variable
-		
+
 		slider = document.getElementById('slider'); // Store slider object in a variable
-		
+
 		for (var i = 0; i < Object.keys(states).length; i++) { // Add class to states
 			var state = d3.select('#' + Object.keys(states)[i]);
 			state.attr('class', 'state');
-		}	
-		
+		}
+
 		d3.selectAll('.radButton').on('click', function () { // Add onclick listener for radio-buttons
 			if (~this.id.indexOf('rate')) { //http://stackoverflow.com/a/1789952
 				slider.min = 1960;
@@ -106,7 +106,7 @@ function ready() { // Load SVG before doing ANYTHING
 				document.getElementById('sliderText').innerHTML = 'Year: 1981 - 1990';
 			}
 		}
-		
+
 		var tooltip = d3.select('#map').append('g')  // Initiate the tooltip
 				.attr('id', 'tooltip').style('display', 'none');
 			tooltip.append('rect').attr('id', 'tooltipRect').attr('height', '10px').attr('width', 0)
@@ -114,7 +114,7 @@ function ready() { // Load SVG before doing ANYTHING
 				.style('stroke', '#000').style('stroke-width', 0.5);
 			tooltip.append('text').attr('id', 'tooltipText1').attr('font-size', 3);
 			tooltip.append('text').attr('id', 'tooltipText2').attr('font-size', 3);
-		
+
 		d3.selectAll('.state') // Mouse events for the states
 			.on('mouseover', function(){
 				d3.select(this).style('cursor', 'pointer').style('stroke-width', 0.6);
@@ -155,28 +155,29 @@ function ready() { // Load SVG before doing ANYTHING
 				}
 				d3.select('#tooltipText2').text(function(){
 						if (variable == undefined) {return '-';}
-						else if (el.id == 'DC') {
-							return 'NaN';
-						}
 						else if (variable.id == 'Guns per household') {
+							if (el.id == 'DC') return 'No data';
 							if (slider.value == 0) {return data[0][states[el.id]][variable.id]['2001 - 2010'];}
 							else if (slider.value == 1) {return data[0][states[el.id]][variable.id]['1991 - 2000'];}
 							else return data[0][states[el.id]][variable.id]['1981 - 1990'];
 						} else if (variable.id == 'Cook PVI') {
+							if (el.id == 'DC') return 'No data';
 							var val = data[0][states[el.id]][variable.id][slider.value];
 							if (val < 0) {
 								return 'Democrats +' + val.toString().slice(1);				// Custom tooltip for Cook PVI variable
-							} else return 'Republicans +' + val.toString();
+							} else if (val == 0) {
+								return 'Even or unknown';
+							} else {
+								return 'Republicans +' + val.toString();
+							}
 						} else {
 							return data[0][states[el.id]][variable.id][slider.value];
 						}
 				})
 			}).on('click', function() {
-				if (this.id != 'DC') { // There is no data for District of Colombia, so ignore this state
-					goTo(variables, this.id, data, slider);
-				}
+				goTo(variables, this.id, data, slider);
 			});
-			
+
 		d3.selectAll('.label').on('mouseover', function () {
 			d3.select(this).style('cursor', 'pointer')
 			d3.select('#SVG').select('#' + this.id).style('stroke-width', 0.6);							// Hovering over a state in the compare window
@@ -186,7 +187,7 @@ function ready() { // Load SVG before doing ANYTHING
 		}).on('mouseout', function() {
 			d3.select('#SVG').select('#' + this.id).style('stroke-width', 0.28222218);
 		});
-		
+
 		d3.select('#submitButton').on('click', function() {  // Draw comparison when the compare button is clicked
 			var selected = [];
 			$('#checkboxes :checked').each(function() { //http://stackoverflow.com/a/786215
@@ -206,15 +207,19 @@ function goTo(variables, state, data, slider) {  // Changes view when a graph ha
 			variable = document.getElementById(variables[x])
 		}
 	}
-	if (typeof(variable) != 'undefined') {	
+
+	if (state == 'DC' && (variable.id == 'Cook PVI' || variable.id == 'Guns per household')) {
+		return;
+	}
+	if (typeof(variable) != 'undefined') {
 		if (!$('#graph').is(':visible')) {
-			var parent = document.getElementById("graph"); 
+			var parent = document.getElementById("graph");
 			var canvas = document.createElement('canvas');
 			canvas.id = 'chart';
 			parent.appendChild(canvas);								// Append or reset canvas when necessary
 		}else {
 			var parent = document.getElementById('graph');
-			var canvas = document.getElementById('chart');   
+			var canvas = document.getElementById('chart');
 			parent.removeChild(canvas);
 			var parent = document.getElementById("graph");
 			var canvas = document.createElement('canvas');
@@ -245,14 +250,14 @@ function back() {                              // Go back to initial view with j
 		$("#compare").fadeIn("slow");
 	});
 	var parent = document.getElementById('graph');
-	var canvas = document.getElementById('chart');   
+	var canvas = document.getElementById('chart');
 	parent.removeChild(canvas);
 }
 
 function getData(data, variable) { // Get data for the map
 	var l = {};
 	for (var state in data[0]) {
-		if (v == 'Cook PVI') {
+		if (variable == 'Cook PVI') {
 			var sortable = [];
 			for (var dataPoint in data[0][state][variable]) {
 				  sortable.push([dataPoint, data[0][state][variable][dataPoint]])
@@ -323,12 +328,16 @@ function drawMap(variable, data, slider, legend, parent){            // Color th
 			state.style('fill', function() {
 				if (value < 0) {
 					return 'blue';
-				} else return 'red';
+				} else if (value == 0) {
+					return 'grey';
+				} else {
+					return 'red';
+				}
 			});
 		}else state.style('fill', function() {return color(value);});
 	}
 	if (variable != 'Cook PVI') {   	// Draw legend, but not if variable is Cook PVI
-		var w = 300, h = 60; 
+		var w = 300, h = 60;
 		parent.selectAll('#legend').remove();
 		parent.append("rect").attr('id', 'legend').attr("width", 400).attr("height", h-50).style("fill", "url(#gradient)").attr("transform", "translate(0,10)");
 		var x = d3.scale.linear().range([0, 400]).domain([min, max]);
@@ -343,7 +352,7 @@ function drawMap(variable, data, slider, legend, parent){            // Color th
 function makeChart(variable, state, d) { // Generate the line chart
 	document.getElementById('titleText').innerHTML = states[state] + ' - ' + variable;
 	var data = {}
-	var selectionData = d[0][states[state]][variable];	
+	var selectionData = d[0][states[state]][variable];
 	if (variable != 'Cook PVI'){
 		var labels = Object.keys(selectionData);
 		var values = [];
@@ -434,7 +443,7 @@ function makeComparison(variable, state, d, slider) {
 		var year = '2001 - 2010';
 	} else if (slider.value == 1) {
 		var displayYear = '1991 - 2000';
-		var year = '1991 - 2000';			
+		var year = '1991 - 2000';
 	} else if (slider.value == 2) {
 		var displayYear = '2001 - 2010';
 		var year = '1981 - 1990';
@@ -512,7 +521,7 @@ function update(barChart, slider, d, variable) { // Updates the barchart when th
 		var year = '2001 - 2010';
 	} else if (slider.value == 1) {
 		var displayYear = '1991 - 2000';
-		var year = '1991 - 2000';			
+		var year = '1991 - 2000';
 	} else if (slider.value == 2) {
 		var displayYear = '2001 - 2010';
 		var year = '1981 - 1990';
@@ -521,7 +530,7 @@ function update(barChart, slider, d, variable) { // Updates the barchart when th
 		var year = slider.value;
 	}
 	document.getElementById('titleText').innerHTML = variable + ' - ' + displayYear;
-	
+
 	var stateList = [];
 	$('#checkboxes :checked').each(function() { //http://stackoverflow.com/a/786215
 		stateList.push($(this).val());
