@@ -63,7 +63,7 @@ function ready() { // Load SVG before doing ANYTHING
 				slider.step = 1
 			}else if (this.id == 'Cook PVI') {    		// Different variables have different timespans
 				slider.min = 1960;
-				slider.max = 2012;
+				slider.max = 2016;
 				slider.step = 4;
 			}else {
 				slider.min = 0;

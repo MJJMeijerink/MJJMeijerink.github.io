@@ -142,9 +142,9 @@ def print_people(people):
 
 if __name__ == "__main__":
     people = generate_people(80)
-    print_people(people)
-    with open("/users/meijerinkj/working_dir/projects/skillmap/test_data.json",
+    # print_people(people)
+    with open("test_data.json",
               "w", encoding="utf-8") as out:
-        json.dump(people, out)
+        out.write(json.dumps(people, indent=4))
 
-    print(json.dumps(people))
+    # print(json.dumps(people, indent=4))
