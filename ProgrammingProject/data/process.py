@@ -70,7 +70,7 @@ with open('unemployment.csv','r') as f:
         line = line.strip('\n ').split(',')
         line = filter(None, line)
         if len(line) == 1:
-            name = line[0] 
+            name = line[0]
         elif len(line) > 1:
             line = [line[0]] + map(float, line[1:])
             data[name]['Unemployment'][int(line[0])] = round(sum(line[1:]) / float(len(line[1:])), 2)
@@ -117,7 +117,7 @@ with open('Guns.csv', 'r') as f:
                 data[name]['Guns per household'][line[0] + ' - 1990'] = float(line[1])
             elif line[0] == '1991':
                 data[name]['Guns per household'][line[0] + ' - 2000'] = float(line[1])
-            elif line[0] == '2001':    
+            elif line[0] == '2001':
                 data[name]['Guns per household'][line[0] + ' - 2010'] = float(line[1])
 
 
@@ -130,13 +130,13 @@ with open('PVI.csv', 'r') as f:
             addedCat = True
             years = line[1:]
             for entry in data:
-                data[entry]['Presidential election statistics'] = {}
+                data[entry]['Cook PVI'] = {}
                 for year in line[1:]:
-                    data[entry]['Presidential election statistics'][int(year)] = 0
+                    data[entry]['Cook PVI'][int(year)] = 0
         if 'Year' not in line:
             name = line[0]
             for x in range(len(line[1:])):
-                data[name]['Presidential election statistics'][int(years[x])] = float(line[1:][x])
-                     
+                data[name]['Cook PVI'][int(years[x])] = float(line[1:][x])
+
 jsonfile = open('data.json', 'w')
 json.dump([data], jsonfile)
