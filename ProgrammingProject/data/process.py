@@ -139,4 +139,4 @@ with open('PVI.csv', 'r') as f:
                 data[name]['Cook PVI'][int(years[x])] = float(line[1:][x])
 
 jsonfile = open('data.json', 'w')
-json.dump([data], jsonfile)
+json.dump([data], jsonfile, indent=4)
